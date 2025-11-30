@@ -13,20 +13,21 @@ body{
 }
 
 .banner{
-    width: 85%;
+    width: 100%;
     height: 270px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgb(242, 245, 245), #f4f5f7b7, #76767769);
+    background: linear-gradient(rgba(26, 76, 216, 0.274), #f4f5f7f8, #d2d2d434);
     color: rgb(34, 32, 32);
     border-radius: 10px;
 }
 
 .banner h1{
     font-size: 2.5rem;
-    font-weight: 400;
+    font-weight: 600;
+    color: black;
 }
 
 .formfiltragem{
@@ -169,17 +170,9 @@ body{
     }
 
     .banner {
-        width: 100%;
-        background: linear-gradient(rgb(255, 255, 255), #eaebeca9, #4545467a);
-    }
-    .banner h1{
-        font-size: 2.0rem;
-        font-weight: 370;
-    }
-
-    .banner p{
         display: none;
     }
+    
 
     .containercentro {
         display: grid;
@@ -194,6 +187,7 @@ body{
     }
 
     .postagens{
+        margin-top: 50px;
         width: 98%;
     }
 

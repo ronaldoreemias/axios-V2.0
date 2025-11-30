@@ -1,7 +1,7 @@
 import style from "./Vagas.module.css";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
-import { useState, useEffect, useCallback } from "react"; // Adicione useCallback
+import { useState, useEffect, useCallback } from "react"; 
 
 function Vagas() {
     const [vagas, setVagas] = useState([]);
@@ -155,6 +155,42 @@ function Vagas() {
         setVagasFiltradas(vagas);
     };
 
+    // Adicione esta função antes do return no seu componente
+const renderBotaoCandidatar = (vaga) => {
+  const link = vaga.Link_linkdin || vaga.link_site_da_empresa || vaga.link_whatsapp;
+  
+  if (!link) return null;
+
+  let textoBotao = " Candidatar-se";
+  let icone = "📝";
+
+  if (link.includes("linkedin.com") || link.includes("linkdin")) {
+    textoBotao = " Candidatar-se no LinkedIn";
+    icone = "💼";
+  } else if (link.includes("whatsapp")) {
+    textoBotao = " Candidatar-se via WhatsApp";
+    icone = "💬";
+  } else if (link.includes("mailto:")) {
+    textoBotao = " Candidatar-se por Email";
+    icone = "📧";
+  } else {
+    textoBotao = " Candidatar-se no Site";
+    icone = "🌐";
+  }
+
+  return (
+    <a 
+      href={link} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className={style.botaoCandidatar}
+    >
+      {icone} {textoBotao}
+    </a>
+  );
+};
+
+
     return(
         <>
             <Navbar />
@@ -273,16 +309,7 @@ function Vagas() {
                                             </div>
                                         )}
                                         
-                                        {vaga.Link_linkdin && (
-                                            <a 
-                                                href={vaga.Link_linkdin} 
-                                                target="_blank" 
-                                                rel="noopener noreferrer"
-                                                className={style.botaoCandidatar}
-                                            >
-                                                📝 Candidatar-se no LinkedIn
-                                            </a>
-                                        )}
+                                        {renderBotaoCandidatar(vaga)}
                                     </div>
                                 ))}
                             </div>

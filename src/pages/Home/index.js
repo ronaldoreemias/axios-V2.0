@@ -22,7 +22,7 @@ class Filtrarpostagem extends React.Component {
       <form className={style.formfiltragem} >
           <input 
             type="text" 
-            placeholder="🔍 O que está procurando ?" 
+            placeholder=" O que está procurando ?" 
             className={style.filtragem} 
             value={this.state.value} 
             onChange={this.handleChange} 
