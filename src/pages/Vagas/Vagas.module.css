@@ -1,0 +1,370 @@
+.Vagasmain{
+    min-height: 100vh;
+    display: flex;
+    background-color: #f8f9fa;
+}
+
+.barradefiltragemlateral{
+    background-color: #2c3e50;
+    width: 280px;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.barradefiltragemlateral h3 {
+    color: white;
+    margin: 20px 0 15px 0;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid #34495e;
+    padding-bottom: 8px;
+}
+
+.barradefiltragemlateral h3:first-child {
+    margin-top: 0;
+}
+
+.checkboxGroup {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    color: white;
+    transition: background-color 0.2s;
+    padding: 5px 8px;
+    border-radius: 4px;
+}
+
+.checkboxGroup:hover {
+    background-color: #34495e;
+}
+
+.checkboxGroup input[type="checkbox"] {
+    margin-right: 12px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.checkboxGroup label {
+    cursor: pointer;
+    font-size: 14px;
+    flex: 1;
+}
+
+.botaoFiltrar {
+    width: 100%;
+    padding: 14px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.botaoFiltrar:hover {
+    background-color: #2980b9;
+}
+
+.areadevagas{
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.barradebusdevaga {
+    margin-bottom: 20px;
+}
+
+.barradebusdevaga form {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.barradebusdevaga input[type="text"] {
+    width: 90%;
+    padding: 14px 18px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.barradebusdevaga input[type="text"]:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.barradebusdevaga button {
+    padding: 14px 25px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+}
+
+.barradebusdevaga button:hover {
+    background-color: #219a52;
+}
+
+.infoResultados {
+    margin-bottom: 20px;
+    color: #7f8c8d;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.ondevaificarasvagas {
+    flex: 1;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 25px;
+    border: 1px solid #e9ecef;
+    overflow-y: scroll;
+    max-height: 100vh;
+}
+
+/* Estilos para as vagas */
+.listaVagas {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cardVaga {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-left: 4px solid #3498db;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cardVaga:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.cabecalhoVaga {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    gap: 15px;
+}
+
+.tituloVaga {
+    color: #2c3e50;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    flex: 1;
+}
+
+.faixaSalarial {
+    background-color: #27ae60;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.descricaoVaga {
+    color: #5d6d7e;
+    margin: 0 0 15px 0;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.tagsVaga {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.infoVaga {
+    margin-bottom: 15px;
+}
+
+.localVaga {
+    color: #7f8c8d;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.beneficios {
+    margin-bottom: 20px;
+}
+
+.beneficios strong {
+    color: #2c3e50;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.listaBeneficios {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.beneficio {
+    background-color: #e8f6f3;
+    color: #27ae60;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    border: 1px solid #a3e4d7;
+}
+
+.botaoCandidatar {
+    display: inline-block;
+    background-color: #0077b5;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.botaoCandidatar:hover {
+    background-color: #005885;
+}
+
+.semResultados {
+    text-align: center;
+    padding: 60px 40px;
+    color: #7f8c8d;
+}
+
+.semResultados h3 {
+    color: #95a5a6;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.semResultados p {
+    color: #bdc3c7;
+    font-size: 16px;
+}
+
+.botaoLimpar {
+    width: 100%;
+    padding: 12px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.botaoLimpar:hover {
+    background-color: #c0392b;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .Vagasmain {
+        margin-top: 30px;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .barradefiltragemlateral {
+        display: none;
+    }
+
+    .areadevagas {
+        margin: 0;
+        padding: 20px 15px;
+        border-radius: 0;
+        box-shadow: none;
+        min-height: calc(100vh - 120px);
+    }
+
+    .barradebusdevaga form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .barradebusdevaga input[type="text"] {
+        width: 100%;
+    }
+
+    .cabecalhoVaga {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .faixaSalarial {
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .areadevagas {
+        padding: 15px 10px;
+    }
+
+    .barradebusdevaga input[type="text"],
+    .barradebusdevaga button {
+        font-size: 14px;
+        padding: 12px 15px;
+    }
+
+    .ondevaificarasvagas {
+        padding: 15px;
+    }
+
+    .cardVaga {
+        padding: 20px;
+    }
+
+    .tituloVaga {
+        font-size: 18px;
+    }
+
+    .botaoCandidatar {
+        width: 100%;
+        padding: 12px;
+    }
+}

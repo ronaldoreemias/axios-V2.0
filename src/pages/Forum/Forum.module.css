@@ -1,0 +1,18 @@
+.Forummain{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .Forummain .h1main{
+        font-size: 15px;
+    }
+
+    .Forummain .h3main{
+        font-size: 15px;
+    }
+}

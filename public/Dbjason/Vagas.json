@@ -1,0 +1,54 @@
+[
+    {
+        "Vaga": "Trainee Desenvolvimento de Software",
+        "Descrição": "Trainee em Desenvolvimento de Software atuando em projetos de front-end e back-end.",
+        "Local": "Brasília, DF",
+        "modelo": "Presencial",
+        "tipoContrato": "CLT",
+        "areaAtuacao": "Fullstack",
+        "faixaSalarial": "R$ 1.800 - R$ 2.500",
+        "beneficios": ["Vale Transporte", "Vale Refeição", "Plano de Saúde"],
+        "link_whatsapp": "",
+        "link_site_da_empresa": "",
+        "Link_linkdin": "https://br.linkedin.com/jobs/view/trainee-desenvolvimento-de-software-at-portal-de-compras-p%25C3%25BAblicas-4333688112"
+    },
+    {
+        "Vaga": "Analista de Dados SQL",
+        "Descrição": "Procure vagas de Analista de dados sql. Encontre a vaga perfeita de Analista de dados sql.",
+        "Local": "Brasil geral",
+        "modelo": "Home office",
+        "tipoContrato": "CLT",
+        "areaAtuacao": "Banco de Dados",
+        "faixaSalarial": "R$ 3.000 - R$ 4.500",
+        "beneficios": ["Vale Refeição", "Plano Odontológico", "Plano de Saúde"],
+        "link_whatsapp": "",
+        "link_site_da_empresa": "",
+        "Link_linkdin": "https://www.glassdoor.com.br/Vaga/analista-de-dados-sql-vagas-SRCH_KO0%2C21.htm"
+    },
+    {
+        "Vaga": "Analista de Dados Junior",
+        "Descrição": "Vagas para análista de dados junior em Brasília, incluindo Analista de Suporte de 2º Nível Junior.",
+        "Local": "Brasília, DF",
+        "modelo": "Presencial",
+        "tipoContrato": "CLT",
+        "areaAtuacao": "Suporte e Dados",
+        "faixaSalarial": "R$ 2.500 - R$ 3.500",
+        "beneficios": ["Vale Transporte", "Vale Alimentação", "Plano de Saúde"],
+        "link_whatsapp": "",
+        "link_site_da_empresa": "",
+        "Link_linkdin": "https://br.indeed.com/q-an%25C3%25A1lista-de-dados-junior-l-bras%25C3%25ADlia%2C-df-vagas.html"
+    },
+    {
+        "Vaga": "Analista de Dados Junior/Pleno",
+        "Descrição": "Analista de Dados Pleno/Junior com experiência em automação e transformação de dados utilizando Excel VBA e Power Query.",
+        "Local": "Brasil geral",
+        "modelo": "Home office",
+        "tipoContrato": "CLT",
+        "areaAtuacao": "Automação e BI",
+        "faixaSalarial": "R$ 4.000 - R$ 6.000",
+        "beneficios": ["Vale Refeição", "Auxílio Home Office", "Plano de Saúde"],
+        "link_whatsapp": "",
+        "link_site_da_empresa": "",
+        "Link_linkdin": "https://br.linkedin.com/jobs/view/analista-de-dados-junior-pleno-%25E2%2580%2593-excel-vba-e-power-query-at-tr99-consultoria-e-tecnologia-ltda-4184186691"
+    }
+]
