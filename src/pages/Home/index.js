@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./Home.module.css";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
@@ -105,9 +105,6 @@ function Home() {
       <Navbar />
       <br/>
       <div className={style.banner}>
-        <h1>Sua rede de tecnologia</h1>
-        <br/>
-        <p>As últimas novidades, análises e dicas do mundo tech</p>
         <Filtrarpostagem onFilter={filtrarPostagens} />
       </div>
       <div className={style.postagens}>

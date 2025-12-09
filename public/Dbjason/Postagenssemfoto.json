@@ -1,5 +1,20 @@
 [
     {
+    "titulo": "Bug : aba vagas ",
+    "data": "8 de dezembro, 2025",
+    "resumo": "tem algumas vagas que é por whatsapp mas vai mostrar likedin, se acessar é só clicar no número que vai ser redirecionado para o contato do RH correspondente.      Assinado : Axios_fetch"
+},
+    {
+    "titulo": "Atualização : vagas de emprego ",
+    "data": "8 de dezembro, 2025",
+    "resumo": "mais 15 vagas adicionadas. Assinado : Axios_fetch"
+},
+    {
+    "titulo": "Atualização : na nav-bar ",
+    "data": "8 de dezembro, 2025",
+    "resumo": "agora tem links para o github , tiktok e a comunidade da axios no whatsapp. Assinado : Axios_fetch"
+},
+    {
     "titulo": "Atualização : oportunidade para criação do fórum ",
     "data": "30 de novembro, 2025",
     "resumo": "Estamos a procuro de devs que sabem Java para web. Assinado : Axios_fetch"

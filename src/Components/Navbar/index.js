@@ -1,4 +1,7 @@
 import style from "./Navbar.module.css";
+import tiktok from "../../assets/icons/tiktok.ico";
+import github from "../../assets/icons/github.ico";
+import whatsapp from "../../assets/icons/whatsapp.ico";
 import Logo from "../../assets/icons/wordblue.ico";
 import Menu from "../../assets/icons/Menu.ico";
 import { useState } from "react";
@@ -16,6 +19,7 @@ function Navbar(){
 
     return (
        <div className={style.header}>
+
             <header className={style.container}>
                 <div className={style.textonav}>
                     <img src={Logo} alt="logo-tipoAxios" />
@@ -43,6 +47,18 @@ function Navbar(){
                         </li>
                     </ul>
 
+                    <div className={style.githublinkheader}>
+                        <a href="https://www.tiktok.com/@axios_fetch?_r=1&_t=ZM-9241pxUkPca" target="_blank" rel="noopener noreferrer">
+                            <img src={tiktok} alt="link para o tiktok" height="30px;" />
+                        </a>
+                        <a href="https://chat.whatsapp.com/FivMCudmv1wENlalqeIth0" target="_blank" rel="noopener noreferrer">
+                            <img src={whatsapp} alt="link para o whatsapp" height="30px;" />
+                        </a>
+                        <a href="https://github.com/ronaldoreemias" target="_blank" rel="noopener noreferrer">
+                            <img src={github} alt="link para o github" height="30px;" />
+                        </a>
+                    </div>    
+                    
                     {/* Ícone do menu hamburger */}
                     <div className={style.iconmenu} onClick={toggleMenu}>
                        <img src={Menu} alt="icon-menuLateral" />
