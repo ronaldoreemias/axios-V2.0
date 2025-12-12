@@ -1,4 +1,20 @@
 [
+
+     {
+    "titulo": "Bug : aba vagas ( resolvido ) ",
+    "data": "12 de dezembro, 2025",
+    "resumo": "o bug foi resolvido e agora você pode cópiar o Email das vagas.      Assinado : Axios_fetch"
+},
+{
+    "titulo": "atualizações : Aulas ",
+    "data": "12 de dezembro, 2025",
+    "resumo": "Agora temos a aba \"aulas\", feita para você ter um norte do que estudar ( com base nos meus estudos ).      Assinado : Axios_fetch"
+},
+{
+    "titulo": "atualização : aba vagas ",
+    "data": "12 de dezembro, 2025",
+    "resumo": "Foi adicionado mais 15 vagas de emprego.      Assinado : Axios_fetch"
+},
     {
     "titulo": "Bug : aba vagas ",
     "data": "8 de dezembro, 2025",

@@ -1,6 +1,20 @@
 
         [
         {
+            "titulo": "Por que aprender Java em 2025 continua sendo relevante?",
+            "data": "12 de dezembro, 2025",
+            "resumo": "Em 2025, aprender programação continua sendo uma das habilidades mais valiosas no mercado de tecnologia. Entre as diversas linguagens disponíveis, Java se destaca pela sua estabilidade, versatilidade e ampla adoção em diversas indústrias.Segundo o ranking TIOBE Index (2025), Java permanece entre as linguagens mais populares, competindo com Python, JavaScript e C#. Seu impacto se estende desde o desenvolvimento de aplicações empresariais até soluções de backend robustas, tornando-se essencial para qualquer desenvolvedor que queira consolidar sua carreira.",
+            "imagem": "https://assets.dio.me/VEqM3ZkDwuXCV59zi2WHaesbcgit4WlxIdcW47O9p50/f:webp/q:80/L2FydGljbGVzL2NvdmVyLzliOTkwYWY4LTgyM2YtNDJhMi05ZjkzLTk5NmJiNjA3ZmEyOC5qcGc",
+            "link": "https://www.dio.me/articles/por-que-aprender-java-em-2025-continua-sendo-relevante"
+        },
+            {
+            "titulo": "Lovable: o guia definitivo para criar apps com IA sem escrever uma linha de código",
+            "data": "12 de dezembro, 2025",
+            "resumo": "A barreira entre uma ideia genial e um aplicativo funcional sempre foi a mesma: a programação.Bom, e se fosse possível simplesmente descrever o aplicativo que você quer e uma inteligência artificial o construísse para você em minutos?",
+            "imagem": "https://cdn-wcsm.alura.com.br/2025/10/lovable.jpg",
+            "link": "https://www.alura.com.br/artigos/lovable?srsltid=AfmBOorVU5JrzJAVYYYPtqcgfZqOcPpi1eX4g5eOXfwadbFDmc0wVJ56"
+        },
+        {
             "titulo": "URGENTE: Falha crítica de segurança - CVE-2025-55182 (React2Shell)",
             "data": "9 de dezembro, 2025",
             "resumo": "Entendendo a CVE-2025-55182 (React2Shell) e Como Blindar sua Aplicação Hoje Recentemente, a comunidade de desenvolvimento web foi alertada sobre uma vulnerabilidade crítica no ecossistema React, batizada de React2Shell (CVE-2025-55182). Com uma pontuação de gravidade máxima (CVSS 10.0), ela exige atenção imediata de todos que trabalham com Next.js e React Server Components (RSC).",

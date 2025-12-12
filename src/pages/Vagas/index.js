@@ -74,7 +74,8 @@ function Vagas() {
                 vaga.Vaga.toLowerCase().includes(termoBusca.toLowerCase()) ||
                 vaga.Descrição.toLowerCase().includes(termoBusca.toLowerCase()) ||
                 vaga.Local.toLowerCase().includes(termoBusca.toLowerCase()) ||
-                vaga.areaAtuacao.toLowerCase().includes(termoBusca.toLowerCase())
+                vaga.areaAtuacao.toLowerCase().includes(termoBusca.toLowerCase()) ||
+                vaga.Email.toLowerCase().includes(termoBusca.toLowerCase())
             );
         }
 
@@ -156,7 +157,32 @@ function Vagas() {
     };
 
     // Adicione esta função antes do return no seu componente
+// Atualize a função renderBotaoCandidatar para esta versão:
 const renderBotaoCandidatar = (vaga) => {
+  const copiarEmail = () => {
+    navigator.clipboard.writeText(vaga.Email)
+      .then(() => {
+        alert('Email copiado! Agora você pode colar no seu cliente de email.');
+      })
+      .catch(err => {
+        console.error('Erro ao copiar email:', err);
+        alert('Erro ao copiar email. Tente novamente.');
+      });
+  };
+
+  // Verifica primeiro se há email específico
+  if (vaga.Email) {
+    return (
+      <button 
+        onClick={copiarEmail}
+        className={style.botaoCandidatar}
+      >
+        📧 Candidatar-se por Email (Copiar)
+      </button>
+    );
+  }
+  
+  // Se não tiver email, verifica os outros links
   const link = vaga.Link_linkdin || vaga.link_site_da_empresa || vaga.link_whatsapp;
   
   if (!link) return null;
@@ -170,9 +196,6 @@ const renderBotaoCandidatar = (vaga) => {
   } else if (link.includes("whatsapp")) {
     textoBotao = " Candidatar-se via WhatsApp";
     icone = "💬";
-  } else if (link.includes("mailto:")) {
-    textoBotao = " Candidatar-se por Email";
-    icone = "📧";
   } else {
     textoBotao = " Candidatar-se no Site";
     icone = "🌐";
