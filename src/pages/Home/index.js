@@ -3,6 +3,109 @@ import style from "./Home.module.css";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
 
+// Componente do formulário de contato
+function ContactForm() {
+  const [result, setResult] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setResult("Enviando...");
+    
+    const formData = new FormData(event.target);
+    formData.append("access_key", "e68e9ef4-1970-49dd-9559-7f0e05cbc49a");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        setResult("Mensagem enviada com sucesso!");
+        event.target.reset();
+      } else {
+        setResult("Erro ao enviar a mensagem. Tente novamente.");
+      }
+    } catch (error) {
+      setResult("Erro de conexão. Verifique sua internet.");
+      console.error("Erro:", error);
+    } finally {
+      setIsSubmitting(false);
+      
+      // Limpar a mensagem após 5 segundos
+      setTimeout(() => {
+        setResult("");
+      }, 5000);
+    }
+  };
+
+  return (
+    <form className={style.contactForm} onSubmit={onSubmit}>
+      <h3>Entre em Contato</h3>
+      <div className={style.linha}></div>
+      <br/>
+      
+      <div className={style.formGroup}>
+        <label htmlFor="name">Nome:</label>
+        <input 
+          type="text" 
+          id="name"
+          name="name" 
+          className={style.formInput}
+          required 
+          placeholder="Seu nome"
+        />
+      </div>
+      
+      <div className={style.formGroup}>
+        <label htmlFor="email">Email:</label>
+        <input 
+          type="email" 
+          id="email"
+          name="email" 
+          className={style.formInput}
+          required 
+          placeholder="escolha seu melhor email"
+        />
+      </div>
+      
+      <div className={style.formGroup}>
+        <label htmlFor="message">Mensagem:</label>
+        <textarea 
+          id="message"
+          name="message" 
+          className={style.formTextarea}
+          required 
+          rows="4"
+          placeholder="Digite sua mensagem aqui..."
+        />
+      </div>
+      
+      <button 
+        type="submit" 
+        className={style.submitButton}
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
+      </button>
+      
+      {result && (
+        <div className={`
+          ${style.resultMessage} 
+          ${result.includes("sucesso") ? style.success : style.error}
+        `}>
+          {result}
+        </div>
+      )}
+    </form>
+  );
+}
+
+// Componente de filtragem
 class Filtrarpostagem extends React.Component {
   constructor(props) {
     super(props);
@@ -19,65 +122,42 @@ class Filtrarpostagem extends React.Component {
 
   render() {
     return(
-      <form className={style.formfiltragem} >
-          <input 
-            type="text" 
-            placeholder=" O que está procurando ?" 
-            className={style.filtragem} 
-            value={this.state.value} 
-            onChange={this.handleChange} 
-          />
+      <form className={style.formfiltragem}>
+        <input 
+          type="text" 
+          placeholder="O que está procurando?" 
+          className={style.filtragem} 
+          value={this.state.value} 
+          onChange={this.handleChange} 
+        />
       </form>
     );
   }
 }
 
-class NameForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  async handleSubmit(event) {
-    alert('Um email foi enviado: ' + this.state.value);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <form className={style.form} onSubmit={this.handleSubmit}>
-        <div>
-            <h3>Newsletter</h3>
-            <div className={style.linha}></div>
-        </div>
-        <p>Receba as últimas novidades do mundo tech diretamente no seu email</p>
-        <label>
-          <input type="text" className={style.inputtexto} placeholder="digite seu melhor email..." value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" className={style.botaoenviar} value="enviar" />
-      </form>
-    );
-  }
-}
-
+// Componente principal Home
 function Home() {
   const [postagensComFoto, setPostagensComFoto] = useState([]);
   const [postagensFiltradas, setPostagensFiltradas] = useState([]);
   const [termoFiltro, setTermoFiltro] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('/Dbjason/Postagemcomfotos.json')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Erro ao carregar postagens');
+        }
+        return response.json();
+      })
       .then((dados) => {
         setPostagensComFoto(dados);
-        setPostagensFiltradas(dados); // Inicialmente mostra todas as postagens
+        setPostagensFiltradas(dados);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Erro:', error);
+        setLoading(false);
       });
   }, []);
 
@@ -86,15 +166,13 @@ function Home() {
     setTermoFiltro(termo);
     
     if (!termo.trim()) {
-      // Se o termo estiver vazio, mostra todas as postagens
       setPostagensFiltradas(postagensComFoto);
     } else {
-      // Filtra as postagens pelo termo de busca
       const termoLower = termo.toLowerCase();
       const filtradas = postagensComFoto.filter(postagem => 
-        postagem.titulo.toLowerCase().includes(termoLower) ||
-        postagem.resumo.toLowerCase().includes(termoLower) ||
-        postagem.data.toLowerCase().includes(termoLower)
+        postagem.titulo?.toLowerCase().includes(termoLower) ||
+        postagem.resumo?.toLowerCase().includes(termoLower) ||
+        postagem.data?.toLowerCase().includes(termoLower)
       );
       setPostagensFiltradas(filtradas);
     }
@@ -107,24 +185,36 @@ function Home() {
       <div className={style.banner}>
         <Filtrarpostagem onFilter={filtrarPostagens} />
       </div>
+      
       <div className={style.postagens}>
         <div className={style.containercentro}>
           <div className={style.menucentro}>
             <div className={style.Postagemcomfotos}>
-              {/* Mostra mensagem quando não há resultados */}
-              {postagensFiltradas.length === 0 && termoFiltro ? (
+              {loading ? (
+                <div className={style.loading}>
+                  <p>Carregando postagens...</p>
+                </div>
+              ) : postagensFiltradas.length === 0 && termoFiltro ? (
                 <div className={style.semResultados}>
                   <p>Nenhuma postagem encontrada para "{termoFiltro}"</p>
                 </div>
               ) : (
-                // Renderiza as postagens filtradas
                 postagensFiltradas.map(postagem => (
                   <div key={postagem.id} className={style.postagemComFoto}>
-                    <img src={postagem.imagem} alt={postagem.titulo} />
+                    {postagem.imagem && (
+                      <img 
+                        src={postagem.imagem} 
+                        alt={postagem.titulo || "Imagem da postagem"} 
+                      />
+                    )}
                     <div className={style.conteudo}>
-                      <h3>{postagem.titulo}</h3>
-                      <div className={style.data}>{postagem.data}</div>
-                      <p className={style.resumo}>{postagem.resumo}</p>
+                      <h3>{postagem.titulo || "Sem título"}</h3>
+                      {postagem.data && (
+                        <div className={style.data}>{postagem.data}</div>
+                      )}
+                      <p className={style.resumo}>
+                        {postagem.resumo || "Resumo não disponível"}
+                      </p>
                       {postagem.link && (
                         <a 
                           href={postagem.link} 
@@ -141,21 +231,26 @@ function Home() {
               )}
             </div>
           </div>
+          
           <div className={style.contentcentro}>
             <div className={style.sobre}>
               <h3>Sobre o Site</h3>
               <div className={style.linha}></div>
               <br/>
-              <p>O blog foi construido para mostrar novidades do mundo tec, mostrar oportunidades de emprego na área,
-                entregar um hambiente de comunicação e evolução. Também tem a aba de loja, lá os produtos são confiaveis
-                  e com direcionamento para plataformas validadas e reais.
-
-                  Minha missão é ajudar você a 
-                  fazer as melhores escolhas 
-                  tecnológicas e profissinal.</p>
+              <p>
+                O blog foi construído para mostrar novidades do mundo tech, 
+                mostrar oportunidades de emprego na área, entregar um ambiente 
+                de comunicação e evolução. Também tem a aba de loja, lá os 
+                produtos são confiáveis e com direcionamento para plataformas 
+                validadas e reais.
+              </p>
+              <p>
+                Minha missão é ajudar você a fazer as melhores escolhas 
+                tecnológicas e profissionais.
+              </p>
             </div>
             <br/>
-            <NameForm />
+            <ContactForm />
           </div>
         </div>
       </div>  
