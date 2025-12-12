@@ -2,7 +2,30 @@ Projeto de blog / fórum / vagas de emorego
 
 o obejetivo é treinar minhas habilidades com react.js e java
 
+<h1>Tecnologias usadas</h1>
 
+<ul>
+    <li>React.js</li>
+    <li>React-router-dom</li>
+    <li>switalert2</li>
+    <li>.json</li>
+    <li>APIemail.js</li>
+</ul>
+
+<h1>estrutura de pastas</h1>
+
+/public
+    /DBjason
+
+/src
+    /pages
+        /home
+        /loja
+        /Notificacao
+        /vagas
+
+
+    
 
 # Getting Started with Create React App
 
