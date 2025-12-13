@@ -24,13 +24,14 @@ function Navbar(){
         const el = palavrasRef.current;
         if (!el) return;
         const tl = gsap.timeline({ repeat: -1 });
-        tl.to(el, { duration: 1.5, y: "-2rem", ease: "expo.out" })
-          .to(el, { duration: 1.5, y: "-4rem", ease: "expo.out" })
-          .to(el, { duration: 1.5, y: "-6rem", ease: "expo.out" })
-          .to(el, { duration: 1.5, y: "-8rem", ease: "expo.out" })
-          .to(el, { duration: 1.5, y: "-10rem", ease: "expo.out" })
-          .to(el, { duration: 1.5, y: "-12rem", ease: "expo.out" })
-          .to(el, { duration: 1.5, y: "-14rem", ease: "expo.out" });
+        tl.to(el, { duration: 2, y: "-2rem", ease: "expo.out" })
+          .to(el, { duration: 2, y: "-4rem", ease: "expo.out" })
+          .to(el, { duration: 2, y: "-6rem", ease: "expo.out" })
+          .to(el, { duration: 2, y: "-8rem", ease: "expo.out" })
+          .to(el, { duration: 2, y: "-10rem", ease: "expo.out" })
+          .to(el, { duration: 2, y: "-12rem", ease: "expo.out" })
+          .to(el, { duration: 5, y: "-14rem", ease: "expo.out" })
+          .to(el, { duration: 2, y: "-14rem", ease: "expo.out" });
         return () => {
             tl.kill();
         };
@@ -50,6 +51,7 @@ function Navbar(){
                             <a href="/" className={style.active} onClick={closeMenu}><h2>Vagas de emprego</h2></a>
                             <a href="/" className={style.active} onClick={closeMenu}><h2>Cursos</h2></a>
                             <a href="/" className={style.active} onClick={closeMenu}><h2>Comunidade</h2></a>
+                            <a href="/" className={style.active} onClick={closeMenu}><h2>seja bem vindo !</h2></a>
                             <a href="/" className={style.active} onClick={closeMenu}><h2>Axios Tecno</h2></a>
                         </div>
                     </div>
