@@ -66,6 +66,9 @@ body{
 }
 .containercentro div.menucentro {
   grid-area: menu;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
 .containercentro div.contentcentro {
@@ -84,15 +87,23 @@ body{
 .postagemComFoto {
     display: flex;
     flex-direction: column;
-    gap: 30px;        /* espaçamento automático entre postagens */
+    justify-content: center;
+    align-items: center;
+    gap: 5px; 
     margin-top: 20px;
+    width: 100%;
 }
 
 .postagemComFoto {
+    width: 100%;
     background-color: #ffffff;
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.Postagemcomfotos{
+  width: 90%;
 }
 
 .postagemComFoto:hover {
@@ -158,6 +169,10 @@ body{
     .formfiltragem{
         margin-top: 30px;
         width: 70%;
+    }
+
+    .Postagemcomfotos{
+      width: 100%;
     }
 
     .banner {
