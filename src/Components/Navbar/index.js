@@ -23,7 +23,7 @@ function Navbar(){
             <header className={style.container}>
                 <div className={style.textonav}>
                     <img src={Logo} alt="logo-tipoAxios" />
-                    <h2>Axios Tecno</h2>
+                    <a href="/" className={style.active} onClick={closeMenu}><h2>Axios Tecno</h2></a>
                 </div>
                 
                 <nav className={style.nav}>
