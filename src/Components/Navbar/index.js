@@ -34,9 +34,6 @@ function Navbar(){
                             <a href="/" className={style.active} onClick={closeMenu}>Notícias</a>
                         </li>
                         <li>
-                            <a href="https://calculadora-livid-nu.vercel.app/" onClick={closeMenu}>Aulas</a>
-                        </li>
-                        <li>
                             <a href="/Notficacao" className={style.active} onClick={closeMenu}>Sistema</a>
                         </li>
                         <li>
