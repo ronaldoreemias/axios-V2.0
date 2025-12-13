@@ -4,9 +4,12 @@ import github from "../../assets/icons/github.ico";
 import whatsapp from "../../assets/icons/whatsapp.ico";
 import Logo from "../../assets/icons/wordblue.ico";
 import Menu from "../../assets/icons/Menu.ico";
-import { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+
 
 function Navbar(){
+    const palavrasRef = useRef(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -17,13 +20,39 @@ function Navbar(){
         setIsMenuOpen(false);
     };
 
+    useEffect(() => {
+        const el = palavrasRef.current;
+        if (!el) return;
+        const tl = gsap.timeline({ repeat: -1 });
+        tl.to(el, { duration: 1.5, y: "-2rem", ease: "expo.out" })
+          .to(el, { duration: 1.5, y: "-4rem", ease: "expo.out" })
+          .to(el, { duration: 1.5, y: "-6rem", ease: "expo.out" })
+          .to(el, { duration: 1.5, y: "-8rem", ease: "expo.out" })
+          .to(el, { duration: 1.5, y: "-10rem", ease: "expo.out" })
+          .to(el, { duration: 1.5, y: "-12rem", ease: "expo.out" })
+          .to(el, { duration: 1.5, y: "-14rem", ease: "expo.out" });
+        return () => {
+            tl.kill();
+        };
+    }, []);
+
     return (
        <div className={style.header}>
 
             <header className={style.container}>
                 <div className={style.textonav}>
                     <img src={Logo} alt="logo-tipoAxios" />
-                    <a href="/" className={style.active} onClick={closeMenu}><h2>Axios Tecno</h2></a>
+                    <div className={style.container_Palavras}>
+                        <div className={style.palavras} ref={palavrasRef}>
+                            <a href="/" className={style.active} onClick={closeMenu}><h2>Axios Tecno</h2></a>
+                            <a href="/" className={style.active} onClick={closeMenu}><h2>Portal de Notícias</h2></a>
+                            <a href="/" className={style.active} onClick={closeMenu}><h2>Fórum</h2></a>
+                            <a href="/" className={style.active} onClick={closeMenu}><h2>Vagas de emprego</h2></a>
+                            <a href="/" className={style.active} onClick={closeMenu}><h2>Cursos</h2></a>
+                            <a href="/" className={style.active} onClick={closeMenu}><h2>Comunidade</h2></a>
+                            <a href="/" className={style.active} onClick={closeMenu}><h2>Axios Tecno</h2></a>
+                        </div>
+                    </div>
                 </div>
                 
                 <nav className={style.nav}>

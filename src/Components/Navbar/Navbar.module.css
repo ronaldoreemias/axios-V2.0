@@ -134,6 +134,15 @@ h2{
     visibility: visible;
 }
 
+.container_Palavras{
+    height: 2rem;
+    overflow: hidden;
+}
+
+.palavras h2{
+    height: 2rem;
+}
+
 /* RESPONSIVIDADE MOBILE */
 @media (max-width: 768px) {
     .container {
