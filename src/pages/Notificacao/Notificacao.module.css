@@ -1,32 +1,28 @@
-.Mainnotficacao h2{
-    margin-left: 50px;
-}
-
-.baner{
-    height: 70px;
+.headercentro{
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    
+    width: 100%;
 }
 
-.fotodocriador{
-    height: 100%;
-    width: 20%;
-}
-
-.postagemSemFoto {
+.Postagenssemfoto{
     display: flex;
     flex-direction: column;
-    gap: 20px;        /* espaçamento automático entre postagens */
-    margin: 20px;     /* margem externa */
+    align-items: center;
+    width: 100%;
+    margin-top: 7%; 
+    min-height: 100vh;
 }
-
 .postagemSemFoto {
+    display: flex;
+    flex-direction: column;      
+    margin: 20px; 
+    justify-content: center;  
+    width: 60%;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+
 }
 
 .postagemSemFoto:hover {
@@ -48,4 +44,34 @@
 .postagemSemFoto .resumo {
     color: #333;
     line-height: 1.6;
+}
+
+.postagemImage {
+    width: 90%;
+    height: auto;
+    margin-left: 5%;
+    margin-top: 10px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.assinatura{
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
+}
+
+@media(max-width: 768px) {
+    .Postagenssemfoto{
+        margin-top: 13%;
+    }
+    .postagemSemFoto {
+        width: 90%; 
+        padding: 15px; 
+    }
+
+    .postagemSemFoto h3 {
+        font-size: 1.2rem; 
+    }
 }

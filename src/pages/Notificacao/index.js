@@ -3,6 +3,15 @@ import Footer from "../../Components/Footer";
 import style from "./Notificacao.module.css";
 import React, { useState, useEffect } from "react";
 
+function importAll(r) {
+    const images = {};
+    r.keys().forEach((item) => { images[item.replace('./', '')] = r(item); });
+    return images;
+}
+
+// importa todos os ícones de src/assets/icons (nomes de arquivos podem ser usados no JSON)
+const icons = importAll(require.context('../../assets/bugimagem', false, /\.(png|jpe?g|svg|JPG|PNG)$/));
+
 function Notificacao(){
     const [postagensSemFoto, setPostagensSemFoto] = useState([]);
 
@@ -14,48 +23,49 @@ function Notificacao(){
 
 
     return(
-        <div className={style.Mainnotficacao}>
+        <>
             <Navbar />
                 <div>
         <div className={style.headercentro}>
-            <div className={style.baner}>
-                <div className={style.areatextolink}>
-                    <div className={style.texto}>
-                        
+            <br/>
+            <div className={style.Postagenssemfoto}>
+                {postagensSemFoto.map(postagem => (
+                <div key={postagem.id} className={style.postagemSemFoto}>
+                    <h3>{postagem.titulo}</h3>
+                        <div className={style.data}>{postagem.data}</div>
+                            <p className={style.resumo}>{postagem.resumo}</p>
+                                {postagem.link && (
+                                    <a 
+                                        href={postagem.link} 
+                                        className={style.lerMais}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Ler mais →
+                                    </a>
+                                    )}
+                                <br/>
+                                 {(() => {
+                                    const filenameFromUrl = postagem.imagemurl ? postagem.imagemurl.split('/').pop() : null;
+                                    const resolvedImage = icons[postagem.imagem] ||
+                                     (filenameFromUrl ? icons[filenameFromUrl] : null) ||
+                                      postagem.imagemurl || postagem.imagem || null;
+                                    return resolvedImage ? (
+                                        <img
+                                            src={resolvedImage}
+                                            alt={postagem.titulo || "Imagem da postagem"}
+                                            className={style.postagemImage}
+                                        />
+                                    ) : null;
+                                })()}
+                                <p className={style.assinatura}>{postagem.assinatura}</p>
+                        </div>
+                    ))}
                     </div>
-                    <div className={style.link}>
-                        <h2>Notificações do sistema</h2>
-                    </div>
-                </div>
-                <div className={style.fotodocriador}>
-                    <img  />
                 </div>
             </div>
-            <br/>
-                        <div className={style.Postagenssemfoto}>
-                            {postagensSemFoto.map(postagem => (
-                                <div key={postagem.id} className={style.postagemSemFoto}>
-                                    <h3>{postagem.titulo}</h3>
-                                    <div className={style.data}>{postagem.data}</div>
-                                    <p className={style.resumo}>{postagem.resumo}</p>
-                                    {postagem.link && (
-                                        <a 
-                                            href={postagem.link} 
-                                            className={style.lerMais}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            Ler mais →
-                                        </a>
-                                    )}
-                                     <br/>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
             <Footer />
-        </div>
+        </>
     );
 }
 

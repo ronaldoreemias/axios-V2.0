@@ -1,59 +1,84 @@
 [
+{
+    "titulo": "Atualização : Aba Notícias",
+    "data": "13 de dezembro, 2025",
+    "resumo": "Agora o formulário de email está funcional. Eu usei a biblioteca EmailJS para enviar os emails diretamente do frontend sem precisar de um backend, essa atualização melhora a experiência do lado cliente e servidor",
+    "imagemurl" : "../../../src/assets/bugimagem/formulario.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Atualização : Aba Notificações",
+    "data": "13 de dezembro, 2025",
+    "resumo": "Adicionei agora imagem para detalhar mais as atualizações, mostrando o código atualizado.",
+    "imagemurl" : "../../../src/assets/bugimagem/soluçãoNotficacao.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
 
      {
     "titulo": "Bug : aba vagas ( resolvido ) ",
     "data": "12 de dezembro, 2025",
-    "resumo": "o bug foi resolvido e agora você pode cópiar o Email das vagas.      Assinado : Axios_fetch"
+    "resumo": "o bug foi resolvido e agora você pode cópiar o Email das vagas.",
+    "assinatura": "Assinado : Axios_fetch"
 },
 {
     "titulo": "atualizações : Aulas ",
     "data": "12 de dezembro, 2025",
-    "resumo": "Agora temos a aba \"aulas\", feita para você ter um norte do que estudar ( com base nos meus estudos ).      Assinado : Axios_fetch"
+    "resumo": "Agora temos a aba \"aulas\", feita para você ter um norte do que estudar ( com base nos meus estudos ).",
+    "assinatura": "Assinado : Axios_fetch"
 },
 {
     "titulo": "atualização : aba vagas ",
     "data": "12 de dezembro, 2025",
-    "resumo": "Foi adicionado mais 15 vagas de emprego.      Assinado : Axios_fetch"
+    "resumo": "Foi adicionado mais 15 vagas de emprego.",
+    "assinatura": "Assinado : Axios_fetch"
 },
     {
     "titulo": "Bug : aba vagas ",
     "data": "8 de dezembro, 2025",
-    "resumo": "tem algumas vagas que é por whatsapp mas vai mostrar likedin, se acessar é só clicar no número que vai ser redirecionado para o contato do RH correspondente.      Assinado : Axios_fetch"
+    "resumo": "tem algumas vagas que é por whatsapp mas vai mostrar likedin, se acessar é só clicar no número que vai ser redirecionado para o contato do RH correspondente.",
+    "assinatura": "Assinado : Axios_fetch"
 },
     {
     "titulo": "Atualização : vagas de emprego ",
     "data": "8 de dezembro, 2025",
-    "resumo": "mais 15 vagas adicionadas. Assinado : Axios_fetch"
+    "resumo": "mais 15 vagas adicionadas na aba de vagas de emprego",
+    "assinatura": "Assinado : Axios_fetch"
 },
     {
     "titulo": "Atualização : na nav-bar ",
     "data": "8 de dezembro, 2025",
-    "resumo": "agora tem links para o github , tiktok e a comunidade da axios no whatsapp. Assinado : Axios_fetch"
+    "resumo": "agora tem links para o github , tiktok e a comunidade da axios no what",
+    "assinatura": "Assinado : Axios_fetch"
 },
     {
     "titulo": "Atualização : oportunidade para criação do fórum ",
     "data": "30 de novembro, 2025",
-    "resumo": "Estamos a procuro de devs que sabem Java para web. Assinado : Axios_fetch"
+    "resumo": "Estamos a procuro de devs que sabem Java para",
+    "assinatura": "Assinado : Axios_fetch"
 },
 
     {
     "titulo": "Atualização : Mais vagas de emprego ",
     "data": "30 de novembro, 2025",
-    "resumo": "A platafroma está com mais vagas de emprego. Assinado : Axios_fetch"
+    "resumo": "A platafroma está com mais vagas de emprego",
+    "assinatura": "Assinado : Axios_fetch"
 },
 {
     "titulo": "Atualização : Primeiras vagas de emprego Publicadas ",
     "data": "17 de novembro, 2025",
-    "resumo": "Agora está funcionando sem falhas a aba de vagas de emprego. Assinado : Axios_fetch"
+    "resumo": "Agora está funcionando sem falhas a aba de vagas de emp",
+    "assinatura": "Assinado : Axios_fetch"
 },
 {
     "titulo": "Atualização : Aba de empregos ativa ",
     "data": "15 de outubro, 2025",
-    "resumo": "A platafroma agora tem uma aba de vagas de emprego, mas como ainda está sendo desenvolvida pode ser que tenha alguns problemas. Assinado : Axios_fetch"
+    "resumo": "A platafroma agora tem uma aba de vagas de emprego, mas como ainda está sendo desenvolvida pode ser que tenha alguns probl",
+    "assinatura": "Assinado : Axios_fetch"
 },
 {
     "titulo": "Atualização : Aba de fórum",
     "data": "11 de Novembro, 2025",
-    "resumo": "Agora estamos com a aba de Fóruns , como visto está inativa por problemas de versão do código fonte. para mais informações é só entrar em contato. Assinado : Axios_fetch"
+    "resumo": "Agora estamos com a aba de Fóruns , como visto está inativa por problemas de versão do código fonte. para mais informações é só entrar em con",
+    "assinatura": "Assinado : Axios_fetch"
 }
 ]

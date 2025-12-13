@@ -3,7 +3,6 @@ import style from "./Home.module.css";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
 
-// Componente do formulário de contato
 function ContactForm() {
   const [result, setResult] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -50,7 +49,6 @@ function ContactForm() {
       <br/>
       
       <div className={style.formGroup}>
-        <label htmlFor="name">Nome:</label>
         <input 
           type="text" 
           id="name"
@@ -62,7 +60,6 @@ function ContactForm() {
       </div>
       
       <div className={style.formGroup}>
-        <label htmlFor="email">Email:</label>
         <input 
           type="email" 
           id="email"

@@ -72,13 +72,14 @@ h2{
 .container nav a{
     color: rgb(20, 20, 20);
     padding: 0.7rem 0.7rem;
-    border-radius: 10px;
     transition: all 0.3s ease;
+    text-decoration: none; 
+    transition: border-bottom 0.1s ease;
 }
 
 .container nav ul li a:hover{
-    background-color: rgba(53, 67, 83, 0.856);
-    color: rgb(255, 255, 255);
+     border-bottom: 5px solid #3700ff;
+     color: rgba(31, 30, 30, 0.74);
 }
 
 .textonav{
