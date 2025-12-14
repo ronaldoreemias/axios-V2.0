@@ -1,5 +1,19 @@
 [
 {
+    "titulo": "Bug : Aba Home ( resolvido )",
+    "data": "13 de dezembro, 2025",
+    "resumo": "Foi resolvido o bug de filtragem da aba notícias , agora está mais robusto e com a filtragem mais inteligente comparado a antes. As mudançans foram feitas na função de filtragem por elemento, a antiga estava filtrando conteúdos distintos do pesquisado",
+    "imagemurl" : "../../../src/assets/bugimagem/filtragem.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Atualização : Destaque",
+    "data": "13 de dezembro, 2025",
+    "resumo": "A pedido de um dos usuário, pensei em melhora a experiência da plataforma em formato mobile. Uma das primeiras atualizações é a área destaque, assim você sabera qual notícia do dia é , também a mais relevante. Para fazer essa atualização eu só mudei a parte de filtragem do render tamplayt e display grid",
+    "imagemurl" : "../../../src/assets/bugimagem/destaque.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
     "titulo": "Atualização : Aba Notícias",
     "data": "13 de dezembro, 2025",
     "resumo": "Agora o formulário de email está funcional. Eu usei a biblioteca EmailJS para enviar os emails diretamente do frontend sem precisar de um backend, essa atualização melhora a experiência do lado cliente e servidor",

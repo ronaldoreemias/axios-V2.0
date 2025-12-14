@@ -77,7 +77,7 @@ h2{
 }
 
 .container nav ul li a:hover{
-     border-bottom: 5px solid #3700ff;
+     border-bottom: 3px solid #3700ff;
      color: rgba(31, 30, 30, 0.74);
 }
 
@@ -134,12 +134,23 @@ h2{
 }
 
 .container_Palavras{
-    height: 2rem;
+    height: 2rem; 
     overflow: hidden;
 }
 
-.palavras h2{
-    height: 2rem;
+.palavras{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure headline text has no default margins which break sizing */
+.palavras a, .palavras h2 {
+    margin: 0;
+    padding: 0;
+    line-height: 2rem; /* match container height */
 }
 
 /* RESPONSIVIDADE MOBILE */

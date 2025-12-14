@@ -29,8 +29,7 @@ function Navbar(){
           .to(el, { duration: 2, y: "-6rem", ease: "expo.out" })
           .to(el, { duration: 2, y: "-8rem", ease: "expo.out" })
           .to(el, { duration: 2, y: "-10rem", ease: "expo.out" })
-          .to(el, { duration: 2, y: "-12rem", ease: "expo.out" })
-          .to(el, { duration: 5, y: "-14rem", ease: "expo.out" })
+          .to(el, { duration: 6, y: "-12rem", ease: "expo.out" })
           .to(el, { duration: 2, y: "-14rem", ease: "expo.out" });
         return () => {
             tl.kill();

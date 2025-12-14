@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import style from "./Home.module.css";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
+import engrenagem from "../../assets/icons/engrenagem.ico";
+import job from "../../assets/icons/job.ico";
+import shopping from "../../assets/icons/shopping.ico";
 
 function ContactForm() {
   const [result, setResult] = useState("");
@@ -102,7 +105,6 @@ function ContactForm() {
   );
 }
 
-// Componente de filtragem
 class Filtrarpostagem extends React.Component {
   constructor(props) {
     super(props);
@@ -132,7 +134,6 @@ class Filtrarpostagem extends React.Component {
   }
 }
 
-// Componente principal Home
 function Home() {
   const [postagensComFoto, setPostagensComFoto] = useState([]);
   const [postagensFiltradas, setPostagensFiltradas] = useState([]);
@@ -166,11 +167,20 @@ function Home() {
       setPostagensFiltradas(postagensComFoto);
     } else {
       const termoLower = termo.toLowerCase();
-      const filtradas = postagensComFoto.filter(postagem => 
-        postagem.titulo?.toLowerCase().includes(termoLower) ||
-        postagem.resumo?.toLowerCase().includes(termoLower) ||
-        postagem.data?.toLowerCase().includes(termoLower)
-      );
+      const filtradas = postagensComFoto.filter(postagem => {
+        const titulo = postagem.titulo?.toLowerCase() || '';
+        const resumo = postagem.resumo?.toLowerCase() || '';
+        const data = postagem.data?.toLowerCase() || '';
+        const conteudo = postagem.conteudo?.toLowerCase() || '';
+        
+        // Verifica se a palavra ou frase existe em qualquer campo
+        return (
+          titulo.includes(termoLower) ||
+          resumo.includes(termoLower) ||
+          data.includes(termoLower) ||
+          conteudo.includes(termoLower)
+        );
+      });
       setPostagensFiltradas(filtradas);
     }
   };
@@ -178,25 +188,77 @@ function Home() {
   return (
     <main className={style.mainHome}>
       <Navbar />
-      <br/>
+
       <div className={style.banner}>
         <Filtrarpostagem onFilter={filtrarPostagens} />
       </div>
       
       <div className={style.postagens}>
+        {(!loading && postagensFiltradas.length > 0) ? (
+          <div className={style.destaqueDoDia}>
+            {(() => {
+              const destaque = postagensFiltradas[0];
+              return (
+                <article className={style.destaqueCard} key={`destaque-${destaque.id}`}>
+                    {destaque.imagem ? (
+                      <figure className={style.destaqueImageWrapper}>
+                        <img className={style.destaqueImage} src={destaque.imagem} alt={destaque.titulo || 'Destaque'} />
+                        <figcaption className={style.destaqueImageCaption}>
+                          <h2 className={style.destaqueTitle}>{destaque.titulo}</h2>
+                          {destaque.data && <div className={style.destaqueDate}>{destaque.data}</div>}
+                          {destaque.link && (
+                            <a href={destaque.link} className={style.lerMais} target="_blank" rel="noopener noreferrer">Ler mais →</a>
+                          )}
+                        </figcaption>
+                        
+                      </figure>
+                    ) : null}
+                          <div className={style.containernavmobile}>
+                            <div className={style.navmobile}>
+                              <a href="/Notficacao" target="_banck" >
+                                <img src={engrenagem} />
+                                <h4 >Sistema</h4>
+                              </a>
+                              <a href="/Vagas" target="_banck" >
+                                <img src={job} />
+                                <h4 >Vagas Emprego</h4>
+                              </a>
+                              <a href="/Loja" target="_banck" >
+                                <img src={shopping} />
+                                <h4 >Shopping</h4>
+                              </a>
+                            </div>
+                          </div>
+                </article>
+              )
+            })()}
+          </div>
+        ) : null}
+
         <div className={style.containercentro}>
           <div className={style.menucentro}>
             <div className={style.Postagemcomfotos}>
+              <h1>NOTÍCIAS</h1>
+              
+              {termoFiltro && (
+                <div className={style.resultadoBusca}>
+                  <p>Resultados para: <strong>"{termoFiltro}"</strong></p>
+                  <p className={style.contadorResultados}>
+                    {postagensFiltradas.length} {postagensFiltradas.length === 1 ? 'resultado encontrado' : 'resultados encontrados'}
+                  </p>
+                </div>
+              )}
+              
               {loading ? (
                 <div className={style.loading}>
                   <p>Carregando postagens...</p>
                 </div>
-              ) : postagensFiltradas.length === 0 && termoFiltro ? (
+              ) : postagensFiltradas.length === 0 ? (
                 <div className={style.semResultados}>
-                  <p>Nenhuma postagem encontrada para "{termoFiltro}"</p>
+                  <p>Nenhuma postagem encontrada{termoFiltro ? ` para "${termoFiltro}"` : ''}</p>
                 </div>
               ) : (
-                postagensFiltradas.map(postagem => (
+                postagensFiltradas.slice(0).map(postagem => (
                   <div key={postagem.id} className={style.postagemComFoto}>
                     {postagem.imagem && (
                       <img 
