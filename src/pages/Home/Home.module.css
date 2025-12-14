@@ -364,8 +364,15 @@ body{
 .navmobile{
   display: flex;
   width: 90%;
-  overflow-x: scroll;
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch;
   justify-content: space-between;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.navmobile::-webkit-scrollbar {
+  height: 0;
 }
 
 .navmobile a{
