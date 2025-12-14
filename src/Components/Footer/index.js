@@ -10,15 +10,15 @@ function Footer(){
                     <p>Seu destino para as melhores ofertas em produtos 
                     de tecnologia, 
                     informações atualizadas sobre o mundo tech,
-                    vagas de emprego e Fórum</p>
+                    vagas de emprego e Comunidade no whatsapp e fórum (ainda em desenvolvimento )</p>
                 </div>
                 <div>
                     <h3>Categorias</h3>
-                    <p>Smartphones</p>
-                    <p>Notebooks</p>
-                    <p>TVs</p>
-                    <p>Computadores</p>
-
+                    <p>Tecnologia em geral</p>
+                    <p>cyber secutity</p>
+                    <p>Front-end</p>
+                    <p>Back-end</p>
+                    <p>Estudantes de Tecnologo</p>
                 </div>
                 <div>
                     <h3>Contato</h3>

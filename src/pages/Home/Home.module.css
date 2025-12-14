@@ -364,6 +364,7 @@ body{
 .navmobile{
   display: flex;
   width: 90%;
+  overflow-x: scroll;
   justify-content: space-between;
 }
 
@@ -380,7 +381,14 @@ body{
   height: 25px;
 }
 
+
+.navmobile a .vagas{
+  font-size: 0.5rem;
+  width: 100%;
+}
+
 .navmobile a h4{
   font-size: 0.7rem;
   color: rgb(2, 4, 80);
 }
+

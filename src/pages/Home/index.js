@@ -5,6 +5,8 @@ import Footer from "../../Components/Footer";
 import engrenagem from "../../assets/icons/engrenagem.ico";
 import job from "../../assets/icons/job.ico";
 import shopping from "../../assets/icons/shopping.ico";
+import comunidade from "../../assets/icons/comunidade.ico";
+import forum from "../../assets/icons/forum.ico";
 
 function ContactForm() {
   const [result, setResult] = useState("");
@@ -221,11 +223,19 @@ function Home() {
                               </a>
                               <a href="/Vagas" target="_banck" >
                                 <img src={job} />
-                                <h4 >Vagas Emprego</h4>
+                                <h4 >Empregos</h4>
                               </a>
                               <a href="/Loja" target="_banck" >
                                 <img src={shopping} />
                                 <h4 >Shopping</h4>
+                              </a>
+                              <a href="https://chat.whatsapp.com/FivMCudmv1wENlalqeIth0" target="_banck" >
+                                <img src={comunidade} />
+                                <h4 >Comunidade</h4>
+                              </a>
+                               <a href="/Forum" target="_banck" >
+                                <img src={forum} />
+                                <h4 >Fórum</h4>
                               </a>
                             </div>
                           </div>
