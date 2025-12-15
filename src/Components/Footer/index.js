@@ -1,4 +1,102 @@
 import style from "./Footer.module.css";
+import React, { useState} from "react";
+
+function ContactForm() {
+  const [result, setResult] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setResult("Enviando...");
+    
+    const formData = new FormData(event.target);
+    formData.append("access_key", "e68e9ef4-1970-49dd-9559-7f0e05cbc49a");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        setResult("Mensagem enviada com sucesso!");
+        event.target.reset();
+      } else {
+        setResult("Erro ao enviar a mensagem. Tente novamente.");
+      }
+    } catch (error) {
+      setResult("Erro de conexão. Verifique sua internet.");
+      console.error("Erro:", error);
+    } finally {
+      setIsSubmitting(false);
+      
+      // Limpar a mensagem após 5 segundos
+      setTimeout(() => {
+        setResult("");
+      }, 5000);
+    }
+  };
+
+  return (
+    <form className={style.contactForm} onSubmit={onSubmit}>
+      
+      <div className={style.formGroup}>
+        <input 
+          type="text" 
+          id="name"
+          name="name" 
+          className={style.formInput}
+          required 
+          placeholder="Seu nome"
+        />
+      </div>
+      
+      <div className={style.formGroup}>
+        <input 
+          type="email" 
+          id="email"
+          name="email" 
+          className={style.formInput}
+          required 
+          placeholder="escolha seu melhor email"
+        />
+      </div>
+      
+      <div className={style.formGroup}>
+        <label htmlFor="message">Mensagem:</label>
+        <textarea 
+          id="message"
+          name="message" 
+          className={style.formTextarea}
+          required 
+          rows="4"
+          placeholder="Digite sua mensagem aqui..."
+        />
+      </div>
+      
+      <button 
+        type="submit" 
+        className={style.submitButton}
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
+      </button>
+      
+      {result && (
+        <div className={`
+          ${style.resultMessage} 
+          ${result.includes("sucesso") ? style.success : style.error}
+        `}>
+          {result}
+        </div>
+      )}
+    </form>
+  );
+}
+
 
 function Footer(){
     return(
@@ -22,9 +120,7 @@ function Footer(){
                 </div>
                 <div>
                     <h3>Contato</h3>
-                    <p>Email: ronaldoreemias@gmail.com</p>
-                    <p>Telefone: (82) 98887-3225</p>
-                    <p>Endereço: Rua Projetada, 123 - Maceió, AL</p>
+                    <ContactForm />
                 </div>
 
             </div>

@@ -31,6 +31,19 @@
 .linksdosul ul li a{
     text-decoration: none;
 }
+.formGroup{
+    gap: 10px;
+}
+
+.formGroup input{
+    margin: 5px;
+    padding: 5px;
+}
+
+.formGroup button{
+    width: 100%;
+    padding: 5px;
+}
 
 @media (max-width: 768px) {
 

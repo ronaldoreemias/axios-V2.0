@@ -58,11 +58,11 @@ h2{
 .githublinkheader {
     display: block;
     display: flex;
-    gap: 15px;
     align-items: center;
     justify-content: flex-end;
-    flex: 1; /* Ocupa espaço à direita */
+    flex: 1; 
 }
+
 
 .container nav li{
     list-style: none;

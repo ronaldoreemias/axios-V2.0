@@ -1,7 +1,7 @@
 import style from "./Navbar.module.css";
-import tiktok from "../../assets/icons/tiktok.ico";
-import github from "../../assets/icons/github.ico";
-import whatsapp from "../../assets/icons/whatsapp.ico";
+import tiktok from "../../assets/icons/message_communication_logo_interaction_tiktok_icon_195589.ico";
+import github from "../../assets/icons/github_icon-icons.com_60477.ico";
+import whatsapp from "../../assets/icons/whatsapp_logo_icon_153036.ico";
 import Logo from "../../assets/icons/wordblue.ico";
 import Menu from "../../assets/icons/Menu.ico";
 import React, { useState, useEffect, useRef } from "react";
@@ -24,13 +24,13 @@ function Navbar(){
         const el = palavrasRef.current;
         if (!el) return;
         const tl = gsap.timeline({ repeat: -1 });
-        tl.to(el, { duration: 2, y: "-2rem", ease: "expo.out" })
-          .to(el, { duration: 2, y: "-4rem", ease: "expo.out" })
-          .to(el, { duration: 2, y: "-6rem", ease: "expo.out" })
-          .to(el, { duration: 2, y: "-8rem", ease: "expo.out" })
-          .to(el, { duration: 2, y: "-10rem", ease: "expo.out" })
+        tl.to(el, { duration: 1, y: "-2rem", ease: "expo.out" })
+          .to(el, { duration: 1, y: "-4rem", ease: "expo.out" })
+          .to(el, { duration: 1, y: "-6rem", ease: "expo.out" })
+          .to(el, { duration: 1, y: "-8rem", ease: "expo.out" })
+          .to(el, { duration: 1, y: "-10rem", ease: "expo.out" })
           .to(el, { duration: 6, y: "-12rem", ease: "expo.out" })
-          .to(el, { duration: 2, y: "-14rem", ease: "expo.out" });
+          .to(el, { duration: 1, y: "-14rem", ease: "expo.out" });
         return () => {
             tl.kill();
         };
@@ -67,7 +67,7 @@ function Navbar(){
                             <a href="/Notficacao" className={style.active} onClick={closeMenu}>Sistema</a>
                         </li>
                         <li>
-                            <a href="https://loja-axios.vercel.app/" target="_banck" onClick={closeMenu}>Loja</a>
+                            <a href="https://loja-axios.vercel.app/" target="_banck">Loja</a>
                         </li>
                         <li>
                             <a href="/Forum" onClick={closeMenu}>fóruns</a>

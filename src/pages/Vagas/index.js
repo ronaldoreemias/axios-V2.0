@@ -219,7 +219,6 @@ const renderBotaoCandidatar = (vaga) => {
             <Navbar />
             <br/>
             <br/>
-            <br/>
             <main className={style.Vagasmain}>
                 {!isMobile && (
                     <div className={style.barradefiltragemlateral}>
