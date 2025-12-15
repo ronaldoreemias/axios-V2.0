@@ -2,7 +2,7 @@ import style from "./Navbar.module.css";
 import tiktok from "../../assets/icons/message_communication_logo_interaction_tiktok_icon_195589.ico";
 import github from "../../assets/icons/github_icon-icons.com_60477.ico";
 import whatsapp from "../../assets/icons/whatsapp_logo_icon_153036.ico";
-import Logo from "../../assets/icons/wordblue.ico";
+import Logo from "../../assets/icons/axios.ico";
 import Menu from "../../assets/icons/Menu.ico";
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
