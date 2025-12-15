@@ -1,4 +1,18 @@
 [
+{
+    "titulo": "Atualização : Mais vagas de emprego ",
+    "data": "13 de dezembro, 2025",
+    "resumo": "Coloquei mais 3 vagas.",
+    "imagemurl" : "",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Bug : Aba Home",
+    "data": "13 de dezembro, 2025",
+    "resumo": "Estou com preguiça de arrumar esse forme, então pode ser que fique para mais tarte resolver o bug e a estilização desse formulário. Infelizmente para você hacker, ele não liga com API própria minha.",
+    "imagemurl" : "../../../src/assets/bugimagem/bugForme.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
 
 {
     "titulo": "Atualização : na nav-bar ",
