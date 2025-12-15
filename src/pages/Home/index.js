@@ -225,7 +225,7 @@ function Home() {
                                 <img src={job} />
                                 <h4 >Empregos</h4>
                               </a>
-                              <a href="/Loja" target="_banck" >
+                              <a href="https://loja-axios.vercel.app/" target="_banck" >
                                 <img src={shopping} />
                                 <h4 >Shopping</h4>
                               </a>
