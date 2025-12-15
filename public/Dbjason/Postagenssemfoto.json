@@ -1,5 +1,12 @@
 [
 {
+    "titulo": "Importante ( nem tanto ): Aba Loja ",
+    "data": "15 de dezembro, 2025",
+    "resumo": "A aba Loja infelizmente vai demorar um pouco para ter mais produtos, eu preciso pesquisar melhor cada produto e ver se realmente são confiaveis para o usuário da minha plataforma. Mas logo mais terá mais produtos e mais funcionalidades",
+    "imagemurl" : "../../../src/assets/bugimagem/loja.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
     "titulo": "Atualização : Mais vagas de emprego ",
     "data": "13 de dezembro, 2025",
     "resumo": "Coloquei mais 3 vagas.",
