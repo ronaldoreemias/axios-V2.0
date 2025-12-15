@@ -67,7 +67,7 @@ function Navbar(){
                             <a href="/Notficacao" className={style.active} onClick={closeMenu}>Sistema</a>
                         </li>
                         <li>
-                            <a href="https://loja-axios.vercel.app/" onClick={closeMenu}>Loja</a>
+                            <a href="https://loja-axios.vercel.app/" target="_banck" onClick={closeMenu}>Loja</a>
                         </li>
                         <li>
                             <a href="/Forum" onClick={closeMenu}>fóruns</a>
