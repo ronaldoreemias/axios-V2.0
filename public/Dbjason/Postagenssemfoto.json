@@ -1,4 +1,12 @@
 [
+
+{
+    "titulo": "Atualização : na nav-bar ",
+    "data": "14 de dezembro, 2025",
+    "resumo": "Foi atualizado a loja do site , agora temos uma nova cara e novas funcionalidades. A página ainda está em desenvolvimento, mas agora está com uma cara melhor",
+    "imagemurl" : "",
+    "assinatura": "Assinado : Axios_fetch"
+},
 {
     "titulo": "Bug : Aba Home ( resolvido )",
     "data": "13 de dezembro, 2025",
