@@ -1,5 +1,5 @@
 .footer{
-    height: 300px;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,6 +43,21 @@
 .formGroup button{
     width: 100%;
     padding: 5px;
+}
+.contactForm input{
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+}
+.contactForm button{
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(32, 132, 199);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 0.8rem;
+    margin-top: 10px;
 }
 
 @media (max-width: 768px) {

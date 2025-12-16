@@ -41,7 +41,7 @@
 }
 
 .Postagemcomfotos h1{
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: rgba(20, 20, 20, 0.692);
 }
 
@@ -228,7 +228,6 @@ body{
     }
 
     .Postagemcomfotos h1{
-      font-size: 1.5rem;
       color: rgba(20, 20, 20, 0.692);
     }
     
@@ -363,10 +362,10 @@ body{
 
 .navmobile{
   display: flex;
-  width: 90%;
+  width: 100%;
   overflow-x: auto; 
   -webkit-overflow-scrolling: touch;
-  justify-content: space-between;
+  justify-content: space-evenly;
   scrollbar-width: none; 
   -ms-overflow-style: none; 
 }

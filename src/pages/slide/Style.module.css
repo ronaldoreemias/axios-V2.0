@@ -1,0 +1,16 @@
+.imagem{
+    width: 100%;
+    border-radius: 8px; 
+    height: 150px; 
+    cursor: pointer;
+}
+
+.imagem:hover{
+    opacity: 0.6;
+}
+
+@media(max-width: 300px){
+    .imagem{
+        border-radius: 0px;
+    }
+}

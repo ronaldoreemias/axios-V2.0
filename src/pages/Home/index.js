@@ -4,9 +4,10 @@ import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
 import engrenagem from "../../assets/icons/engrenagem.ico";
 import job from "../../assets/icons/job.ico";
-import shopping from "../../assets/icons/shopping.ico";
+import shopping from "../../assets/icons/cart-action-shop-store-buy-protect-secure_108597.ico";
 import comunidade from "../../assets/icons/comunidade.ico";
 import forum from "../../assets/icons/forum.ico";
+import ImageSlider from "../../pages/slide/index";
 
 function ContactForm() {
   const [result, setResult] = useState("");
@@ -53,7 +54,6 @@ function ContactForm() {
       <div className={style.linha}></div>
       <br/>
       
-      <div className={style.formGroup}>
         <input 
           type="text" 
           id="name"
@@ -62,9 +62,9 @@ function ContactForm() {
           required 
           placeholder="Seu nome"
         />
-      </div>
       
-      <div className={style.formGroup}>
+      <br/>
+      
         <input 
           type="email" 
           id="email"
@@ -73,7 +73,7 @@ function ContactForm() {
           required 
           placeholder="escolha seu melhor email"
         />
-      </div>
+     
       
       <div className={style.formGroup}>
         <label htmlFor="message">Mensagem:</label>
@@ -217,23 +217,23 @@ function Home() {
                     ) : null}
                           <div className={style.containernavmobile}>
                             <div className={style.navmobile}>
-                              <a href="/Notficacao" target="_banck" >
+                              <a href="/Notficacao" >
                                 <img src={engrenagem} />
                                 <h4 >Sistema</h4>
                               </a>
-                              <a href="/Vagas" target="_banck" >
+                              <a href="/Vagas" >
                                 <img src={job} />
                                 <h4 >Empregos</h4>
                               </a>
-                              <a href="https://loja-axios.vercel.app/" target="_banck" >
+                              <a href="https://loja-axios.vercel.app/" >
                                 <img src={shopping} />
-                                <h4 >Shopping</h4>
+                                <h4 >Loja</h4>
                               </a>
-                              <a href="https://chat.whatsapp.com/FivMCudmv1wENlalqeIth0" target="_banck" >
+                              <a href="https://chat.whatsapp.com/FivMCudmv1wENlalqeIth0" >
                                 <img src={comunidade} />
                                 <h4 >Comunidade</h4>
                               </a>
-                               <a href="/Forum" target="_banck" >
+                               <a href="/Forum" >
                                 <img src={forum} />
                                 <h4 >Fórum</h4>
                               </a>
@@ -248,7 +248,7 @@ function Home() {
         <div className={style.containercentro}>
           <div className={style.menucentro}>
             <div className={style.Postagemcomfotos}>
-              <h1>NOTÍCIAS</h1>
+              <h1>NOTÍCIAS :</h1>
               
               {termoFiltro && (
                 <div className={style.resultadoBusca}>
@@ -302,6 +302,12 @@ function Home() {
           </div>
           
           <div className={style.contentcentro}>
+             
+            <div className={style.slide}>
+                <ImageSlider /> 
+            </div>
+            
+            <br/>
             <div className={style.sobre}>
               <h3>Sobre o Site</h3>
               <div className={style.linha}></div>

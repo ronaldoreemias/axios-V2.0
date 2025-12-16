@@ -1,5 +1,12 @@
 [
 {
+    "titulo": "Atualização: Aba Loja ",
+    "data": "16 de dezembro, 2025",
+    "resumo": "Agora a loja está funcionando 100% !!!!! depois de quebrar minha cabeça durante 1 semana , eu consegui terminar a nova versão da loja",
+    "imagemurl" : "../../../src/assets/bugimagem/Lojaatualiação.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
     "titulo": "Importante ( nem tanto ): Aba Loja ",
     "data": "15 de dezembro, 2025",
     "resumo": "A aba Loja infelizmente vai demorar um pouco para ter mais produtos, eu preciso pesquisar melhor cada produto e ver se realmente são confiaveis para o usuário da minha plataforma. Mas logo mais terá mais produtos e mais funcionalidades",
