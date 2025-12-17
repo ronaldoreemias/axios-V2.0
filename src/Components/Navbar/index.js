@@ -7,8 +7,7 @@ import Menu from "../../assets/icons/Menu.ico";
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
-
-function Navbar(){
+function Navbar() {
     const palavrasRef = useRef(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -21,16 +20,18 @@ function Navbar(){
     };
 
     useEffect(() => {
+        // Animação original das palavras (vertical)
         const el = palavrasRef.current;
         if (!el) return;
         const tl = gsap.timeline({ repeat: -1 });
-        tl.to(el, { duration: 1, y: "-2rem", ease: "expo.out" })
-          .to(el, { duration: 1, y: "-4rem", ease: "expo.out" })
-          .to(el, { duration: 1, y: "-6rem", ease: "expo.out" })
-          .to(el, { duration: 1, y: "-8rem", ease: "expo.out" })
-          .to(el, { duration: 1, y: "-10rem", ease: "expo.out" })
+        tl.to(el, { duration: 3, y: "-2rem", ease: "expo.out" })
+          .to(el, { duration: 3, y: "-4rem", ease: "expo.out" })
+          .to(el, { duration: 3, y: "-6rem", ease: "expo.out" })
+          .to(el, { duration: 3, y: "-8rem", ease: "expo.out" })
+          .to(el, { duration: 3, y: "-10rem", ease: "expo.out" })
           .to(el, { duration: 6, y: "-12rem", ease: "expo.out" })
-          .to(el, { duration: 1, y: "-14rem", ease: "expo.out" });
+          .to(el, { duration: 3, y: "-14rem", ease: "expo.out" });
+        
         return () => {
             tl.kill();
         };
@@ -38,7 +39,6 @@ function Navbar(){
 
     return (
        <div className={style.header}>
-
             <header className={style.container}>
                 <div className={style.textonav}>
                     <img src={Logo} alt="logo-tipoAxios" />
@@ -59,7 +59,6 @@ function Navbar(){
                 <nav className={style.nav}>
                     {/* Menu para desktop */}
                     <ul className={`${style.navList} ${isMenuOpen ? style.navListActive : ''}`}>
-                        
                         <li>
                             <a href="/" className={style.active} onClick={closeMenu}>Notícias</a>
                         </li>
