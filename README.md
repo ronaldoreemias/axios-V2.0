@@ -1,4 +1,4 @@
-Projeto de blog / fórum / vagas de emorego
+Projeto de blog / fórum / vagas de emprego
 
 o obejetivo é treinar minhas habilidades com react.js e java
 
