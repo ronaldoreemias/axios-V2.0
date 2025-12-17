@@ -22,7 +22,7 @@ export default function ImageSlider() {
 
   return (
     <div style={{ width: "100%", margin: "auto" , height: "100%" }}>
-        <a href="https://loja-axios.vercel.app/">
+        <a href="https://ecommerce-delta-ten-22.vercel.app/">
       <img
         src={images[index]}
         alt={`Slide ${index}`}
