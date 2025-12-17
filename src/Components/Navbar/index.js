@@ -67,7 +67,7 @@ function Navbar(){
                             <a href="/Notficacao" className={style.active} onClick={closeMenu}>Sistema</a>
                         </li>
                         <li>
-                            <a href="https://ecommerce-delta-ten-22.vercel.app/" target="_banck">Loja</a>
+                            <a href="https://ecommerce-delta-ten-22.vercel.app/">Loja</a>
                         </li>
                         <li>
                             <a href="/Forum" onClick={closeMenu}>fóruns</a>
