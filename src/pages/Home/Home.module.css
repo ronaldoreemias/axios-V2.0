@@ -228,6 +228,7 @@ body{
     }
 
     .Postagemcomfotos h1{
+      font-size: 0.9rem;
       color: rgba(20, 20, 20, 0.692);
     }
     
@@ -352,8 +353,9 @@ body{
   display: flex;
   width: 100%;
   justify-content: center;
+  height: 70px;
   align-items: center;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 }
 
 .navmobile{
@@ -383,7 +385,9 @@ body{
   height: 25px;
 }
 
-
+.navmobile .loja{
+  height: 30px;
+}
 .navmobile a .vagas{
   font-size: 0.5rem;
   width: 100%;

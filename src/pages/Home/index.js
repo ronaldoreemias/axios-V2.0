@@ -226,8 +226,8 @@ function Home() {
                                 <h4 >Empregos</h4>
                               </a>
                               <a href="https://ecommerce-delta-ten-22.vercel.app/" >
-                                <img src={shopping} />
-                                <h4 >Loja</h4>
+                                <img src={shopping} className={style.loja} />
+                                
                               </a>
                               <a href="https://chat.whatsapp.com/FivMCudmv1wENlalqeIth0" >
                                 <img src={comunidade} />
