@@ -4,7 +4,7 @@ import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
 import engrenagem from "../../assets/icons/engrenagem.ico";
 import job from "../../assets/icons/job.ico";
-import shopping from "../../assets/icons/shop_store_business_sale_supermarket_icon_175937.ico";
+import shopping from "../../assets/icons/cart-action-shop-store-buy-protect-secure_108597.ico";
 import comunidade from "../../assets/icons/comunidade.ico";
 import forum from "../../assets/icons/forum.ico";
 import ImageSlider from "../../pages/slide/index";
