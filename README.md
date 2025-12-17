@@ -1,6 +1,6 @@
 Projeto de blog / fórum / vagas de emprego
 
-o obejetivo é treinar minhas habilidades com react.js e java
+o objetivo é treinar minhas habilidades com react.js e java
 
 <h1>Tecnologias usadas</h1>
 
