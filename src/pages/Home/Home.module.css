@@ -8,7 +8,7 @@
 }
 .destaqueImage{
   width: 100%;
-  height: 250px;
+  height: 450px;
   display: block;
   object-fit: cover;
   opacity: 0.6;
@@ -25,19 +25,31 @@
 .destaqueImageCaption .destaqueTitle{
   color: #fff;
   margin-bottom: 6px;
+  margin-left: 5%;
 }
 .destaqueImageCaption .destaqueDate{
   color: rgba(255,255,255,0.85);
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   margin-bottom: 6px;
+  margin-left: 5%;
 }
 .destaqueImageCaption .lerMais{
-  color: #55ce05;
-  text-decoration: underline;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 15px 40px;
+  border-radius: 50px;
+  margin-left: 5%;
+  font-size: 1.1rem;
+  background-color: #007bff;
+}
+
+.destaqueImageCaption .lerMais:hover{
+  background-color: rgb(47, 255, 47);
+  color: white;
 }
 
 .destaqueDoDia{
-  display: none;
+  width: 100%;
 }
 
 .Postagemcomfotos h1{
@@ -47,10 +59,6 @@
 
 *{
     margin: 0;
-}
-
-body{
-    background-color: rgba(233, 235, 238, 0.986);
 }
 
 .mainHome{
@@ -90,17 +98,18 @@ body{
 }
 
 .postagens{
-    width: 85%;
+    width: 90%;
 }
 
 .containercentro {
   display: grid;
   grid-template-areas:
     "header header"
-    "menu content"
-    "menu content";
+    "menu menu"
+    "content content";
   grid-template-columns: 3fr 1.5fr;
   gap: 10px;
+
   padding: 5px;
 }
 
@@ -114,48 +123,44 @@ body{
 }
 .containercentro div.menucentro {
   grid-area: menu;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
 }
 .containercentro div.contentcentro {
-  grid-area: content;
-  padding: 20px;
-}
-
-.containercentro div.contentcentro .sobre{
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #ffffff;
-}
-
-
-/* Estilização para postagens com foto */
-.postagemComFoto {
+    grid-area: content;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px; 
-    margin-top: 20px;
-    width: 100%;
 }
 
-.postagemComFoto {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.712);
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.containercentro div.contentcentro .sobre{
+    display: flex;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #0c3d5c;
+    color: white;
+    gap: 50px;
+    height: 300px;
 }
 
-.Postagemcomfotos{
-  width: 90%;
+.sobretexto{
+  width: 70%;
 }
 
-.postagemComFoto:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+
+/* Adicione estas novas regras: */
+.Postagemcomfotos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 5%;
+}
+
+.Postagemcomfotos .postagemComFoto {
+  padding: 10px;
+  overflow: hidden;
 }
 
 .postagemComFoto img {
@@ -169,7 +174,7 @@ body{
 }
 
 .postagemComFoto h3 {
-    color: #0c56aa;
+    color: #1185ce;
     margin-bottom: 10px;
     font-size: 1.3rem;
 }
@@ -182,7 +187,6 @@ body{
 
 .postagemComFoto .resumo {
     color: #333;
-    line-height: 1.6;
     margin-bottom: 15px;
 }
 
@@ -207,84 +211,31 @@ body{
   animation: brilho 2s infinite;
 }
 
-@keyframes brilho {
-  0% { opacity: 0.3; }
-  50% { opacity: 1; }
-  100% { opacity: 0.3; }
-}
 
-@media (max-width: 768px) {
-
-  .destaqueDoDia{
-  display: block;
-}
-    .Postagemcomfotos{
-      margin-top:10px;
-      width: 100%;
-    }
-
-    .banner {
-        display: none;
-    }
-
-    .Postagemcomfotos h1{
-      font-size: 0.9rem;
-      color: rgba(20, 20, 20, 0.692);
-    }
-    
-
-    .containercentro {
-        display: grid;
-        grid-template-areas:
-            "header "
-            "menu "
-            "content";
-        grid-template-columns: 1fr;
-        gap: 10px;
-        
-        padding: 5px;
-    }
-
-    .postagens{
-        margin-top: 50px;
-        width: 98%;
-    }
-
-    .postagemComFoto img {
-        height: 150px;
-    }
-
-    .containercentro div.headercentro {
-  grid-area: header;
-
-  gap: 40px;
-
-}
-.containercentro div.menucentro {
-  grid-area: menu;
-
-}
-
-}
-
-/* Estilos para o formulário de contato */
 .contactForm {
-  background: #ffffff;
   padding: 20px;
   border-radius: 8px;
   margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .formGroup {
   margin-bottom: 15px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
 }
 
 
 .formInput,
 .formTextarea {
-  width: 100%;
+  width: 40%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 0.1rem solid #535151;
   border-radius: 10px;
   margin-bottom: 10px;
   font-size: 16px;
@@ -293,6 +244,7 @@ body{
 .formTextarea {
   resize: vertical;
   min-height: 100px;
+  width: 100%;
 }
 
 .submitButton {
@@ -303,7 +255,7 @@ body{
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  width: 100%;
+  width: 30%;
   transition: background 0.3s;
 }
 
@@ -349,52 +301,128 @@ body{
   margin: 10px 0;
 }
 
-.containernavmobile{
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  height: 70px;
-  align-items: center;
-  background-color: rgb(255, 255, 255);
+
+@keyframes brilho {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
 }
 
-.navmobile{
-  display: flex;
-  width: 100%;
-  overflow-x: auto; 
-  -webkit-overflow-scrolling: touch;
-  justify-content: space-evenly;
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
+@media (max-width: 768px) {
+  .destaqueImageCaption .destaqueTitle{
+    font-size: 1.5rem;
+  }
+
+  .destaqueImageCaption .lerMais{
+    padding: 10px 20px;
+  }
+  
+  .destaqueDoDia{
+  display: block;
+  }
+    .Postagemcomfotos{
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 20px;
+      margin-top: 5%;
+    }
+
+    .banner {
+        display: none;
+    }
+
+    .Postagemcomfotos h1{
+      font-size: 0.9rem;
+      color: rgba(20, 20, 20, 0.692);
+    }
+    
+
+    .containercentro {
+        display: grid;
+        grid-template-areas:
+            "header "
+            "menu "
+            "content";
+        grid-template-columns: 1fr;
+        gap: 10px;
+        
+        padding: 5px;
+    }
+
+    .postagens{
+        width: 98%;
+    }
+
+    .postagemComFoto img {
+        height: 150px;
+    }
+
+    .containercentro div.headercentro {
+  grid-area: header;
+
+  gap: 40px;
+
+}
+.containercentro div.menucentro {
+  grid-area: menu;
+
 }
 
-.navmobile::-webkit-scrollbar {
-  height: 0;
+.destaqueImage{
+  height: 300px;
 }
 
-.navmobile a{
+.containercentro div.contentcentro .sobre{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 20px;
-  border-radius: 15px;
+  height: auto;
+  background-color: white;
+  color: black;
 }
 
-.navmobile a img{
-  height: 25px;
-}
-
-.navmobile .loja{
-  height: 30px;
-}
-.navmobile a .vagas{
-  font-size: 0.5rem;
+.sobretexto{
   width: 100%;
 }
 
-.navmobile a h4{
-  font-size: 0.7rem;
-  color: rgb(2, 4, 80);
+.formGroup {
+  margin-bottom: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.formInput,
+.formTextarea {
+  width: 100%;
+  padding: 10px;
+  border: 0.1rem solid #535151;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.formTextarea {
+  resize: vertical;
+  max-height: 150px;
+  width: 100%;
+}
+
+.submitButton {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 50%;
+  transition: background 0.3s;
+}
+
+.destaqueImageCaption .lerMais{
+  font-size: 0.9rem;
+}
+
 }
 

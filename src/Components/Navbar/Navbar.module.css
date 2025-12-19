@@ -12,8 +12,12 @@ h2{
     color: rgb(20, 20, 20);
 }
 
+.navListbaixo{
+    display: none;
+}
 
 .header{
+    box-shadow: 1px 1px 1px 1px #3f3f3f98;
     background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
@@ -21,6 +25,7 @@ h2{
     justify-content: center;
     position: fixed;
     width: 100%;
+    height: 70px;
     z-index: 1000;
     top: 0;
     left: 0;
@@ -30,7 +35,7 @@ h2{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
     padding: 0 1rem;
     position: relative;
@@ -41,7 +46,7 @@ h2{
 .nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex: 2;
     width: 100%;
 }
@@ -55,14 +60,12 @@ h2{
     margin-left: 10%;
 }
 
-.githublinkheader {
-    display: block;
+.container nav ul{
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex: 1; 
+    justify-content: end;
+    width: 100%;
+    gap: 50px;
 }
-
 
 .container nav li{
     list-style: none;
@@ -70,14 +73,14 @@ h2{
 
 .container nav a{
     color: rgb(20, 20, 20);
-    padding: 0.7rem 0.7rem;
+    padding: 5px;
     transition: all 0.3s ease;
     text-decoration: none; 
     transition: border-bottom 0.1s ease;
 }
 
 .container nav ul li a:hover{
-     border-bottom: 3px solid #3700ff;
+     border-bottom: 3px solid #000000;
      color: rgba(31, 30, 30, 0.74);
 }
 
@@ -153,59 +156,11 @@ h2{
     line-height: 2rem; /* match container height */
 }
 
-
-/* Estilos para a div animada */
-.animacao {
-    position: absolute;
-    top: 100%; /* Começa logo abaixo da navbar */
-    left: 0;
-    width: 100%;
-    background: linear-gradient(90deg, #1e3c72, #2a5298);
-    color: white;
-    overflow: hidden;
-    z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    display: none; /* Inicialmente escondida */
-}
-
-.animacaoPalavras {
-    position: relative;
-    width: 100%;
-    height: 3rem;
-    overflow: hidden;
-}
-
-.animacaoPalavras a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: white;
-    opacity: 0;
-}
-
-.animacaoPalavras h2 {
-    color: white;
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: 500;
-    text-align: center;
-}
-
-/* Adicione também um estilo para o container das palavras da animação */
-.animacaoPalavras a:nth-child(1) { background: rgba(255, 255, 255, 0.1); }
-.animacaoPalavras a:nth-child(2) { background: rgba(255, 255, 255, 0.15); }
-.animacaoPalavras a:nth-child(3) { background: rgba(255, 255, 255, 0.1); }
-.animacaoPalavras a:nth-child(4) { background: rgba(255, 255, 255, 0.15); }
-.animacaoPalavras a:nth-child(5) { background: rgba(255, 255, 255, 0.1); }
-
 /* RESPONSIVIDADE MOBILE */
 @media (max-width: 768px) {
+    .header{
+        height: auto;
+    }
     .container {
         width: 100%;
         padding: 0 1rem;
@@ -218,6 +173,10 @@ h2{
 
     .nav {
         width: auto;
+    }
+
+    .container nav ul{
+        justify-content: start;
     }
 
     /* Esconde o menu normal em mobile */
@@ -281,6 +240,38 @@ h2{
     .textonav img {
         height: 35px;
     }
+
+    
+.navListbaixo{
+    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: white;
+    width: 100%;
+    height: 30px;
+    overflow-x: scroll;
+}
+
+
+.navListbaixo ul{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    gap: 50px;
+}
+
+.navListbaixo li{
+    list-style: none;
+}
+
+.navListbaixo a{
+    color: rgb(20, 20, 20);
+    padding: 5px;
+    transition: all 0.3s ease;
+    text-decoration: none; 
+    transition: border-bottom 0.1s ease;
+}
 }
 
 /* Tablets */

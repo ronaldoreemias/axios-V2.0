@@ -1,7 +1,4 @@
 import style from "./Navbar.module.css";
-import tiktok from "../../assets/icons/message_communication_logo_interaction_tiktok_icon_195589.ico";
-import github from "../../assets/icons/github_icon-icons.com_60477.ico";
-import whatsapp from "../../assets/icons/whatsapp_logo_icon_153036.ico";
 import Logo from "../../assets/icons/axios.ico";
 import Menu from "../../assets/icons/Menu.ico";
 import React, { useState, useEffect, useRef } from "react";
@@ -72,21 +69,13 @@ function Navbar() {
                             <a href="/Forum" onClick={closeMenu}>fóruns</a>
                         </li>
                         <li>
+                            <a href="https://chat.whatsapp.com/FivMCudmv1wENlalqeIth0" onClick={closeMenu}>comunidade </a>
+                        </li>
+                        <li>
                             <a href="/Vagas" onClick={closeMenu}>Vagas de emprego</a>
                         </li>
-                    </ul>
-
-                    <div className={style.githublinkheader}>
-                        <a href="https://www.tiktok.com/@axios_fetch?_r=1&_t=ZM-9241pxUkPca" target="_blank" rel="noopener noreferrer">
-                            <img src={tiktok} alt="link para o tiktok" height="30px;" />
-                        </a>
-                        <a href="https://chat.whatsapp.com/FivMCudmv1wENlalqeIth0" target="_blank" rel="noopener noreferrer">
-                            <img src={whatsapp} alt="link para o whatsapp" height="30px;" />
-                        </a>
-                        <a href="https://github.com/ronaldoreemias" target="_blank" rel="noopener noreferrer">
-                            <img src={github} alt="link para o github" height="30px;" />
-                        </a>
-                    </div>    
+                        
+                    </ul>    
                     
                     {/* Ícone do menu hamburger */}
                     <div className={style.iconmenu} onClick={toggleMenu}>
@@ -100,6 +89,27 @@ function Navbar() {
                     onClick={closeMenu}
                 ></div>
             </header>
+             <ul className={style.navListbaixo}>
+                        <li>
+                            <a href="/" className={style.active} onClick={closeMenu}>Notícias</a>
+                        </li>
+                        <li>
+                            <a href="/Notficacao" className={style.active} onClick={closeMenu}>Sistema</a>
+                        </li>
+                        <li>
+                            <a href="https://ecommerce-delta-ten-22.vercel.app/">Loja</a>
+                        </li>
+                        <li>
+                            <a href="/Forum" onClick={closeMenu}>fóruns</a>
+                        </li>
+                        <li>
+                            <a href="/Vagas" onClick={closeMenu}>Vagas </a>
+                        </li>
+                        <li>
+                            <a href="https://chat.whatsapp.com/FivMCudmv1wENlalqeIth0" onClick={closeMenu}>comunidade </a>
+                        </li>
+                    </ul>    
+                   
        </div>
     );
 }

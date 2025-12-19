@@ -2,11 +2,6 @@ import React, { useState, useEffect } from "react";
 import style from "./Home.module.css";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
-import engrenagem from "../../assets/icons/engrenagem.ico";
-import job from "../../assets/icons/job.ico";
-import shopping from "../../assets/icons/cart-action-shop-store-buy-protect-secure_108597.ico";
-import comunidade from "../../assets/icons/comunidade.ico";
-import forum from "../../assets/icons/forum.ico";
 import ImageSlider from "../../pages/slide/index";
 
 function ContactForm() {
@@ -41,7 +36,6 @@ function ContactForm() {
     } finally {
       setIsSubmitting(false);
       
-      // Limpar a mensagem após 5 segundos
       setTimeout(() => {
         setResult("");
       }, 5000);
@@ -50,8 +44,9 @@ function ContactForm() {
 
   return (
     <form className={style.contactForm} onSubmit={onSubmit}>
-      <h3>Entre em Contato</h3>
+      <h1>Fique por dentro</h1>
       <div className={style.linha}></div>
+      <p>Receba as últimas notícias tech direto no seu inbox</p>
       <br/>
       
         <input 
@@ -161,7 +156,7 @@ function Home() {
       });
   }, []);
 
-  // Função para filtrar as postagens
+  
   const filtrarPostagens = (termo) => {
     setTermoFiltro(termo);
     
@@ -175,7 +170,6 @@ function Home() {
         const data = postagem.data?.toLowerCase() || '';
         const conteudo = postagem.conteudo?.toLowerCase() || '';
         
-        // Verifica se a palavra ou frase existe em qualquer campo
         return (
           titulo.includes(termoLower) ||
           resumo.includes(termoLower) ||
@@ -187,69 +181,61 @@ function Home() {
     }
   };
 
+  
+  const postagemDestaque = termoFiltro && postagensFiltradas.length > 0 
+    ? postagensFiltradas[0]  
+    : postagensComFoto[0];   
+
   return (
     <main className={style.mainHome}>
       <Navbar />
-
-      <div className={style.banner}>
-        <Filtrarpostagem onFilter={filtrarPostagens} />
-      </div>
+      {!loading && postagensComFoto.length > 0 && (
+        <div className={style.destaqueDoDia}>
+          <article className={style.destaqueCard} key={`destaque-${postagemDestaque?.id || 'default'}`}>
+            {postagemDestaque?.imagem ? (
+              <figure className={style.destaqueImageWrapper}>
+                <img 
+                  className={style.destaqueImage} 
+                  src={postagemDestaque.imagem} 
+                  alt={postagemDestaque.titulo || 'Destaque'}
+                />
+                <figcaption className={style.destaqueImageCaption}>
+                  <div className={style.banner}>
+                    <Filtrarpostagem onFilter={filtrarPostagens} />
+                  </div>
+                  <h1 className={style.destaqueTitle}>
+                    {termoFiltro && postagensFiltradas.length === 0 
+                      ? postagemDestaque.titulo || "Destaque" 
+                      : postagemDestaque.titulo || "Destaque"}
+                  </h1>
+                  {postagemDestaque.data &&  (
+                    <div className={style.destaqueDate}>
+                      {postagemDestaque.data}
+                      </div>
+                  )}
+                  {postagemDestaque.link &&  (
+                    <a 
+                      href={postagemDestaque.link} 
+                      className={style.lerMais} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      Ler mais →
+                    </a>
+                  )}
+                </figcaption>
+              </figure>
+            ) : null}
+          </article>
+        </div>
+      )}
       
+      {/* LISTA DE POSTAGENS FILTRADAS */}
       <div className={style.postagens}>
-        {(!loading && postagensFiltradas.length > 0) ? (
-          <div className={style.destaqueDoDia}>
-            {(() => {
-              const destaque = postagensFiltradas[0];
-              return (
-                <article className={style.destaqueCard} key={`destaque-${destaque.id}`}>
-                    {destaque.imagem ? (
-                      <figure className={style.destaqueImageWrapper}>
-                        <img className={style.destaqueImage} src={destaque.imagem} alt={destaque.titulo || 'Destaque'} />
-                        <figcaption className={style.destaqueImageCaption}>
-                          <h2 className={style.destaqueTitle}>{destaque.titulo}</h2>
-                          {destaque.data && <div className={style.destaqueDate}>{destaque.data}</div>}
-                          {destaque.link && (
-                            <a href={destaque.link} className={style.lerMais} target="_blank" rel="noopener noreferrer">Ler mais →</a>
-                          )}
-                        </figcaption>
-                        
-                      </figure>
-                    ) : null}
-                          <div className={style.containernavmobile}>
-                            <div className={style.navmobile}>
-                              <a href="/Notficacao" >
-                                <img src={engrenagem} />
-                                <h4 >Sistema</h4>
-                              </a>
-                              <a href="/Vagas" >
-                                <img src={job} />
-                                <h4 >Empregos</h4>
-                              </a>
-                              <a href="https://ecommerce-delta-ten-22.vercel.app/" >
-                                <img src={shopping} className={style.loja} />
-                                
-                              </a>
-                              <a href="https://chat.whatsapp.com/FivMCudmv1wENlalqeIth0" >
-                                <img src={comunidade} />
-                                <h4 >Comunidade</h4>
-                              </a>
-                               <a href="/Forum" >
-                                <img src={forum} />
-                                <h4 >Fórum</h4>
-                              </a>
-                            </div>
-                          </div>
-                </article>
-              )
-            })()}
-          </div>
-        ) : null}
-
         <div className={style.containercentro}>
           <div className={style.menucentro}>
             <div className={style.Postagemcomfotos}>
-              <h1>NOTÍCIAS :</h1>
-              
+              {/* Mensagem de resultados da busca */}
               {termoFiltro && (
                 <div className={style.resultadoBusca}>
                   <p>Resultados para: <strong>"{termoFiltro}"</strong></p>
@@ -259,6 +245,7 @@ function Home() {
                 </div>
               )}
               
+              {/* Estado de carregamento */}
               {loading ? (
                 <div className={style.loading}>
                   <p>Carregando postagens...</p>
@@ -268,7 +255,7 @@ function Home() {
                   <p>Nenhuma postagem encontrada{termoFiltro ? ` para "${termoFiltro}"` : ''}</p>
                 </div>
               ) : (
-                postagensFiltradas.slice(0).map(postagem => (
+                postagensFiltradas.map(postagem => (
                   <div key={postagem.id} className={style.postagemComFoto}>
                     {postagem.imagem && (
                       <img 
@@ -301,15 +288,13 @@ function Home() {
             </div>
           </div>
           
+          {/* Conteúdo lateral */}
           <div className={style.contentcentro}>
-             
-            <div className={style.slide}>
-                <ImageSlider /> 
-            </div>
             
-            <br/>
             <div className={style.sobre}>
-              <h3>Sobre o Site</h3>
+               
+              <div className={style.sobretexto}>
+                <h3>Sobre o Site</h3>
               <div className={style.linha}></div>
               <br/>
               <p>
@@ -323,16 +308,20 @@ function Home() {
                 Minha missão é ajudar você a fazer as melhores escolhas 
                 tecnológicas e profissionais.
               </p>
+              
+              </div>
+              <ImageSlider />
             </div>
+            
             <br/>
             <ContactForm />
           </div>
         </div>
       </div>  
+      
       <br/> 
       <Footer />         
     </main>
   );
 }
-
 export default Home;
