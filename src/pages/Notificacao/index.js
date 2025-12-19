@@ -9,7 +9,6 @@ function importAll(r) {
     return images;
 }
 
-// importa todos os ícones de src/assets/icons (nomes de arquivos podem ser usados no JSON)
 const icons = importAll(require.context('../../assets/bugimagem', false, /\.(png|jpe?g|svg|JPG|PNG)$/));
 
 function Notificacao(){
