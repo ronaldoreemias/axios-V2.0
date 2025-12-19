@@ -13,12 +13,10 @@ function Footer(){
                     vagas de emprego e Comunidade no whatsapp e fórum (ainda em desenvolvimento )</p>
                 </div>
                 <div>
-                    <h3>Categorias</h3>
-                    <p>Tecnologia em geral</p>
-                    <p>cyber secutity</p>
-                    <p>Front-end</p>
-                    <p>Back-end</p>
-                    <p>Estudantes de Tecnologo</p>
+                    <h3>Projeto de Código aberto</h3>
+                    <a href="https://github.com/ronaldoreemias/axios-V2.0"><p>Guithub do projeto</p></a>
+                    <a href="www.linkedin.com/in/ronaldo-reemias-b66b7a166" ><p>linkedin</p></a>
+                    
                 </div>
                 <div>
                     <h3>Contato</h3>
