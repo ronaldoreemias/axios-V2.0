@@ -123,6 +123,11 @@
 }
 .containercentro div.menucentro {
   grid-area: menu;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 
 }
 .containercentro div.contentcentro {
@@ -138,7 +143,7 @@
     display: flex;
     padding: 15px;
     border-radius: 10px;
-    background-color: #0c3d5c;
+    background-color: #046eaf;
     color: white;
     gap: 50px;
     height: 300px;
@@ -148,6 +153,35 @@
   width: 70%;
 }
 
+.containercentro div.menucentro .inbox {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  width: 40%;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+  animation: pulseGlow 2s infinite;
+}
+
+/* Animação combinada */
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+    background-color: #007bff;
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(0, 123, 255, 1);
+    background-color: #3399ff;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+    background-color: #007bff;
+  }
+}
 
 
 /* Adicione estas novas regras: */
@@ -223,9 +257,12 @@
   align-items: center;
 }
 
+
+
 .formGroup {
   margin-bottom: 15px;
   width: 40%;
+  gap: 5px;
   display: flex;
   flex-direction: column;
 }
@@ -235,7 +272,7 @@
 .formTextarea {
   width: 40%;
   padding: 10px;
-  border: 0.1rem solid #535151;
+  border: 0.1rem solid #858080b9;
   border-radius: 10px;
   margin-bottom: 10px;
   font-size: 16px;
@@ -255,7 +292,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  width: 30%;
+  width: 20%;
   transition: background 0.3s;
 }
 
@@ -313,8 +350,18 @@
     font-size: 1.5rem;
   }
 
+  .contactForm p{
+  font-size: 0.7rem;
+}
+
   .destaqueImageCaption .lerMais{
     padding: 10px 20px;
+  }
+
+  .containercentro div.menucentro .inbox{
+    font-size: 0.7rem;
+    width: 90%;
+ 
   }
   
   .destaqueDoDia{
@@ -369,7 +416,7 @@
 }
 
 .destaqueImage{
-  height: 300px;
+  height: 350px;
 }
 
 .containercentro div.contentcentro .sobre{

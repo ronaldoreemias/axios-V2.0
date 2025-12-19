@@ -43,10 +43,11 @@ function ContactForm() {
   };
 
   return (
-    <form className={style.contactForm} onSubmit={onSubmit}>
+    <form id="inbox" className={style.contactForm} onSubmit={onSubmit}>
       <h1>Fique por dentro</h1>
-      <div className={style.linha}></div>
       <p>Receba as últimas notícias tech direto no seu inbox</p>
+      <div className={style.linha}></div>
+      
       <br/>
       
         <input 
@@ -87,7 +88,7 @@ function ContactForm() {
         className={style.submitButton}
         disabled={isSubmitting}
       >
-        {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
+        {isSubmitting ? "Enviando..." : "Enviar"}
       </button>
       
       {result && (
@@ -232,8 +233,13 @@ function Home() {
       
       {/* LISTA DE POSTAGENS FILTRADAS */}
       <div className={style.postagens}>
+        
         <div className={style.containercentro}>
+         
           <div className={style.menucentro}>
+         <a href="#inbox" className={style.inbox} >
+          <p >Receba as últimas notícias tech direto no seu inbox</p>
+          </a>
             <div className={style.Postagemcomfotos}>
               {/* Mensagem de resultados da busca */}
               {termoFiltro && (

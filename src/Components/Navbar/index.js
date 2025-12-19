@@ -71,6 +71,7 @@ function Navbar() {
                         <li>
                             <a href="https://chat.whatsapp.com/FivMCudmv1wENlalqeIth0" onClick={closeMenu}>comunidade </a>
                         </li>
+                        
                         <li>
                             <a href="/Vagas" onClick={closeMenu}>Vagas de emprego</a>
                         </li>
