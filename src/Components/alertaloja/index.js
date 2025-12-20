@@ -8,8 +8,8 @@ export default function Alerta() {
   const [finished, setFinished] = useState(false);
 
     const textos = [
-    { id: 1, text: "Oi ! Vem visite nossa loja.", href: "https://ecommerce-delta-ten-22.vercel.app/" },
-    { id: 2, text: "Novos produtos chegando esta semana!.", href: "https://ecommerce-delta-ten-22.vercel.app/" },
+    { id: 1, text: "Oi ! Vem visitar a loja axios.", href: "https://ecommerce-delta-ten-22.vercel.app/" },
+    { id: 2, text: "Tem mais vagas de emprego disponiveis !.", href: "https://ecommerce-delta-ten-22.vercel.app/" },
     { id: 3, text: "Estou em busca de testadores beta para o fórum", href: "/Forum" }
 
   ];
