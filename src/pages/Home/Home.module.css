@@ -1,4 +1,3 @@
-/* Overlay text inside the destaque image */
 .destaqueImageWrapper{
   position: relative;
   display: block;
@@ -41,10 +40,11 @@
 .destaqueImageCaption .lerMais{
   color: #ffffff;
   text-decoration: none;
-  padding: 15px 40px;
+  padding: 15px 35px;
   border-radius: 50px;
   margin-left: 5%;
-  width: 180px;
+  text-align: center;
+  width: 15%;
   font-size: 1.1rem;
   background-color: #007bff;
 }
@@ -104,7 +104,7 @@
 }
 
 .postagens{
-    width: 90%;
+    width: 80%;
 }
 
 .containercentro {
@@ -116,6 +116,7 @@
   grid-template-columns: 3fr 1.5fr;
   gap: 10px;
   padding: 5px;
+
 }
 
 .containercentro div h3{
@@ -165,7 +166,6 @@
   color: white;
   border-radius: 5px;
   text-align: center;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
 }
 
 
@@ -483,6 +483,15 @@
 .destaqueImageCaption .lerMais{
   font-size: 0.9rem;
 }
+
+.linha {
+  height: 3px;
+  width: 100%;
+  background-color: #1185ce;
+  margin: 0 auto;
+  animation: brilho 2s infinite;
+}
+
 
 }
 

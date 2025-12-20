@@ -20,7 +20,7 @@ function Footer(){
                 </div>
                 <div>
                     <h3>Contato</h3>
-                    <p>ronaldo12345@gmail.com</p>
+                    <p>axiosNoticiastec@gmail.com</p>
                     <p>número: (82) 9 8887-3225</p>
                 </div>
 

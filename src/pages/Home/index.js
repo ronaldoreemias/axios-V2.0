@@ -3,6 +3,8 @@ import style from "./Home.module.css";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
 import ImageSlider from "../../pages/slide/index";
+import Alerta from "../../Components/alertaloja";
+
 
 function ContactForm() {
   const [result, setResult] = useState("");
@@ -46,6 +48,7 @@ function ContactForm() {
     <form id="inbox" className={style.contactForm} onSubmit={onSubmit}>
       <h1>Fique por dentro</h1>
       <p>Receba as últimas notícias tech direto no seu inbox</p>
+      <br/>
       <div className={style.linha}></div>
       
       <br/>
@@ -189,6 +192,7 @@ function Home() {
 
   return (
     <main className={style.mainHome}>
+      <Alerta /> 
       <Navbar />
       {!loading && postagensComFoto.length > 0 && (
         <div className={style.destaqueDoDia}>
@@ -332,7 +336,7 @@ function Home() {
       </div>  
       
       <br/> 
-      <Footer />         
+      <Footer />        
     </main>
   );
 }

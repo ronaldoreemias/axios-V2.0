@@ -1,49 +1,131 @@
-/* Estilos para a div animada */
-.animacao {
-    position: absolute;
-    top: 100%; /* Começa logo abaixo da navbar */
-    left: 0;
-    width: 100%;
-    background: linear-gradient(90deg, #1e3c72, #2a5298);
-    color: white;
-    overflow: hidden;
-    z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    display: none; /* Inicialmente escondida */
-}
-
-.animacaoPalavras {
-    position: relative;
-    width: 100%;
-    height: 3rem;
+.alerta {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    width: 90%;
+    max-width: 400px; 
+    align-items: center;
+    justify-content: end;
+    gap: 10px;
     overflow: hidden;
 }
 
-.animacaoPalavras a {
-    position: absolute;
-    top: 0;
-    left: 0;
+.imagemalerta img {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0; 
+}
+
+.texto {
+    background-color: #007bff;
+    padding: 5px;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    flex-grow: 1; 
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.texto.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.texto.hide {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.texto a {
+    text-decoration: none;
+    color: inherit;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
-    color: white;
-    opacity: 0;
 }
 
-.animacaoPalavras h2 {
-    color: white;
+.texto h3 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 16px;
     font-weight: 500;
+    line-height: 1.4;
+}
+
+@media(max-width: 700px){
+    .alerta {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    width: 90%;
+    max-width: 400px; 
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.imagemalerta img {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0; 
+}
+
+.texto {
+    background-color: #007bff;
+    padding: 5px;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    flex-grow: 1; 
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
-/* Adicione também um estilo para o container das palavras da animação */
-.animacaoPalavras a:nth-child(1) { background: rgba(255, 255, 255, 0.1); }
-.animacaoPalavras a:nth-child(2) { background: rgba(255, 255, 255, 0.15); }
-.animacaoPalavras a:nth-child(3) { background: rgba(255, 255, 255, 0.1); }
-.animacaoPalavras a:nth-child(4) { background: rgba(255, 255, 255, 0.15); }
-.animacaoPalavras a:nth-child(5) { background: rgba(255, 255, 255, 0.1); }
+.texto.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.texto.hide {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.texto a {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.texto h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+}
