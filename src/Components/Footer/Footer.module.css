@@ -24,6 +24,11 @@
     gap: 10px;
 }
 
+.arealinks div a{
+    color: white;
+    text-decoration: none;
+}
+
 .arealinks ul li{
     list-style: none;
 }

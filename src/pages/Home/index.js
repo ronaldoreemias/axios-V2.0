@@ -237,9 +237,7 @@ function Home() {
         <div className={style.containercentro}>
          
           <div className={style.menucentro}>
-         <a href="#inbox" className={style.inbox} >
-          <p >Receba as últimas notícias tech direto no seu inbox</p>
-          </a>
+         <a href="#inbox" ><p className={style.inbox}>Receba as últimas notícias tech direto no seu inbox</p></a>
             <div className={style.Postagemcomfotos}>
               {/* Mensagem de resultados da busca */}
               {termoFiltro && (
@@ -263,11 +261,19 @@ function Home() {
               ) : (
                 postagensFiltradas.map(postagem => (
                   <div key={postagem.id} className={style.postagemComFoto}>
-                    {postagem.imagem && (
-                      <img 
-                        src={postagem.imagem} 
-                        alt={postagem.titulo || "Imagem da postagem"} 
-                      />
+                    {postagem.imagem && postagem.link && (
+                      <a 
+                          href={postagem.link} 
+                          className={style.lerMais}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <img 
+                            src={postagem.imagem} 
+                            alt={postagem.titulo || "Imagem da postagem"} 
+                          />
+                        </a>
+                      
                     )}
                     <div className={style.conteudo}>
                       <h3>{postagem.titulo || "Sem título"}</h3>

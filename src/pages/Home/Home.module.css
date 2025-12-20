@@ -19,8 +19,13 @@
   right: 0;
   bottom: 0;
   padding: 18px 22px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  justify-content: center;
   color: white;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.473) 0%, rgba(0, 0, 0, 0.664) 100%);
 }
 .destaqueImageCaption .destaqueTitle{
   color: #fff;
@@ -39,6 +44,7 @@
   padding: 15px 40px;
   border-radius: 50px;
   margin-left: 5%;
+  width: 180px;
   font-size: 1.1rem;
   background-color: #007bff;
 }
@@ -109,7 +115,6 @@
     "content content";
   grid-template-columns: 3fr 1.5fr;
   gap: 10px;
-
   padding: 5px;
 }
 
@@ -143,8 +148,7 @@
     display: flex;
     padding: 15px;
     border-radius: 10px;
-    background-color: #046eaf;
-    color: white;
+    color: rgb(12, 12, 12);
     gap: 50px;
     height: 300px;
 }
@@ -153,35 +157,17 @@
   width: 70%;
 }
 
-.containercentro div.menucentro .inbox {
+
+
+.inbox {
   padding: 10px;
   background-color: #007bff;
   color: white;
   border-radius: 5px;
-  width: 40%;
   text-align: center;
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
-  animation: pulseGlow 2s infinite;
 }
 
-/* Animação combinada */
-@keyframes pulseGlow {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
-    background-color: #007bff;
-  }
-  50% {
-    transform: scale(1.02);
-    box-shadow: 0 0 20px rgba(0, 123, 255, 1);
-    background-color: #3399ff;
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
-    background-color: #007bff;
-  }
-}
 
 
 /* Adicione estas novas regras: */
@@ -195,12 +181,18 @@
 .Postagemcomfotos .postagemComFoto {
   padding: 10px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .postagemComFoto img {
     width: 100%;
     height: 250px;
     object-fit: cover;
+}
+
+.postagemComFoto img:hover{
+  opacity: 0.3;
 }
 
 .postagemComFoto .conteudo {
@@ -220,8 +212,7 @@
 }
 
 .postagemComFoto .resumo {
-    color: #333;
-    margin-bottom: 15px;
+   display: none;
 }
 
 .lerMais {
@@ -236,16 +227,20 @@
     color: #0c56aa;
 }
 
-
 .linha {
   height: 3px;
-  width: 100%;
+  width: 40%;
   background-color: #1185ce;
   margin: 0 auto;
   animation: brilho 2s infinite;
 }
 
-
+.navlink{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
 .contactForm {
   padding: 20px;
   border-radius: 8px;
@@ -350,18 +345,36 @@
     font-size: 1.5rem;
   }
 
+  .postagemComFoto .resumo {
+    display: block;
+    color: #333;
+    margin-bottom: 15px;
+}
+  .destaqueImageCaption{
+    justify-content: end;
+  }
+
   .contactForm p{
   font-size: 0.7rem;
+}
+
+.destaqueImageCaption .lerMais{
+  color: #ffffff;
+  text-decoration: none;
+  padding: 15px 40px;
+  border-radius: 50px;
+  margin-left: 5%;
+  width: 120px;
+  font-size: 1.1rem;
+  background-color: #007bff;
 }
 
   .destaqueImageCaption .lerMais{
     padding: 10px 20px;
   }
 
-  .containercentro div.menucentro .inbox{
-    font-size: 0.7rem;
-    width: 90%;
- 
+   .inbox{
+    font-size: 0.6rem;
   }
   
   .destaqueDoDia{
@@ -371,7 +384,7 @@
       display: grid;
       grid-template-columns: repeat(1, 1fr);
       gap: 20px;
-      margin-top: 5%;
+      
     }
 
     .banner {
