@@ -1,5 +1,12 @@
 [
 {
+    "titulo": "Bug : aba vagas ",
+    "data": "20 de dezembro, 2025",
+    "resumo": "devido a aulguns problemas de compatibilidade com o json, algumas vagas podem não estar aparecendo. Estou trabalhando para resolver esse problema o mais rápido possível. Por enquanto, peço desculpas pelo inconveniente.",
+    "imagemurl" : "../../../src/assets/bugimagem/bugvagas.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
     "titulo": "Atualização: Aba Loja ",
     "data": "16 de dezembro, 2025",
     "resumo": "Agora a loja está funcionando 100% !!!!! depois de quebrar minha cabeça durante 1 semana , eu consegui terminar a nova versão da loja",

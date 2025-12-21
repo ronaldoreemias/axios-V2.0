@@ -130,7 +130,6 @@ function Vagas() {
         aplicarFiltros();
     };
 
-    // Função para limpar filtros
     const limparFiltros = () => {
         setTermoBusca("");
         setFiltros({
@@ -188,17 +187,17 @@ const renderBotaoCandidatar = (vaga) => {
   if (!link) return null;
 
   let textoBotao = " Candidatar-se";
-  let icone = "📝";
+  
 
   if (link.includes("linkedin.com") || link.includes("linkdin")) {
     textoBotao = " Candidatar-se no LinkedIn";
-    icone = "💼";
+    
   } else if (link.includes("whatsapp")) {
     textoBotao = " Candidatar-se via WhatsApp";
-    icone = "💬";
+    
   } else {
     textoBotao = " Candidatar-se no Site";
-    icone = "🌐";
+    
   }
 
   return (
@@ -208,7 +207,7 @@ const renderBotaoCandidatar = (vaga) => {
       rel="noopener noreferrer"
       className={style.botaoCandidatar}
     >
-      {icone} {textoBotao}
+    {textoBotao}
     </a>
   );
 };
@@ -273,7 +272,8 @@ const renderBotaoCandidatar = (vaga) => {
                 )}
 
                 <div className={style.areadevagas}>
-                    <div className={style.barradebusdevaga}>
+                    {/*
+                    <div className={style.barradebusca}><div className={style.barradebusdevaga}>
                         <form onSubmit={handleBuscaSubmit}>
                             <input 
                                 type="text" 
@@ -284,6 +284,7 @@ const renderBotaoCandidatar = (vaga) => {
                             <button type="submit">Procurar</button>
                         </form>
                     </div>
+                    */}
 
                     <div className={style.infoResultados}>
                         <span>{vagasFiltradas.length} vaga(s) encontrada(s)</span>
