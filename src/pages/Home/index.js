@@ -241,7 +241,6 @@ function Home() {
         <div className={style.containercentro}>
          
           <div className={style.menucentro}>
-         <a href="#inbox" ><p className={style.inbox}>Receba as últimas notícias tech direto no seu inbox</p></a>
             <div className={style.Postagemcomfotos}>
               {/* Mensagem de resultados da busca */}
               {termoFiltro && (
