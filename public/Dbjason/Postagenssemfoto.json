@@ -1,5 +1,12 @@
 [
 {
+    "titulo": "Pendente : aba Fórum ",
+    "data": "22 de dezembro, 2025",
+    "resumo": "A aba Fórum está em desenvolvimento, mas ela já está disponivel para visualizar. Caso queira ajudar no desenvolvimento, entre em contato comigo pelo email",
+    "imagemurl" : "",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
     "titulo": "Bug : aba vagas ",
     "data": "20 de dezembro, 2025",
     "resumo": "devido a aulguns problemas de compatibilidade com o json, algumas vagas podem não estar aparecendo. Estou trabalhando para resolver esse problema o mais rápido possível. Por enquanto, peço desculpas pelo inconveniente.",

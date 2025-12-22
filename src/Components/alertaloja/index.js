@@ -10,7 +10,8 @@ export default function Alerta() {
     const textos = [
     { id: 1, text: "Oi ! Vem visitar a loja axios.", href: "https://ecommerce-delta-ten-22.vercel.app/" },
     { id: 2, text: "Tem mais vagas de emprego disponiveis !.", href: "https://ecommerce-delta-ten-22.vercel.app/" },
-    { id: 3, text: "Estou em busca de testadores beta para o fórum", href: "/Forum" }
+    { id: 3, text: "Estou em busca de testadores beta para o fórum", href: "https://front-weld-six.vercel.app/" },
+     { id: 4, text: "A aba Fórum está em desenvolvimento", href: "https://front-weld-six.vercel.app/" },
 
   ];
 
