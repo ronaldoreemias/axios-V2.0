@@ -4,6 +4,7 @@ import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
 import ImageSlider from "../../pages/slide/index";
 import Alerta from "../../Components/alertaloja";
+import Alerta2 from "../../Components/alertaEmail";
 
 
 function ContactForm() {
@@ -192,6 +193,7 @@ function Home() {
 
   return (
     <main className={style.mainHome}>
+      <Alerta2 />
       <Alerta /> 
       <Navbar />
       {!loading && postagensComFoto.length > 0 && (
@@ -237,12 +239,7 @@ function Home() {
       
       {/* LISTA DE POSTAGENS FILTRADAS */}
       <div className={style.postagens}>
-        
-        <div className={style.containercentro}>
-         
-          <div className={style.menucentro}>
-            <div className={style.Postagemcomfotos}>
-              {/* Mensagem de resultados da busca */}
+        {/* Mensagem de resultados da busca */}
               {termoFiltro && (
                 <div className={style.resultadoBusca}>
                   <p>Resultados para: <strong>"{termoFiltro}"</strong></p>
@@ -251,6 +248,10 @@ function Home() {
                   </p>
                 </div>
               )}
+        <div className={style.containercentro}>
+         
+          <div className={style.menucentro}>
+            <div className={style.Postagemcomfotos}>
               
               {/* Estado de carregamento */}
               {loading ? (

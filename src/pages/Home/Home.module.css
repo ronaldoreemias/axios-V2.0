@@ -7,7 +7,7 @@
 }
 .destaqueImage{
   width: 100%;
-  height: 450px;
+  height: 400px;
   display: block;
   object-fit: cover;
   opacity: 0.6;
@@ -85,7 +85,7 @@
 }
 
 .formfiltragem{
-    width: 40%;
+    width: 50%;
 }
 
 .filtragem{
@@ -133,7 +133,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
 
 }
 .containercentro div.contentcentro {
@@ -376,10 +375,9 @@
    .inbox{
     font-size: 0.6rem;
   }
-  
   .destaqueDoDia{
-  display: block;
-  }
+  width: 100%;
+}
     .Postagemcomfotos{
       display: grid;
       grid-template-columns: repeat(1, 1fr);
