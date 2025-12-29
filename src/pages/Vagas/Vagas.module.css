@@ -1,4 +1,5 @@
 .Vagasmain{
+    margin-top: 1%;
     min-height: 100vh;
     display: flex;
     background-color: #f8f9fa;

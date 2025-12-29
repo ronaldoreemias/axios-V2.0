@@ -41,14 +41,12 @@ h2{
     position: relative;
 }
 
-
-/* Substitua apenas esta parte */
 .nav {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     flex: 2;
-    width: 100%;
+    width: 60%;
 }
 
 .navList {
@@ -241,39 +239,6 @@ h2{
         height: 35px;
     }
 
-    
-.navListbaixo{
-    display: block;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    background-color: white;
-    width: 100%;
-    pad: 5px;
-    gap: 5px;
-    font-size: 0.7rem;
-    overflow-x: scroll;
-}
-
-
-.navListbaixo ul{
-    display: flex;
-    justify-content: end;
-    width: 100%;
-    gap: 50px;
-}
-
-.navListbaixo li{
-    list-style: none;
-}
-
-.navListbaixo a{
-    color: rgb(20, 20, 20);
-    padding: 5px;
-    transition: all 0.3s ease;
-    text-decoration: none; 
-    transition: border-bottom 0.1s ease;
-}
 }
 
 /* Tablets */

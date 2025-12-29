@@ -90,26 +90,6 @@ function Navbar() {
                     onClick={closeMenu}
                 ></div>
             </header>
-             <ul className={style.navListbaixo}>
-                        <li>
-                            <a href="/" className={style.active} onClick={closeMenu}>Notícias</a>
-                        </li>
-                        <li>
-                            <a href="/Notficacao" className={style.active} onClick={closeMenu}>Sistema</a>
-                        </li>
-                        <li>
-                            <a href="https://ecommerce-delta-ten-22.vercel.app/">Loja</a>
-                        </li>
-                        <li>
-                            <a href="https://front-weld-six.vercel.app/" onClick={closeMenu}>fóruns</a>
-                        </li>
-                        <li>
-                            <a href="/Vagas" onClick={closeMenu}>Vagas </a>
-                        </li>
-                        <li>
-                            <a href="https://chat.whatsapp.com/FivMCudmv1wENlalqeIth0" onClick={closeMenu}>comunidade </a>
-                        </li>
-                    </ul>    
                    
        </div>
     );
