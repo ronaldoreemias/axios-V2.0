@@ -5,107 +5,7 @@ import Footer from "../../Components/Footer";
 import ImageSlider from "../../pages/slide/index";
 import Alerta from "../../Components/alertaloja";
 import Alerta2 from "../../Components/alertaEmail";
-
-
-function ContactForm() {
-  const [result, setResult] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    setIsSubmitting(true);
-    setResult("Enviando...");
-    
-    const formData = new FormData(event.target);
-    formData.append("access_key", "e68e9ef4-1970-49dd-9559-7f0e05cbc49a");
-
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData
-      });
-
-      const data = await response.json();
-      
-      if (data.success) {
-        setResult("Mensagem enviada com sucesso!");
-        event.target.reset();
-      } else {
-        setResult("Erro ao enviar a mensagem. Tente novamente.");
-      }
-    } catch (error) {
-      setResult("Erro de conexão. Verifique sua internet.");
-      console.error("Erro:", error);
-    } finally {
-      setIsSubmitting(false);
-      
-      setTimeout(() => {
-        setResult("");
-      }, 5000);
-    }
-  };
-
-  return (
-    <form id="inbox" className={style.contactForm} onSubmit={onSubmit}>
-      <h1>Fique por dentro</h1>
-      <p>Receba as últimas notícias tech direto no seu inbox</p>
-      <br/>
-      <div className={style.linha}></div>
-      
-      <br/>
-      
-        <input 
-          type="text" 
-          id="name"
-          name="name" 
-          className={style.formInput}
-          required 
-          placeholder="Seu nome"
-        />
-      
-      <br/>
-      
-        <input 
-          type="email" 
-          id="email"
-          name="email" 
-          className={style.formInput}
-          required 
-          placeholder="escolha seu melhor email"
-        />
-     
-      
-      <div className={style.formGroup}>
-        <label htmlFor="message">Mensagem:</label>
-        <textarea 
-          id="message"
-          name="message" 
-          className={style.formTextarea}
-          required 
-          rows="4"
-          placeholder="Digite sua mensagem aqui..."
-        />
-      </div>
-      
-      <button 
-        type="submit" 
-        className={style.submitButton}
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? "Enviando..." : "Enviar"}
-      </button>
-      
-      {result && (
-        <div className={`
-          ${style.resultMessage} 
-          ${result.includes("sucesso") ? style.success : style.error}
-        `}>
-          {result}
-        </div>
-      )}
-    </form>
-  );
-}
+import Destaque from "../../Components/destaque";
 
 class Filtrarpostagem extends React.Component {
   constructor(props) {
@@ -196,6 +96,9 @@ function Home() {
       <Alerta2 />
       <Alerta /> 
       <Navbar />
+      <br/>
+      <Destaque />
+      <img src="" />
       {!loading && postagensComFoto.length > 0 && (
         <div className={style.destaqueDoDia}>
           <article className={style.destaqueCard} key={`destaque-${postagemDestaque?.id || 'default'}`}>
@@ -328,9 +231,6 @@ function Home() {
               </div>
               <ImageSlider />
             </div>
-            
-            <br/>
-            <ContactForm />
           </div>
         </div>
       </div>  

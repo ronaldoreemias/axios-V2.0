@@ -7,7 +7,7 @@
 }
 .destaqueImage{
   width: 100%;
-  height: 400px;
+  height: 350px;
   display: block;
   object-fit: cover;
   opacity: 0.6;
@@ -30,18 +30,20 @@
   color: #fff;
   margin-bottom: 6px;
   margin-left: 5%;
+  font-size: 1.2rem;
 }
 .destaqueImageCaption .destaqueDate{
   color: rgba(255,255,255,0.85);
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-bottom: 6px;
   margin-left: 5%;
 }
 .destaqueImageCaption .lerMais{
   color: #ffffff;
   text-decoration: none;
-  padding: 15px 35px;
+  padding: 14px;
   border-radius: 50px;
+  margin-top: 5px;
   margin-left: 5%;
   text-align: center;
   width: 15%;
@@ -55,7 +57,8 @@
 }
 
 .destaqueDoDia{
-  width: 100%;
+  width: 80%;
+  margin-top: 6%;
 }
 
 .Postagemcomfotos h1{
@@ -240,83 +243,7 @@
   align-items: center;
   justify-content: space-between;
 }
-.contactForm {
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 20px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
-
-
-.formGroup {
-  margin-bottom: 15px;
-  width: 40%;
-  gap: 5px;
-  display: flex;
-  flex-direction: column;
-}
-
-
-.formInput,
-.formTextarea {
-  width: 40%;
-  padding: 10px;
-  border: 0.1rem solid #858080b9;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-.formTextarea {
-  resize: vertical;
-  min-height: 100px;
-  width: 100%;
-}
-
-.submitButton {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 20%;
-  transition: background 0.3s;
-}
-
-.submitButton:hover:not(:disabled) {
-  background: #0056b3;
-}
-
-.submitButton:disabled {
-  background: #cccccc;
-  cursor: not-allowed;
-}
-
-.resultMessage {
-  margin-top: 15px;
-  padding: 10px;
-  border-radius: 4px;
-  text-align: center;
-}
-
-.resultMessage.success {
-  background: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-}
-
-.resultMessage.error {
-  background: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-}
 
 /* Estilos para outros elementos */
 .loading,
@@ -377,6 +304,7 @@
   }
   .destaqueDoDia{
   width: 100%;
+  margin-top: 1%;
 }
     .Postagemcomfotos{
       display: grid;
@@ -442,41 +370,6 @@
   width: 100%;
 }
 
-.formGroup {
-  margin-bottom: 15px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-
-.formInput,
-.formTextarea {
-  width: 100%;
-  padding: 10px;
-  border: 0.1rem solid #535151;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-.formTextarea {
-  resize: vertical;
-  max-height: 150px;
-  width: 100%;
-}
-
-.submitButton {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 50%;
-  transition: background 0.3s;
-}
 
 .destaqueImageCaption .lerMais{
   font-size: 0.9rem;

@@ -1,5 +1,26 @@
 [
 {
+    "titulo": "Atualização : Aba Home",
+    "data": "03 de janeiro, 2026",
+    "resumo": "Foi tirado o formulário de contato e transferido para a aba contate-me, Tô pensando em mudar toda a aba home. Talvez possa ter alguns problemas de redirecionamento",
+    "imagemurl" : "../../../src/assets/bugimagem/contato.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Atualização : Aba Notícias",
+    "data": "31 de dezembro, 2025",
+    "resumo": "Agora a aba notícias está com uma cara nova, ainda estou trabalhando para melhorar a experiência de navegação",
+    "imagemurl" : "../../../src/assets/bugimagem/atualizacaoNoticias.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "bug : aba Fórum ",
+    "data": "29 de dezembro, 2025",
+    "resumo": "A aba Fórum está initava temporariamente por questões de infra, estou trabalhando para resolver",
+    "imagemurl" : "",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
     "titulo": "Pendente : aba Fórum ",
     "data": "22 de dezembro, 2025",
     "resumo": "A aba Fórum está em desenvolvimento, mas ela já está disponivel para visualizar. Caso queira ajudar no desenvolvimento, entre em contato comigo pelo email",

@@ -1,0 +1,79 @@
+.Destaque {
+  display: grid;
+  grid-template-areas:
+    "destaque1 destaque2"
+    "destaque1 destaque4"
+    "destaque1 destaque3";
+  grid-template-columns: 2fr 1fr;
+  gap: 15px;
+  width: 80%;
+  margin-top: 4%;
+}
+
+/* Áreas principais */
+.Destaque1 { 
+  grid-area: destaque1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.Destaque2 { 
+    grid-area: destaque2; 
+    height: 200px; 
+}
+
+.Destaque3 { 
+    grid-area: destaque3; 
+    height: 200px; 
+}
+
+
+.Destaque4 { 
+    grid-area: destaque4; 
+    height: 200px; 
+}
+
+/* Overlay apenas para Destaque1 */
+.overlay { 
+    height: 100%;
+    position: absolute;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.overlay img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.overlay img:hover{
+    opacity: 0.5;
+}
+
+.overlay h2, .overlay p {
+  margin: 5px 0;
+}
+
+/* Apenas imagem nos demais destaques */
+.imgOnly {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.imgOnly:hover{
+    opacity: 0.5;
+}
+/* Responsividade */
+@media (max-width: 768px) {
+    .Destaque {
+        display: none;
+    }
+    
+}

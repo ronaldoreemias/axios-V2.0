@@ -1,24 +1,40 @@
-.headercentro{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 2%;
+*{
+    margin: 0;
+}
+.containerNoticias {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "menu content";
+  grid-template-columns: 1fr 5fr;
+  height: 100vh;
+}
+.containerNoticias div.headerNoticias {
+  grid-area: header;
+  text-align: center;
+  background-color: #0c56aa;
+}
+.containerNoticias div.menuNoticias {
+    grid-area: menu;
+    background-color: #080808;
+}
+.containerNoticias div.contentNoticias {
+    grid-area: content;
+    background-color: #d4cdcd70;
+    overflow-y: scroll;
+    height: 90vh;
 }
 
-.Postagenssemfoto{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-top: 7%; 
-    min-height: 100vh;
+.containerInfo {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
 }
+
 .postagemSemFoto {
     display: flex;
     flex-direction: column;      
-    margin: 20px; 
-    justify-content: center;  
-    width: 60%;
+    margin: 20px;   
     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
@@ -63,16 +79,58 @@
     font-style: italic;
 }
 
-@media(max-width: 768px) {
-    .Postagenssemfoto{
-        margin-top: 13%;
+.filtros{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 50%;
+    align-items: center;
+    width: 100%;
+}
+
+.filtros button{
+    width: 80%;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #0c56aa;
+    color: white;
+    border: none;
+}
+
+.filtros button:hover{
+    background-color: #347fd4;
+}
+
+@media(max-width: 700px){
+    .containerNoticias {
+        display: grid;
+        grid-template-areas:
+            "header"
+            "content";
+        grid-template-columns: 1fr;
+        height: 100vh;
     }
-    .postagemSemFoto {
-        width: 90%; 
-        padding: 15px; 
+    .containerNoticias div.headerNoticias {
+        grid-area: header;
+        text-align: center;
+        background-color: #0c56aa;
+    }
+    .containerNoticias div.menuNoticias {
+        grid-area: menu;
+        display: none;
+    }
+    .containerNoticias div.contentNoticias {
+        grid-area: content;
+        background-color: #d4cdcd70;
+        overflow-y: scroll;
+        height: 90vh;
+    }
+    
+    .containerInfo {
+        display: grid;
+        grid-template-columns: auto;
+        padding: 10px;
     }
 
-    .postagemSemFoto h3 {
-        font-size: 1.2rem; 
-    }
 }

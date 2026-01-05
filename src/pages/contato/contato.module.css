@@ -1,0 +1,85 @@
+.linha {
+  height: 3px;
+  width: 40%;
+  background-color: #1185ce;
+  margin: 0 auto;
+  animation: brilho 2s infinite;
+}
+
+.contactForm {
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.formGroup {
+  margin-bottom: 15px;
+  width: 40%;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.formInput,
+.formTextarea {
+  width: 40%;
+  padding: 10px;
+  border: 0.1rem solid #858080b9;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 100px;
+  width: 100%;
+}
+
+.submitButton {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 20%;
+  transition: background 0.3s;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.submitButton:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.resultMessage {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.resultMessage.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.resultMessage.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}

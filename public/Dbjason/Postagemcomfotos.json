@@ -1,11 +1,25 @@
 
         [
         {
-            "titulo": "Governo volta com CNH social, em um novo edital para ajudar você a tirar sua habilitação.",
-            "data": "22 de dezembro, 2025",
-            "resumo": "Como se inscrever na CNH Social? Pelo app, o candidato consegue abrir o requerimento, acompanhar o andamento do processo e acessar o curso teórico online, que é gratuito. Para pessoas de baixa renda, esse caminho pode ser ampliado com a CNH Social, programa que garante a gratuidade das etapas da habilitação, como exames, aulas práticas e taxas, conforme as regras definidas por cada estado. A seguir, veja como começar o processo pelo aplicativo disponível para Android e iPhone (iOS), e entenda em que momento é possível solicitar o benefício.",
-            "imagem": "https://s2-techtudo.glbimg.com/3cJqrCf-MWUToNpMWq3TSbNsJW4=/540x304/top/smart/https://i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2024/n/J/tfg5HtTU2hjCvrEz1TJw/apps-35-.png",
-            "link": "https://www.cnhsocial.semas.maceio.al.gov.br/cnh-social/pages/login.faces"
+            "titulo": "inteligência artificial entra em 2026 em um novo estágio de maturidade.",
+            "data": "1 de janeiro, 2026",
+            "resumo": "Depois de um ciclo marcado por anúncios grandiosos e expectativas infladas, a inteligência artificial entra em 2026 em um novo estágio de maturidade. A tecnologia que dominou manchetes, promessas corporativas e discursos de inovação começa a se afastar do deslumbramento inicial para assumir um papel mais pragmático: entregar resultados mensuráveis. Em vez de experimentos isolados ou ferramentas usadas apenas por equipes técnicas, a IA tende a se integrar aos fluxos reais de trabalho, influenciando decisões, automatizando processos e reduzindo custos de forma silenciosa. Para empresas, governos e usuários finais, isso significa menos demonstrações futuristas e mais soluções concretas no dia a dia - da análise de dados ao atendimento ao cliente, da produção de conteúdo à logística.",
+            "imagem": "https://s2-techtudo.glbimg.com/I6t9vMrbafNzeB4kHQmVSKlufqU=/540x304/top/smart/https://i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2026/F/H/QkDbg3TLmAOvB8PrKBxg/pexels-tara-winstead-8386440.jpg",
+            "link": "https://www.techtudo.com.br/noticias/2026/01/novidades-sobre-inteligencia-artificial-o-que-esperar-da-tecnologia-em-2026-edsoftwares.ghtml"
+        },
+        {
+            "titulo": "Malware se disfarça de app de banco para roubar usuários de Android",
+            "data": "31 de dezembro, 2025",
+            "resumo": "Em novembro desse ano, pesquisadores da Intel 471 encontraram um aplicativo falso de um dos bancos mais populares da Polônia, o mBank, que está atuando como um carregador de um trojan bancário Android não atribuído. O payload do malware FvncBot implementou múltiplas funcionalidades incluindo keylogging através do abuso dos serviços de acessibilidade do Android, ataques de injeção web, streaming de tela e VNC oculto (HVNC) para realizar fraudes financeiras com sucesso.",
+            "imagem": "https://tm.ibxk.com.br/2025/09/24/24181712627051.jpg?ims=1000x400/filters:quality(80)",
+            "link": "https://www.tecmundo.com.br/seguranca/409393-malware-se-disfarca-de-app-de-banco-para-roubar-usuarios-de-android.htm"
+        },
+        {
+            "titulo": " seu primeiro robô doméstico multitarefa com inteligência artificial (IA).",
+            "data": "25 de dezembro, 2025",
+            "resumo": "Diferentemente dos robôs domésticos mais comuns hoje, focados em aspirar ou passar pano no chão, o CLOiD foi pensado para lidar com tarefas mais complexas. Segundo a LG, ele é capaz de manipular objetos, operar eletrodomésticos e executar ações que normalmente exigem coordenação manual e entendimento do ambiente.",
+            "imagem": "https://img.odcdn.com.br/wp-content/uploads/2026/01/Destaque-Robo-CLOiD-LG-1920x1080.jpg",
+            "link": "https://olhardigital.com.br/2026/01/05/robotica/lg-vai-mostrar-na-ces-2026-robo-que-dobra-roupas-e-prepara-cafe-da-manha/"
         },
         {
             "titulo": "Google decide parar de vasculhar dark web por não ser eficaz; entenda.",
