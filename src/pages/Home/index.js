@@ -35,7 +35,6 @@ function Home() {
       </div>
 
       <div className={style.footerHome}>
-        <h4>Footer</h4>
       </div>
     </div>
 
