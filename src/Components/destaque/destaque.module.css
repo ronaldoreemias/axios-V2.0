@@ -77,19 +77,17 @@
 .imgOnly:hover{
     opacity: 0.5;
 }
-/* Responsividade */
+
 @media (max-width: 768px) {
 
     .Destaque {
       display: grid;
       grid-template-areas:
-        "destaque3 ";
+        "destaque4 ";
       grid-template-columns: 1fr;
       gap: 0px;
       width: 100%;
     }
-
-    /* Áreas principais */
     .Destaque1 { 
       grid-area: destaque1; 
       display: none;
@@ -98,7 +96,8 @@
     
     .Destaque3 { 
         grid-area: destaque3;  
-    }
+      display: none; 
+      }
 
     .Destaque2 { 
       grid-area: destaque2; 
@@ -106,8 +105,7 @@
     }
 
     .Destaque4 { 
-        grid-area: destaque4; 
-        display: none; 
+        grid-area: destaque4;  
     }
 
     

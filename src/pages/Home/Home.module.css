@@ -92,7 +92,7 @@
     grid-area: footer;
     text-align: center;
     position: sticky;
-    bottom: 0; /* fixa no rodapé */
+    bottom: 0; 
     display: block;
   }
 }
