@@ -43,12 +43,12 @@ function Destaque() {
             {index === 0 ? (
                 // Destaque1 com todas as informações
                 <div className={style.overlay}>
-                <a href={post.link} target="_blank" >
-                    <img src={post.imagem} alt={post.titulo} />
-                </a>
-                <h2>{post.titulo}</h2>
-                <p>{post.resumo}</p>
-                <p>{post.descricao}</p>
+                    <a href={post.link} target="_blank" >
+                        <img src={post.imagem} alt={post.titulo} />
+                    </a>
+                    <h2>{post.titulo}</h2>
+                    <p>{post.resumo}</p>
+              
                 </div>
             ) 
             : (

@@ -1,85 +1,101 @@
 .linha {
-  height: 3px;
-  width: 40%;
-  background-color: #1185ce;
-  margin: 0 auto;
-  animation: brilho 2s infinite;
+  height: 2px;
+  width: 95%;
+  background-color: #000; /* preto clássico */
+  margin: 20px auto;
+  animation: brilho 3s infinite;
 }
 
+/* Container principal */
 .contactForm {
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 0; 
+  margin-top: 30px;
   width: 100%;
+  padding: 25px;
+  background-color: #fdfdfd; 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  font-family: "Georgia", "Times New Roman", serif; 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-
-
+/* Agrupamento dos campos */
 .formGroup {
-  margin-bottom: 15px;
-  width: 40%;
-  gap: 5px;
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  width: 100%;
 }
 
-
+/* Inputs e textarea */
 .formInput,
 .formTextarea {
-  width: 40%;
-  padding: 10px;
-  border: 0.1rem solid #858080b9;
-  border-radius: 10px;
+  width: 100%;
   margin-bottom: 10px;
-  font-size: 16px;
+  padding: 12px;
+  border: 1px solid #444; 
+  border-radius: 0; 
+  font-size: 15px;
+  font-family: "Georgia", serif;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: #1185ce;
+  box-shadow: 0 0 6px rgba(17,133,206,0.3);
 }
 
 .formTextarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 120px;
+}
+
+/* Botão */
+.submitButton {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   width: 100%;
 }
 
-.submitButton {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 20%;
-  transition: background 0.3s;
-}
-
 .submitButton:hover:not(:disabled) {
-  background: #0056b3;
+  background: #1185ce; 
 }
 
 .submitButton:disabled {
-  background: #cccccc;
+  background: #999;
   cursor: not-allowed;
 }
 
+/* Mensagens de resultado */
 .resultMessage {
   margin-top: 15px;
-  padding: 10px;
-  border-radius: 4px;
+  padding: 12px;
+  border-radius: 0;
   text-align: center;
+  font-family: "Georgia", serif;
+  font-size: 14px;
 }
 
 .resultMessage.success {
-  background: #d4edda;
+  background: #e6f4ea;
   color: #155724;
   border: 1px solid #c3e6cb;
 }
 
 .resultMessage.error {
-  background: #f8d7da;
+  background: #fcebea;
   color: #721c24;
   border: 1px solid #f5c6cb;
 }

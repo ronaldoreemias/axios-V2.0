@@ -41,19 +41,15 @@ function ContactForm() {
 
   return (
     <form id="inbox" className={style.contactForm} onSubmit={onSubmit}>
-      <h1>Envie seu pedido diretamente</h1>
-      <br/>
+      <h3>Entre em contato</h3>
       <div className={style.linha}></div>
-      
-      <br/>
-      
         <input 
           type="text" 
           id="name"
           name="name" 
           className={style.formInput}
           required 
-          placeholder="telefine de contato (xx) xxxx-xxxx"
+          placeholder="seu nome"
         />
       
       <br/>
@@ -67,7 +63,7 @@ function ContactForm() {
           placeholder="seu email"
         />
      
-      
+      <br/>
       <div className={style.formGroup}>
         <label htmlFor="message">Mensagem:</label>
         <textarea 
