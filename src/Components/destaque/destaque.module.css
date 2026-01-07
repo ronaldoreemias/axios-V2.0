@@ -13,7 +13,7 @@
 .Destaque1 { 
   grid-area: destaque1; 
   display: flex;
-  text-align: start;
+
   flex-direction: column;
 }
 .Destaque2 { 
@@ -83,20 +83,18 @@
     .Destaque {
       display: grid;
       grid-template-areas:
-        "destaque4 ";
+        "destaque3 ";
       grid-template-columns: 1fr;
       gap: 0px;
       width: 100%;
     }
     .Destaque1 { 
       grid-area: destaque1; 
-      display: none;
-    }
 
-    
+    }    
     .Destaque3 { 
         grid-area: destaque3;  
-      display: none; 
+ 
       }
 
     .Destaque2 { 
@@ -105,7 +103,8 @@
     }
 
     .Destaque4 { 
-        grid-area: destaque4;  
+      grid-area: destaque4;  
+      display: none;
     }
 
     

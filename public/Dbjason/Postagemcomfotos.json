@@ -1,6 +1,13 @@
 
         [
         {
+            "titulo": "NVIDIA revela novos modelos para IA física e chips para robôs humanoides.",
+            "data": "7 de janeiro, 2026",
+            "resumo": "O CEO e fundador da NVIDIA, Jensen Huang, comparou o avanço atual a um marco histórico da inteligência artificial generativa. “O momento ChatGPT para a robótica chegou. Avanços em IA física — modelos que entendem o mundo real, raciocinam e planejam ações — estão desbloqueando aplicações inteiramente novas”, afirmou Huang.",
+            "imagem": "https://t.ctcdn.com.br/C5O1fHgMVekczHFIYotF8EsnUHY=/768x432/smart/i1091475.jpeg",
+            "link": "https://canaltech.com.br/inteligencia-artificial/nvidia-revela-novos-modelos-para-ia-fisica-e-chips-para-robos-humanoides/"
+        },
+        {
             "titulo": "Introdução ao erro “Falha na solicitação de rede” no React Native.",
             "data": "6 de janeiro, 2026",
             "resumo": "Os desenvolvedores frequentemente se deparam com o erro Network request failed ao trabalhar com React Native, principalmente ao fazer solicitações de rede usando a fetch ( ) API. Esse problema pode ter diversas causas, incluindo configurações e restrições de rede. Esta introdução tem como objetivo fornecer soluções práticas para ajudá-lo a resolver alguns erros comuns, de forma eficaz. Eu fiz com muito carinho e estou disponivel para aceitar opniões",
