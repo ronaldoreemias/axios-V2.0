@@ -5,6 +5,7 @@ import Alerta from "../../Components/alertaloja";
 import NoticiasGeral from "../../Components/noticias";
 import DestaqueVagas from "../../Components/destaqueVagas";
 import Contato from "../contato";
+import Footer from "../../Components/Footer";
 
 function Home() {
 
@@ -25,6 +26,7 @@ function Home() {
         <Destaque />
         <br/>
         <NoticiasGeral />
+        <Footer />
       </div>
       
       <div className={style.NoticiasHome}>
