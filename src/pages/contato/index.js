@@ -72,7 +72,7 @@ function ContactForm() {
           className={style.formTextarea}
           required 
           rows="4"
-          placeholder="Digite sua pedido detalhado aqui..."
+          placeholder="Digite seu pedido detalhado aqui..."
         />
       </div>
       

@@ -69,7 +69,7 @@ function Navbar() {
                             <a href="https://front-weld-six.vercel.app/" onClick={closeMenu}>fóruns</a>
                         </li>
                         <li>
-                            <a href="https://chat.whatsapp.com/FivMCudmv1wENlalqeIth0" onClick={closeMenu}>contrate-me </a>
+                            <a href="/contato" onClick={closeMenu}>contrate-me</a>
                         </li>
                         
                         <li>

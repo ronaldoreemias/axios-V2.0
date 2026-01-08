@@ -13,9 +13,9 @@ function Footer(){
                     vagas de emprego e Comunidade no whatsapp e fórum (ainda em desenvolvimento )</p>
                 </div>
                 <div>
-                    <h3>Projeto de Código aberto</h3>
+                    <h3>Código aberto</h3>
                     <a href="https://github.com/ronaldoreemias/axios-V2.0"><p>Guithub do projeto</p></a>
-                    <a href="www.linkedin.com/in/ronaldo-reemias-b66b7a166" ><p>linkedin</p></a>
+                    
                     
                 </div>
                 <div>
