@@ -1,9 +1,9 @@
-import style from "./Forum.module.css";
-import Navbar from "../../Components/Navbar";
-import Footer from "../../Components/Footer";
+import style from "./forum.module.css";
+import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
 
 function Forum() {
-    return(
+    return (
         <>
             <Navbar />
             <main className={style.Forummain}>

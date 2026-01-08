@@ -1,19 +1,19 @@
-import { BrowserRouter, Routes, Route} from "react-router-dom";
-import Home from "./pages/Home";
-import Vagas from "./pages/Vagas";
-import Forum from "./pages/Forum";
-import Notificacao from "./pages/Notificacao";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/home";
+import Vagas from "./pages/vagas";
+import Forum from "./pages/forum";
+import Notificacao from "./pages/notificacao";
 import ContactForm from "./pages/contato";
 
-function AppRoutes(){
+function AppRoutes() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={ <Home/> } ></Route>
-                <Route path="/Notficacao" element={ <Notificacao/> } ></Route>
-                <Route path="/Forum" element={ <Forum/> } ></Route>
-                <Route path="/Vagas" element={ <Vagas/> } ></Route>
-                <Route path="/contato" element={ <ContactForm /> } ></Route>
+                <Route path="/" element={<Home />}></Route>
+                <Route path="/notificacao" element={<Notificacao />}></Route>
+                <Route path="/forum" element={<Forum />}></Route>
+                <Route path="/vagas" element={<Vagas />}></Route>
+                <Route path="/contato" element={<ContactForm />}></Route>
             </Routes>
         </BrowserRouter>
     );
