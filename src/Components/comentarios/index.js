@@ -48,9 +48,9 @@ function Comentarios() {
   };
 
   return (
-    <div>
+    <div className={style.formularioscom} >
+      
       <h1>Compartilhe sua opinião </h1>
-
       {erro && <div style={{ color: "red" }}>{erro}</div>}
 
       <form onSubmit={handleSubmit} className={style.Formulariocomentarios} >
