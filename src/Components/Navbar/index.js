@@ -71,10 +71,6 @@ function Navbar() {
                         <li>
                             <a className={style.contrateme} href="/contato" onClick={closeMenu}>contrate-me </a>
                         </li>
-                        
-                        <li>
-                            <a href="/Comentarios" onClick={closeMenu}>comunique</a>
-                        </li>
                         <li>
                             <a href="/Vagas" onClick={closeMenu}>Vagas de emprego</a>
                         </li>
