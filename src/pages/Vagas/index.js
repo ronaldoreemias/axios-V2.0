@@ -1,6 +1,5 @@
 import style from "./Vagas.module.css";
 import Navbar from "../../Components/Navbar";
-import Footer from "../../Components/Footer";
 import { useState, useEffect, useCallback } from "react"; 
 
 function Vagas() {
@@ -341,7 +340,7 @@ const renderBotaoCandidatar = (vaga) => {
                 </div>
             </main>
             <br/>
-            <Footer />
+            
         </>
     );
 }

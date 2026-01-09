@@ -1,6 +1,5 @@
 import style from "./Forum.module.css";
 import Navbar from "../../Components/Navbar";
-import Footer from "../../Components/Footer";
 
 function Forum() {
     return(
@@ -13,7 +12,6 @@ function Forum() {
                 <p>mais informações Whatsapp : (82) 9888-3225 </p>
                 <p>assinatura : Axios_Feth </p>
             </main>
-            <Footer />
         </>
     );
 }
