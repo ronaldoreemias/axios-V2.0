@@ -8,8 +8,8 @@ export default function Alerta() {
   const [finished, setFinished] = useState(false);
 
     const textos = [
-    { id: 1, text: "Agora temos o chate de comentários.", href: "https://ecommerce-delta-ten-22.vercel.app/" },
-    { id: 2, text: "no Footer clique no balão de chate e deixe sua marca aqui.", href: "https://ecommerce-delta-ten-22.vercel.app/" },
+    { id: 1, text: "Agora temos o chat de comentários.", href: "https://ecommerce-delta-ten-22.vercel.app/" },
+    { id: 2, text: "no Footer clique no balão de chat e deixe sua marca aqui.", href: "https://ecommerce-delta-ten-22.vercel.app/" },
     { id: 3, text: "Oi ! Vem visitar a loja axios !", href: "https://front-weld-six.vercel.app/" },
     { id: 4, text: "A aba fórum ainda está em desenvolvimento", href: "https://front-weld-six.vercel.app/" },
 
