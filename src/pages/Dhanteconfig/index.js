@@ -1,7 +1,7 @@
 import style from "./Dante.module.css";
 import Navbar from "../../Components/Navbar";
 import React, { useState } from "react";
-
+import Apagar from "../../Components/Lixudospostes"
 
 class PostagemcomFotonoBlog extends React.Component {
   constructor(props) {
@@ -73,6 +73,7 @@ class PostagemcomFotonoBlog extends React.Component {
                 <input type="file" name="file" onChange={this.handleFile} />
             </div>        
         <input type="submit" value="enviar" />
+        <Apagar />
       </form>
     );
   }

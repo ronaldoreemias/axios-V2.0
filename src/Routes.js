@@ -5,6 +5,8 @@ import Forum from "./pages/Forum";
 import Notificacao from "./pages/Notificacao";
 import ContactForm from "./pages/contato";
 import Comentarios from "./Components/comentarios";
+import DhanteConfig from "./pages/Dhanteconfig";
+
 
 function AppRoutes(){
     return (
@@ -16,6 +18,7 @@ function AppRoutes(){
                 <Route path="/Vagas" element={ <Vagas/> } ></Route>
                 <Route path="/contato" element={ <ContactForm /> } ></Route>
                 <Route path="/Comentarios" element={ <Comentarios /> } ></Route>
+                <Route path="/DhanteConfig" element={ <DhanteConfig /> } ></Route>
             </Routes>
         </BrowserRouter>
     );
