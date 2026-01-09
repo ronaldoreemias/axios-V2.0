@@ -5,6 +5,7 @@ import Destaque from "../../Components/destaque";
 import DestaqueVagas from "../../Components/destaqueVagas";
 import Comentarios from "../../Components/comentarios";
 import React from "react";
+import Footer from "../../Components/Footer";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -49,6 +50,7 @@ function Home() {
       <Destaque />
       
       <Noticias />
+      <Footer />
     </div>
 
     <div className={style.NoticiasHome} >
