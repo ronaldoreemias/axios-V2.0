@@ -105,7 +105,7 @@
     .areamensagem { 
       grid-area: mensagens; 
       display: flex;
-      height: 90vh;
+      height: 85vh;
       overflow-y: scroll;
       margin-top: 0;
       flex-direction: column;
