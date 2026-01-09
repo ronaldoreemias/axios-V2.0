@@ -13,7 +13,6 @@
 .Destaque1 { 
   grid-area: destaque1; 
   display: flex;
-
   flex-direction: column;
 }
 .Destaque2 { 
@@ -75,8 +74,8 @@
 }
 
 .outros {
-  position: relative; /* define o contexto para o absolute */
-  display: inline-block; /* ou flex, dependendo da sua necessidade */
+  position: relative; 
+  display: inline-block;
 }
 
 
@@ -85,7 +84,7 @@
   width: 100%;
   height: 100%;
   top: 1px; 
-  color: rgb(255, 255, 255); /* cor do texto para aparecer sobre a imagem */
+  color: rgb(255, 255, 255); 
   padding: 5px;
   font-size: 1.3rem;
   background-color: rgba(46, 45, 45, 0.733);
@@ -110,39 +109,38 @@
     }
     .Destaque1 { 
       grid-area: destaque1; 
-
-    }    
+        display: none;
+    }  
+    
+    
     .Destaque3 { 
         grid-area: destaque3;  
- 
+        
       }
 
     .Destaque2 { 
       grid-area: destaque2; 
-      display: none; 
+      display: none;
     }
 
     .Destaque4 { 
       grid-area: destaque4;  
+      display: none; 
+    }
+
+    .outros{
+      width: 100%;
+    }
+    .overlay { 
       display: none;
     }
 
-    
-    .overlay { 
-      height: 100%;
-      position: absolute;
-      color: black;
-      display: flex;
-      flex-direction: column;
-    }
-
     .overlay img {
-      width: 100%;
-      height: 100%;
+      display: none;
     }
 
     .overlay img:hover{
-      opacity: 0.5;
+      display: none;
     }
 
     .overlay h2, .overlay p {

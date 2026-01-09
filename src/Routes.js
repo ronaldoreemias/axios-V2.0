@@ -4,6 +4,7 @@ import Vagas from "./pages/Vagas";
 import Forum from "./pages/Forum";
 import Notificacao from "./pages/Notificacao";
 import ContactForm from "./pages/contato";
+import Comentarios from "./Components/comentarios";
 
 function AppRoutes(){
     return (
@@ -14,6 +15,7 @@ function AppRoutes(){
                 <Route path="/Forum" element={ <Forum/> } ></Route>
                 <Route path="/Vagas" element={ <Vagas/> } ></Route>
                 <Route path="/contato" element={ <ContactForm /> } ></Route>
+                <Route path="/Comentarios" element={ <Comentarios /> } ></Route>
             </Routes>
         </BrowserRouter>
     );

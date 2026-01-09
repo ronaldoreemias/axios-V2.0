@@ -73,6 +73,9 @@ function Navbar() {
                         </li>
                         
                         <li>
+                            <a href="/Comentarios" onClick={closeMenu}>comunique</a>
+                        </li>
+                        <li>
                             <a href="/Vagas" onClick={closeMenu}>Vagas de emprego</a>
                         </li>
                         

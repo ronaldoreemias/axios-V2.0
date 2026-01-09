@@ -83,3 +83,71 @@
   font-size: 0.8rem;
   color: #666;
 }
+.areamensagem{
+  margin-top: 20px; 
+  gap: 10px;
+  height: 90%;
+
+}
+ 
+
+@media(max-width: 700px) {
+  .formularioscom {
+    display: grid;
+    grid-template-areas:
+      "mensagens "
+      "formulario ";
+    grid-template-columns:1fr;
+    width: 100%;
+  }
+
+  /* Áreas principais */
+    .areamensagem { 
+      grid-area: mensagens; 
+      display: flex;
+      height: 90vh;
+      overflow-y: scroll;
+      margin-top: 0;
+      flex-direction: column;
+      background-color: #a7aeb3ad;
+    }
+
+    .areamensagem::-webkit-scrollbar {
+      display: none; 
+    }
+
+    .areamensagem {
+      -ms-overflow-style: none;  
+      scrollbar-width: none;     
+    }
+
+    
+    .areamensagem div {
+      max-width: 60%;            
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 15px;
+      font-size: 14px;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+
+    .Formulariocomentarios { 
+        grid-area: formulario;  
+        width: 100%;
+        background-color: #333;
+        border-radius: 0;
+
+    }
+    
+    .Formulariocomentarios input{
+      width: 85%;
+      padding: 5px;
+    }
+    
+    .formularioscom h1{
+      display: none;
+    }
+
+}

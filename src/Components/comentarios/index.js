@@ -63,7 +63,7 @@ function Comentarios() {
         <button type="submit"><img src={enviar} /></button>
       </form>
 
-      <div style={{ marginTop: "20px", gap: "10px", height: "90%" }}>
+      <div className={style.areamensagem}>
         {comentarios.length === 0 && !erro ? (
           <p>Nenhum comentário ainda.</p>
         ) : (
