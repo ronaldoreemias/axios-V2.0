@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.contrateme{
+    display: none;
+}
+
 a{
     text-decoration: none;
 }
@@ -162,7 +166,9 @@ h2{
         padding: 0 1rem;
     }
 
-
+    .contrateme{
+        display: block;
+    }
     .githublinkheader {
         display: none;
     }
@@ -272,7 +278,10 @@ h2{
     .textonav h2 {
         font-size: 1.1rem;
     }
-
+    
+    .contrateme{
+        display: block;
+    }
     .textonav img {
         height: 30px;
     }
