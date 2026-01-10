@@ -52,9 +52,6 @@ function Home() {
             </div>
 
             <div className={style.contentHome} >
-              <div className={style.slideHome} >
-                <ImageSlider />
-              </div>
               <Destaque />
               <Noticias />
               <Footer />
