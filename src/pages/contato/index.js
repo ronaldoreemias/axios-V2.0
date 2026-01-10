@@ -53,7 +53,7 @@ function ContactForm() {
           name="name" 
           className={style.formInput}
           required 
-          placeholder="telefine de contato (xx) xxxx-xxxx"
+          placeholder="número de contato (xx) xxxx-xxxx"
         />
       
       <br/>
