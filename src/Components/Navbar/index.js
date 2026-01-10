@@ -45,10 +45,8 @@ function Navbar() {
                             <a href="/" className={style.active} onClick={closeMenu}><h2>Portal de Notícias</h2></a>
                             <a href="/" className={style.active} onClick={closeMenu}><h2>Fórum</h2></a>
                             <a href="/" className={style.active} onClick={closeMenu}><h2>Vagas de emprego</h2></a>
-                            <a href="/" className={style.active} onClick={closeMenu}><h2>Cursos</h2></a>
-                            <a href="/" className={style.active} onClick={closeMenu}><h2>Comunidade</h2></a>
                             <a href="/" className={style.active} onClick={closeMenu}><h2>seja bem vindo !</h2></a>
-                            <a href="/" className={style.active} onClick={closeMenu}><h2>Axios Tecno</h2></a>
+                            <a href="/" className={style.active} onClick={closeMenu}><h2>Axios Jornal</h2></a>
                         </div>
                     </div>
                 </div>
