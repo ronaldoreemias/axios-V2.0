@@ -8,6 +8,7 @@ import React from "react";
 import Footer from "../../Components/Footer";
 import NavbarFooter from "../../Components/NavbarFooter";
 import Alertaloja from "../../Components/alertaloja";
+import ImageSlider from "../slide";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -51,8 +52,10 @@ function Home() {
             </div>
 
             <div className={style.contentHome} >
+              <div className={style.slideHome} >
+                <ImageSlider />
+              </div>
               <Destaque />
-              
               <Noticias />
               <Footer />
             </div>

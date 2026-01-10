@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import style from "./Comentarios.module.css";
 import enviar from "../../assets/enviar.png";
+import { FaSpinner } from "react-icons/fa";
 
 function Comentarios() {
   const [comentarios, setComentarios] = useState([]);
@@ -65,7 +66,10 @@ function Comentarios() {
 
       <div className={style.areamensagem}>
         {comentarios.length === 0 && !erro ? (
-          <p>Nenhum comentário ainda.</p>
+          <div className={style.loadingcontainer}>
+            <FaSpinner className={style.spinner} />
+            <p>Carregando...</p>
+          </div>
         ) : (
           comentarios.map((c) => (
             <div key={c._id} className={style.comentario}>

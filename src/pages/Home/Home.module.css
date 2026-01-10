@@ -73,7 +73,9 @@
     
 }
 
-
+.slideHome{
+  display: none;
+}
 
 /* começando a estilização mobile */
 
@@ -85,9 +87,11 @@
       "content"
       "footer";
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 5px;
   }
-
+  .containerHome div.contentHome {
+    margin-top: 0%;
+  }
   .containerHome div.NoticiasHome {
     grid-area: noticias;
     display: none;
@@ -105,5 +109,12 @@
     position: sticky;
     bottom: 0; 
     display: block;
+  }
+
+  .slideHome{
+    display: block;
+    height: 120px;
+    width: 100%;
+    margin: 5px;
   }
 }
