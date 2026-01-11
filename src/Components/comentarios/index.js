@@ -63,7 +63,7 @@ function Comentarios() {
         />
         <button type="submit"><img src={enviar} /></button>
       </form>
-
+      
       <div className={style.areamensagem}>
         {comentarios.length === 0 && !erro ? (
           <div className={style.j}>
