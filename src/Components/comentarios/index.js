@@ -12,7 +12,7 @@ function Comentarios() {
   useEffect(() => {
     const fetchComentarios = async () => {
       try {
-        const res = await fetch("https://backendcomentarios.vercel.app/api/comentarios"); // Vercel vai servir aqui
+        const res = await fetch("https://backendcomentarios.vercel.app/api/comentarios"); 
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
         setComentarios(Array.isArray(data) ? data : []); 
@@ -66,7 +66,7 @@ function Comentarios() {
 
       <div className={style.areamensagem}>
         {comentarios.length === 0 && !erro ? (
-          <div className={style.loadingcontainer}>
+          <div className={style.j}>
             <FaSpinner className={style.spinner} />
             <p>Carregando...</p>
           </div>
