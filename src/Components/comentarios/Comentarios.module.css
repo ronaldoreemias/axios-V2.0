@@ -84,6 +84,7 @@
   color: #666;
 }
 .areamensagem { 
+      margin-top: 1%;
       grid-area: mensagens; 
       display: flex;
       height: 85vh;
