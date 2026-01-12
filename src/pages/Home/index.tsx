@@ -8,7 +8,6 @@ import Vagas from "../../Components/destaqueVagas";
 import Navbar from "../../Components/Navbar";
 import NavbarFooter from "../../Components/NavbarFooter";
 import Footer from "../../Components/Footer";
-import Alert from "../../Components/alertaEmail";
 import AlertaSistema from "../../Components/alertaloja";
 import Newletter from "../../Components/Newsletter";
 
@@ -46,7 +45,7 @@ function Home() {
     return(
         <>
             <AlertaSistema />
-            <Alert />
+            
             <div className={style.ContentHome}>
                        
             {/* Header igual ao Euronews */}
