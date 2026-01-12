@@ -2,14 +2,58 @@ import style from "./Vagas.module.css";
 import Navbar from "../../Components/Navbar";
 import { useState, useEffect, useCallback } from "react"; 
 
+// No topo do seu arquivo Vagas/index.tsx, antes do componente:
+
+interface Vaga {
+  Vaga: string;
+  Descrição: string;
+  Local: string;
+  areaAtuacao: string;
+  tipoContrato: string;
+  modelo: string;
+  faixaSalarial: string;
+  Email?: string;
+  Link_linkdin?: string;
+  link_site_da_empresa?: string;
+  link_whatsapp?: string;
+  beneficios?: string[];
+}
+
+interface FiltrosTipoContrato {
+  Freelancer: boolean;
+  PJ: boolean;
+  CLT: boolean;
+  estagio: boolean;
+}
+
+interface FiltrosAreaAtuacao {
+  "Front-end": boolean;
+  "Back-end": boolean;
+  "Fullstack": boolean;
+  "Banco de Dados": boolean;
+  "Suporte e Dados": boolean;
+  "Automação e BI": boolean;
+}
+
+interface FiltrosModelo {
+  "Presencial": boolean;
+  "Home office": boolean;
+}
+
+interface Filtros {
+  tipoContrato: FiltrosTipoContrato;
+  areaAtuacao: FiltrosAreaAtuacao;
+  modelo: FiltrosModelo;
+}// Importe os tipos
+
 function Vagas() {
-    const [vagas, setVagas] = useState([]);
-    const [vagasFiltradas, setVagasFiltradas] = useState([]);
+    const [vagas, setVagas] = useState<Vaga[]>([]); // Adicione o tipo
+    const [vagasFiltradas, setVagasFiltradas] = useState<Vaga[]>([]); // Adicione o tipo
 
     useEffect(() => {
         fetch('/Dbjason/Vagas.json')
         .then((response) => response.json())
-        .then((dados) => {
+        .then((dados: Vaga[]) => { // Adicione o tipo
             setVagas(dados);
             setVagasFiltradas(dados);
         })
@@ -18,7 +62,7 @@ function Vagas() {
         });
     }, []);
 
-    const [filtros, setFiltros] = useState({
+    const [filtros, setFiltros] = useState<Filtros>({
         tipoContrato: {
             Freelancer: false,
             PJ: false,
@@ -39,8 +83,8 @@ function Vagas() {
         }
     });
 
-    const [termoBusca, setTermoBusca] = useState("");
-    const [isMobile, setIsMobile] = useState(false);
+    const [termoBusca, setTermoBusca] = useState<string>("");
+    const [isMobile, setIsMobile] = useState<boolean>(false);
 
     // Detecta se está em mobile
     useEffect(() => {
@@ -53,12 +97,12 @@ function Vagas() {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    const handleFiltroChange = (categoria, filtro) => {
+    const handleFiltroChange = (categoria: keyof Filtros, filtro: string) => {
         setFiltros(prev => ({
             ...prev,
             [categoria]: {
                 ...prev[categoria],
-                [filtro]: !prev[categoria][filtro]
+                [filtro]: !(prev[categoria] as any)[filtro]
             }
         }));
     };
@@ -74,60 +118,59 @@ function Vagas() {
                 vaga.Descrição.toLowerCase().includes(termoBusca.toLowerCase()) ||
                 vaga.Local.toLowerCase().includes(termoBusca.toLowerCase()) ||
                 vaga.areaAtuacao.toLowerCase().includes(termoBusca.toLowerCase()) ||
-                vaga.Email.toLowerCase().includes(termoBusca.toLowerCase())
+                (vaga.Email && vaga.Email.toLowerCase().includes(termoBusca.toLowerCase()))
             );
         }
 
         // Filtro por tipo de contrato
         const tiposContratoSelecionados = Object.keys(filtros.tipoContrato).filter(
-            key => filtros.tipoContrato[key]
+            (key): key is keyof FiltrosTipoContrato => 
+                filtros.tipoContrato[key as keyof FiltrosTipoContrato]
         );
         
         if (tiposContratoSelecionados.length > 0) {
             vagasFiltradas = vagasFiltradas.filter(vaga => 
-                tiposContratoSelecionados.includes(vaga.tipoContrato)
+                tiposContratoSelecionados.includes(vaga.tipoContrato as any)
             );
         }
 
         // Filtro por área de atuação
         const areasSelecionadas = Object.keys(filtros.areaAtuacao).filter(
-            key => filtros.areaAtuacao[key]
+            (key): key is keyof FiltrosAreaAtuacao => 
+                filtros.areaAtuacao[key as keyof FiltrosAreaAtuacao]
         );
         
         if (areasSelecionadas.length > 0) {
             vagasFiltradas = vagasFiltradas.filter(vaga => 
-                areasSelecionadas.includes(vaga.areaAtuacao)
+                areasSelecionadas.includes(vaga.areaAtuacao as any)
             );
         }
 
         // Filtro por modelo de trabalho
         const modelosSelecionados = Object.keys(filtros.modelo).filter(
-            key => filtros.modelo[key]
+            (key): key is keyof FiltrosModelo => 
+                filtros.modelo[key as keyof FiltrosModelo]
         );
         
         if (modelosSelecionados.length > 0) {
             vagasFiltradas = vagasFiltradas.filter(vaga => 
-                modelosSelecionados.includes(vaga.modelo)
+                modelosSelecionados.includes(vaga.modelo as any)
             );
         }
 
         setVagasFiltradas(vagasFiltradas);
-    }, [vagas, termoBusca, filtros]); // Adicione todas as dependências
+    }, [vagas, termoBusca, filtros]);
 
     // Aplicar filtros automaticamente quando os filtros mudam
     useEffect(() => {
         aplicarFiltros();
-    }, [aplicarFiltros]); // Agora está correto
+    }, [aplicarFiltros]);
 
-    const handleSubmitFiltros = (e) => {
+    const handleSubmitFiltros = (e: React.FormEvent) => {
         e.preventDefault();
         aplicarFiltros();
     };
 
-    const handleBuscaSubmit = (e) => {
-        e.preventDefault();
-        aplicarFiltros();
-    };
 
     const limparFiltros = () => {
         setTermoBusca("");
@@ -154,63 +197,58 @@ function Vagas() {
         setVagasFiltradas(vagas);
     };
 
-    // Adicione esta função antes do return no seu componente
-// Atualize a função renderBotaoCandidatar para esta versão:
-const renderBotaoCandidatar = (vaga) => {
-  const copiarEmail = () => {
-    navigator.clipboard.writeText(vaga.Email)
-      .then(() => {
-        alert('Email copiado! Agora você pode colar no seu cliente de email.');
-      })
-      .catch(err => {
-        console.error('Erro ao copiar email:', err);
-        alert('Erro ao copiar email. Tente novamente.');
-      });
-  };
+    const renderBotaoCandidatar = (vaga: Vaga) => {
+        const copiarEmail = () => {
+            if (vaga.Email) {
+                navigator.clipboard.writeText(vaga.Email)
+                    .then(() => {
+                        alert('Email copiado! Agora você pode colar no seu cliente de email.');
+                    })
+                    .catch(err => {
+                        console.error('Erro ao copiar email:', err);
+                        alert('Erro ao copiar email. Tente novamente.');
+                    });
+            }
+        };
 
-  // Verifica primeiro se há email específico
-  if (vaga.Email) {
-    return (
-      <button 
-        onClick={copiarEmail}
-        className={style.botaoCandidatar}
-      >
-        📧 Candidatar-se por Email (Copiar)
-      </button>
-    );
-  }
-  
-  // Se não tiver email, verifica os outros links
-  const link = vaga.Link_linkdin || vaga.link_site_da_empresa || vaga.link_whatsapp;
-  
-  if (!link) return null;
+        // Verifica primeiro se há email específico
+        if (vaga.Email) {
+            return (
+                <button 
+                    onClick={copiarEmail}
+                    className={style.botaoCandidatar}
+                >
+                    📧 Candidatar-se por Email (Copiar)
+                </button>
+            );
+        }
+        
+        // Se não tiver email, verifica os outros links
+        const link = vaga.Link_linkdin || vaga.link_site_da_empresa || vaga.link_whatsapp;
+        
+        if (!link) return null;
 
-  let textoBotao = " Candidatar-se";
-  
+        let textoBotao = " Candidatar-se";
 
-  if (link.includes("linkedin.com") || link.includes("linkdin")) {
-    textoBotao = " Candidatar-se no LinkedIn";
-    
-  } else if (link.includes("whatsapp")) {
-    textoBotao = " Candidatar-se via WhatsApp";
-    
-  } else {
-    textoBotao = " Candidatar-se no Site";
-    
-  }
+        if (link.includes("linkedin.com") || link.includes("linkdin")) {
+            textoBotao = " Candidatar-se no LinkedIn";
+        } else if (link.includes("whatsapp")) {
+            textoBotao = " Candidatar-se via WhatsApp";
+        } else {
+            textoBotao = " Candidatar-se no Site";
+        }
 
-  return (
-    <a 
-      href={link} 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className={style.botaoCandidatar}
-    >
-    {textoBotao}
-    </a>
-  );
-};
-
+        return (
+            <a 
+                href={link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={style.botaoCandidatar}
+            >
+                {textoBotao}
+            </a>
+        );
+    };
 
     return(
         <>
@@ -226,7 +264,7 @@ const renderBotaoCandidatar = (vaga) => {
                                     <input 
                                         type="checkbox" 
                                         id={`contrato-${tipo}`}
-                                        checked={filtros.tipoContrato[tipo]}
+                                        checked={filtros.tipoContrato[tipo as keyof FiltrosTipoContrato]}
                                         onChange={() => handleFiltroChange('tipoContrato', tipo)}
                                     />
                                     <label htmlFor={`contrato-${tipo}`}>{tipo}</label>
@@ -239,7 +277,7 @@ const renderBotaoCandidatar = (vaga) => {
                                     <input 
                                         type="checkbox" 
                                         id={`area-${area}`}
-                                        checked={filtros.areaAtuacao[area]}
+                                        checked={filtros.areaAtuacao[area as keyof FiltrosAreaAtuacao]}
                                         onChange={() => handleFiltroChange('areaAtuacao', area)}
                                     />
                                     <label htmlFor={`area-${area}`}>{area}</label>
@@ -252,7 +290,7 @@ const renderBotaoCandidatar = (vaga) => {
                                     <input 
                                         type="checkbox" 
                                         id={`modelo-${modelo}`}
-                                        checked={filtros.modelo[modelo]}
+                                        checked={filtros.modelo[modelo as keyof FiltrosModelo]}
                                         onChange={() => handleFiltroChange('modelo', modelo)}
                                     />
                                     <label htmlFor={`modelo-${modelo}`}>{modelo}</label>
@@ -270,20 +308,6 @@ const renderBotaoCandidatar = (vaga) => {
                 )}
 
                 <div className={style.areadevagas}>
-                    {/*
-                    <div className={style.barradebusca}><div className={style.barradebusdevaga}>
-                        <form onSubmit={handleBuscaSubmit}>
-                            <input 
-                                type="text" 
-                                placeholder="Digite a vaga que procura (cargo, localidade, tecnologia...)"
-                                value={termoBusca}
-                                onChange={(e) => setTermoBusca(e.target.value)}
-                            />
-                            <button type="submit">Procurar</button>
-                        </form>
-                    </div>
-                    */}
-
                     <div className={style.infoResultados}>
                         <span>{vagasFiltradas.length} vaga(s) encontrada(s)</span>
                     </div>
@@ -321,7 +345,7 @@ const renderBotaoCandidatar = (vaga) => {
                                             <div className={style.beneficios}>
                                                 <strong>Benefícios:</strong>
                                                 <div className={style.listaBeneficios}>
-                                                    {vaga.beneficios.map((beneficio, idx) => (
+                                                    {vaga.beneficios.map((beneficio: string, idx: number) => (
                                                         <span key={idx} className={style.beneficio}>
                                                             {beneficio}
                                                         </span>
@@ -339,7 +363,6 @@ const renderBotaoCandidatar = (vaga) => {
                 </div>
             </main>
             <br/>
-            
         </>
     );
 }

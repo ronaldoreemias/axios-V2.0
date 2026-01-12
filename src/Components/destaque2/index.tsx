@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import style from "./destaque.module.css";
 
+interface Postagem {
+  link: string;
+  imagem: string;
+  titulo: string;
+  resumo: string;
+}
+
 function Destaque() {
-  const [postagensComFoto, setPostagensComFoto] = useState([]);
+  const [postagensComFoto, setPostagensComFoto] = useState<Postagem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

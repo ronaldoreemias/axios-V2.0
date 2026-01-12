@@ -1,29 +1,57 @@
-import Navbar from "../../Components/NavbarNotificacao";
+import Navbar from "../../Components/Navbar";
 import style from "./Notificacao.module.css";
 import { useState, useEffect, useMemo } from "react";
 import { parse, isToday, isThisWeek, isThisMonth, subMonths, isSameMonth } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
-function importAll(r) {
-  const images = {};
-  r.keys().forEach((item) => { images[item.replace('./', '')] = r(item); });
-  return images;
+// Interface para tipar as postagens
+interface Postagem {
+  titulo: string;
+  data: string;
+  resumo: string;
+  link?: string;
+  imagem?: string;
+  imagemurl?: string;
+  assinatura: string;
 }
 
-const icons = importAll(require.context('../../assets/bugimagem', false, /\.(png|jpe?g|svg|JPG|PNG)$/));
-
 function Notificacao() {
-  const [postagensSemFoto, setPostagensSemFoto] = useState([]);
+  const [postagensSemFoto, setPostagensSemFoto] = useState<Postagem[]>([]);
+  const [icons, setIcons] = useState<Record<string, string>>({});
   const [filtro, setFiltro] = useState("Todos");
 
   useEffect(() => {
+    // Carregar postagens
     fetch('/Dbjason/Postagenssemfoto.json')
       .then((response) => response.json())
-      .then((dados) => setPostagensSemFoto(dados));
+      .then((dados: Postagem[]) => setPostagensSemFoto(dados))
+      .catch(error => console.error('Erro ao carregar postagens:', error));
+    
+    // Carregar imagens dinamicamente
+    const loadImages = async () => {
+      try {
+        // Esta é uma abordagem alternativa sem require
+        // Você precisaria adaptar conforme sua estrutura de arquivos
+        const imageModules = import.meta.glob('../../assets/bugimagem/*.{png,jpg,jpeg,svg,JPG,PNG}');
+        const loadedIcons: Record<string, string> = {};
+        
+        for (const path in imageModules) {
+          const module = await imageModules[path]();
+          const filename = path.split('/').pop() || '';
+          loadedIcons[filename] = (module as any).default;
+        }
+        
+        setIcons(loadedIcons);
+      } catch (error) {
+        console.warn('Erro ao carregar imagens:', error);
+      }
+    };
+    
+    loadImages();
   }, []);
 
   // Função para converter string em Date
-  const parseData = (dataStr) => {
+  const parseData = (dataStr: string): Date | null => {
     try {
       return parse(dataStr, "d 'de' MMMM, yyyy", new Date(), { locale: ptBR });
     } catch {
@@ -103,8 +131,8 @@ function Notificacao() {
               <br />
               {(() => {
                 const filenameFromUrl = postagem.imagemurl ? postagem.imagemurl.split('/').pop() : null;
-                const resolvedImage = icons[postagem.imagem] ||
-                  (filenameFromUrl ? icons[filenameFromUrl] : null) ||
+                const resolvedImage = (postagem.imagem && icons[postagem.imagem]) ||
+                  (filenameFromUrl && icons[filenameFromUrl]) ||
                   postagem.imagemurl || postagem.imagem || null;
                 return resolvedImage ? (
                   <img

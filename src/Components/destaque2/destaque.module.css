@@ -1,0 +1,112 @@
+.Destaque {
+  width: 90%;
+  height: auto;
+  display: grid;
+  grid-template-areas:
+    "destaque1 destaque2"
+    "destaque1 destaque4"
+    "destaque1 destaque3";
+  grid-template-columns: 2fr 1fr;
+  gap: 15px;
+}
+
+.Destaque img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.Destaque img:hover{
+  opacity: 0.5;
+}
+/* Áreas principais */
+.Destaque1 { 
+  grid-area: destaque1; 
+  display: flex;
+  flex-direction: column;
+}
+.Destaque2 { 
+    grid-area: destaque2;  
+}
+
+.Destaque3 { 
+    grid-area: destaque3;  
+}
+
+
+.Destaque4 { 
+    grid-area: destaque4;  
+}
+
+/* Overlay apenas para Destaque1 */
+.overlay {
+  height: 100%;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.overlay h2 {
+  margin: 0;
+  padding: 15px 20px 5px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0a6ebd;
+  line-height: 1.3;
+}
+
+.overlay p {
+  padding: 0 20px 20px;
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+
+/* Apenas imagem nos demais destaques */
+.outros {
+  position: relative; 
+  display: block;
+  border-radius: 8px;
+  overflow: hidden; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  cursor: pointer;
+}
+
+.outros:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.outros img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover; 
+  display: block;
+}
+
+/* TEXTO SOBRE A IMAGEM */
+.outros h2 {
+  position: absolute;
+  bottom: 0; 
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  line-height: 1.3;
+  z-index: 2;
+}
+
+.outros h2:hover{
+  background-color: #444;
+}

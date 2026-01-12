@@ -1,120 +1,256 @@
-.containerHome {
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.ContentHome {
   display: grid;
   grid-template-areas:
-    "header header header"
-    "menu content noticias "
-    "footer footer footer";
-  grid-template-columns: 1fr 3fr 1fr;
-  gap: 10px;
-  background-color: #b8bdc0c2;
-}
-
-.containerHome div.headerHome {
-  grid-area: header;
-  text-align: center;
-  position: sticky;
-  top: 0; 
-  z-index: 10;
-  padding: 0; 
-  background-color: white;
-}
-
-.containerHome div.menuHome {
-  grid-area: menu;
-  position: sticky;
-  top: 50px; 
-  padding: 7px;
-  align-self: start;
-  background-color: rgba(255, 255, 255, 0.486);
-  height: 100vh;
-  overflow-y: scroll;
-  scrollbar-width: none; 
-  -ms-overflow-style: none;
-}
-
-.containerHome div.menuHome::-webkit-scrollbar {
-  display: none;           
-}
-
-
-.containerHome div.contentHome {
-  grid-area: content;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 1%;
-}
-
-.containerHome div.NoticiasHome {
-  grid-area: noticias;
-  position: sticky;
-  top: 50px; 
-  align-self: start;
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-  align-items: center;
-}
-
-.vagasDaSemana{
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
+    " header header"
+    " menu menu"
+    " ad2 ad2"
+    " destaque2 destaque2"
+    "content vagas"
+    " ad ad"
+    " MaisNo MaisNo"
+    " footer footer";
+  grid-template-columns: 3fr 1fr;
+  gap: 4px;
+  background-color: #c4bebe75;
   width: 100%;
-  background-color: #1185ce;
-  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-.containerHome div.footerHome {
-  grid-area: footer;
-  display: none;
+/* Todas as divs internas */
+.ContentHome > div {
   background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(214, 214, 214, 0.1);
+}
+
+/* HEADER */
+.ContentHome .Homeheader {
+  grid-area: header;
+  background-color: rgba(255, 255, 255, 0.781);
+  border-radius: 0px;
+  color: rgba(5, 5, 5, 0.637);
+  text-align: start;
+}
+
+/* Home.module.css */
+
+.ContentHome div.Homemenu {
+  grid-area: menu;
+  display: flex;
+  padding: 0px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  transition: all 0.3s ease;
+}
+
+/* CLASSE FIXED PARA O MENU */
+.ContentHome div.Homemenu.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 0px;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ContentHome .Homemenu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.ContentHome .Homemenu a:hover {
+  background-color: #f0f0f0;
+  color: #003366;
+}
+
+/* Destaque */
+.ContentHome .HomeDestaques {
+    display: none;
     
 }
 
-.slideHome{
+.ContentHome .HomeDestaquesDeskTop {
+    grid-area: destaque2;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    justify-content: center;
+    background-color: #00336600;
+}
+
+/* CONTENT */
+.ContentHome .Homecontent {
+  grid-area: content;
+  max-height: 150vh;
+  overflow-y: scroll;
+}
+
+/* SIDEBAR */
+.ContentHome .HomeSidebar {
+  grid-area: sidebar;
   display: none;
 }
 
-/* começando a estilização mobile */
-
-@media(max-width: 700px){
-  .containerHome {
-    display: grid;
-    grid-template-areas:
-      "header"
-      "content"
-      "footer";
-    grid-template-columns: 1fr;
-    gap: 5px;
-  }
-  .containerHome div.contentHome {
-    margin-top: 0%;
-  }
-  .containerHome div.NoticiasHome {
-    grid-area: noticias;
-    display: none;
-  }
-
-  .containerHome div.menuHome {
-    grid-area: menu;
-    display: none;
-    background-color: white;
-  }
-
-  .containerHome div.footerHome {
-    grid-area: footer;
-    text-align: center;
-    position: sticky;
-    bottom: 0; 
-    display: block;
-  }
-
-  .slideHome{
-    display: block;
-    height: 150px;
-    width: 100%;
-    margin: 5px;
-  }
+/* SIDEBAR */
+.ContentHome .Homevagas {
+  grid-area: vagas;
 }
+.ContentHome .Homevagas .vagasDestaque{
+  padding: 10px;
+  background-color: blue;
+  color: white;
+  margin-bottom: 10px;
+}
+/* ADS */
+.ContentHome .HomeAd {
+  grid-area: ad;
+  background-color: #e9ecef;
+  text-align: center;
+  padding: 40px 20px;
+  border: 2px dashed #ccc;
+  color: #666;
+  font-style: italic;
+}
+
+.ContentHome .HomeAd2 {
+  grid-area: ad2;
+  display: none;
+  background-color: #e9ecef;
+  text-align: center;
+  padding: 40px 20px;
+  border: 2px dashed #ccc;
+  color: #666;
+  font-style: italic;
+}
+
+/* MAIS NOTÍCIAS */
+.ContentHome .HomeMaisNoticias {
+  grid-area: MaisNo;
+  min-height: 60vh;
+}
+
+/* FOOTER */
+.ContentHome .Homefooter {
+  grid-area: footer;
+  text-align: center;
+  padding: 0px;
+}
+
+/* FOOTER MOBILE */
+.ContentHome .HomefooterMobile {
+  display: none;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+
+  .ContentHome {
+    grid-template-areas:
+        "menu"
+        "destaque"
+        "ad"
+        "MaisNo"
+        "content"
+        "footerMob";
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 0;
+  }
+
+  .ContentHome > div {
+    border-radius: 0;
+    box-shadow: none;
+    padding: 15px;
+  }
+
+  .ContentHome .HomeDestaquesDeskTop,
+  .Homeheader,
+  .HomeSidebar,
+  .HomeAd2,
+  .Homefooter {
+    display: none;
+  }
+
+  .ContentHome .Homevagas{
+    display: none;
+  }
+
+  
+
+    .ContentHome .Homemenu {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 60px;
+
+        background-color: white;
+        z-index: 9999;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* Destaque */
+    .ContentHome .HomeDestaques {
+        grid-area: destaque;
+        display: block;
+        margin-top: 13%;
+          height: auto;
+           padding: 4px;
+    }
+    /* CONTENT */
+    .ContentHome .Homecontent {
+        grid-area: content;
+        min-height: auto;
+        margin-left: 0%;
+        padding: 0px;
+        overflow-y: visible;
+    }
+
+
+    .ContentHome .HomefooterMobile {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+
+        background-color: #2c3e50;
+        color: white;
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        padding: 0 10px;
+        z-index: 9999;
+
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+}
+

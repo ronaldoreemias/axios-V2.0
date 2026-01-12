@@ -3,8 +3,16 @@ import style from "./Comentarios.module.css";
 import enviar from "../../assets/enviar.png";
 import { FaSpinner } from "react-icons/fa";
 
+interface Comentario {
+  _id: string;
+  texto: string;
+  criadoEm: string;
+}
+
+
 function Comentarios() {
-  const [comentarios, setComentarios] = useState([]);
+  const [comentarios, setComentarios] = useState<Comentario[]>([]);
+
   const [texto, setTexto] = useState("");
   const [erro, setErro] = useState("");
 
@@ -25,7 +33,7 @@ function Comentarios() {
     fetchComentarios();
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!texto.trim()) return;
 

@@ -1,39 +1,60 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import style from "./Noticias.module.css";
-import ImageSlider from "../../pages/slide/index"; // Adicione o import correto
+import React from "react";
 
-class Filtrarpostagem extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { value: "" };
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({ value: event.target.value });
-        if (this.props.onFilter) {
-            this.props.onFilter(event.target.value);
-        }
-    }
-
-    render() {
-        return (
-            <form className={style.formfiltragem}>
-                <input
-                    type="text"
-                    placeholder="O que está procurando?"
-                    className={style.filtragem}
-                    value={this.state.value}
-                    onChange={this.handleChange}
-                />
-            </form>
-        );
-    }
+interface Postagem {
+  id?: string;
+  link: string;
+  imagem: string;
+  titulo: string;
+  resumo: string;
+  data?: string;
+  conteudo?: string;
 }
 
+interface Props {
+  onFilter?: (termo: string) => void;
+}
+
+interface State {
+  value: string;
+}
+
+class Filtrarpostagem extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = { value: "" };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = event.target.value;
+    this.setState({ value });
+
+    if (this.props.onFilter) {
+      this.props.onFilter(value);
+    }
+  }
+
+  render() {
+    return (
+      <form className={style.formfiltragem}>
+        <input
+          type="text"
+          placeholder="O que está procurando?"
+          className={style.filtragem}
+          value={this.state.value}
+          onChange={this.handleChange}
+        />
+      </form>
+    );
+  }
+}
+
+
 function NoticiasGeral() {
-    const [postagensComFoto, setPostagensComFoto] = useState([]);
-    const [postagensFiltradas, setPostagensFiltradas] = useState([]);
+    const [postagensComFoto, setPostagensComFoto] = useState<Postagem[]>([]);
+    const [postagensFiltradas, setPostagensFiltradas] = useState<Postagem[]>([]);
     const [termoFiltro, setTermoFiltro] = useState("");
     const [loading, setLoading] = useState(true);
 
@@ -56,7 +77,7 @@ function NoticiasGeral() {
             });
     }, []);
 
-    const filtrarPostagens = (termo) => {
+    const filtrarPostagens = (termo: string) => {
         setTermoFiltro(termo);
 
         if (!termo.trim()) {
@@ -84,7 +105,7 @@ function NoticiasGeral() {
     }, [termoFiltro, postagensFiltradas, postagensComFoto]);
 
     return (
-        <>
+        <div className={style.caixagrande}>
             {/* DESTAQUE DO DIA */}
             {!loading && postagemDestaque && (
                 <div className={style.destaqueDoDia}>
@@ -159,27 +180,9 @@ function NoticiasGeral() {
                             )}
                         </div>
                     </div>
-
-                    {/* Conteúdo lateral */}
-                    <div className={style.contentcentro}>
-                        <div className={style.sobre}>
-                            <div className={style.sobretexto}>
-                                <h3>Sobre o Site</h3>
-                                <div className={style.linha}></div>
-                                <br />
-                                <p>
-                                    O blog foi construído para mostrar novidades do mundo tech, mostrar oportunidades de emprego na área, entregar um
-                                    ambiente de comunicação e evolução. Também tem a aba de loja, lá os produtos são confiáveis e com direcionamento
-                                    para plataformas validadas e reais.
-                                </p>
-                                <p>Minha missão é ajudar você a fazer as melhores escolhas tecnológicas e profissionais.</p>
-                            </div>
-                            <ImageSlider />
-                        </div>
-                    </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

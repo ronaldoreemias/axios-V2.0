@@ -5,12 +5,15 @@ function ContactForm() {
   const [result, setResult] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onSubmit = async (event) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSubmitting(true);
     setResult("Enviando...");
     
-    const formData = new FormData(event.target);
+    const form = event.currentTarget; 
+    const formData = new FormData(form);
+    form.reset();
+
     formData.append("access_key", "e68e9ef4-1970-49dd-9559-7f0e05cbc49a");
 
     try {
@@ -23,7 +26,9 @@ function ContactForm() {
       
       if (data.success) {
         setResult("Mensagem enviada com sucesso!");
-        event.target.reset();
+        event.currentTarget.reset();
+        form.reset();
+
       } else {
         setResult("Erro ao enviar a mensagem. Tente novamente.");
       }
@@ -75,7 +80,7 @@ function ContactForm() {
           name="message" 
           className={style.formTextarea}
           required 
-          rows="4"
+          rows={4}
           placeholder="Digite sua pedido detalhado aqui..."
         />
       </div>
