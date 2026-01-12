@@ -160,6 +160,7 @@
   display: none;
 }
 
+
 /* MOBILE */
 @media (max-width: 700px) {
 
@@ -167,73 +168,35 @@
     grid-template-areas:
         "menu"
         "destaque"
+        "content"
         "ad"
         "MaisNo"
-        "content"
-        "footerMob";
+        "footerMob"
+        "header"
+        "ad2"
+        "vagas"
+        " destaque2 "
+        "footer";
     grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 0;
-  }
-
-  .ContentHome > div {
-    border-radius: 0;
-    box-shadow: none;
-    padding: 15px;
   }
 
   .ContentHome .HomeDestaquesDeskTop,
-  .Homeheader,
-  .HomeSidebar,
-  .HomeAd2,
-  .Homefooter {
-    display: none;
+  .ContentHome .Homeheader, 
+  .ContentHome .HomeAd2, 
+  .ContentHome .Homevagas, 
+  .ContentHome .Homefooter { 
+    display: none; 
   }
 
-  .ContentHome .Homevagas{
-    display: none;
-  }
-
-  
-
-    .ContentHome .Homemenu {
-        position: fixed;
-        top: 0;
-        left: 0;
-
-        width: 100%;
-        height: 60px;
-
-        background-color: white;
-        z-index: 9999;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-
-        border-bottom: 1px solid #ddd;
-    }
-
-    /* Destaque */
+     /* Destaque */
     .ContentHome .HomeDestaques {
         grid-area: destaque;
         display: block;
-        margin-top: 13%;
+        margin-top: 15%;
           height: auto;
            padding: 4px;
     }
-    /* CONTENT */
-    .ContentHome .Homecontent {
-        grid-area: content;
-        min-height: auto;
-        margin-left: 0%;
-        padding: 0px;
-        overflow-y: visible;
-    }
-
-
-    .ContentHome .HomefooterMobile {
+   .ContentHome .HomefooterMobile {
         position: fixed;
         bottom: 0;
         left: 0;
@@ -252,5 +215,28 @@
 
         border-top: 1px solid rgba(255,255,255,0.2);
     }
-}
+    .ContentHome .Homemenu {
+        position: fixed;
+        top: 0;
+        left: 0;
 
+        width: 100%;
+        height: 60px;
+
+        background-color: white;
+        z-index: 9999;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        border-bottom: 1px solid #ddd;
+    }  
+    .ContentHome .Homecontent {
+      grid-area: content;
+      max-height: 170vh;
+      overflow-y: scroll;
+    }
+
+}
