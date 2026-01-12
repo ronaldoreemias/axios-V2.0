@@ -57,7 +57,9 @@ function NoticiasGeral() {
     const [postagensFiltradas, setPostagensFiltradas] = useState<Postagem[]>([]);
     const [termoFiltro, setTermoFiltro] = useState("");
     const [loading, setLoading] = useState(true);
+    const [limite, setLimite] = useState(3);
 
+    
     useEffect(() => {
         fetch("/Dbjason/Postagemcomfotos.json")
             .then((response) => {
@@ -77,8 +79,13 @@ function NoticiasGeral() {
             });
     }, []);
 
+    const mostrarMais = () => {
+        setLimite((prev) => prev + 6);
+    };
+
     const filtrarPostagens = (termo: string) => {
         setTermoFiltro(termo);
+        setLimite(3);
 
         if (!termo.trim()) {
             setPostagensFiltradas(postagensComFoto);
@@ -153,31 +160,39 @@ function NoticiasGeral() {
                                 <div className={style.loading}>
                                     <p>Carregando postagens...</p>
                                 </div>
-                            ) : postagensFiltradas.length === 0 ? (
+                                ) : postagensFiltradas.length === 0 ? (
                                 <div className={style.semResultados}>
                                     <p>Nenhuma postagem encontrada{termoFiltro ? ` para "${termoFiltro}"` : ""}</p>
                                 </div>
-                            ) : (
-                                postagensFiltradas.map((postagem) => (
+                                ) : (
+                                <>
+                                    {postagensFiltradas.slice(0, limite).map((postagem) => (
                                     <div key={postagem.id} className={style.postagemComFoto}>
                                         {postagem.imagem && postagem.link && (
-                                            <a href={postagem.link} className={style.lerMais} target="_blank" rel="noopener noreferrer">
-                                                <img src={postagem.imagem} alt={postagem.titulo || "Imagem da postagem"} />
-                                            </a>
+                                        <a href={postagem.link} className={style.lerMais} target="_blank" rel="noopener noreferrer">
+                                            <img src={postagem.imagem} alt={postagem.titulo || "Imagem da postagem"} />
+                                        </a>
                                         )}
                                         <div className={style.conteudo}>
-                                            <h3>{postagem.titulo || "Sem título"}</h3>
-                                            {postagem.data && <div className={style.data}>{postagem.data}</div>}
-                                            <p className={style.resumo}>{postagem.resumo || "Resumo não disponível"}</p>
-                                            {postagem.link && (
-                                                <a href={postagem.link} className={style.lerMais} target="_blank" rel="noopener noreferrer">
-                                                    Ler mais →
-                                                </a>
-                                            )}
+                                        <h3>{postagem.titulo || "Sem título"}</h3>
+                                        {postagem.data && <div className={style.data}>{postagem.data}</div>}
+                                        <p className={style.resumo}>{postagem.resumo || "Resumo não disponível"}</p>
+                                        {postagem.link && (
+                                            <a href={postagem.link} className={style.lerMais} target="_blank" rel="noopener noreferrer">
+                                            Ler mais →
+                                            </a>
+                                        )}
                                         </div>
                                     </div>
-                                ))
-                            )}
+                                    ))}
+
+                                    {limite < postagensFiltradas.length && (
+                                    <button className={style.btnMostrarMais} onClick={mostrarMais}>
+                                        Mostrar mais
+                                    </button>
+                                    )}
+                                </>
+                                )}
                         </div>
                     </div>
                 </div>

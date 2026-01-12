@@ -66,6 +66,9 @@ function Home() {
 
             {/* Área de Destaques Desk-top */}
             <div className={style.HomeDestaquesDeskTop}>
+                <div className={style.titulo}>
+                    Notícias sobre Tecnologia
+                </div>
                 <Destaque2 />
             </div>
 

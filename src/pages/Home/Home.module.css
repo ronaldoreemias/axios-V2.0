@@ -91,17 +91,28 @@
     margin: 0;
     width: 100%;
     display: flex;
+    flex-direction: column;
     margin-bottom: 3%;
     margin-top: 3%;
+    align-items: center;
     justify-content: center;
     background-color: #00336600;
+}
+
+.titulo{
+    width:90%;
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 2rem;
+    font-weight: 600 ;
+    margin-left: 5px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
 }
 
 /* CONTENT */
 .ContentHome .Homecontent {
   grid-area: content;
-  max-height: 150vh;
-  overflow-y: scroll;
 }
 
 /* SIDEBAR */
@@ -234,9 +245,20 @@
         border-bottom: 1px solid #ddd;
     }  
     .ContentHome .Homecontent {
-      grid-area: content;
-      max-height: 170vh;
-      overflow-y: scroll;
+      grid-area: content; 
+      overflow-y: visible;
+      min-height: 0;      
+    }
+
+    .ContentHome .HomeAd {
+      grid-area: ad;
+
+    }
+
+    /* MAIS NOTÍCIAS */
+    .ContentHome .HomeMaisNoticias {
+      grid-area: MaisNo;
+
     }
 
 }

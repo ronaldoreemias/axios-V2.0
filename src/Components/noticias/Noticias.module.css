@@ -1,3 +1,21 @@
+.btnMostrarMais {
+  width: 90%;
+  margin: 20px auto;
+  display: block;
+  padding: 20px 20px;
+  background: #0a6fbd9a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btnMostrarMais:hover {
+  background: #084f8a;
+}
+
 .destaqueImageWrapper{
   position: relative;
   display: block;
@@ -171,7 +189,7 @@
 /* Adicione estas novas regras: */
 .Postagemcomfotos {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1fr);
   gap: 20px;
   width: 100%;
   margin-top: 5%;
@@ -180,12 +198,12 @@
 .Postagemcomfotos .postagemComFoto {
   overflow: hidden;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   background-color: white;
 }
 
 .postagemComFoto img {
-    width: 100%;
+    width: 300px;
     height: 250px;
     object-fit: cover;
 }
