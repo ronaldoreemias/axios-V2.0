@@ -212,14 +212,21 @@
   .cadastrese {
     margin-top: 15px;
     margin-left: 0;
+    gap: 5px;
+    display: flex;
+    align-items: center;
     text-align: center;
     border-radius: 6px;
     width: 100%;
   }
   
+  .userIcon{
+    margin-right: 10px;
+    height: 15px;
+  }
   .userIconContainer {
     width: 100%;
-    margin-left: 0;
+    margin-left: 5px;
     margin-top: 15px;
     text-align: center;
   }
@@ -276,7 +283,7 @@
     margin-top: 5px;
   }
   .textonav img{
-    height: 25px;
+    display: none;
   }
 
 }

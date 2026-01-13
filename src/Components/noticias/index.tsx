@@ -188,7 +188,7 @@ function NoticiasGeral() {
 
                                     {limite < postagensFiltradas.length && (
                                     <button className={style.btnMostrarMais} onClick={mostrarMais}>
-                                        Mostrar mais
+                                        Mostrar mais Notícias
                                     </button>
                                     )}
                                 </>
