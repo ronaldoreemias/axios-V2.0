@@ -1,4 +1,4 @@
-import style from "./Dante.module.css";
+import style from "./dante.module.css";
 import { useState } from "react";
 import Apagar from "../../Components/Lixudospostes";
 
