@@ -1,5 +1,3 @@
-import React from "react";
-
 function DeleteButton() {
   const handleDelete = async () => {
     try {
