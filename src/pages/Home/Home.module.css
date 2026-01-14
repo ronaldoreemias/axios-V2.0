@@ -8,9 +8,10 @@
   grid-template-areas:
     " header header"
     " menu menu"
+    
     " ad2 ad2"
-    " destaque2 destaque2"
     " Reels Reels"
+    " destaque2 destaque2"
     "content vagas"
     " ad ad"
     " MaisNo MaisNo"
@@ -82,8 +83,13 @@
 
 .ContentHome .HomeReels{
   grid-area: Reels;
-  display: none;
-  
+  display: flex;
+  background-color: #00336600;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0px;  
 }
 
 /* Destaque */
