@@ -33,7 +33,7 @@
     left: 0;
     width: 100%;
     padding: 8px;
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 14px;
     font-weight: 600;
     background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
@@ -49,12 +49,12 @@
     .Container {
         width: 100%;
         display: flex;
-        gap: 1px;
+        gap: 5px;
         justify-content: space-between;
     }
     .ReelItem {
         position: relative; 
-        width: 100px;
+        width: 120px;
         height: 150px;
         text-decoration: none;
         color: inherit;
@@ -62,7 +62,28 @@
         border-radius: 10px;
     }
 
-    
+}
 
+@media (min-width: 299px) and (max-width: 399px) {
+    .ReelItem {
+        position: relative; 
+        width: 100px;
+        height: 140px;
+        text-decoration: none;
+        color: inherit;
+        overflow: hidden; 
+        border-radius: 10px;
+    }
+}
 
+@media (max-width: 299px) {
+    .ReelItem {
+        position: relative; 
+        width: 90px;
+        height: 140px;
+        text-decoration: none;
+        color: inherit;
+        overflow: hidden; 
+        border-radius: 10px;
+    }
 }

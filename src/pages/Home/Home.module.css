@@ -83,13 +83,7 @@
 /* começar a estilização dos Reels no home, acho que vai da bom */
 .ContentHome .HomeReels{
   grid-area: Reels;
-  display: flex;
-  background-color: #00336600;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 20px;
+  display: none;
 }
 
 /* Destaque */
