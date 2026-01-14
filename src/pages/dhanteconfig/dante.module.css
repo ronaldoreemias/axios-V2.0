@@ -1,0 +1,49 @@
+.painelConstrole{
+    background-color: black;
+}
+
+.contanderform{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+}
+
+.formulariocomfoto{
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    padding: 10px;
+    gap: 10px;
+    width: 30%;
+    height: 50vh;
+    justify-content: space-between;
+}
+
+.formulariosemfoto{
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    padding: 10px;
+    gap: 10px;
+    width: 30%;
+    height: 50vh;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formulariosemfoto div{
+    width: 90%;
+}
+
+.formulariosemfoto div textarea{ 
+    height: 100px;
+    width: 100%;
+
+}
+.P_do_forme{
+    width: 100%;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+}

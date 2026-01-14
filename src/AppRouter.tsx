@@ -4,6 +4,7 @@ import Chat from "./Components/comentarios";
 import Contato from "./pages/contato";
 import Notificacao from "./pages/Notificacao";
 import Vagas from "./pages/Vagas"
+import DhanteConfig from "./pages/dhanteconfig";
 
 function AppRouter(){
     return(
@@ -14,6 +15,7 @@ function AppRouter(){
                 <Route path="/Comentarios" element={<Chat />} />
                 <Route path="/Notficacao" element={<Notificacao />} />
                 <Route path="/Vagas" element={<Vagas />} />
+                <Route path="/DhanteConfig" element={<DhanteConfig />} />
             </Routes>
         </BrowserRouter>
     );
