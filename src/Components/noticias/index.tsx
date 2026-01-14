@@ -20,6 +20,17 @@ interface State {
   value: string;
 }
 
+const AxiosNewsAviso: React.FC = () => (
+  <div className={style.axiosAviso}>
+    notícia do Axios News
+  </div>
+);
+
+// Função para verificar se o link é do domínio 
+const isAxiosNewsLink = (link: string): boolean => {
+  return link.includes('https://noticiashoje-eight.vercel.app');
+};
+
 class Filtrarpostagem extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -125,6 +136,8 @@ function NoticiasGeral() {
                                         <Filtrarpostagem onFilter={filtrarPostagens} />
                                     </div>
                                     <h1 className={style.destaqueTitle}>{postagemDestaque.titulo || "Destaque"}</h1>
+                                    {/* Aviso para Axios News no destaque */}
+                                    {postagemDestaque.link && isAxiosNewsLink(postagemDestaque.link) && <AxiosNewsAviso />}
                                     {postagemDestaque.data && <div className={style.destaqueDate}>{postagemDestaque.data}</div>}
                                     {postagemDestaque.link && (
                                         <a href={postagemDestaque.link} className={style.lerMais} target="_blank" rel="noopener noreferrer">
@@ -175,6 +188,8 @@ function NoticiasGeral() {
                                         )}
                                         <div className={style.conteudo}>
                                         <h3>{postagem.titulo || "Sem título"}</h3>
+                                        {/* Aviso para Axios News nas postagens normais */}
+                                        {postagem.link && isAxiosNewsLink(postagem.link) && <AxiosNewsAviso />}
                                         {postagem.data && <div className={style.data}>{postagem.data}</div>}
                                         <p className={style.resumo}>{postagem.resumo || "Resumo não disponível"}</p>
                                         {postagem.link && (

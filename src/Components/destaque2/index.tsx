@@ -8,6 +8,18 @@ interface Postagem {
   resumo: string;
 }
 
+// Componente para exibir o aviso Axios News
+const AxiosNewsAviso: React.FC = () => (
+  <div className={style.axiosAviso}>
+    notícia do Axios News
+  </div>
+);
+
+// Função para verificar se o link é do domínio especificado
+const isAxiosNewsLink = (link: string): boolean => {
+  return link.includes('https://noticiashoje-eight.vercel.app');
+};
+
 function Destaque() {
   const [postagensComFoto, setPostagensComFoto] = useState<Postagem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -45,26 +57,30 @@ function Destaque() {
                 color: "white",
                 position: "relative"
             }}
+            key={index} 
             >
         
             {index === 0 ? (
-                // Destaque1 com todas as informações
+                
                 <div className={style.overlay}>
-                    <a href={post.link} target="_blank" >
+                    <a href={post.link} target="_blank" rel="noopener noreferrer">
                         <img src={post.imagem} alt={post.titulo} />
                     </a>
                     <h2>{post.titulo}</h2>
+                   
+                    {isAxiosNewsLink(post.link) && <AxiosNewsAviso />}
                     <p>{post.resumo}</p>
-              
                 </div>
             ) 
             : (
-                // Apenas imagem nos demais
+                
                 <div className={style.outros} >
-                    <a href={post.link} target="_blank" >
+                    <a href={post.link} target="_blank" rel="noopener noreferrer">
                       <img src={post.imagem} alt={post.titulo} className={style.imgOnly} />
                       <h2>{post.titulo}</h2>
                     </a>
+                   
+                    {isAxiosNewsLink(post.link) && <AxiosNewsAviso />}
                 </div>
             )}
             </div>

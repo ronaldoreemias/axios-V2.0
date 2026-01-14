@@ -80,10 +80,10 @@
   color: #003366;
 }
 
-/* começar a estilização dos Reels no home, acho que vai da bom */
 .ContentHome .HomeReels{
   grid-area: Reels;
   display: none;
+  
 }
 
 /* Destaque */

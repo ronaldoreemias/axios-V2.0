@@ -1,3 +1,16 @@
+/* Adicione isto ao seu arquivo Noticias.module.css */
+.axiosAviso {
+  background-color: #ffeb3b;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin: 10px 0;
+  display: inline-block;
+  border-left: 4px solid #ff9800;
+}
+
 .btnMostrarMais {
   width: 90%;
   margin: 20px auto;

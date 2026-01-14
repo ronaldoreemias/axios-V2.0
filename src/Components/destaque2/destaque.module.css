@@ -1,3 +1,37 @@
+.axiosAviso {
+  background-color: rgba(255, 235, 59, 0.95);
+  color: #333;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin: 8px 0;
+  display: inline-block;
+  border-left: 3px solid #ff9800;
+  animation: pulse 2s infinite;
+  z-index: 10;
+  position: relative;
+  max-width: fit-content;
+}
+
+.overlay .axiosAviso {
+  margin: 10px 0;
+  font-size: 0.85rem;
+  padding: 8px 12px;
+}
+
+
+.outros .axiosAviso {
+  margin: 5px 0;
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  position: absolute;
+  bottom: 60px; 
+  left: 10px;
+  right: 10px;
+  text-align: center;
+}
+
 .Destaque {
   width: 90%;
   height: auto;
