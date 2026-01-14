@@ -1,0 +1,68 @@
+.Container {
+    width: 90%;
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+.ReelItem {
+    position: relative; 
+    width: 150px;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden; 
+    border-radius: 10px;
+}
+
+.ReelItem img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+}
+
+.ReelItem img:hover{
+    opacity: 0.5;
+}
+
+
+.titulo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-wrap: break-word;
+
+}
+
+@media (max-width: 700px) {
+
+    .Container {
+        width: 100%;
+        display: flex;
+        gap: 1px;
+        justify-content: space-between;
+    }
+    .ReelItem {
+        position: relative; 
+        width: 100px;
+        height: 150px;
+        text-decoration: none;
+        color: inherit;
+        overflow: hidden; 
+        border-radius: 10px;
+    }
+
+    
+
+
+}

@@ -10,6 +10,7 @@ import NavbarFooter from "../../Components/NavbarFooter";
 import Footer from "../../Components/Footer";
 import AlertaSistema from "../../Components/alertaloja";
 import Newletter from "../../Components/Newsletter";
+import Reels from "../../Components/Reels";
 
 function Home() {
     const menuRef = useRef<HTMLDivElement>(null);
@@ -58,7 +59,16 @@ function Home() {
             <div ref={menuRef} className={style.Homemenu}>
                 <Navbar />
             </div>
+
+            {/* Área de Reels  */}
+            <div className={style.HomeReels}>
+                <div className={style.titulo}>
+                    Notícias do Reels
+                </div>
+                <Reels />
+            </div>
             
+
             {/* Área de Destaques */}
             <div className={style.HomeDestaques}>
                 <Destaque />
