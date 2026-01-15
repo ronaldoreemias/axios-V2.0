@@ -83,6 +83,7 @@ export default function CadastrarPostagem() {
   };
 
   const categoriasPredefinidas = [
+    "notas-fiscais",
     "Tecnologia",
     "Desenvolvimento",
     "Inteligência Artificial",

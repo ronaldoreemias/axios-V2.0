@@ -25,7 +25,9 @@ interface Postagem {
 export default function PostagemDetalhe() {
   const { id } = useParams();
   const [postagem, setPostagem] = useState<Postagem | null>(null);
+  const [ultimasNoticias, setUltimasNoticias] = useState<Postagem[]>([]); // NOVO ESTADO
   const [loading, setLoading] = useState(true);
+  const [loadingUltimas, setLoadingUltimas] = useState(false); // NOVO LOADING
   const [novoComentario, setNovoComentario] = useState("");
   const [isNarrando, setIsNarrando] = useState(false);
   const [voz, setVoz] = useState<string>("Google português do Brasil");
@@ -37,7 +39,6 @@ export default function PostagemDetalhe() {
   useEffect(() => {
     synthRef.current = window.speechSynthesis;
     
-    // Verificar vozes disponíveis
     const carregarVozes = () => {
       const vozes = synthRef.current?.getVoices() || [];
       console.log("Vozes disponíveis:", vozes);
@@ -46,22 +47,49 @@ export default function PostagemDetalhe() {
     synthRef.current.onvoiceschanged = carregarVozes;
     carregarVozes();
 
+    // Carregar postagem atual
     fetch(`https://backendpostagens.vercel.app/api/handler?type=postagensgeral&id=${id}`)
       .then(res => res.json())
       .then(dados => {
         setPostagem(dados);
         setLoading(false);
+        
+        // Após carregar a postagem, buscar últimas notícias
+        carregarUltimasNoticias();
       })
       .catch(err => {
         console.error("Erro ao buscar postagem:", err);
         setLoading(false);
       });
 
-    // Limpar ao desmontar
     return () => {
       pararNarracao();
     };
   }, [id]);
+
+  // Função para carregar últimas notícias
+  const carregarUltimasNoticias = () => { // Remove o parâmetro não usado
+    setLoadingUltimas(true);
+    
+    fetch("https://backendpostagens.vercel.app/api/handler?type=postagensgeral")
+      .then(res => res.json())
+      .then((dados: Postagem[]) => {
+        // Filtrar para não incluir a postagem atual
+        const outrasPostagens = dados.filter(p => p._id !== id);
+        
+        // Ordenar por data (mais recentes primeiro) e pegar 3
+        const ultimas = outrasPostagens
+          .sort((a, b) => new Date(b.dataHora).getTime() - new Date(a.dataHora).getTime())
+          .slice(0, 3);
+        
+        setUltimasNoticias(ultimas);
+        setLoadingUltimas(false);
+      })
+      .catch(err => {
+        console.error("Erro ao buscar últimas notícias:", err);
+        setLoadingUltimas(false);
+      });
+  };
 
   const iniciarNarracao = () => {
     if (!postagem || !synthRef.current) return;
@@ -409,51 +437,101 @@ export default function PostagemDetalhe() {
         {/* Lista de Comentários */}
         <div className={styles.commentsList}>
           {postagem.comentarios && postagem.comentarios.length > 0 ? (
-            
-            postagem.comentarios.map(c => (
-              <div key={c._id || `comment-${Date.now()}-${Math.random()}`} className={styles.commentItem}>
-                <div className={styles.commentHeader}>
-                  <div className={styles.commentAuthor}>
-                    <div className={styles.authorAvatar}>
-                      
-                      {c.autor ? c.autor.charAt(0).toUpperCase() : "?"}
+              postagem.comentarios.map((c, index) => {
+                // Valores seguros
+                const safeAutor = c.autor || "Usuário Anônimo";
+                const safeId = c._id || `comment-${index}-${Date.now()}`;
+                const safeCriadoEm = c.criadoEm ? new Date(c.criadoEm) : new Date();
+                
+                return (
+                  <div key={safeId} className={styles.commentItem}>
+                    <div className={styles.commentHeader}>
+                      <div className={styles.commentAuthor}>
+                        <div className={styles.authorAvatar}>
+                          {safeAutor.charAt(0).toUpperCase()}
+                        </div>
+                        <div className={styles.authorInfo}>
+                          <strong className={styles.authorName}>{safeAutor}</strong>
+                          <time className={styles.commentTime}>
+                            {safeCriadoEm.toLocaleDateString('pt-BR', {
+                              day: 'numeric',
+                              month: 'short',
+                              hour: '2-digit',
+                              minute: '2-digit'
+                            })}
+                          </time>
+                        </div>
+                      </div>
                     </div>
-                    <div className={styles.authorInfo}>
-                      <strong className={styles.authorName}>{c.autor}</strong>
-                      <time className={styles.commentTime}>
-                        {new Date(c.criadoEm).toLocaleDateString('pt-BR', {
+                    <div className={styles.commentBody}>
+                      <p>{c.texto || ""}</p>
+                    </div>
+                    <div className={styles.commentActions}>
+                      <button className={styles.replyBtn}>Responder</button>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div className={styles.noComments}>
+                <p>Seja o primeiro a comentar!</p>
+              </div>
+            )}
+        </div>
+      </section>
+
+      {/* Posts Relacionados */}
+        <section className={styles.relatedPosts}>
+          <h3 className={styles.relatedTitle}>Leia também</h3>
+          
+          {loadingUltimas ? (
+            <div className={styles.loadingUltimas}>
+              <p>Carregando notícias...</p>
+            </div>
+          ) : ultimasNoticias.length > 0 ? (
+            <div className={styles.relatedGrid}>
+              {ultimasNoticias.map((noticia) => (
+                <a 
+                  key={noticia._id} 
+                  href={`/postagem/${noticia._id}`}
+                  className={styles.relatedCard}
+                >
+                  <div className={styles.relatedImageContainer}>
+                    <img 
+                      src={noticia.imagem} 
+                      alt={noticia.titulo}
+                      className={styles.relatedImage}
+                    />
+                    <span className={styles.relatedCategory}>
+                      {noticia.categoria}
+                    </span>
+                  </div>
+                  <div className={styles.relatedContent}>
+                    <h4 className={styles.relatedCardTitle}>{noticia.titulo}</h4>
+                    <p className={styles.relatedCardDesc}>
+                      {noticia.descricao.length > 100 
+                        ? `${noticia.descricao.substring(0, 100)}...` 
+                        : noticia.descricao}
+                    </p>
+                    <div className={styles.relatedMeta}>
+                      <span className={styles.relatedAuthor}>{noticia.autor}</span>
+                      <time className={styles.relatedDate}>
+                        {new Date(noticia.dataHora).toLocaleDateString('pt-BR', {
                           day: 'numeric',
-                          month: 'short',
-                          hour: '2-digit',
-                          minute: '2-digit'
+                          month: 'short'
                         })}
                       </time>
                     </div>
                   </div>
-                </div>
-                <div className={styles.commentBody}>
-                  <p>{c.texto}</p>
-                </div>
-                <div className={styles.commentActions}>
-                  <button className={styles.replyBtn}>Responder</button>
-                </div>
-              </div>
-            ))
+                </a>
+              ))}
+            </div>
           ) : (
-            <div className={styles.noComments}>
-              <p>Seja o primeiro a comentar!</p>
+            <div className={styles.noRelatedPosts}>
+              <p>Não há outras notícias no momento.</p>
             </div>
           )}
-        </div>
-      </section>
-
-      {/* Posts Relacionados (opcional) */}
-      <section className={styles.relatedPosts}>
-        <h3 className={styles.relatedTitle}>Leia também</h3>
-        <div className={styles.relatedGrid}>
-          {/* Aqui você pode adicionar posts relacionados */}
-        </div>
-      </section>
+        </section>
     </div>
   );
 }
