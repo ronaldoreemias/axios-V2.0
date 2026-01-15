@@ -8,10 +8,9 @@
   grid-template-areas:
     " header header"
     " menu menu"
-    
     " ad2 ad2"
-    " Reels Reels"
     " destaque2 destaque2"
+    " Reels Reels"
     "content vagas"
     " ad ad"
     " MaisNo MaisNo"
@@ -131,18 +130,21 @@
 .ContentHome .Homecontent {
   grid-area: content;
   margin-left: 6%;
+  background-color: #00336600;
 }
 
 /* SIDEBAR tirando por enquanto, não sei onde por essa budega */
 .ContentHome .HomeSidebar {
   grid-area: sidebar;
   display: none;
+
 }
 
 /* SIDEBAR */
 .ContentHome .Homevagas {
   grid-area: vagas;
   margin-right: 6%;
+  background-color: #00336600;
 }
 .ContentHome .Homevagas .vagasDestaque{
   padding: 10px;
@@ -223,7 +225,7 @@
     .ContentHome .HomeDestaques {
           grid-area: destaque;
           display: block;
-          margin-top: 19%;
+          margin-top: 15%;
           height: auto;
           padding: 4px;
     }
@@ -260,8 +262,10 @@
     .ContentHome .Homecontent {
       grid-area: content; 
       overflow-y: visible;
+      background-color: #00336600;
+      width: 100%;
       min-height: 0;
-        margin-left: 0;      
+      margin-left: 0;      
     }
 
     .ContentHome .HomeAd {

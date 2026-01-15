@@ -2,7 +2,6 @@ import style from "./Home.module.css";
 import { useEffect, useRef } from "react";
 import Destaque from "../../Components/destaque";
 import Comentarios from "../../Components/comentarios";
-import Noticias from "../../Components/noticias";
 import Destaque2 from "../../Components/destaque2"
 import Vagas from "../../Components/destaqueVagas";
 import Navbar from "../../Components/Navbar";
@@ -11,6 +10,7 @@ import Footer from "../../Components/Footer";
 import AlertaSistema from "../../Components/alertaloja";
 import Newletter from "../../Components/Newsletter";
 import Reels from "../../Components/Reels";
+import PostagensGerais from "../../Components/NotasFiscais";
 
 function Home() {
     const menuRef = useRef<HTMLDivElement>(null);
@@ -45,6 +45,7 @@ function Home() {
 
     return(
         <>
+            {/* é um alerta que fica flutuando na página , não tocar nisso */}
             <AlertaSistema />
             
             <div className={style.ContentHome}>
@@ -60,25 +61,20 @@ function Home() {
                 <Navbar />
             </div>
 
-            {/* Área de Reels  */}
+            {/* Área de Reels / mostra os 3 últimos reeels do 
+            axios noticias ( página de reels da própia página e não de uma rede social externa)   */}
             <div className={style.HomeReels}>
-                <div className={style.titulo}>
-                    Notícias do Reels
-                </div>
                 <Reels />
             </div>
             
 
-            {/* Área de Destaques */}
+            {/* Área de Destaques / só aparece no mobile */}
             <div className={style.HomeDestaques}>
                 <Destaque />
             </div>
 
-            {/* Área de Destaques Desk-top */}
+            {/* Área de Destaques Desk-top / só aparece no desktop */}
             <div className={style.HomeDestaquesDeskTop}>
-                <div className={style.titulo}>
-                    Notícias sobre Tecnologia
-                </div>
                 <Destaque2 />
             </div>
 
@@ -87,19 +83,17 @@ function Home() {
                 <p>Área de Publicidade</p>
             </div>
 
-            {/* Sidebar (coluna direita) - como no Euronews */}
+            {/* Sidebar (coluna direita) mostra as vagas em destaque da semana */}
             <div className={style.Homevagas} >
-                <div className={style.vagasDestaque}>
-                    Vagas de emprego ( Destaque da semana )
-                </div>
                 <Vagas />
             </div>
 
-            {/* Conteúdo Principal (coluna esquerda) */}
+            {/* Conteúdo Principal (coluna esquerda) noticias em geral, tanto do axios noticias quando 
+            de outros sites, linkando para ver a noticias na página original */}
             <div className={style.Homecontent}>
-                <Noticias />
+                <PostagensGerais />
             </div>
-            
+
             {/* Sidebar (coluna direita) - como no Euronews */}
             <div className={style.HomeSidebar} >
                 <Comentarios />
@@ -115,12 +109,12 @@ function Home() {
                 <Newletter />
             </div>
             
-            {/* Footer */}
+            {/* Footer fica tanto no modo desk quando no mobile, não flutua , não faz nada. Ele é só para ficar no final da página */}
             <div className={style.Homefooter}>
                 <Footer />
             </div>
 
-            {/* footerMobile */}
+            {/* footerMobile ele flutua e fica */}
             <div className={style.HomefooterMobile}>
                 <NavbarFooter />
             </div>
