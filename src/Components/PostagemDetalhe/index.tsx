@@ -118,17 +118,47 @@ export default function PostagemDetalhe() {
   };
 
   const handleCurtir = async () => {
-    if (!id) return;
-    try {
-      const res = await fetch(`https://backendpostagens.vercel.app/api/handler?type=postagensgeral&id=${id}`, {
-        method: "PUT"
-      });
-      const atualizado = await res.json();
-      setPostagem(atualizado);
-    } catch (err) {
-      console.error("Erro ao curtir:", err);
+  if (!id) return;
+  
+  try {
+    // FAÇA ASSIM:
+    const res = await fetch(`https://backendpostagens.vercel.app/api/handler?type=postagensgeral&id=${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        // Adicione este header para evitar problemas CORS
+        "Accept": "application/json"
+      }
+    });
+    
+    console.log("Status da resposta:", res.status); // Debug
+    
+    // VERIFIQUE se a resposta é válida
+    if (!res.ok) {
+      throw new Error(`Erro HTTP: ${res.status}`);
     }
-  };
+    
+    // Tente parsear JSON
+    const contentType = res.headers.get("content-type");
+    if (!contentType || !contentType.includes("application/json")) {
+      throw new Error("Resposta não é JSON");
+    }
+    
+    const atualizado = await res.json();
+    console.log("Postagem atualizada:", atualizado); // Debug
+    
+    setPostagem(atualizado);
+    
+  } catch (err) {
+    console.error("Erro ao curtir:", err);
+    
+    // Mostra erro mas não quebra a página
+    alert("Não foi possível curtir. Tente novamente.");
+    
+    // Mantém os dados atuais na tela
+    // Não chame setPostagem(null) ou setLoading(true)
+  }
+};
 
   const handleComentar = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -379,12 +409,14 @@ export default function PostagemDetalhe() {
         {/* Lista de Comentários */}
         <div className={styles.commentsList}>
           {postagem.comentarios && postagem.comentarios.length > 0 ? (
+            
             postagem.comentarios.map(c => (
-              <div key={c._id} className={styles.commentItem}>
+              <div key={c._id || `comment-${Date.now()}-${Math.random()}`} className={styles.commentItem}>
                 <div className={styles.commentHeader}>
                   <div className={styles.commentAuthor}>
                     <div className={styles.authorAvatar}>
-                      {c.autor.charAt(0).toUpperCase()}
+                      
+                      {c.autor ? c.autor.charAt(0).toUpperCase() : "?"}
                     </div>
                     <div className={styles.authorInfo}>
                       <strong className={styles.authorName}>{c.autor}</strong>
