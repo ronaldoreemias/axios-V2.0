@@ -493,7 +493,7 @@ export default function PostagemDetalhe() {
               {ultimasNoticias.map((noticia) => (
                 <a 
                   key={noticia._id} 
-                  href={`/postagem/${noticia._id}`}
+                  href={`/postagensgeral/${noticia._id}`}
                   className={styles.relatedCard}
                 >
                   <div className={styles.relatedImageContainer}>
