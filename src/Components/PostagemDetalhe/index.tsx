@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./PostagemDetalhe.module.css";
 
@@ -27,8 +27,25 @@ export default function PostagemDetalhe() {
   const [postagem, setPostagem] = useState<Postagem | null>(null);
   const [loading, setLoading] = useState(true);
   const [novoComentario, setNovoComentario] = useState("");
+  const [isNarrando, setIsNarrando] = useState(false);
+  const [voz, setVoz] = useState<string>("Google português do Brasil");
+  const [velocidade, setVelocidade] = useState(1);
+  const [volume, setVolume] = useState(1);
+  const synthRef = useRef<SpeechSynthesis | null>(null);
+  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   useEffect(() => {
+    synthRef.current = window.speechSynthesis;
+    
+    // Verificar vozes disponíveis
+    const carregarVozes = () => {
+      const vozes = synthRef.current?.getVoices() || [];
+      console.log("Vozes disponíveis:", vozes);
+    };
+    
+    synthRef.current.onvoiceschanged = carregarVozes;
+    carregarVozes();
+
     fetch(`https://backendpostagens.vercel.app/api/handler?type=postagensgeral&id=${id}`)
       .then(res => res.json())
       .then(dados => {
@@ -39,7 +56,66 @@ export default function PostagemDetalhe() {
         console.error("Erro ao buscar postagem:", err);
         setLoading(false);
       });
+
+    // Limpar ao desmontar
+    return () => {
+      pararNarracao();
+    };
   }, [id]);
+
+  const iniciarNarracao = () => {
+    if (!postagem || !synthRef.current) return;
+
+    pararNarracao();
+
+    const textoParaNarrar = `
+      ${postagem.titulo}. 
+      ${postagem.descricao}.
+      ${postagem.artigo}
+    `;
+
+    const utterance = new SpeechSynthesisUtterance(textoParaNarrar);
+    utteranceRef.current = utterance;
+
+    // Configurar voz
+    const vozes = synthRef.current.getVoices();
+    const vozSelecionada = vozes.find(v => v.name.includes(voz)) || vozes.find(v => v.lang.includes('pt')) || vozes[0];
+    
+    if (vozSelecionada) {
+      utterance.voice = vozSelecionada;
+    }
+
+    // Configurar parâmetros
+    utterance.rate = velocidade;
+    utterance.volume = volume;
+    utterance.lang = 'pt-BR';
+
+    // Event listeners
+    utterance.onstart = () => setIsNarrando(true);
+    utterance.onend = () => setIsNarrando(false);
+    utterance.onerror = () => setIsNarrando(false);
+
+    synthRef.current.speak(utterance);
+  };
+
+  const pararNarracao = () => {
+    if (synthRef.current && synthRef.current.speaking) {
+      synthRef.current.cancel();
+      setIsNarrando(false);
+    }
+  };
+
+  const pausarOuContinuarNarracao = () => {
+    if (!synthRef.current) return;
+
+    if (synthRef.current.paused) {
+      synthRef.current.resume();
+      setIsNarrando(true);
+    } else if (synthRef.current.speaking) {
+      synthRef.current.pause();
+      setIsNarrando(false);
+    }
+  };
 
   const handleCurtir = async () => {
     if (!id) return;
@@ -127,6 +203,7 @@ export default function PostagemDetalhe() {
         </div>
       </header>
 
+
       {/* Imagem Principal */}
       <div className={styles.featuredImageContainer}>
         <img 
@@ -141,6 +218,94 @@ export default function PostagemDetalhe() {
 
       {/* Conteúdo do Artigo */}
       <main className={styles.articleContent}>
+        
+      {/* Controles de Narração */}
+      <div className={styles.narrationControls}>
+        <h3 className={styles.narrationTitle}>
+          <span className={styles.narrationIcon}></span> Ouvir Artigo
+        </h3>
+        
+        <div className={styles.controlsRow}>
+          <div className={styles.controlGroup}>
+            <label htmlFor="vozSelect">Voz:</label>
+            <select 
+              id="vozSelect"
+              value={voz}
+              onChange={(e) => setVoz(e.target.value)}
+              className={styles.controlSelect}
+              disabled={isNarrando}
+            >
+              <option value="Google português do Brasil">Google Português</option>
+              <option value="Microsoft Maria Desktop - Portuguese(Brazil)">Microsoft Maria</option>
+              <option value="Luciana">Luciana (iOS)</option>
+            </select>
+          </div>
+
+          <div className={styles.controlGroup}>
+            <label htmlFor="velocidadeRange">Velocidade: {velocidade.toFixed(1)}x</label>
+            <input
+              id="velocidadeRange"
+              type="range"
+              min="0.5"
+              max="2"
+              step="0.1"
+              value={velocidade}
+              onChange={(e) => setVelocidade(parseFloat(e.target.value))}
+              className={styles.controlRange}
+              disabled={isNarrando}
+            />
+          </div>
+
+          <div className={styles.controlGroup}>
+            <label htmlFor="volumeRange">Volume: {Math.round(volume * 100)}%</label>
+            <input
+              id="volumeRange"
+              type="range"
+              min="0"
+              max="1"
+              step="0.1"
+              value={volume}
+              onChange={(e) => setVolume(parseFloat(e.target.value))}
+              className={styles.controlRange}
+              disabled={isNarrando}
+            />
+          </div>
+        </div>
+
+        <div className={styles.narrationButtons}>
+          <button
+            onClick={iniciarNarracao}
+            disabled={isNarrando}
+            className={`${styles.narrationBtn} ${styles.playBtn}`}
+          >
+            <span className={styles.btnIcon}>▶️</span>
+            <span>Ouvir Artigo</span>
+          </button>
+
+          <button
+            onClick={pausarOuContinuarNarracao}
+            className={`${styles.narrationBtn} ${styles.pauseBtn}`}
+          >
+            <span className={styles.btnIcon}>{isNarrando ? '⏸️' : '▶️'}</span>
+            <span>{isNarrando ? 'Pausar' : 'Continuar'}</span>
+          </button>
+
+          <button
+            onClick={pararNarracao}
+            className={`${styles.narrationBtn} ${styles.stopBtn}`}
+          >
+            <span className={styles.btnIcon}>⏹️</span>
+            <span>Parar</span>
+          </button>
+        </div>
+
+        {isNarrando && (
+          <div className={styles.narrationStatus}>
+            <div className={styles.statusIndicator}></div>
+            <span className={styles.statusText}>Narrando...</span>
+          </div>
+        )}
+      </div>
         <div className={styles.contentWrapper}>
           <article className={styles.articleBody}>
             {postagem.artigo.split('\n').map((paragraph, index) => (

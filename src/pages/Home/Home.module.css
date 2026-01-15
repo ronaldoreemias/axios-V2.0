@@ -3,6 +3,26 @@
   box-sizing: border-box;
 }
 
+
+.categoryHeader {
+  display: flex;
+  width: 90%;
+  align-items: start;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #001fcc;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+  flex-grow: 1;
+  text-transform: capitalize;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+
+
+
 .ContentHome {
   display: grid;
   grid-template-areas:
