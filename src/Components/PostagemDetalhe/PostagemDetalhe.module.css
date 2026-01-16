@@ -1,3 +1,190 @@
+/* Novos estilos para as funcionalidades de formatação */
+
+.markdownHelp {
+  margin-top: 20px;
+}
+
+.helpDropdown {
+  background: #f8f9fa;
+  border: 2px solid #e3e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.helpDropdown summary {
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #3498db;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.helpDropdown summary:hover {
+  background: #e8f4fc;
+  color: #2980b9;
+}
+
+.helpDropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.helpDropdown summary::after {
+  content: '▼';
+  margin-left: auto;
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.helpDropdown[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.helpContent {
+  padding: 20px;
+  background: white;
+  border-top: 2px solid #e3e8f0;
+}
+
+.markdownTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.markdownTable th {
+  background: #f8f9fa;
+  color: #2c3e50;
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 15px;
+  border-bottom: 2px solid #e3e8f0;
+}
+
+.markdownTable td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e3e8f0;
+  vertical-align: middle;
+}
+
+.markdownTable code {
+  background: #f8f9fa;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  color: #e74c3c;
+  font-size: 13px;
+}
+
+.markdownTable tr:hover {
+  background: #f8fbfe;
+}
+
+/* Atualização dos botões de ferramentas */
+.editorTools {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 2px solid #e3e8f0;
+  flex-wrap: wrap;
+}
+
+.toolButton {
+  background: white;
+  border: 2px solid #d5dbdd;
+  border-radius: 8px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: #34495e;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.toolButton:hover {
+  background: #3498db;
+  border-color: #3498db;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
+}
+
+.toolButton:active {
+  transform: translateY(0);
+}
+
+/* Melhorias para o textarea */
+.articleTextarea {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  line-height: 1.6;
+  tab-size: 2;
+}
+
+/* Shortcut hints */
+.toolButton {
+  position: relative;
+}
+
+.toolButton::after {
+  content: attr(title);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2c3e50;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 1000;
+  font-weight: normal;
+}
+
+.toolButton:hover::after {
+  opacity: 1;
+  visibility: visible;
+  bottom: calc(100% + 5px);
+}
+
+/* Responsividade para os botões */
+@media (max-width: 768px) {
+  .editorTools {
+    gap: 8px;
+    padding: 12px;
+  }
+  
+  .toolButton {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+  
+  .markdownTable {
+    font-size: 12px;
+  }
+  
+  .markdownTable th,
+  .markdownTable td {
+    padding: 8px 10px;
+  }
+}
 /* Posts Relacionados */
 .relatedPosts {
   margin-top: 4rem;

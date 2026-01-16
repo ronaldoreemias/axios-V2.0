@@ -129,7 +129,6 @@ function PostagensGerais() {
                     </p>
                     <div className={style.postMeta}>
                       <div className={style.authorInfo}>
-                        <span className={style.authorIcon}>👤</span>
                         <span className={style.authorName}>{post.autor}</span>
                       </div>
                       <time className={style.postDate}>

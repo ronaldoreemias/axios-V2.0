@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import styles from "./CadastrarPostagem.module.css";
 
 interface PostagemFormData {
@@ -30,6 +30,7 @@ export default function CadastrarPostagem() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -37,6 +38,94 @@ export default function CadastrarPostagem() {
       ...prev,
       [name]: value
     }));
+  };
+
+  // Função para formatar texto no textarea
+  const formatText = (format: string) => {
+    if (!textareaRef.current) return;
+
+    const textarea = textareaRef.current;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const selectedText = formData.artigo.substring(start, end);
+    let newText = formData.artigo;
+    let newCursorPos = end;
+
+    switch (format) {
+      case 'bold':
+        const boldText = selectedText ? `**${selectedText}**` : '**texto em negrito**';
+        newText = formData.artigo.substring(0, start) + boldText + formData.artigo.substring(end);
+        newCursorPos = start + (selectedText ? boldText.length : 2);
+        break;
+      
+      case 'italic':
+        const italicText = selectedText ? `*${selectedText}*` : '*texto em itálico*';
+        newText = formData.artigo.substring(0, start) + italicText + formData.artigo.substring(end);
+        newCursorPos = start + (selectedText ? italicText.length : 1);
+        break;
+      
+      case 'link':
+        const linkText = selectedText ? `[${selectedText}](https://exemplo.com)` : '[texto do link](https://exemplo.com)';
+        newText = formData.artigo.substring(0, start) + linkText + formData.artigo.substring(end);
+        newCursorPos = start + (selectedText ? linkText.length : 1);
+        break;
+      
+      case 'list':
+        const listText = selectedText ? 
+          `\n- ${selectedText.split('\n').join('\n- ')}` : 
+          '\n- Item da lista\n- Outro item';
+        newText = formData.artigo.substring(0, start) + listText + formData.artigo.substring(end);
+        newCursorPos = start + listText.length;
+        break;
+      
+      case 'h2':
+        const h2Text = selectedText ? `\n## ${selectedText}\n` : '\n## Título\n';
+        newText = formData.artigo.substring(0, start) + h2Text + formData.artigo.substring(end);
+        newCursorPos = start + h2Text.length - 1;
+        break;
+      
+      case 'h3':
+        const h3Text = selectedText ? `\n### ${selectedText}\n` : '\n### Subtítulo\n';
+        newText = formData.artigo.substring(0, start) + h3Text + formData.artigo.substring(end);
+        newCursorPos = start + h3Text.length - 1;
+        break;
+      
+      case 'code':
+        const codeText = selectedText ? `\`${selectedText}\`` : '`código`';
+        newText = formData.artigo.substring(0, start) + codeText + formData.artigo.substring(end);
+        newCursorPos = start + (selectedText ? codeText.length : 1);
+        break;
+      
+      case 'blockquote':
+        const quoteText = selectedText ? `\n> ${selectedText.split('\n').join('\n> ')}\n` : '\n> Citação\n';
+        newText = formData.artigo.substring(0, start) + quoteText + formData.artigo.substring(end);
+        newCursorPos = start + quoteText.length - 1;
+        break;
+      
+      case 'hr':
+        newText = formData.artigo.substring(0, start) + '\n---\n' + formData.artigo.substring(end);
+        newCursorPos = start + 5;
+        break;
+      
+      case 'image':
+        const imageText = selectedText ? 
+          `\n![${selectedText}](${formData.imagem || 'https://exemplo.com/imagem.jpg'})\n` : 
+          '\n![Descrição da imagem](https://exemplo.com/imagem.jpg)\n';
+        newText = formData.artigo.substring(0, start) + imageText + formData.artigo.substring(end);
+        newCursorPos = start + imageText.length - 1;
+        break;
+    }
+
+    setFormData(prev => ({
+      ...prev,
+      artigo: newText
+    }));
+
+    // Foca no textarea e atualiza a seleção
+    setTimeout(() => {
+      textarea.focus();
+      textarea.setSelectionRange(newCursorPos, newCursorPos);
+    }, 10);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -308,31 +397,149 @@ export default function CadastrarPostagem() {
                 
                 <div className={styles.formGroup}>
                   <label htmlFor="artigo" className={styles.formLabel}>
-                    Artigo Completo *
+                    Artigo Completo (suporta Markdown) *
                   </label>
                   <textarea
+                    ref={textareaRef}
                     id="artigo"
                     name="artigo"
                     value={formData.artigo}
                     onChange={handleChange}
-                    placeholder="Digite o conteúdo completo do artigo aqui..."
+                    placeholder="Digite o conteúdo completo do artigo aqui... Use os botões abaixo para formatação."
                     className={`${styles.formInput} ${styles.articleTextarea}`}
                     required
                     rows={12}
                   />
                   <div className={styles.editorTools}>
-                    <button type="button" className={styles.toolButton} title="Negrito">
+                    <button 
+                      type="button" 
+                      className={styles.toolButton} 
+                      onClick={() => formatText('bold')}
+                      title="Negrito (Ctrl+B)"
+                    >
                       <strong>B</strong>
                     </button>
-                    <button type="button" className={styles.toolButton} title="Itálico">
+                    <button 
+                      type="button" 
+                      className={styles.toolButton} 
+                      onClick={() => formatText('italic')}
+                      title="Itálico (Ctrl+I)"
+                    >
                       <em>I</em>
                     </button>
-                    <button type="button" className={styles.toolButton} title="Link">
+                    <button 
+                      type="button" 
+                      className={styles.toolButton} 
+                      onClick={() => formatText('h2')}
+                      title="Título 2"
+                    >
+                      H2
+                    </button>
+                    <button 
+                      type="button" 
+                      className={styles.toolButton} 
+                      onClick={() => formatText('h3')}
+                      title="Título 3"
+                    >
+                      H3
+                    </button>
+                    <button 
+                      type="button" 
+                      className={styles.toolButton} 
+                      onClick={() => formatText('link')}
+                      title="Link (Ctrl+K)"
+                    >
                       🔗
                     </button>
-                    <button type="button" className={styles.toolButton} title="Lista">
+                    <button 
+                      type="button" 
+                      className={styles.toolButton} 
+                      onClick={() => formatText('image')}
+                      title="Inserir Imagem"
+                    >
+                      🖼️
+                    </button>
+                    <button 
+                      type="button" 
+                      className={styles.toolButton} 
+                      onClick={() => formatText('list')}
+                      title="Lista"
+                    >
                       📋
                     </button>
+                    <button 
+                      type="button" 
+                      className={styles.toolButton} 
+                      onClick={() => formatText('code')}
+                      title="Código"
+                    >
+                      {`</>`}
+                    </button>
+                    <button 
+                      type="button" 
+                      className={styles.toolButton} 
+                      onClick={() => formatText('blockquote')}
+                      title="Citação"
+                    >
+                      ❝
+                    </button>
+                    <button 
+                      type="button" 
+                      className={styles.toolButton} 
+                      onClick={() => formatText('hr')}
+                      title="Linha Horizontal"
+                    >
+                      ⎯
+                    </button>
+                  </div>
+                  
+                  <div className={styles.markdownHelp}>
+                    <details className={styles.helpDropdown}>
+                      <summary>📖 Guia Rápido de Markdown</summary>
+                      <div className={styles.helpContent}>
+                        <table className={styles.markdownTable}>
+                          <thead>
+                            <tr>
+                              <th>Formatação</th>
+                              <th>Markdown</th>
+                              <th>Resultado</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Negrito</td>
+                              <td><code>**texto**</code></td>
+                              <td><strong>texto</strong></td>
+                            </tr>
+                            <tr>
+                              <td>Itálico</td>
+                              <td><code>*texto*</code></td>
+                              <td><em>texto</em></td>
+                            </tr>
+                            <tr>
+                              <td>Título 2</td>
+                              <td><code>## Título</code></td>
+                              <td><h3>Título</h3></td>
+                            </tr>
+                            <tr>
+                              <td>Link</td>
+                              <td><code>[texto](url)</code></td>
+                              <td><a href="#">texto</a></td>
+                            </tr>
+                            <tr>
+                              <td>Imagem</td>
+                              <td><code>![alt](url)</code></td>
+                              <td>Imagem</td>
+                            </tr>
+                            <tr>
+                              <td>Lista</td>
+                              <td><code>- item</code></td>
+                              <td>• item</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </details>
                   </div>
                 </div>
               </div>
@@ -516,7 +723,25 @@ export default function CadastrarPostagem() {
                 <span className={styles.actionIcon}>⚙️</span>
                 Configurações
               </button>
-              <button className={styles.quickAction}>
+              <button 
+                className={styles.quickAction}
+                onClick={() => {
+                  setFormData({
+                    titulo: "",
+                    descricao: "",
+                    imagem: "",
+                    artigo: "",
+                    autor: "",
+                    categoria: "",
+                    tags: "",
+                    dataPublicacao: new Date().toISOString().split('T')[0],
+                    miniatura: "",
+                    fonte: ""
+                  });
+                  setSuccessMessage("Formulário limpo com sucesso!");
+                  setTimeout(() => setSuccessMessage(""), 3000);
+                }}
+              >
                 <span className={styles.actionIcon}>🔄</span>
                 Limpar Formulário
               </button>
@@ -530,16 +755,16 @@ export default function CadastrarPostagem() {
             </div>
             <ul className={styles.tipsList}>
               <li className={styles.tipItem}>
-                Use títulos chamativos e com até 70 caracteres
+                Use os botões de formatação para adicionar negrito, itálico, etc.
               </li>
               <li className={styles.tipItem}>
-                Inclua palavras-chave no título e descrição
+                Selecione texto antes de clicar nos botões para formatar
               </li>
               <li className={styles.tipItem}>
-                Imagens em HD melhoram o engajamento
+                O editor usa Markdown - veja o guia para mais opções
               </li>
               <li className={styles.tipItem}>
-                Divida o conteúdo em parágrafos curtos
+                Use ## para títulos e ### para subtítulos
               </li>
             </ul>
           </div>
