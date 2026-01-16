@@ -7,6 +7,9 @@ interface Comentario {
   texto: string;
   autor: string;
   criadoEm: string;
+  respostas?: Comentario[]; 
+  postId?: string; 
+  comentarioPaiId?: string; 
 }
 
 interface Postagem {
@@ -35,6 +38,11 @@ export default function PostagemDetalhe() {
   const [volume, setVolume] = useState(1);
   const synthRef = useRef<SpeechSynthesis | null>(null);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const [nomeUsuario, setNomeUsuario] = useState(""); // Novo estado para nome
+  const [respondendoA, setRespondendoA] = useState<string | null>(null); // ID do comentário sendo respondido
+  const [respostaTexto, setRespostaTexto] = useState(""); // Texto da resposta
+  const [respostaNome, setRespostaNome] = useState(""); // Nome para resposta
+  const [respondendoAutor, setRespondendoAutor] = useState<string>("");
 
   useEffect(() => {
     synthRef.current = window.speechSynthesis;
@@ -188,22 +196,72 @@ export default function PostagemDetalhe() {
   }
 };
 
-  const handleComentar = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!novoComentario.trim()) return;
-    try {
-      const res = await fetch(`https://backendpostagens.vercel.app/api/handler?type=comentario`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ texto: novoComentario, autor: "Usuário", postId: id })
+    const handleComentar = async (e: React.FormEvent) => {
+      e.preventDefault();
+      
+      if (respondendoA) {
+        // Se está respondendo a um comentário
+        if (!respostaTexto.trim() || !respostaNome.trim()) return;
+        
+        try {
+          const res = await fetch(`https://backendpostagens.vercel.app/api/handler?type=comentario`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 
+              texto: respostaTexto, 
+              autor: respostaNome, 
+              postId: id,
+              comentarioPaiId: respondendoA
+            })
+          });
+          const atualizado = await res.json();
+          setPostagem(atualizado);
+          
+          // Limpa TODOS os estados de resposta
+          setRespostaTexto("");
+          setRespostaNome("");
+          setRespondendoA(null);
+          setRespondendoAutor("");
+          
+        } catch (err) {
+          console.error("Erro ao responder comentário:", err);
+        }
+      } else {
+        // Se é um novo comentário principal
+        if (!novoComentario.trim() || !nomeUsuario.trim()) return;
+        
+        try {
+          const res = await fetch(`https://backendpostagens.vercel.app/api/handler?type=comentario`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 
+              texto: novoComentario, 
+              autor: nomeUsuario, 
+              postId: id 
+            })
+          });
+          const atualizado = await res.json();
+          setPostagem(atualizado);
+          setNovoComentario("");
+          setNomeUsuario("");
+        } catch (err) {
+          console.error("Erro ao comentar:", err);
+        }
+      }
+    };
+
+    const iniciarResposta = (comentarioId: string, autor: string) => {
+      setRespondendoA(comentarioId);
+      setRespondendoAutor(autor); 
+      setRespostaTexto(`@${autor} `); 
+      setRespostaNome("");
+      
+      // Rolagem suave para o formulário
+      document.querySelector(`.${styles.commentForm}`)?.scrollIntoView({ 
+        behavior: 'smooth' 
       });
-      const atualizado = await res.json();
-      setPostagem(atualizado);
-      setNovoComentario("");
-    } catch (err) {
-      console.error("Erro ao comentar:", err);
-    }
-  };
+    };
+
 
   const handleCompartilhar = async () => {
     const url = window.location.href;
@@ -416,35 +474,90 @@ export default function PostagemDetalhe() {
         </div>
 
         {/* Formulário de Comentário */}
-        <form onSubmit={handleComentar} className={styles.commentForm}>
-          <div className={styles.formGroup}>
-            <textarea
-              value={novoComentario}
-              onChange={e => setNovoComentario(e.target.value)}
-              placeholder="Escreva seu comentário..."
-              className={styles.commentTextarea}
-              rows={4}
-            />
-          </div>
-          <div className={styles.formActions}>
-            <button 
-              type="submit" 
-              className={styles.submitCommentBtn}
-              disabled={!novoComentario.trim()}
-            >
-              Publicar comentário
-            </button>
-          </div>
-        </form>
+          <form onSubmit={handleComentar} className={styles.commentForm}>
+            <div className={styles.formHeader}>
+              <h4>
+                {respondendoA ? "Responder comentário" : "Adicionar comentário"}
+              </h4>
+              
+              {respondendoA && (
+                <div className={styles.replyingTo}>
+                  <div className={styles.replyingToInfo}>
+                    <span className={styles.replyingToLabel}>Respondendo a:</span>
+                    <span className={styles.replyingToAuthor}>
+                      <span className={styles.authorAvatarSmall}>
+                        {respondendoAutor.charAt(0).toUpperCase()}
+                      </span>
+                      {respondendoAutor}
+                    </span>
+                  </div>
+                  <button 
+                    type="button" 
+                    onClick={() => {
+                      setRespondendoA(null);
+                      setRespondendoAutor("");
+                    }}
+                    className={styles.cancelReplyBtn}
+                  >
+                    Cancelar resposta
+                  </button>
+                </div>
+              )}
+            </div>
+            
+            {/* Resto do formulário permanece igual */}
+            <div className={styles.formGroup}>
+              <input
+                type="text"
+                value={respondendoA ? respostaNome : nomeUsuario}
+                onChange={(e) => respondendoA ? setRespostaNome(e.target.value) : setNomeUsuario(e.target.value)}
+                placeholder="Seu nome"
+                className={styles.nameInput}
+                required
+              />
+            </div>
+            
 
+            
+            <div className={styles.formGroup}>
+              <textarea
+                value={respondendoA ? respostaTexto : novoComentario}
+                onChange={(e) => respondendoA ? setRespostaTexto(e.target.value) : setNovoComentario(e.target.value)}
+                placeholder={respondendoA ? "Escreva sua resposta..." : "Escreva seu comentário..."}
+                className={styles.commentTextarea}
+                rows={4}
+                required
+              />
+            </div>
+            
+            <div className={styles.formActions}>
+              <button 
+                type="submit" 
+                className={styles.submitCommentBtn}
+                disabled={respondendoA ? 
+                  !respostaTexto.trim() || !respostaNome.trim() : 
+                  !novoComentario.trim() || !nomeUsuario.trim()
+                }
+              >
+                {respondendoA ? "Publicar resposta" : "Publicar comentário"}
+              </button>
+            </div>
+          </form>
         {/* Lista de Comentários */}
+
         <div className={styles.commentsList}>
           {postagem.comentarios && postagem.comentarios.length > 0 ? (
-              postagem.comentarios.map((c, index) => {
-                // Valores seguros
+            postagem.comentarios
+              .filter(c => !c.comentarioPaiId) // Apenas comentários principais
+              .map((c) => {
                 const safeAutor = c.autor || "Usuário Anônimo";
-                const safeId = c._id || `comment-${index}-${Date.now()}`;
+                const safeId = c._id || `comment-${Date.now()}`;
                 const safeCriadoEm = c.criadoEm ? new Date(c.criadoEm) : new Date();
+                
+                // Encontrar respostas para este comentário
+                const respostas = postagem.comentarios?.filter(r => 
+                  r.comentarioPaiId === c._id
+                ) || [];
                 
                 return (
                   <div key={safeId} className={styles.commentItem}>
@@ -466,20 +579,72 @@ export default function PostagemDetalhe() {
                         </div>
                       </div>
                     </div>
+                    
                     <div className={styles.commentBody}>
                       <p>{c.texto || ""}</p>
                     </div>
+                    
                     <div className={styles.commentActions}>
-                      <button className={styles.replyBtn}>Responder</button>
+                      <button 
+                        onClick={() => iniciarResposta(safeId, safeAutor)}
+                        className={styles.replyBtn}
+                      >
+                        
+                        Responder
+                      </button>
+                      
+                      {respostas.length > 0 && (
+                        <span className={styles.replyCount}>
+                          {respostas.length} resposta{respostas.length !== 1 ? 's' : ''}
+                        </span>
+                      )}
                     </div>
+                    
+                    {/* Seção de Respostas */}
+                    {respostas.length > 0 && (
+                      <div className={styles.repliesSection}>
+                        {respostas.map((resposta, index) => {
+                          const safeRespostaAutor = resposta.autor || "Usuário Anônimo";
+                          const safeRespostaId = resposta._id || `reply-${index}`;
+                          const safeRespostaData = resposta.criadoEm ? 
+                            new Date(resposta.criadoEm) : new Date();
+                          
+                          return (
+                            <div key={safeRespostaId} className={styles.replyItem}>
+                              <div className={styles.replyHeader}>
+                                <div className={styles.replyAuthor}>
+                                  <div className={styles.replyAvatar}>
+                                    {safeRespostaAutor.charAt(0).toUpperCase()}
+                                  </div>
+                                  <div className={styles.replyAuthorInfo}>
+                                    <strong>{safeRespostaAutor}</strong>
+                                    <time>
+                                      {safeRespostaData.toLocaleDateString('pt-BR', {
+                                        day: 'numeric',
+                                        month: 'short',
+                                        hour: '2-digit',
+                                        minute: '2-digit'
+                                      })}
+                                    </time>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className={styles.replyBody}>
+                                <p>{resposta.texto || ""}</p>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 );
               })
-            ) : (
-              <div className={styles.noComments}>
-                <p>Seja o primeiro a comentar!</p>
-              </div>
-            )}
+          ) : (
+            <div className={styles.noComments}>
+              <p>Seja o primeiro a comentar!</p>
+            </div>
+          )}
         </div>
       </section>
 

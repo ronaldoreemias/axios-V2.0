@@ -1,4 +1,241 @@
-/* Novos estilos para as funcionalidades de formatação */
+/* Estilos para o formulário de comentários */
+.formHeader {
+  margin-bottom: 1rem;
+}
+
+.replyingTo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f0f7ff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border-left: 3px solid #007bff;
+}
+
+.cancelReplyBtn {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  font-size: 0.875rem;
+  text-decoration: underline;
+}
+
+.cancelReplyBtn:hover {
+  color: #ff0000;
+}
+
+.nameInput {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.nameInput:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Estilos para respostas */
+.replyBtn {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.replyBtn:hover {
+  background-color: #f0f7ff;
+}
+
+.replyIcon {
+  font-size: 0.75rem;
+}
+
+.replyCount {
+  margin-left: 1rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.repliesSection {
+  margin-left: 2rem;
+  margin-top: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid #e0e0e0;
+}
+
+.replyItem {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.replyHeader {
+  margin-bottom: 0.5rem;
+}
+
+.replyAuthor {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.replyAvatar {
+  width: 24px;
+  height: 24px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.replyAuthorInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.replyAuthorInfo strong {
+  font-size: 0.875rem;
+}
+
+.replyAuthorInfo time {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.replyBody p {
+  font-size: 0.875rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Ajuste para o botão de resposta no comentário */
+.commentActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Botão de envio do formulário */
+.submitCommentBtn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submitCommentBtn:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.submitCommentBtn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+/* Estilos para a seção de resposta */
+.replyingToInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.replyingToLabel {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.replyingToAuthor {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #f0f7ff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.authorAvatarSmall {
+  width: 20px;
+  height: 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+/* Botão de cancelar resposta */
+.cancelReplyBtn {
+  background: none;
+  border: 1px solid #ddd;
+  color: #666;
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.cancelReplyBtn:hover {
+  background-color: #f5f5f5;
+  border-color: #999;
+}
+
+/* Ajustes no botão de responder */
+.replyBtn {
+  background: none;
+  border: 1px solid #e0e0e0;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: all 0.2s;
+}
+
+.replyBtn:hover {
+  background-color: #f0f7ff;
+  border-color: #007bff;
+}
+
+.replyIcon {
+  font-size: 0.75rem;
+}
+
+.replyCount {
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.5rem;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: #666;
+}
 
 .markdownHelp {
   margin-top: 20px;
