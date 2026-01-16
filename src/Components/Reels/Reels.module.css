@@ -7,7 +7,7 @@
 
 .ReelItem {
     position: relative; 
-    width: 270px;
+    width: 230px;
     text-decoration: none;
     color: inherit;
     overflow: hidden; 
@@ -16,7 +16,7 @@
 
 .ReelItem img {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
     display: block;
     border-radius: 10px;

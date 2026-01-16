@@ -42,7 +42,7 @@ function Reels() {
       {posts.map(post => (
         <a
           key={post.id}
-          href={`https://reels-delta-eosin.vercel.app/reel/${post.id}`}
+          href={`https://reels-delta-eosin.vercel.app`}
           className={style.ReelItem}
         >
           <img src={post.imagem} alt={post.titulo} />

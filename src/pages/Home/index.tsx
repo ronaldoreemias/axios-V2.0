@@ -64,11 +64,9 @@ function Home() {
             {/* Área de Reels / mostra os 3 últimos reeels do 
             axios noticias ( página de reels da própia página e não de uma rede social externa)   */}
             <div className={style.HomeReels}>
-                <div className={style.categoryHeader} >
-                    Reels do Axios News
-                </div>
                 <br/>
                 <Reels />
+                <br/>
             </div>
             
 
