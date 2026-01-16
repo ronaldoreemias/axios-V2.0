@@ -398,6 +398,9 @@ export default function PostagemDetalhe() {
             <div className={styles.sidebarWidget}>
               <h4>Fique por dentro</h4>
               <p>Receba as últimas notícias diretamente no seu e-mail.</p>
+              <a href="/Newsletter" >
+                Cadastre-se
+              </a>
             </div>
           </aside>
         </div>

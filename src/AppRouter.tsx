@@ -7,6 +7,8 @@ import Vagas from "./pages/Vagas"
 import DhanteConfig from "./pages/dhanteconfig";
 import Home2 from "./pages/TesteHomeNovo";
 import PostagemDetalhe from "./Components/PostagemDetalhe";
+import Newsletter from "./Components/Newsletter";
+
 
 function AppRouter(){
     return(
@@ -20,6 +22,7 @@ function AppRouter(){
                 <Route path="/DhanteConfig" element={<DhanteConfig />} />
                 <Route path="/Home2" element={<Home2 />} />
                 <Route path="/postagensgeral/:id" element={<PostagemDetalhe />} />
+                <Route path="/Newsletter" element={<Newsletter />} />
             </Routes>
         </BrowserRouter>
     );
