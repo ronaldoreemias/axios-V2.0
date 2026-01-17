@@ -344,7 +344,7 @@
     .ContentHome .HomeDestaques {
           grid-area: destaque;
           display: block;
-          height: 60vh;
+          height: 45vh;
           padding: 4px;
           margin-top: 1%;
     }
