@@ -1,90 +1,445 @@
+/* Reels.module.css - Carrossel Responsivo */
+
+/* Container Principal do Carrossel */
 .Container {
-    width: 90%;
-    display: none;
-    gap: 20px;
-    justify-content: space-evenly;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 10px;
+  overflow: hidden;
 }
 
+/* Faixa do Carrossel */
+.carrosselTrack {
+  display: flex;
+  gap: 20px;
+  animation: scroll 30s linear infinite;
+  width: max-content;
+  padding: 10px 0;
+}
+
+/* Pausa da animação quando o carrossel está pausado */
+.carrosselTrack.paused {
+  animation-play-state: paused;
+}
+
+/* Animação de scroll infinito */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
+}
+
+/* Item do Carrossel */
 .ReelItem {
-    position: relative; 
-    width: 230px;
-    text-decoration: none;
-    color: inherit;
-    overflow: hidden; 
-    border-radius: 10px;
+  position: relative;
+  width: 280px; /* Tamanho fixo */
+  height: 160px; /* Altura reduzida */
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
+  cursor: pointer;
 }
 
+.ReelItem:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+/* Imagem do Item */
 .ReelItem img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    display: block;
-    border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  filter: brightness(0.9);
 }
 
-.ReelItem img:hover{
-    opacity: 0.5;
+.ReelItem:hover img {
+  transform: scale(1.05);
+  filter: brightness(1);
 }
 
+/* Overlay Gradiente */
+.ReelItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 1;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
 
+.ReelItem:hover::before {
+  opacity: 0.9;
+}
+
+/* Container do Título */
 .titulo {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px;
+  z-index: 2;
+  color: white;
+}
+
+/* Texto do Título */
+.titulo p {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Badge de Pausa */
+.pauseBadge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 10px;
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ReelItem:hover .pauseBadge {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Indicador de Status */
+.statusIndicator {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 3;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.ReelItem:hover .statusIndicator {
+  opacity: 1;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+  animation: pulse 2s infinite;
+}
+
+.statusText {
+  color: white;
+  font-size: 10px;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
+
+/* Botões de Controle (Apenas Desktop) */
+.controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.Container:hover .controls {
+  opacity: 1;
+}
+
+.controlBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  color: #333;
+}
+
+.controlBtn:hover {
+  background-color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.controlBtn:active {
+  transform: scale(0.95);
+}
+
+/* Indicador de Progresso */
+.progressContainer {
+  display: none; /* Escondido em mobile */
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 6px;
+  z-index: 10;
+}
+
+/* Mensagem de Instrução */
+.instruction {
+  text-align: center;
+  margin-top: 30px;
+  color: #6b7280;
+  font-size: 13px;
+  font-style: italic;
+  padding: 8px;
+  background-color: #f9fafb;
+  border-radius: 6px;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  display: none; /* Escondido em mobile */
+}
+
+/* Estados de Loading */
+.skeletonContainer {
+  display: flex;
+  gap: 20px;
+  animation: scroll 30s linear infinite;
+  width: max-content;
+  padding: 10px 0;
+}
+
+.skeletonItem {
+  width: 280px;
+  height: 160px;
+  border-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    #f3f4f6 25%,
+    #e5e7eb 50%,
+    #f3f4f6 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* RESPONSIVIDADE */
+
+/* Tablet (768px a 1024px) */
+@media (max-width: 1024px) {
+  .Container {
+    margin: 15px auto;
     padding: 8px;
-    color: rgb(255, 255, 255);
-    font-size: 14px;
-    font-weight: 600;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    word-wrap: break-word;
-
+  }
+  
+  .carrosselTrack {
+    gap: 15px;
+  }
+  
+  .ReelItem {
+    width: 220px;
+    height: 130px;
+  }
+  
+  .titulo p {
+    font-size: 12px;
+  }
+  
+  .controls {
+    display: none; /* Esconde controles em tablet */
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-40%);
+    }
+  }
 }
 
-@media (max-width: 700px) {
+/* Mobile (480px a 768px) */
+@media (max-width: 768px) {
+  .Container {
+    margin: 10px auto;
+    padding: 5px;
+    max-width: 100%;
+  }
+  
+  .carrosselTrack {
+    gap: 10px;
+  }
+  
+  .ReelItem {
+    width: 180px;
+    height: 110px;
+    border-radius: 8px;
+  }
+  
+  .titulo {
+    padding: 8px;
+  }
+  
+  .titulo p {
+    font-size: 11px;
+    line-height: 1.2;
 
-    .Container {
-        display: block;
-        width: 100%;
-        display: flex;
-        gap: 5px;
-        justify-content: space-between;
+  }
+  
+  .pauseBadge {
+    font-size: 9px;
+    padding: 2px 6px;
+    top: 5px;
+    right: 5px;
+  }
+  
+  .statusIndicator {
+    top: 5px;
+    left: 5px;
+  }
+  
+  .statusText {
+    font-size: 9px;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
     }
-    .ReelItem {
-        position: relative; 
-        width: 120px;
-        height: 150px;
-        text-decoration: none;
-        color: inherit;
-        overflow: hidden; 
-        border-radius: 10px;
+    100% {
+      transform: translateX(-50%);
     }
-
+  }
 }
 
-@media (min-width: 299px) and (max-width: 399px) {
-    .ReelItem {
-        position: relative; 
-        width: 100px;
-        height: 140px;
-        text-decoration: none;
-        color: inherit;
-        overflow: hidden; 
-        border-radius: 10px;
+/* Mobile Pequeno (até 480px) */
+@media (max-width: 480px) {
+  .Container {
+    padding: 3px;
+    margin: 8px auto;
+  }
+  
+  .carrosselTrack {
+    gap: 8px;
+  }
+  
+  .ReelItem {
+    width: 150px;
+    height: 90px;
+    border-radius: 6px;
+  }
+  
+  .titulo {
+    padding: 6px;
+  }
+  
+  .titulo p {
+    font-size: 10px;
+  }
+  
+  .pauseBadge {
+    font-size: 8px;
+    padding: 2px 5px;
+    display: none; /* Esconde badge em mobile muito pequeno */
+  }
+  
+  .statusIndicator {
+    display: none; /* Esconde indicador em mobile muito pequeno */
+  }
+  
+  .skeletonItem {
+    width: 150px;
+    height: 90px;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
     }
+    100% {
+      transform: translateX(-66.66%);
+    }
+  }
 }
 
-@media (max-width: 299px) {
-    .ReelItem {
-        position: relative; 
-        width: 90px;
-        height: 140px;
-        text-decoration: none;
-        color: inherit;
-        overflow: hidden; 
-        border-radius: 10px;
-    }
+/* Desktop - Mostra elementos extras */
+@media (min-width: 1025px) {
+  .progressContainer {
+    display: flex;
+  }
+  
+  .instruction {
+    display: block;
+  }
+  
+  .controls {
+    display: flex;
+  }
 }

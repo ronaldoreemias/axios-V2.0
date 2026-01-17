@@ -215,8 +215,8 @@
   .ContentHome {
     grid-template-areas:
         "menu"
-        "destaque"
         " Reels"
+        "destaque"
         "content"
         "ad"
         "MaisNo"
@@ -241,8 +241,7 @@
     .ContentHome .HomeDestaques {
           grid-area: destaque;
           display: block;
-          margin-top: 15%;
-          margin-bottom: 2%;
+          margin-bottom: 5%;
           height: auto;
           padding: 4px;
     }
@@ -306,7 +305,8 @@
         align-items: center;
         width: 100%;
         margin: 0px;
-        margin-top: 20%;
+        margin-top: 5%;
+        overflow-x: scroll;
     }
 
     .ContentHome .HomeReels .titulo{

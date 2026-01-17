@@ -1,7 +1,6 @@
 import style from "./Home.module.css";
 import { useEffect, useRef } from "react";
 import Destaque from "../../Components/destaque";
-import Comentarios from "../../Components/comentarios";
 import Destaque2 from "../../Components/destaque2"
 import Vagas from "../../Components/destaqueVagas";
 import Navbar from "../../Components/Navbar";
@@ -94,11 +93,6 @@ function Home() {
             de outros sites, linkando para ver a noticias na página original */}
             <div className={style.Homecontent}>
                 <PostagensGerais />
-            </div>
-
-            {/* Sidebar (coluna direita) */}
-            <div className={style.HomeSidebar} >
-                <Comentarios />
             </div>
 
             {/* Área de Anúncio - banner horizontal */}
