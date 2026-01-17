@@ -8,6 +8,7 @@ import DhanteConfig from "./pages/dhanteconfig";
 import Home2 from "./pages/TesteHomeNovo";
 import PostagemDetalhe from "./Components/PostagemDetalhe";
 import Newsletter from "./Components/Newsletter";
+import Forum from "./pages/Forum"
 
 
 function AppRouter(){
@@ -23,6 +24,7 @@ function AppRouter(){
                 <Route path="/Home2" element={<Home2 />} />
                 <Route path="/postagensgeral/:id" element={<PostagemDetalhe />} />
                 <Route path="/Newsletter" element={<Newsletter />} />
+                <Route path="/Forum" element={<Forum />} />
             </Routes>
         </BrowserRouter>
     );

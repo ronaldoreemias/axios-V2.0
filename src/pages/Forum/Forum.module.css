@@ -1,0 +1,23 @@
+.container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "content";
+  grid-template-columns: 1fr;
+  gap: 3px;
+  padding: 5px;
+}
+
+.container div.header {
+  grid-area: header;
+  text-align: center;
+}
+
+.container div.content {
+  grid-area: content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  font-size: 2rem;
+}
