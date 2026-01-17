@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import style from "./NotasFiscais.module.css";
 
+
 interface Postagem {
   _id: string;
   titulo: string;
@@ -49,20 +50,25 @@ function PostagensGerais() {
   return (
     <div className={style.postagensNoticias}>
       {/* Lista por Categorias */}
-      {categorias.map(cat => {
+      {categorias.map((cat, catIndex) => {
         const postsCategoria = postagens.filter(p => p.categoria === cat);
         const featuredPost = postsCategoria[0];
         const otherPosts = postsCategoria.slice(1);
 
         return (
-          <section key={cat} className={style.categorySection}>
-            {/* Cabeçalho da Categoria */}
+          <section 
+            key={cat} 
+            className={style.categorySection}
+            style={{ animationDelay: `${catIndex * 0.1}s` }}
+          >
+            {/* Cabeçalho da Categoria com link para ver mais */}
             <div className={style.categoryHeader}>
               <h2 className={style.categoryTitle}>{cat}</h2>
               <span className={style.categoryBadge}>
                 {postsCategoria.length} post{postsCategoria.length !== 1 ? 's' : ''}
               </span>
             </div>
+
 
             {/* Grid de Postagens */}
             <div className={style.postsGrid}>

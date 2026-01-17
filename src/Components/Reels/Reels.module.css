@@ -1,6 +1,6 @@
 .Container {
     width: 90%;
-    display: flex;
+    display: none;
     gap: 20px;
     justify-content: space-evenly;
 }
@@ -47,6 +47,7 @@
 @media (max-width: 700px) {
 
     .Container {
+        display: block;
         width: 100%;
         display: flex;
         gap: 5px;

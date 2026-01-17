@@ -1,5 +1,4 @@
 import style from "./Navbar.module.css";
-import Logo from "../../assets/icons/axios.ico";
 import Menu from "../../assets/icons/Menu.ico";
 import { useState } from "react";
 import { FaUser } from "react-icons/fa"; 
@@ -26,7 +25,6 @@ function Navbar() {
                     
                     {/* Logo e nome do site */}
                     <div className={style.textonav}>
-                        <img src={Logo} alt="logo-tipoAxios" />
                         <div className={style.container_Palavras}>
                             <div className={style.palavras}>
                                     <h2>Axios News</h2>

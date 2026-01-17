@@ -96,7 +96,7 @@ function Home() {
                 <PostagensGerais />
             </div>
 
-            {/* Sidebar (coluna direita) - como no Euronews */}
+            {/* Sidebar (coluna direita) */}
             <div className={style.HomeSidebar} >
                 <Comentarios />
             </div>

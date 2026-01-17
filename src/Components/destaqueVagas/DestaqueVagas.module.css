@@ -25,7 +25,7 @@
   margin: 0 0 8px 0;
   font-size: 18px;
   font-weight: 700;
-  color: #0a6ebd;
+  color: #c4170c;
   font-family: "Inter", sans-serif;
 }
 
@@ -51,7 +51,7 @@
 .link {
   display: inline-block;
   padding: 8px 14px;
-  background: #0a6ebd;
+  background: #c4170c;
   color: #fff;
   border-radius: 6px;
   text-decoration: none;

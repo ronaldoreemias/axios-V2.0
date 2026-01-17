@@ -2,11 +2,10 @@ import { useState, useEffect } from "react";
 import style from "./destaque.module.css";
 
 interface Postagem {
-  _id: string; // ID da postagem
+  _id: string; 
   imagem: string;
   titulo: string;
   descricao: string;
-  // Adicione outros campos se necessário
   autor?: string;
   categoria?: string;
   dataHora?: string;
