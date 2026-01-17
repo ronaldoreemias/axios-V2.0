@@ -76,11 +76,13 @@ function PostagensGerais() {
               {featuredPost && (
                 <article className={`${style.postCard} ${style.featuredPost}`}>
                   <div className={style.postImageContainer}>
-                    <img 
-                      src={featuredPost.imagem} 
-                      alt={featuredPost.titulo} 
-                      className={style.postImage}
-                    />
+                   <a href={`/postagensgeral/${featuredPost._id}`} >
+                        <img 
+                          src={featuredPost.imagem} 
+                          alt={featuredPost.titulo} 
+                          className={style.postImage}
+                        />
+                    </a>
                     <div className={style.imageOverlay}></div>
                   </div>
                   <div className={style.postContent}>
@@ -115,11 +117,14 @@ function PostagensGerais() {
               {otherPosts.map(post => (
                 <article key={post._id} className={style.postCard}>
                   <div className={style.postImageContainer}>
-                    <img 
-                      src={post.imagem} 
-                      alt={post.titulo} 
-                      className={style.postImage}
-                    />
+                    
+                    <a href={`/postagensgeral/${post._id}`} >
+                        <img 
+                          src={post.imagem} 
+                          alt={post.titulo} 
+                          className={style.postImage}
+                        />
+                    </a>
                     <div className={style.imageOverlay}></div>
                   </div>
                   <div className={style.postContent}>
