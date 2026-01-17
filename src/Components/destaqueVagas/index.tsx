@@ -41,8 +41,6 @@ const DestaqueVagas = () => {
           {vaga.link_site_da_empresa && (
             <a
               href={vaga.link_site_da_empresa}
-              target="_blank"
-              rel="noopener noreferrer"
               className={style.link}
             >
               Ver mais →

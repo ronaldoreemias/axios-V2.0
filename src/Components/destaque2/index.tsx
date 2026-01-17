@@ -113,8 +113,6 @@ function Destaque() {
               <div className={style.destaquePrincipal}>
                 <a 
                   href={postLink} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
                   className={style.destaqueLink}
                 >
                   <div className={style.imagemContainer}>
@@ -150,8 +148,6 @@ function Destaque() {
               <div className={style.outroDestaque}>
                 <a 
                   href={postLink} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
                   className={style.destaqueLink}
                 >
                   <div className={style.outroImagemContainer}>
