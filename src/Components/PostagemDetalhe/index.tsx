@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./PostagemDetalhe.module.css";
+import Navbar from "../NavbarDetalhes";
 
 interface Comentario {
   _id: string;
@@ -289,6 +290,8 @@ export default function PostagemDetalhe() {
 
   return (
     <div className={styles.cnnTemplateContainer}>
+      <Navbar />
+      <br/>
       {/* Cabeçalho estilo CNN */}
       <header className={styles.cnnHeader}>
         <div className={styles.categoryTag}>

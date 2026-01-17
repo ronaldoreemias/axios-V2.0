@@ -1,0 +1,280 @@
+.header {
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  height: 70px;
+}
+
+
+.menuAndLogo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.textonav {
+  display: flex;
+  background-color: #c4170c;
+  align-items: center;
+  gap: 10px;
+  padding: 25px 15px;
+
+}
+
+.container_Palavras {
+  display: flex;
+  align-items: center;
+}
+
+.palavras h2 {
+  font-size: 1rem;
+  font-weight: 300;
+  color: white;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.palavras a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+  align-items: center;
+}
+
+.navList li {
+  display: inline-block;
+}
+
+.navList a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.navList a:hover {
+  color: #c4170c;
+}
+
+.navList a.active {
+  color: #c4170c;
+  font-weight: 600;
+}
+
+.navList a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #c4170c;
+}
+
+/* Botão "Cadastre-se" */
+.cadastrese {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: #0c4cc4;
+    color: white !important;
+    padding: 8px 15px !important;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    margin-left: 5px; 
+}
+
+.cadastrese:hover {
+  background-color: #0cdb0c !important;
+  color: rgb(250, 252, 249) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Container do ícone de usuário */
+.userIconContainer {
+  margin-left: 5px; 
+}
+
+.userIconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px !important;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.userIconLink:hover {
+  background-color: #f0f0f0;
+}
+
+.userIcon {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.userIconLink:hover .userIcon {
+  color: #c4170c;
+}
+
+/* Botão do menu hamburger - AGORA VISÍVEL EM DESKTOP */
+.iconmenu {
+  display: none; 
+  
+}
+
+.overlay {
+  display: none;
+}
+
+/* Media query para mobile */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+    height: 60px;
+  }
+  
+  .menuAndLogo {
+    gap: 15px;
+  }
+  
+  .navList {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: white;
+    flex-direction: column;
+    padding: 80px 30px 30px;
+    gap: 0;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    align-items: flex-start; 
+  }
+  
+  .navListActive {
+    right: 0;
+  }
+  
+  .navList li {
+    width: 100%;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .navList a {
+    display: block;
+    padding: 15px 0;
+    font-size: 1rem;
+  }
+  
+  .navList a.active::after {
+    display: none;
+  }
+  
+  .cadastrese {
+    margin-top: 15px;
+    margin-left: 0;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border-radius: 6px;
+    width: 100%;
+  }
+  
+  .userIcon{
+    margin-right: 10px;
+    height: 15px;
+  }
+  .userIconContainer {
+    width: 100%;
+    margin-left: 5px;
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  .userIconLink {
+    display: inline-flex;
+    padding: 12px !important;
+  }
+  
+  .overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .overlayActive {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .iconmenu {
+    display: block; 
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .iconmenu:hover {
+    background-color: #f0f0f0;
+  }
+
+  .iconmenu img {
+    height: 30px;
+    width: auto;
+  }
+
+  .textonav {
+    display: flex;
+    background-color: #c4170c;
+    align-items: center;
+    gap: 10px;
+    padding: 30px 15px;
+    margin-top: 5px;
+  }
+  .textonav img{
+    display: none;
+  }
+
+}
