@@ -241,9 +241,9 @@
     .ContentHome .HomeDestaques {
           grid-area: destaque;
           display: block;
-          margin-bottom: 5%;
-          height: auto;
+          height: 65vh;
           padding: 4px;
+          margin-top: 1%;
     }
    .ContentHome .HomefooterMobile {
         position: fixed;
@@ -292,7 +292,6 @@
     /* MAIS NOTÍCIAS */
     .ContentHome .HomeMaisNoticias {
       grid-area: MaisNo;
-
     }
 
     /* começar a estilização dos Reels no home, acho que vai da bom */
@@ -338,5 +337,15 @@
       flex-grow: 1;
       text-transform: capitalize;
       font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+}
+
+@media (min-width: 415px) and (max-width: 700px) {
+    .ContentHome .HomeDestaques {
+          grid-area: destaque;
+          display: block;
+          height: 100vh;
+          padding: 4px;
+          margin-top: 1%;
     }
 }
