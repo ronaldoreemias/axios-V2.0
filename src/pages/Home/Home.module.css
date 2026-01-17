@@ -340,7 +340,17 @@
     }
 }
 
-@media (min-width: 415px) and (max-width: 700px) {
+@media (min-width: 415px) and (max-width: 500px) {
+    .ContentHome .HomeDestaques {
+          grid-area: destaque;
+          display: block;
+          height: 70vh;
+          padding: 4px;
+          margin-top: 1%;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 700px) {
     .ContentHome .HomeDestaques {
           grid-area: destaque;
           display: block;
