@@ -71,7 +71,7 @@ function Reels() {
     }, 5000);
   };
 
-  const handleReelItemClick = (e: React.MouseEvent, postId: string) => {
+  const handleReelItemClick = (e: React.MouseEvent) => {
     handleReelClick(e);
     window.open(`https://reels-delta-eosin.vercel.app`);
   };
@@ -150,7 +150,7 @@ function Reels() {
             key={`${post.id}-${index}`}
             href={`https://reels-delta-eosin.vercel.app`}
             className={style.ReelItem}
-            onClick={(e) => handleReelItemClick(e, post.id)}
+            onClick={(e) => handleReelItemClick(e)}
             target="_blank"
             rel="noopener noreferrer"
           >
