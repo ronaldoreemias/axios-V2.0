@@ -1,58 +1,36 @@
 <!doctype html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="/logotipo.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google-site-verification" content="b_6istV0Lw9g5OvVjYdTlpgmXOLAROqhkvjNh_uOz1A" />
-  
-  <!-- Meta Tags Estáticas (para crawlers) -->
-  <title>axiosnews | Notícias | Vagas | E-Commerce</title>
-  <meta name="description" content="Fique por dentro das últimas notícias, vagas de emprego e oportunidades no e-commerce. Conteúdo atualizado diariamente." />
-  <meta name="keywords" content="notícias, vagas, emprego, e-commerce, tecnologia, carreira, desenvolvimento" />
-  <meta name="author" content="axiosnews" />
-  
-  <!-- Open Graph Padrão -->
-  <meta property="og:site_name" content="axiosnews" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="axiosnews | Notícias | Vagas | E-Commerce" />
-  <meta property="og:description" content="Fique por dentro das últimas notícias, vagas de emprego e oportunidades no e-commerce. Conteúdo atualizado diariamente." />
-  <meta property="og:url" content="https://axiosnoticias.vercel.app" />
-  <meta property="og:image" content="https://axiosnoticias.vercel.app/logotipo.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="axiosnews - Notícias, Vagas e E-Commerce" />
-  <meta property="og:locale" content="pt_BR" />
-  
-  <link rel="canonical" href="https://axiosnoticias.vercel.app" />
-  
-  <!-- Preconnect para melhor performance -->
-  <link rel="preconnect" href="https://backendpostagens.vercel.app" />
-  
-</head>
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
-
-  <script>
-    const isArticlePage = window.location.pathname.includes('/postagensgeral/');
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/jpg" href="public/preview.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="b_6istV0Lw9g5OvVjYdTlpgmXOLAROqhkvjNh_uOz1A" />
     
-    if (isArticlePage) {
-      const ogType = document.querySelector('meta[property="og:type"]');
-      if (ogType) ogType.content = 'article';
-      
-      const articleMeta = document.createElement('meta');
-      articleMeta.setAttribute('property', 'article:section');
-      articleMeta.setAttribute('content', 'Notícias');
-      document.head.appendChild(articleMeta);
-      
-      const articleMeta2 = document.createElement('meta');
-      articleMeta2.setAttribute('property', 'article:tag');
-      articleMeta2.setAttribute('content', 'notícias');
-      document.head.appendChild(articleMeta2);
-      
-      console.log('Meta tags de artigo configuradas para crawlers');
-    }
-  </script>
-</body>
+    <!-- Meta Tags Estáticas (para crawlers) -->
+    <title>axiosnews | Notícias | Vagas | E-Commerce</title>
+    <meta name="description" content="Fique por dentro das últimas notícias, vagas de emprego e oportunidades no e-commerce. Conteúdo atualizado diariamente." />
+    <meta name="keywords" content="notícias, vagas, emprego, e-commerce, tecnologia, carreira, desenvolvimento" />
+    <meta name="author" content="axiosnews" />
+    
+    <!-- Open Graph Padrão -->
+    <meta property="og:site_name" content="axiosnews" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="axiosnews | Notícias | Vagas | E-Commerce" />
+    <meta property="og:description" content="Fique por dentro das últimas notícias, vagas de emprego e oportunidades no e-commerce. Conteúdo atualizado diariamente." />
+    <meta property="og:url" content="https://axiosnoticias.vercel.app" />
+    <meta property="og:image" content="https://axiosnoticias.vercel.app/preview.jpg" />
+    <meta name="twitter:image" content="https://axiosnoticias.vercel.app/preview.jpg" />
+
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="axiosnews - Notícias, Vagas e E-Commerce" />
+    <meta property="og:locale" content="pt_BR" />
+    <link rel="canonical" href="https://axiosnoticias.vercel.app" />
+    <link rel="preconnect" href="https://backendpostagens.vercel.app" />
+    
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

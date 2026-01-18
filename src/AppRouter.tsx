@@ -5,7 +5,6 @@ import Contato from "./pages/contato";
 import Notificacao from "./pages/Notificacao";
 import Vagas from "./pages/Vagas"
 import DhanteConfig from "./pages/dhanteconfig";
-import Home2 from "./pages/TesteHomeNovo";
 import PostagemDetalhe from "./Components/PostagemDetalhe";
 import Newsletter from "./Components/Newsletter";
 import Forum from "./pages/Forum"
@@ -21,7 +20,6 @@ function AppRouter(){
                 <Route path="/Notficacao" element={<Notificacao />} />
                 <Route path="/Vagas" element={<Vagas />} />
                 <Route path="/DhanteConfig" element={<DhanteConfig />} />
-                <Route path="/Home2" element={<Home2 />} />
                 <Route path="/postagensgeral/:id" element={<PostagemDetalhe />} />
                 <Route path="/Newsletter" element={<Newsletter />} />
                 <Route path="/Forum" element={<Forum />} />
