@@ -6,124 +6,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="b_6istV0Lw9g5OvVjYdTlpgmXOLAROqhkvjNh_uOz1A" />
   
-  <!-- Meta Tags Dinâmicas via JavaScript para crawlers -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "axiosnews",
-      "url": "https://axiosnoticias.vercel.app",
-      "description": "Fique por dentro das últimas notícias, vagas de emprego e oportunidades no e-commerce",
-      "publisher": {
-        "@type": "Organization",
-        "name": "axiosnews",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://axiosnoticias.vercel.app/logotipo.png"
-        }
-      }
-    }
-  </script>
+  <!-- Meta Tags Estáticas (para crawlers) -->
+  <title>axiosnews | Notícias | Vagas | E-Commerce</title>
+  <meta name="description" content="Fique por dentro das últimas notícias, vagas de emprego e oportunidades no e-commerce. Conteúdo atualizado diariamente." />
+  <meta name="keywords" content="notícias, vagas, emprego, e-commerce, tecnologia, carreira, desenvolvimento" />
+  <meta name="author" content="axiosnews" />
+  
+  <!-- Open Graph Padrão -->
+  <meta property="og:site_name" content="axiosnews" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="axiosnews | Notícias | Vagas | E-Commerce" />
+  <meta property="og:description" content="Fique por dentro das últimas notícias, vagas de emprego e oportunidades no e-commerce. Conteúdo atualizado diariamente." />
+  <meta property="og:url" content="https://axiosnoticias.vercel.app" />
+  <meta property="og:image" content="https://axiosnoticias.vercel.app/logotipo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="axiosnews - Notícias, Vagas e E-Commerce" />
+  <meta property="og:locale" content="pt_BR" />
+  
+  <link rel="canonical" href="https://axiosnoticias.vercel.app" />
+  
+  <!-- Preconnect para melhor performance -->
+  <link rel="preconnect" href="https://backendpostagens.vercel.app" />
+  
 </head>
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
-  
-  <!-- Script para detectar artigo e buscar meta tags dinâmicas -->
+
   <script>
-    (function() {
-      const path = window.location.pathname;
-      const match = path.match(/\/postagensgeral\/([a-f0-9]{24})/);
+    const isArticlePage = window.location.pathname.includes('/postagensgeral/');
+    
+    if (isArticlePage) {
+      const ogType = document.querySelector('meta[property="og:type"]');
+      if (ogType) ogType.content = 'article';
       
-      if (match) {
-        const postId = match[1];
-        console.log('Detectada página de artigo:', postId);
-        
-        // Buscar meta tags da API
-        fetch(`https://backendpostagens.vercel.app/api/handler?type=postagensgeral&id=${postId}`)
-          .then(response => response.json())
-          .then(postagem => {
-            console.log('Postagem carregada para meta tags:', postagem.titulo);
-            
-            // Atualizar meta tags
-            document.title = `${postagem.titulo} | axiosnews`;
-            
-            // Criar ou atualizar meta tags
-            const createOrUpdateMeta = (attr, name, content) => {
-              let meta = document.querySelector(`meta[${attr}="${name}"]`);
-              if (!meta) {
-                meta = document.createElement('meta');
-                meta.setAttribute(attr, name);
-                document.head.appendChild(meta);
-              }
-              meta.setAttribute('content', content);
-            };
-            
-            createOrUpdateMeta('name', 'description', postagem.descricao);
-            createOrUpdateMeta('property', 'og:title', postagem.titulo);
-            createOrUpdateMeta('property', 'og:description', postagem.descricao);
-            createOrUpdateMeta('property', 'og:image', postagem.imagem);
-            createOrUpdateMeta('property', 'og:url', window.location.href);
-            createOrUpdateMeta('property', 'og:type', 'article');
-            createOrUpdateMeta('property', 'article:published_time', postagem.dataHora);
-            createOrUpdateMeta('property', 'article:author', postagem.autor);
-            createOrUpdateMeta('property', 'article:section', postagem.categoria);
-            
-            createOrUpdateMeta('name', 'twitter:card', 'summary_large_image');
-            createOrUpdateMeta('name', 'twitter:title', postagem.titulo);
-            createOrUpdateMeta('name', 'twitter:description', postagem.descricao);
-            createOrUpdateMeta('name', 'twitter:image', postagem.imagem);
-            
-            // Canonical
-            let canonical = document.querySelector('link[rel="canonical"]');
-            if (!canonical) {
-              canonical = document.createElement('link');
-              canonical.setAttribute('rel', 'canonical');
-              document.head.appendChild(canonical);
-            }
-            canonical.setAttribute('href', window.location.href);
-            
-            // Schema.org para artigo
-            const articleSchema = document.createElement('script');
-            articleSchema.type = 'application/ld+json';
-            articleSchema.textContent = JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "NewsArticle",
-              "headline": postagem.titulo,
-              "description": postagem.descricao,
-              "image": postagem.imagem,
-              "datePublished": postagem.dataHora,
-              "dateModified": postagem.dataHora,
-              "author": {
-                "@type": "Person",
-                "name": postagem.autor
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "axiosnews",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "https://axiosnoticias.vercel.app/logotipo.png"
-                }
-              },
-              "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": window.location.href
-              }
-            });
-            document.head.appendChild(articleSchema);
-            
-            console.log('Meta tags atualizadas para artigo');
-          })
-          .catch(err => {
-            console.error('Erro ao buscar meta tags:', err);
-          });
-      } else {
-        // Meta tags padrão para home
-        document.title = 'axiosnews | Notícias | Vagas | E-Commerce';
-        console.log('Página inicial - usando meta tags padrão');
-      }
-    })();
+      const articleMeta = document.createElement('meta');
+      articleMeta.setAttribute('property', 'article:section');
+      articleMeta.setAttribute('content', 'Notícias');
+      document.head.appendChild(articleMeta);
+      
+      const articleMeta2 = document.createElement('meta');
+      articleMeta2.setAttribute('property', 'article:tag');
+      articleMeta2.setAttribute('content', 'notícias');
+      document.head.appendChild(articleMeta2);
+      
+      console.log('Meta tags de artigo configuradas para crawlers');
+    }
   </script>
 </body>
 </html>

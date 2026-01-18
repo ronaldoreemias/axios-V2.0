@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import type { ChangeEvent, FormEvent } from "react";
 import styles from "./PostagemDetalhe.module.css";
 import Navbar from "../NavbarDetalhes";
-import { useMetaTags } from '../../hooks/useMetaTags';
 
 interface Comentario {
   _id: string;
@@ -53,17 +52,6 @@ export default function PostagemDetalhe() {
   const [respondendoAutor, setRespondendoAutor] = useState<string>("");
   const [validationErrors, setValidationErrors] = useState<ValidationError[]>([]);
 
-  useMetaTags({
-    title: postagem ? `${postagem.titulo} | axiosnews` : 'axiosnews | Notícias | Vagas | E-Commerce',
-    description: postagem?.descricao || 'Fique por dentro das últimas notícias, vagas de emprego e oportunidades no e-commerce.',
-    image: postagem?.imagem || 'https://seusite.com/logotipo.png',
-    type: postagem ? 'article' : 'website',
-    author: postagem?.autor,
-    publishedTime: postagem?.dataHora,
-    section: postagem?.categoria,
-    tags: postagem ? [postagem.categoria, 'notícias', 'e-commerce'] : undefined
-  });
-
   // Lista de padrões suspeitos
   const suspiciousPatterns = {
     sqlInjection: [
@@ -71,7 +59,7 @@ export default function PostagemDetalhe() {
       /('|")?(\s*)?(\-\-|\#)/,
       /(\bOR\b|\bAND\b)(\s+)?(\d+)?(\s+)?[=<>]/i,
       /(\s*)?;(\s*)?(\w+)?(\s*)?$/,
-      /(\%27|\'|\"|\-\-|\/\*|\*\/|char|nchar|varchar|nvarchar|alter|begin|cast|create|cursor|declare|delete|drop|end|exec|execute|fetch|insert|kill|open|select|sys|sysobject|syscolumns|table|update)\b/i
+      /(\%27|\'|\"|\-\-|\/\*|\*\/|@@|@|char|nchar|varchar|nvarchar|alter|begin|cast|create|cursor|declare|delete|drop|end|exec|execute|fetch|insert|kill|open|select|sys|sysobject|syscolumns|table|update)\b/i
     ],
     xssAndScripts: [
       /<script\b[^>]*>(.*?)<\/script>/i,
@@ -93,7 +81,7 @@ export default function PostagemDetalhe() {
       /^\s*(123|abc|aaa|bbb|ccc|xyz|qwerty|asdf|zxcv|demo|sample|exemplo)\s*$/i,
       /^\s*([a-z])\1{2,}\s*$/i,
       /^\s*\d+\s*$/,
-      /^\s*[#$%^&*()_+\-=\[\]{};':"\\|,.<>\/]+\s*$/
+      /^\s*[#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+\s*$/
     ],
     maliciousUrls: [
       /(http|https):\/\/(localhost|127\.0\.0\.1|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/i,
@@ -101,7 +89,7 @@ export default function PostagemDetalhe() {
       /(phishing|malware|virus|trojan|worm|spyware|adware|ransomware)/i
     ],
     profanity: [
-      /(fuder|poha|odeio|caralho|porra|merda|foda|foder|puta|vagabunda|viado|bicha|chupa|pinto|buceta|xoxota|rola|pau|Merda)/i,
+      /(odeio|caralho|porra|merda|foda|foder|puta|vagabunda|viado|bicha|corn[o|a]|chupa|pinto|buceta|xoxota|rola|pau)/i,
       /(fuck|shit|asshole|bitch|whore|slut|dick|cock|pussy|cunt|nigger|nigga|retard)/i
     ]
   };
@@ -270,61 +258,6 @@ export default function PostagemDetalhe() {
     return errors.length === 0;
   };
 
-useEffect(() => {
-    if (!postagem) return;
-    
-    const fullUrl = window.location.href;
-    
-    // Atualizar título
-    document.title = `${postagem.titulo} | axiosnews`;
-    
-    // Função para atualizar meta tags
-    const updateMeta = (attr: 'name' | 'property', key: string, value: string) => {
-      let element = document.querySelector(`meta[${attr}="${key}"]`);
-      if (!element) {
-        element = document.createElement('meta');
-        element.setAttribute(attr, key);
-        document.head.appendChild(element);
-      }
-      element.setAttribute('content', value);
-    };
-    
-    // Meta description
-    updateMeta('name', 'description', postagem.descricao);
-    
-    // Open Graph
-    updateMeta('property', 'og:title', postagem.titulo);
-    updateMeta('property', 'og:description', postagem.descricao);
-    updateMeta('property', 'og:image', postagem.imagem);
-    updateMeta('property', 'og:url', fullUrl);
-    updateMeta('property', 'og:type', 'article');
-    updateMeta('property', 'article:published_time', postagem.dataHora);
-    updateMeta('property', 'article:author', postagem.autor);
-    updateMeta('property', 'article:section', postagem.categoria);
-    updateMeta('property', 'article:tag', postagem.categoria);
-    
-    // Twitter
-    updateMeta('name', 'twitter:title', postagem.titulo);
-    updateMeta('name', 'twitter:description', postagem.descricao);
-    updateMeta('name', 'twitter:image', postagem.imagem);
-    
-    // Canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', fullUrl);
-    
-    // Cleanup
-    return () => {
-      // Resetar para padrão
-      document.title = 'axiosnews | Notícias | Vagas | E-Commerce';
-    };
-  }, [postagem]);
-
-  // Efeito principal para carregar postagem
   useEffect(() => {
     synthRef.current = window.speechSynthesis;
     
