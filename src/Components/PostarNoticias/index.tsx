@@ -1,3 +1,4 @@
+import ControleRotas from "../../Components/ControleComentarios";
 import { useState, useRef } from "react";
 import styles from "./CadastrarPostagem.module.css";
 
@@ -40,93 +41,6 @@ export default function CadastrarPostagem() {
     }));
   };
 
-  // Função para formatar texto no textarea
-  const formatText = (format: string) => {
-    if (!textareaRef.current) return;
-
-    const textarea = textareaRef.current;
-    const start = textarea.selectionStart;
-    const end = textarea.selectionEnd;
-    const selectedText = formData.artigo.substring(start, end);
-    let newText = formData.artigo;
-    let newCursorPos = end;
-
-    switch (format) {
-      case 'bold':
-        const boldText = selectedText ? `**${selectedText}**` : '**texto em negrito**';
-        newText = formData.artigo.substring(0, start) + boldText + formData.artigo.substring(end);
-        newCursorPos = start + (selectedText ? boldText.length : 2);
-        break;
-      
-      case 'italic':
-        const italicText = selectedText ? `*${selectedText}*` : '*texto em itálico*';
-        newText = formData.artigo.substring(0, start) + italicText + formData.artigo.substring(end);
-        newCursorPos = start + (selectedText ? italicText.length : 1);
-        break;
-      
-      case 'link':
-        const linkText = selectedText ? `[${selectedText}](https://exemplo.com)` : '[texto do link](https://exemplo.com)';
-        newText = formData.artigo.substring(0, start) + linkText + formData.artigo.substring(end);
-        newCursorPos = start + (selectedText ? linkText.length : 1);
-        break;
-      
-      case 'list':
-        const listText = selectedText ? 
-          `\n- ${selectedText.split('\n').join('\n- ')}` : 
-          '\n- Item da lista\n- Outro item';
-        newText = formData.artigo.substring(0, start) + listText + formData.artigo.substring(end);
-        newCursorPos = start + listText.length;
-        break;
-      
-      case 'h2':
-        const h2Text = selectedText ? `\n## ${selectedText}\n` : '\n## Título\n';
-        newText = formData.artigo.substring(0, start) + h2Text + formData.artigo.substring(end);
-        newCursorPos = start + h2Text.length - 1;
-        break;
-      
-      case 'h3':
-        const h3Text = selectedText ? `\n### ${selectedText}\n` : '\n### Subtítulo\n';
-        newText = formData.artigo.substring(0, start) + h3Text + formData.artigo.substring(end);
-        newCursorPos = start + h3Text.length - 1;
-        break;
-      
-      case 'code':
-        const codeText = selectedText ? `\`${selectedText}\`` : '`código`';
-        newText = formData.artigo.substring(0, start) + codeText + formData.artigo.substring(end);
-        newCursorPos = start + (selectedText ? codeText.length : 1);
-        break;
-      
-      case 'blockquote':
-        const quoteText = selectedText ? `\n> ${selectedText.split('\n').join('\n> ')}\n` : '\n> Citação\n';
-        newText = formData.artigo.substring(0, start) + quoteText + formData.artigo.substring(end);
-        newCursorPos = start + quoteText.length - 1;
-        break;
-      
-      case 'hr':
-        newText = formData.artigo.substring(0, start) + '\n---\n' + formData.artigo.substring(end);
-        newCursorPos = start + 5;
-        break;
-      
-      case 'image':
-        const imageText = selectedText ? 
-          `\n![${selectedText}](${formData.imagem || 'https://exemplo.com/imagem.jpg'})\n` : 
-          '\n![Descrição da imagem](https://exemplo.com/imagem.jpg)\n';
-        newText = formData.artigo.substring(0, start) + imageText + formData.artigo.substring(end);
-        newCursorPos = start + imageText.length - 1;
-        break;
-    }
-
-    setFormData(prev => ({
-      ...prev,
-      artigo: newText
-    }));
-
-    // Foca no textarea e atualiza a seleção
-    setTimeout(() => {
-      textarea.focus();
-      textarea.setSelectionRange(newCursorPos, newCursorPos);
-    }, 10);
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -194,7 +108,6 @@ export default function CadastrarPostagem() {
       <header className={styles.dashboardHeader}>
         <div className={styles.headerContent}>
           <h1 className={styles.headerTitle}>
-            <span className={styles.headerIcon}>📝</span>
             Painel de Controle - Nova Postagem
           </h1>
           <p className={styles.headerSubtitle}>
@@ -243,7 +156,6 @@ export default function CadastrarPostagem() {
               {/* Seção 1: Informações Básicas */}
               <div className={styles.formSection}>
                 <h3 className={styles.sectionTitle}>
-                  <span className={styles.sectionIcon}>📋</span>
                   Informações Básicas
                 </h3>
                 
@@ -411,189 +323,6 @@ export default function CadastrarPostagem() {
                     required
                     rows={12}
                   />
-                  <div className={styles.editorTools}>
-                    <button 
-                      type="button" 
-                      className={styles.toolButton} 
-                      onClick={() => formatText('bold')}
-                      title="Negrito (Ctrl+B)"
-                    >
-                      <strong>B</strong>
-                    </button>
-                    <button 
-                      type="button" 
-                      className={styles.toolButton} 
-                      onClick={() => formatText('italic')}
-                      title="Itálico (Ctrl+I)"
-                    >
-                      <em>I</em>
-                    </button>
-                    <button 
-                      type="button" 
-                      className={styles.toolButton} 
-                      onClick={() => formatText('h2')}
-                      title="Título 2"
-                    >
-                      H2
-                    </button>
-                    <button 
-                      type="button" 
-                      className={styles.toolButton} 
-                      onClick={() => formatText('h3')}
-                      title="Título 3"
-                    >
-                      H3
-                    </button>
-                    <button 
-                      type="button" 
-                      className={styles.toolButton} 
-                      onClick={() => formatText('link')}
-                      title="Link (Ctrl+K)"
-                    >
-                      🔗
-                    </button>
-                    <button 
-                      type="button" 
-                      className={styles.toolButton} 
-                      onClick={() => formatText('image')}
-                      title="Inserir Imagem"
-                    >
-                      🖼️
-                    </button>
-                    <button 
-                      type="button" 
-                      className={styles.toolButton} 
-                      onClick={() => formatText('list')}
-                      title="Lista"
-                    >
-                      📋
-                    </button>
-                    <button 
-                      type="button" 
-                      className={styles.toolButton} 
-                      onClick={() => formatText('code')}
-                      title="Código"
-                    >
-                      {`</>`}
-                    </button>
-                    <button 
-                      type="button" 
-                      className={styles.toolButton} 
-                      onClick={() => formatText('blockquote')}
-                      title="Citação"
-                    >
-                      ❝
-                    </button>
-                    <button 
-                      type="button" 
-                      className={styles.toolButton} 
-                      onClick={() => formatText('hr')}
-                      title="Linha Horizontal"
-                    >
-                      ⎯
-                    </button>
-                  </div>
-                  
-                  <div className={styles.markdownHelp}>
-                    <details className={styles.helpDropdown}>
-                      <summary>📖 Guia Rápido de Markdown</summary>
-                      <div className={styles.helpContent}>
-                        <table className={styles.markdownTable}>
-                          <thead>
-                            <tr>
-                              <th>Formatação</th>
-                              <th>Markdown</th>
-                              <th>Resultado</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Negrito</td>
-                              <td><code>**texto**</code></td>
-                              <td><strong>texto</strong></td>
-                            </tr>
-                            <tr>
-                              <td>Itálico</td>
-                              <td><code>*texto*</code></td>
-                              <td><em>texto</em></td>
-                            </tr>
-                            <tr>
-                              <td>Título 2</td>
-                              <td><code>## Título</code></td>
-                              <td><h3>Título</h3></td>
-                            </tr>
-                            <tr>
-                              <td>Link</td>
-                              <td><code>[texto](url)</code></td>
-                              <td><a href="#">texto</a></td>
-                            </tr>
-                            <tr>
-                              <td>Imagem</td>
-                              <td><code>![alt](url)</code></td>
-                              <td>Imagem</td>
-                            </tr>
-                            <tr>
-                              <td>Lista</td>
-                              <td><code>- item</code></td>
-                              <td>• item</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </details>
-                  </div>
-                </div>
-              </div>
-
-              {/* Seção 4: Metadados */}
-              <div className={styles.formSection}>
-                <h3 className={styles.sectionTitle}>
-                  <span className={styles.sectionIcon}>🏷️</span>
-                  Metadados e Tags
-                </h3>
-                
-                <div className={styles.formRow}>
-                  <div className={styles.formGroupHalf}>
-                    <label htmlFor="tags" className={styles.formLabel}>
-                      Tags (separadas por vírgula)
-                    </label>
-                    <input
-                      id="tags"
-                      name="tags"
-                      value={formData.tags}
-                      onChange={handleChange}
-                      placeholder="tecnologia, desenvolvimento, javascript"
-                      className={styles.formInput}
-                    />
-                  </div>
-                  
-                  <div className={styles.formGroupHalf}>
-                    <label htmlFor="dataPublicacao" className={styles.formLabel}>
-                      Data de Publicação
-                    </label>
-                    <input
-                      type="date"
-                      id="dataPublicacao"
-                      name="dataPublicacao"
-                      value={formData.dataPublicacao}
-                      onChange={handleChange}
-                      className={styles.formInput}
-                    />
-                  </div>
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label htmlFor="fonte" className={styles.formLabel}>
-                    Fonte Original (Opcional)
-                  </label>
-                  <input
-                    id="fonte"
-                    name="fonte"
-                    value={formData.fonte}
-                    onChange={handleChange}
-                    placeholder="Fonte original da notícia"
-                    className={styles.formInput}
-                  />
                 </div>
               </div>
 
@@ -705,70 +434,7 @@ export default function CadastrarPostagem() {
               </div>
             </div>
           </div>
-
-          {/* Card: Ações Rápidas */}
-          <div className={styles.sidebarCard}>
-            <div className={styles.cardHeader}>
-              <h3 className={styles.cardTitle}>Ações Rápidas</h3>
-            </div>
-            <div className={styles.quickActions}>
-              <button className={styles.quickAction}>
-                <span className={styles.actionIcon}>📋</span>
-                Ver Rascunhos
-              </button>
-              <button className={styles.quickAction}>
-                <span className={styles.actionIcon}>📊</span>
-                Analytics
-              </button>
-              <button className={styles.quickAction}>
-                <span className={styles.actionIcon}>⚙️</span>
-                Configurações
-              </button>
-              <button 
-                className={styles.quickAction}
-                onClick={() => {
-                  setFormData({
-                    titulo: "",
-                    descricao: "",
-                    imagem: "",
-                    artigo: "",
-                    autor: "",
-                    categoria: "",
-                    tags: "",
-                    dataPublicacao: new Date().toISOString().split('T')[0],
-                    miniatura: "",
-                    fonte: ""
-                  });
-                  setSuccessMessage("Formulário limpo com sucesso!");
-                  setTimeout(() => setSuccessMessage(""), 3000);
-                }}
-              >
-                <span className={styles.actionIcon}>🔄</span>
-                Limpar Formulário
-              </button>
-            </div>
-          </div>
-
-          {/* Card: Dicas */}
-          <div className={styles.sidebarCard}>
-            <div className={styles.cardHeader}>
-              <h3 className={styles.cardTitle}>💡 Dicas</h3>
-            </div>
-            <ul className={styles.tipsList}>
-              <li className={styles.tipItem}>
-                Use os botões de formatação para adicionar negrito, itálico, etc.
-              </li>
-              <li className={styles.tipItem}>
-                Selecione texto antes de clicar nos botões para formatar
-              </li>
-              <li className={styles.tipItem}>
-                O editor usa Markdown - veja o guia para mais opções
-              </li>
-              <li className={styles.tipItem}>
-                Use ## para títulos e ### para subtítulos
-              </li>
-            </ul>
-          </div>
+          <ControleRotas />
         </aside>
       </div>
     </div>
