@@ -4,10 +4,193 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/public/logotipo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>axiosnews | Notícias | vagas | E-Commerce</title>
+    <meta name="google-site-verification" content="b_6istV0Lw9g5OvVjYdTlpgmXOLAROqhkvjNh_uOz1A" />
+
+    <!-- Meta Tags Básicas -->
+    <title>axiosnews | Notícias | Vagas | E-Commerce</title>
+    <meta name="description" content="Fique por dentro das últimas notícias, vagas de emprego e oportunidades no e-commerce. Conteúdo atualizado diariamente." />
+    <meta name="keywords" content="notícias, vagas, emprego, e-commerce, tecnologia, carreira, desenvolvimento" />
+    <meta name="author" content="axiosnews" />
+    
+    <!-- Open Graph Meta Tags (Facebook, LinkedIn, WhatsApp, etc.) -->
+    <meta property="og:site_name" content="axiosnews" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="axiosnews | Notícias | Vagas | E-Commerce" />
+    <meta property="og:description" content="Fique por dentro das últimas notícias, vagas de emprego e oportunidades no e-commerce. Conteúdo atualizado diariamente." />
+    <meta property="og:url" content="https://axiosnoticias.vercel.app" /> 
+    <meta property="og:image" content="https://axiosnoticias.vercel.app/public/logotipo.png" /> 
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Logo do axiosnews - Notícias, Vagas e E-Commerce" />
+    <meta property="og:locale" content="pt_BR" />
+    
+    
+    <!-- Meta Tags para WhatsApp -->
+    <meta property="og:image:type" content="image/png" />
+    
+    <!-- Meta Tags para LinkedIn -->
+    <meta property="og:image:secure_url" content="https://axiosnoticias.vercel.app/public/logotipo.png" /> <!-- ATUALIZE COM SEU DOMÍNIO -->
+    
+    <!-- Schema.org markup para Google+ -->
+    <meta itemprop="name" content="axiosnews | Notícias | Vagas | E-Commerce">
+    <meta itemprop="description" content="Fique por dentro das últimas notícias, vagas de emprego e oportunidades no e-commerce.">
+    <meta itemprop="image" content="https://axiosnoticias.vercel.app/public/logotipo.png"> <!-- ATUALIZE COM SEU DOMÍNIO -->
+    
+    <!-- Apple Meta Tags -->
+    <meta name="apple-mobile-web-app-title" content="axiosnews" />
+    <link rel="apple-touch-icon" href="/public/logotipo.png" />
+    
+    <!-- Microsoft Meta Tags -->
+    <meta name="msapplication-TileImage" content="/public/logotipo.png" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    
+    <!-- Robots -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://axiosnoticias.vercel.app" /> 
+    
+    <!-- Preconnect para melhor performance -->
+    <link rel="preconnect" href="https://backendpostagens.vercel.app" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#ffffff" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Script para atualizar meta tags dinamicamente para artigos -->
+    <script>
+      // Esta função será chamada pelo React quando uma postagem for carregada
+      window.updateMetaTags = function(postData) {
+        if (!postData) return;
+        
+        // Atualizar título
+        document.title = `${postData.titulo} | axiosnews`;
+        
+        // Atualizar meta description
+        const descMeta = document.querySelector('meta[name="description"]');
+        if (descMeta) {
+          descMeta.content = postData.descricao || 'Leia esta matéria completa no axiosnews';
+        }
+        
+        // Atualizar Open Graph tags
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) {
+          ogTitle.content = postData.titulo;
+        }
+        
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) {
+          ogDesc.content = postData.descricao;
+        }
+        
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) {
+          ogUrl.content = window.location.href;
+        }
+        
+        const ogImage = document.querySelector('meta[property="og:image"]');
+        if (ogImage && postData.imagem) {
+          ogImage.content = postData.imagem;
+        }
+        
+        const ogImageAlt = document.querySelector('meta[property="og:image:alt"]');
+        if (ogImageAlt) {
+          ogImageAlt.content = `Imagem da notícia: ${postData.titulo}`;
+        }
+ 
+        // Atualizar Schema.org
+        const schemaName = document.querySelector('meta[itemprop="name"]');
+        if (schemaName) {
+          schemaName.content = postData.titulo;
+        }
+        
+        const schemaDesc = document.querySelector('meta[itemprop="description"]');
+        if (schemaDesc) {
+          schemaDesc.content = postData.descricao;
+        }
+        
+        const schemaImage = document.querySelector('meta[itemprop="image"]');
+        if (schemaImage && postData.imagem) {
+          schemaImage.content = postData.imagem;
+        }
+        
+        // Atualizar canonical URL
+        const canonicalLink = document.querySelector('link[rel="canonical"]');
+        if (canonicalLink) {
+          canonicalLink.href = window.location.href;
+        }
+        
+        // Adicionar meta tags específicas do artigo
+        addArticleMetaTags(postData);
+      };
+      
+      function addArticleMetaTags(postData) {
+        // Remover meta tags antigas do artigo
+        const oldArticleTags = document.querySelectorAll('[data-article-meta]');
+        oldArticleTags.forEach(tag => tag.remove());
+        
+        // Meta tags específicas para artigos
+        const articleMeta = `
+          <meta property="article:published_time" content="${postData.dataHora}" data-article-meta />
+          <meta property="article:modified_time" content="${new Date().toISOString()}" data-article-meta />
+          <meta property="article:author" content="${postData.autor}" data-article-meta />
+          <meta property="article:section" content="${postData.categoria}" data-article-meta />
+          <meta property="og:type" content="article" data-article-meta />
+          <meta property="article:tag" content="${postData.categoria}" data-article-meta />
+          <meta property="article:tag" content="notícias" data-article-meta />
+          <meta property="article:tag" content="e-commerce" data-article-meta />
+        `;
+        
+        // Adicionar ao head
+        document.head.insertAdjacentHTML('beforeend', articleMeta);
+      }
+      
+      // Atualizar meta tags quando a URL mudar (para SPA)
+      let currentUrl = window.location.href;
+      const observer = new MutationObserver(() => {
+        if (window.location.href !== currentUrl) {
+          currentUrl = window.location.href;
+          // Se estamos em uma página de artigo, chamar a função de atualização
+          if (window.location.pathname.includes('/postagensgeral/')) {
+            // Esperar um pouco para o React carregar os dados
+            setTimeout(() => {
+              if (window.currentPostData) {
+                window.updateMetaTags(window.currentPostData);
+              }
+            }, 500);
+          } else {
+            // Resetar para a página inicial
+            resetMetaTags();
+          }
+        }
+      });
+      
+      observer.observe(document.body, { childList: true, subtree: true });
+      
+      function resetMetaTags() {
+        // Resetar para valores padrão
+        document.title = 'axiosnews | Notícias | Vagas | E-Commerce';
+        
+        const defaultDesc = 'Fique por dentro das últimas notícias, vagas de emprego e oportunidades no e-commerce. Conteúdo atualizado diariamente.';
+        const defaultImage = 'https://axiosnoticias.vercel.app/public/logotipo.png'; 
+        
+        document.querySelector('meta[name="description"]').content = defaultDesc;
+        document.querySelector('meta[property="og:title"]').content = document.title;
+        document.querySelector('meta[property="og:description"]').content = defaultDesc;
+        document.querySelector('meta[property="og:url"]').content = 'https://axiosnoticias.vercel.app'; 
+        document.querySelector('meta[property="og:image"]').content = defaultImage;
+        document.querySelector('meta[name="twitter:title"]').content = document.title;
+        document.querySelector('meta[name="twitter:description"]').content = defaultDesc;
+        document.querySelector('meta[name="twitter:image"]').content = defaultImage;
+        document.querySelector('meta[property="og:type"]').content = 'website';
+        
+        // Remover meta tags de artigo
+        const articleTags = document.querySelectorAll('[data-article-meta]');
+        articleTags.forEach(tag => tag.remove());
+      }
+    </script>
   </body>
 </html>

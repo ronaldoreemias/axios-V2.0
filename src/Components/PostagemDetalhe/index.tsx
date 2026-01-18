@@ -4,6 +4,13 @@ import type { ChangeEvent, FormEvent } from "react";
 import styles from "./PostagemDetalhe.module.css";
 import Navbar from "../NavbarDetalhes";
 
+declare global {
+  interface Window {
+    updateMetaTags?: (postData: any) => void;
+    currentPostData?: any;
+  }
+}
+
 interface Comentario {
   _id: string;
   texto: string;
@@ -258,33 +265,44 @@ export default function PostagemDetalhe() {
     return errors.length === 0;
   };
 
-  useEffect(() => {
-    synthRef.current = window.speechSynthesis;
-    
-    const carregarVozes = () => {
-      const vozes = synthRef.current?.getVoices() || [];
-      console.log("Vozes disponíveis:", vozes);
-    };
-    
-    synthRef.current.onvoiceschanged = carregarVozes;
-    carregarVozes();
 
-    fetch(`https://backendpostagens.vercel.app/api/handler?type=postagensgeral&id=${id}`)
-      .then(res => res.json())
-      .then(dados => {
-        setPostagem(dados);
-        setLoading(false);
-        carregarUltimasNoticias();
-      })
-      .catch(err => {
-        console.error("Erro ao buscar postagem:", err);
-        setLoading(false);
-      });
+useEffect(() => {
+  synthRef.current = window.speechSynthesis;
+  
+  const carregarVozes = () => {
+    const vozes = synthRef.current?.getVoices() || [];
+    console.log("Vozes disponíveis:", vozes);
+  };
+  
+  synthRef.current.onvoiceschanged = carregarVozes;
+  carregarVozes();
 
-    return () => {
-      pararNarracao();
-    };
-  }, [id]);
+  fetch(`https://backendpostagens.vercel.app/api/handler?type=postagensgeral&id=${id}`)
+    .then(res => res.json())
+    .then(dados => {
+      setPostagem(dados);
+      setLoading(false);
+      
+      // Atualizar meta tags para preview social
+      if (window.updateMetaTags) {
+        window.updateMetaTags(dados);
+        // Salvar dados para atualização dinâmica
+        window.currentPostData = dados;
+      }
+      
+      carregarUltimasNoticias();
+    })
+    .catch(err => {
+      console.error("Erro ao buscar postagem:", err);
+      setLoading(false);
+    });
+
+  return () => {
+    pararNarracao();
+    delete window.currentPostData;
+  };
+}, [id]);
+
 
   const carregarUltimasNoticias = () => { 
     setLoadingUltimas(true);
