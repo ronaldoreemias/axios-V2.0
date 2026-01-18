@@ -3,13 +3,7 @@ import { useParams } from "react-router-dom";
 import type { ChangeEvent, FormEvent } from "react";
 import styles from "./PostagemDetalhe.module.css";
 import Navbar from "../NavbarDetalhes";
-
-declare global {
-  interface Window {
-    updateMetaTags?: (postData: any) => void;
-    currentPostData?: any;
-  }
-}
+import { useMetaTags } from '../../hooks/useMetaTags';
 
 interface Comentario {
   _id: string;
@@ -59,6 +53,17 @@ export default function PostagemDetalhe() {
   const [respondendoAutor, setRespondendoAutor] = useState<string>("");
   const [validationErrors, setValidationErrors] = useState<ValidationError[]>([]);
 
+  useMetaTags({
+    title: postagem ? `${postagem.titulo} | axiosnews` : 'axiosnews | Notícias | Vagas | E-Commerce',
+    description: postagem?.descricao || 'Fique por dentro das últimas notícias, vagas de emprego e oportunidades no e-commerce.',
+    image: postagem?.imagem || 'https://seusite.com/logotipo.png',
+    type: postagem ? 'article' : 'website',
+    author: postagem?.autor,
+    publishedTime: postagem?.dataHora,
+    section: postagem?.categoria,
+    tags: postagem ? [postagem.categoria, 'notícias', 'e-commerce'] : undefined
+  });
+  
   // Lista de padrões suspeitos
   const suspiciousPatterns = {
     sqlInjection: [
@@ -265,44 +270,88 @@ export default function PostagemDetalhe() {
     return errors.length === 0;
   };
 
-
 useEffect(() => {
-  synthRef.current = window.speechSynthesis;
-  
-  const carregarVozes = () => {
-    const vozes = synthRef.current?.getVoices() || [];
-    console.log("Vozes disponíveis:", vozes);
-  };
-  
-  synthRef.current.onvoiceschanged = carregarVozes;
-  carregarVozes();
-
-  fetch(`https://backendpostagens.vercel.app/api/handler?type=postagensgeral&id=${id}`)
-    .then(res => res.json())
-    .then(dados => {
-      setPostagem(dados);
-      setLoading(false);
-      
-      // Atualizar meta tags para preview social
-      if (window.updateMetaTags) {
-        window.updateMetaTags(dados);
-        // Salvar dados para atualização dinâmica
-        window.currentPostData = dados;
+    if (!postagem) return;
+    
+    const fullUrl = window.location.href;
+    
+    // Atualizar título
+    document.title = `${postagem.titulo} | axiosnews`;
+    
+    // Função para atualizar meta tags
+    const updateMeta = (attr: 'name' | 'property', key: string, value: string) => {
+      let element = document.querySelector(`meta[${attr}="${key}"]`);
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute(attr, key);
+        document.head.appendChild(element);
       }
-      
-      carregarUltimasNoticias();
-    })
-    .catch(err => {
-      console.error("Erro ao buscar postagem:", err);
-      setLoading(false);
-    });
+      element.setAttribute('content', value);
+    };
+    
+    // Meta description
+    updateMeta('name', 'description', postagem.descricao);
+    
+    // Open Graph
+    updateMeta('property', 'og:title', postagem.titulo);
+    updateMeta('property', 'og:description', postagem.descricao);
+    updateMeta('property', 'og:image', postagem.imagem);
+    updateMeta('property', 'og:url', fullUrl);
+    updateMeta('property', 'og:type', 'article');
+    updateMeta('property', 'article:published_time', postagem.dataHora);
+    updateMeta('property', 'article:author', postagem.autor);
+    updateMeta('property', 'article:section', postagem.categoria);
+    updateMeta('property', 'article:tag', postagem.categoria);
+    
+    // Twitter
+    updateMeta('name', 'twitter:title', postagem.titulo);
+    updateMeta('name', 'twitter:description', postagem.descricao);
+    updateMeta('name', 'twitter:image', postagem.imagem);
+    
+    // Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', fullUrl);
+    
+    // Cleanup
+    return () => {
+      // Resetar para padrão
+      document.title = 'axiosnews | Notícias | Vagas | E-Commerce';
+    };
+  }, [postagem]);
 
-  return () => {
-    pararNarracao();
-    delete window.currentPostData;
-  };
-}, [id]);
+  // Efeito principal para carregar postagem
+  useEffect(() => {
+    synthRef.current = window.speechSynthesis;
+    
+    const carregarVozes = () => {
+      const vozes = synthRef.current?.getVoices() || [];
+      console.log("Vozes disponíveis:", vozes);
+    };
+    
+    synthRef.current.onvoiceschanged = carregarVozes;
+    carregarVozes();
 
+    fetch(`https://backendpostagens.vercel.app/api/handler?type=postagensgeral&id=${id}`)
+      .then(res => res.json())
+      .then(dados => {
+        setPostagem(dados);
+        setLoading(false);
+        carregarUltimasNoticias();
+      })
+      .catch(err => {
+        console.error("Erro ao buscar postagem:", err);
+        setLoading(false);
+      });
+
+    return () => {
+      pararNarracao();
+    };
+  }, [id]);
 
   const carregarUltimasNoticias = () => { 
     setLoadingUltimas(true);
