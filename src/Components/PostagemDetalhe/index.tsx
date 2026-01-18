@@ -59,7 +59,7 @@ export default function PostagemDetalhe() {
       /('|")?(\s*)?(\-\-|\#)/,
       /(\bOR\b|\bAND\b)(\s+)?(\d+)?(\s+)?[=<>]/i,
       /(\s*)?;(\s*)?(\w+)?(\s*)?$/,
-      /(\%27|\'|\"|\-\-|\/\*|\*\/|@@|@|char|nchar|varchar|nvarchar|alter|begin|cast|create|cursor|declare|delete|drop|end|exec|execute|fetch|insert|kill|open|select|sys|sysobject|syscolumns|table|update)\b/i
+      /(\%27|\'|\"|\-\-|\/\*|\*\/|char|nchar|varchar|nvarchar|alter|begin|cast|create|cursor|declare|delete|drop|end|exec|execute|fetch|insert|kill|open|select|sys|sysobject|syscolumns|table|update)\b/i
     ],
     xssAndScripts: [
       /<script\b[^>]*>(.*?)<\/script>/i,
@@ -81,7 +81,7 @@ export default function PostagemDetalhe() {
       /^\s*(123|abc|aaa|bbb|ccc|xyz|qwerty|asdf|zxcv|demo|sample|exemplo)\s*$/i,
       /^\s*([a-z])\1{2,}\s*$/i,
       /^\s*\d+\s*$/,
-      /^\s*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+\s*$/
+      /^\s*[#$%^&*()_+\-=\[\]{};':"\\|,.<>\/]+\s*$/
     ],
     maliciousUrls: [
       /(http|https):\/\/(localhost|127\.0\.0\.1|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/i,
