@@ -63,7 +63,7 @@ export default function PostagemDetalhe() {
     section: postagem?.categoria,
     tags: postagem ? [postagem.categoria, 'notícias', 'e-commerce'] : undefined
   });
-  
+
   // Lista de padrões suspeitos
   const suspiciousPatterns = {
     sqlInjection: [
@@ -101,7 +101,7 @@ export default function PostagemDetalhe() {
       /(phishing|malware|virus|trojan|worm|spyware|adware|ransomware)/i
     ],
     profanity: [
-      /(odeio|caralho|porra|merda|foda|foder|puta|vagabunda|viado|bicha|corn[o|a]|chupa|pinto|buceta|xoxota|rola|pau)/i,
+      /(fuder|poha|odeio|caralho|porra|merda|foda|foder|puta|vagabunda|viado|bicha|chupa|pinto|buceta|xoxota|rola|pau|Merda)/i,
       /(fuck|shit|asshole|bitch|whore|slut|dick|cock|pussy|cunt|nigger|nigga|retard)/i
     ]
   };
