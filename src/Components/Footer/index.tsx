@@ -13,8 +13,8 @@ function Footer(){
                     vagas de emprego e Comunidade no whatsapp e fórum (ainda em desenvolvimento )</p>
                 </div>
                 <div>
-                    <h3>Código aberto</h3>
-                    <a href="https://github.com/ronaldoreemias/axios-V2.0"><p>Guithub do projeto</p></a>
+                    <h3>seja bem vindo</h3>
+                    <a ><p>faça um feedback</p></a>
                 </div>
                 <div>
                     <h3>Contato</h3>
