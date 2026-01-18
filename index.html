@@ -10,6 +10,7 @@
   <title>axiosnews | Notícias | Vagas | E-Commerce</title>
   <meta name="description" content="Fique por dentro das últimas notícias, vagas de emprego e oportunidades no e-commerce. Conteúdo atualizado diariamente." />
   <meta name="keywords" content="notícias, vagas, emprego, e-commerce, tecnologia, carreira, desenvolvimento" />
+  <meta name="author" content="axiosnews" />
   
   <!-- Open Graph Padrão -->
   <meta property="og:site_name" content="axiosnews" />
@@ -23,17 +24,55 @@
   <meta property="og:image:alt" content="axiosnews - Notícias, Vagas e E-Commerce" />
   <meta property="og:locale" content="pt_BR" />
   
+  <!-- Twitter Card Padrão -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@axiosnews" /> <!-- ATUALIZE -->
+  <meta name="twitter:creator" content="@axiosnews" /> <!-- ATUALIZE -->
+  <meta name="twitter:title" content="axiosnews | Notícias | Vagas | E-Commerce" />
+  <meta name="twitter:description" content="Fique por dentro das últimas notícias, vagas de emprego e oportunidades no e-commerce. Conteúdo atualizado diariamente." />
+  <meta name="twitter:image" content="https://axiosnoticias.vercel.app/logotipo.png" />
+  <meta name="twitter:image:alt" content="axiosnews - Notícias, Vagas e E-Commerce" />
+  
   <!-- Canonical Padrão -->
   <link rel="canonical" href="https://axiosnoticias.vercel.app" />
+  
+  <!-- Favicon para múltiplos dispositivos -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  
+  <!-- Preconnect para melhor performance -->
+  <link rel="preconnect" href="https://backendpostagens.vercel.app" />
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#ffffff" />
 </head>
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
-  
+
   <script>
-    const path = window.location.pathname;
-    if (path.includes('/postagensgeral/')) {
-      document.querySelector('meta[property="og:type"]').content = 'article';
+    // Verifica se é uma página de artigo
+    const isArticlePage = window.location.pathname.includes('/postagensgeral/');
+    
+    if (isArticlePage) {
+      // Muda o tipo para article (crawlers mais avançados podem pegar)
+      const ogType = document.querySelector('meta[property="og:type"]');
+      if (ogType) ogType.content = 'article';
+      
+      // Adiciona meta tags específicas de artigo
+      const articleMeta = document.createElement('meta');
+      articleMeta.setAttribute('property', 'article:section');
+      articleMeta.setAttribute('content', 'Notícias');
+      document.head.appendChild(articleMeta);
+      
+      const articleMeta2 = document.createElement('meta');
+      articleMeta2.setAttribute('property', 'article:tag');
+      articleMeta2.setAttribute('content', 'notícias');
+      document.head.appendChild(articleMeta2);
+      
+      console.log('Meta tags de artigo configuradas para crawlers');
     }
   </script>
 </body>
