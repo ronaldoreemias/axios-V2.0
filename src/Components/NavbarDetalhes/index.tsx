@@ -46,7 +46,7 @@ function Navbar() {
                             <a href="https://ecommerce-delta-ten-22.vercel.app/">Loja</a>
                         </li>
                         <li>
-                            <a href="https://front-weld-six.vercel.app/" onClick={closeMenu}>Fóruns</a>
+                            <a href="/Forum" onClick={closeMenu}>Fóruns</a>
                         </li>
                         <li>
                             <a href="/Vagas" onClick={closeMenu}>Vagas de emprego</a>
