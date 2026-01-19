@@ -68,22 +68,12 @@ function Comentarios() {
   const [texto, setTexto] = useState("");
   const [erro, setErro] = useState("");
   const [enviando, setEnviando] = useState(false);
-  const [online, setOnline] = useState(true);
-  const [digitando, setDigitando] = useState(false);
+  const [userId] = useState(() => localStorage.getItem('chatUserId') || `user_${Date.now()}`);
 
+  // Salvar ID do usuário no localStorage
   useEffect(() => {
-    // Simular status online
-    const handleOnline = () => setOnline(true);
-    const handleOffline = () => setOnline(false);
-    
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
-    
-    return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-    };
-  }, []);
+    localStorage.setItem('chatUserId', userId);
+  }, [userId]);
 
   useEffect(() => {
     const fetchComentarios = async () => {
@@ -101,16 +91,6 @@ function Comentarios() {
       }
     };
     fetchComentarios();
-    
-    // Simular digitação
-    const interval = setInterval(() => {
-      if (Math.random() > 0.7 && comentarios.length > 0) {
-        setDigitando(true);
-        setTimeout(() => setDigitando(false), 3000);
-      }
-    }, 10000);
-    
-    return () => clearInterval(interval);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -124,19 +104,22 @@ function Comentarios() {
       const res = await fetch("https://backendcomentarios.vercel.app/api/comentarios", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ texto: textoParaEnviar }),
+        body: JSON.stringify({ 
+          texto: textoParaEnviar,
+          userId: userId // Identificador do usuário
+        }),
       });
 
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
       const novo = await res.json();
       
-      // Adiciona o novo comentário no topo (mais recente primeiro)
+      // Adiciona o novo comentário no topo
       setComentarios(prev => [novo, ...prev]);
       setTexto("");
       setErro("");
       
-      // Scroll automático para o novo comentário
+      // Scroll automático para o topo
       setTimeout(() => {
         const areaMensagem = document.querySelector(`.${style.areamensagem}`);
         if (areaMensagem) {
@@ -154,23 +137,16 @@ function Comentarios() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTexto(e.target.value);
-    // Simular digitação para outros usuários
-    if (e.target.value.length > 0 && !digitando) {
-      setDigitando(true);
-    } else if (e.target.value.length === 0) {
-      setDigitando(false);
-    }
+  };
+
+  // Determinar se o comentário é do usuário atual ou de outro
+  const isMeuComentario = (comentario: Comentario): boolean => {
+    // Verifica se o comentário tem userId e se corresponde ao nosso
+    return (comentario as any).userId === userId;
   };
 
   return (
     <div className={style.formularioscom}>
-      
-      {/* Status Online */}
-      <div className={style.statusIndicator}>
-        <div className={style.statusDot}></div>
-        <span>{online ? `${comentarios.length} ativos` : 'Offline'}</span>
-      </div>
-      
       {erro && <div style={{ color: "#ff5252" }}>{erro}</div>}
 
       {/* Área de Mensagens */}
@@ -178,42 +154,32 @@ function Comentarios() {
         {comentarios.length === 0 && !erro ? (
           <div className={style.j}>
             <FaSpinner className={style.spinner} />
-            <p>Carregando conversa...</p>
+            <p>Carregando...</p>
           </div>
         ) : (
-          <>
-            {/* Indicador de digitação */}
-            {digitando && (
-              <div className={style.typingIndicator}>
-                <div className={style.typingDot}></div>
-                <div className={style.typingDot}></div>
-                <div className={style.typingDot}></div>
-              </div>
-            )}
+          comentarios.map((c, index) => {
+            const dataAnterior = index > 0 ? comentarios[index - 1].criadoEm : undefined;
+            const mostrarSeparador = isNovoDia(c.criadoEm, dataAnterior);
+            const isMeu = isMeuComentario(c);
             
-            {comentarios.map((c, index) => {
-              const dataAnterior = index > 0 ? comentarios[index - 1].criadoEm : undefined;
-              const mostrarSeparador = isNovoDia(c.criadoEm, dataAnterior);
-              
-              return (
-                <div key={c._id}>
-                  {mostrarSeparador && (
-                    <div className={style.dataSeparator}>
-                      <span>{formatarDataCompleta(c.criadoEm)}</span>
-                    </div>
-                  )}
-                  
-                  <div 
-                    className={style.comentario}
-                    style={{ '--item-index': index } as React.CSSProperties}
-                  >
-                    <p>{c.texto}</p>
-                    <small>{formatarData(c.criadoEm)}</small>
+            return (
+              <div key={c._id}>
+                {mostrarSeparador && (
+                  <div className={style.dataSeparator}>
+                    <span>{formatarDataCompleta(c.criadoEm)}</span>
                   </div>
+                )}
+                
+                <div 
+                  className={`${style.comentario} ${isMeu ? style.enviado : style.recebido}`}
+                  style={{ '--item-index': index } as React.CSSProperties}
+                >
+                  <p>{c.texto}</p>
+                  <small>{formatarData(c.criadoEm)}</small>
                 </div>
-              );
-            })}
-          </>
+              </div>
+            );
+          })
         )}
       </div>
       
