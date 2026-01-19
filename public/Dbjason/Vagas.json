@@ -1,10 +1,10 @@
 [
   {
-    "Vaga": "Estágio em Análise de Dados",
-    "Descrição": "Estágio em Análise de Dados na empresa PETLOVE. Requisitos: previsão de formatura a partir de 06/2027, disponibilidade 30h semanais, cursando cursos de TI/Engenharias, noções básicas em SQL, Python, Git, Airflow e Power BI.",
+    "Vaga": "estagio em Análise de Dados",
+    "Descrição": "estagio em Análise de Dados na empresa PETLOVE. Requisitos: previsão de formatura a partir de 06/2027, disponibilidade 30h semanais, cursando cursos de TI/Engenharias, noções básicas em SQL, Python, Git, Airflow e Power BI.",
     "Local": "Home Office",
     "modelo": "Remoto",
-    "tipoContrato": "Estágio",
+    "tipoContrato": "estagio",
     "areaAtuacao": "Análise de Dados",
     "faixaSalarial": "Não informado",
     "Email": "",
@@ -56,11 +56,11 @@
     "Link_linkdin": ""
   },
   {
-    "Vaga": "Programa de Estágio",
-    "Descrição": "Programa de Estágio em área de tecnologia.",
+    "Vaga": "Programa de estagio",
+    "Descrição": "Programa de estagio em área de tecnologia.",
     "Local": "Home Office",
     "modelo": "Remoto",
-    "tipoContrato": "Estágio",
+    "tipoContrato": "estagio",
     "areaAtuacao": "Tecnologia",
     "faixaSalarial": "Não informado",
     "Email": "",
@@ -84,11 +84,11 @@
     "Link_linkdin": ""
   },
   {
-    "Vaga": "Estágio em Desenvolvimento Web",
-    "Descrição": "Estágio em Desenvolvimento Web para estudantes de Ciência da Computação, Matemática, Engenharia e áreas afins.",
+    "Vaga": "estagio em Desenvolvimento Web",
+    "Descrição": "estagio em Desenvolvimento Web para estudantes de Ciência da Computação, Matemática, Engenharia e áreas afins.",
     "Local": "Home Office",
     "modelo": "Remoto",
-    "tipoContrato": "Estágio",
+    "tipoContrato": "estagio",
     "areaAtuacao": "Desenvolvimento Web",
     "faixaSalarial": "Não informado",
     "Email": "",
@@ -126,11 +126,11 @@
     "Link_linkdin": "https://www.linkedin.com/posts/cristianofontes_techjobs-vagas-techlead-activity-7414652231356137473-3NBI"
   },
   {
-    "Vaga": "Estágio Desenvolvimento",
+    "Vaga": "estagio Desenvolvimento",
     "Descrição": "",
     "Local": "Home Office",
     "modelo": "Remoto",
-    "tipoContrato": "Estágio",
+    "tipoContrato": "estagio",
     "areaAtuacao": "Desenvolvimento",
     "faixaSalarial": "Não informado",
     "Email": "",
@@ -140,11 +140,11 @@
     "Link_linkdin": ""
   },
   {
-    "Vaga": "Estágio em Suporte",
+    "Vaga": "estagio em Suporte",
     "Descrição": "",
     "Local": "Home Office",
     "modelo": "Remoto",
-    "tipoContrato": "Estágio",
+    "tipoContrato": "estagio",
     "areaAtuacao": "Suporte",
     "faixaSalarial": "Não informado",
     "Email": "",
@@ -168,11 +168,11 @@
     "Link_linkdin": ""
   },
   {
-    "Vaga": "Estágio em Análise de Requisitos",
+    "Vaga": "estagio em Análise de Requisitos",
     "Descrição": "Interesse em levantamento e documentação de requisitos e processos de negócios; Inglês avançado; Organização e atenção a detalhes.",
     "Local": "Home Office",
     "modelo": "Remoto",
-    "tipoContrato": "Estágio",
+    "tipoContrato": "estagio",
     "areaAtuacao": "Análise de Requisitos",
     "faixaSalarial": "Não informado",
     "Email": "",
@@ -378,11 +378,11 @@
     "Link_linkdin": "https://www.linkedin.com/jobs/view/4329518460/"
   },
     {
-    "Vaga": "Estágio em Integração de Sistemas",
+    "Vaga": "estagio em Integração de Sistemas",
     "Descrição": "Atuar em integração de sistemas, desenvolvimento de SPAs interativos e APIs REST.",
     "Local": "Home Office",
     "modelo": "Remoto",
-    "tipoContrato": "Estágio",
+    "tipoContrato": "estagio",
     "areaAtuacao": "Integração de Sistemas",
     "faixaSalarial": "Não informado",
     "Email": "",
@@ -536,7 +536,7 @@
     "Descrição": "Auxiliar no desenvolvimento de novas funcionalidades, melhorias de performance e manutenção em projetos React.",
     "Local": "Home Office",
     "modelo": "Remoto",
-    "tipoContrato": "Estágio",
+    "tipoContrato": "estagio",
     "areaAtuacao": "Front-end",
     "faixaSalarial": "Não informado",
     "Email": "karin.pohl@infobase.com.br",
@@ -658,11 +658,11 @@
     "Link_linkdin": "https://lnkd.in/ebpfKNQN"
   },
   {
-    "Vaga": "Estágio - Desenvolvimento Web e I.A.",
+    "Vaga": "estagio - Desenvolvimento Web e I.A.",
     "Descrição": "Auxiliar na criação, manutenção e otimização de sites e aplicar recursos de I.A.",
     "Local": "Rio Claro/SP",
     "modelo": "Presencial",
-    "tipoContrato": "Estágio",
+    "tipoContrato": "estagio",
     "areaAtuacao": "Web e Inteligência Artificial",
     "faixaSalarial": "R$ 1.000,00",
     "Email": "",
@@ -700,11 +700,11 @@
     "Link_linkdin": ""
   },
   {
-    "Vaga": "Estágio TI (Meios de Pagamento)",
-    "Descrição": "Estágio em TI com foco em meios de pagamento.",
+    "Vaga": "estagio TI (Meios de Pagamento)",
+    "Descrição": "estagio em TI com foco em meios de pagamento.",
     "Local": "Remoto",
     "modelo": "Home office",
-    "tipoContrato": "Estágio",
+    "tipoContrato": "estagio",
     "areaAtuacao": "TI",
     "faixaSalarial": "Bolsa R$3.000",
     "beneficios": [],
@@ -713,11 +713,11 @@
     "Link_linkdin": "https://lnkd.in/d6e6xU5n"
   },
   {
-    "Vaga": "Estágio Desenvolvedor(a) Full-stack",
-    "Descrição": "Estágio em desenvolvimento full-stack.",
+    "Vaga": "estagio Desenvolvedor(a) Full-stack",
+    "Descrição": "estagio em desenvolvimento full-stack.",
     "Local": "Remoto",
     "modelo": "Home office",
-    "tipoContrato": "Estágio",
+    "tipoContrato": "estagio",
     "areaAtuacao": "Full-stack",
     "faixaSalarial": "A combinar",
     "beneficios": [],
@@ -792,10 +792,10 @@
   },
   {
     "Vaga": "Estagiário em Desenvolvimento Web – JavaScript e React",
-    "Descrição": "Estágio em desenvolvimento web com JavaScript e React.",
+    "Descrição": "estagio em desenvolvimento web com JavaScript e React.",
     "Local": "Remoto",
     "modelo": "Home office",
-    "tipoContrato": "Estágio",
+    "tipoContrato": "estagio",
     "areaAtuacao": "Front-end",
     "faixaSalarial": "Bolsa compatível com mercado",
     "beneficios": ["Mentoria", "Possibilidade de efetivação"],

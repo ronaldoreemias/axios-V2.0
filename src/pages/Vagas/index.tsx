@@ -2,8 +2,6 @@ import style from "./Vagas.module.css";
 import Navbar from "../../Components/Navbar";
 import { useState, useEffect, useCallback } from "react"; 
 
-// No topo do seu arquivo Vagas/index.tsx, antes do componente:
-
 interface Vaga {
   Vaga: string;
   Descrição: string;
@@ -17,6 +15,8 @@ interface Vaga {
   link_site_da_empresa?: string;
   link_whatsapp?: string;
   beneficios?: string[];
+  requisitos?: string[];
+  dataPublicacao?: string;
 }
 
 interface FiltrosTipoContrato {
@@ -44,24 +44,11 @@ interface Filtros {
   tipoContrato: FiltrosTipoContrato;
   areaAtuacao: FiltrosAreaAtuacao;
   modelo: FiltrosModelo;
-}// Importe os tipos
+}
 
 function Vagas() {
-    const [vagas, setVagas] = useState<Vaga[]>([]); // Adicione o tipo
-    const [vagasFiltradas, setVagasFiltradas] = useState<Vaga[]>([]); // Adicione o tipo
-
-    useEffect(() => {
-        fetch('/Dbjason/Vagas.json')
-        .then((response) => response.json())
-        .then((dados: Vaga[]) => { // Adicione o tipo
-            setVagas(dados);
-            setVagasFiltradas(dados);
-        })
-        .catch((error) => {
-            console.error("Erro ao carregar vagas:", error);
-        });
-    }, []);
-
+    const [vagas, setVagas] = useState<Vaga[]>([]);
+    const [vagasFiltradas, setVagasFiltradas] = useState<Vaga[]>([]);
     const [filtros, setFiltros] = useState<Filtros>({
         tipoContrato: {
             Freelancer: false,
@@ -85,8 +72,24 @@ function Vagas() {
 
     const [termoBusca, setTermoBusca] = useState<string>("");
     const [isMobile, setIsMobile] = useState<boolean>(false);
+    const [modalFiltrosAberto, setModalFiltrosAberto] = useState<boolean>(false);
 
-    // Detecta se está em mobile
+    useEffect(() => {
+        fetch('/Dbjason/Vagas.json')
+        .then((response) => response.json())
+        .then((dados: Vaga[]) => {
+            const vagasComData = dados.map(vaga => ({
+                ...vaga,
+                dataPublicacao: vaga.dataPublicacao || new Date().toISOString().split('T')[0]
+            }));
+            setVagas(vagasComData);
+            setVagasFiltradas(vagasComData);
+        })
+        .catch((error) => {
+            console.error("Erro ao carregar vagas:", error);
+        });
+    }, []);
+
     useEffect(() => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth <= 768);
@@ -107,11 +110,9 @@ function Vagas() {
         }));
     };
 
-    // Função para aplicar filtros - agora com useCallback
     const aplicarFiltros = useCallback(() => {
         let vagasFiltradas = vagas;
 
-        // Filtro por termo de busca
         if (termoBusca) {
             vagasFiltradas = vagasFiltradas.filter(vaga => 
                 vaga.Vaga.toLowerCase().includes(termoBusca.toLowerCase()) ||
@@ -122,7 +123,6 @@ function Vagas() {
             );
         }
 
-        // Filtro por tipo de contrato
         const tiposContratoSelecionados = Object.keys(filtros.tipoContrato).filter(
             (key): key is keyof FiltrosTipoContrato => 
                 filtros.tipoContrato[key as keyof FiltrosTipoContrato]
@@ -134,7 +134,6 @@ function Vagas() {
             );
         }
 
-        // Filtro por área de atuação
         const areasSelecionadas = Object.keys(filtros.areaAtuacao).filter(
             (key): key is keyof FiltrosAreaAtuacao => 
                 filtros.areaAtuacao[key as keyof FiltrosAreaAtuacao]
@@ -146,7 +145,6 @@ function Vagas() {
             );
         }
 
-        // Filtro por modelo de trabalho
         const modelosSelecionados = Object.keys(filtros.modelo).filter(
             (key): key is keyof FiltrosModelo => 
                 filtros.modelo[key as keyof FiltrosModelo]
@@ -158,19 +156,14 @@ function Vagas() {
             );
         }
 
+        // Ordenação
+        
         setVagasFiltradas(vagasFiltradas);
     }, [vagas, termoBusca, filtros]);
 
-    // Aplicar filtros automaticamente quando os filtros mudam
     useEffect(() => {
         aplicarFiltros();
     }, [aplicarFiltros]);
-
-    const handleSubmitFiltros = (e: React.FormEvent) => {
-        e.preventDefault();
-        aplicarFiltros();
-    };
-
 
     const limparFiltros = () => {
         setTermoBusca("");
@@ -195,6 +188,17 @@ function Vagas() {
             }
         });
         setVagasFiltradas(vagas);
+        if (isMobile) {
+            setModalFiltrosAberto(false);
+        }
+    };
+
+    const handleSubmitFiltros = (e: React.FormEvent) => {
+        e.preventDefault();
+        aplicarFiltros();
+        if (isMobile) {
+            setModalFiltrosAberto(false);
+        }
     };
 
     const renderBotaoCandidatar = (vaga: Vaga) => {
@@ -211,32 +215,23 @@ function Vagas() {
             }
         };
 
-        // Verifica primeiro se há email específico
         if (vaga.Email) {
             return (
                 <button 
                     onClick={copiarEmail}
                     className={style.botaoCandidatar}
                 >
-                    📧 Candidatar-se por Email (Copiar)
+                    <span>Candidatar-se por Email</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 5l7 7-7 7" />
+                    </svg>
                 </button>
             );
         }
         
-        // Se não tiver email, verifica os outros links
         const link = vaga.Link_linkdin || vaga.link_site_da_empresa || vaga.link_whatsapp;
         
         if (!link) return null;
-
-        let textoBotao = " Candidatar-se";
-
-        if (link.includes("linkedin.com") || link.includes("linkdin")) {
-            textoBotao = " Candidatar-se no LinkedIn";
-        } else if (link.includes("whatsapp")) {
-            textoBotao = " Candidatar-se via WhatsApp";
-        } else {
-            textoBotao = " Candidatar-se no Site";
-        }
 
         return (
             <a 
@@ -245,9 +240,97 @@ function Vagas() {
                 rel="noopener noreferrer"
                 className={style.botaoCandidatar}
             >
-                {textoBotao}
+                <span>Candidatar-se Agora</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 5l7 7-7 7" />
+                </svg>
             </a>
         );
+    };
+
+    const FiltrosComponent = () => (
+        <form onSubmit={handleSubmitFiltros}>
+            <h3>Tipo de Contrato</h3>
+            <div className={style.filtroGrupo}>
+                {Object.keys(filtros.tipoContrato).map(tipo => (
+                    <div key={tipo} className={style.filtroItem}>
+                        <input 
+                            type="checkbox" 
+                            id={`contrato-${tipo}`}
+                            checked={filtros.tipoContrato[tipo as keyof FiltrosTipoContrato]}
+                            onChange={() => handleFiltroChange('tipoContrato', tipo)}
+                        />
+                        <label htmlFor={`contrato-${tipo}`}>{tipo}</label>
+                        <span className={style.contadorFiltro}>
+                            {vagas.filter(v => v.tipoContrato === tipo).length}
+                        </span>
+                    </div>
+                ))}
+            </div>
+
+            <h3>Área de Atuação</h3>
+            <div className={style.filtroGrupo}>
+                {Object.keys(filtros.areaAtuacao).map(area => (
+                    <div key={area} className={style.filtroItem}>
+                        <input 
+                            type="checkbox" 
+                            id={`area-${area}`}
+                            checked={filtros.areaAtuacao[area as keyof FiltrosAreaAtuacao]}
+                            onChange={() => handleFiltroChange('areaAtuacao', area)}
+                        />
+                        <label htmlFor={`area-${area}`}>{area}</label>
+                        <span className={style.contadorFiltro}>
+                            {vagas.filter(v => v.areaAtuacao === area).length}
+                        </span>
+                    </div>
+                ))}
+            </div>
+
+            <h3>Modelo de Trabalho</h3>
+            <div className={style.filtroGrupo}>
+                {Object.keys(filtros.modelo).map(modelo => (
+                    <div key={modelo} className={style.filtroItem}>
+                        <input 
+                            type="checkbox" 
+                            id={`modelo-${modelo}`}
+                            checked={filtros.modelo[modelo as keyof FiltrosModelo]}
+                            onChange={() => handleFiltroChange('modelo', modelo)}
+                        />
+                        <label htmlFor={`modelo-${modelo}`}>{modelo}</label>
+                        <span className={style.contadorFiltro}>
+                            {vagas.filter(v => v.modelo === modelo).length}
+                        </span>
+                    </div>
+                ))}
+            </div>
+            
+            <div className={style.botoesFiltro}>
+                <button type="submit" className={style.botaoFiltrar}>
+                    Aplicar Filtros
+                </button>
+                <button type="button" className={style.botaoLimpar} onClick={limparFiltros}>
+                    Limpar Filtros
+                </button>
+            </div>
+        </form>
+    );
+
+    // Filtros ativos para mostrar como tags
+    const filtrosAtivos = [
+        ...Object.keys(filtros.tipoContrato).filter(key => filtros.tipoContrato[key as keyof FiltrosTipoContrato]),
+        ...Object.keys(filtros.areaAtuacao).filter(key => filtros.areaAtuacao[key as keyof FiltrosAreaAtuacao]),
+        ...Object.keys(filtros.modelo).filter(key => filtros.modelo[key as keyof FiltrosModelo])
+    ];
+
+    const removerFiltro = (filtro: string) => {
+        // Encontrar em qual categoria está o filtro
+        if (filtro in filtros.tipoContrato) {
+            handleFiltroChange('tipoContrato', filtro);
+        } else if (filtro in filtros.areaAtuacao) {
+            handleFiltroChange('areaAtuacao', filtro);
+        } else if (filtro in filtros.modelo) {
+            handleFiltroChange('modelo', filtro);
+        }
     };
 
     return(
@@ -255,114 +338,185 @@ function Vagas() {
             <Navbar />
             
             <main className={style.Vagasmain}>
+                {/* Barra de Filtros Lateral (Desktop) */}
                 {!isMobile && (
                     <div className={style.barradefiltragemlateral}>
-                        <form onSubmit={handleSubmitFiltros}>
-                            <h3>Tipo de Contrato</h3>
-                            {Object.keys(filtros.tipoContrato).map(tipo => (
-                                <div key={tipo} className={style.checkboxGroup}>
-                                    <input 
-                                        type="checkbox" 
-                                        id={`contrato-${tipo}`}
-                                        checked={filtros.tipoContrato[tipo as keyof FiltrosTipoContrato]}
-                                        onChange={() => handleFiltroChange('tipoContrato', tipo)}
-                                    />
-                                    <label htmlFor={`contrato-${tipo}`}>{tipo}</label>
-                                </div>
-                            ))}
-
-                            <h3>Área de Atuação</h3>
-                            {Object.keys(filtros.areaAtuacao).map(area => (
-                                <div key={area} className={style.checkboxGroup}>
-                                    <input 
-                                        type="checkbox" 
-                                        id={`area-${area}`}
-                                        checked={filtros.areaAtuacao[area as keyof FiltrosAreaAtuacao]}
-                                        onChange={() => handleFiltroChange('areaAtuacao', area)}
-                                    />
-                                    <label htmlFor={`area-${area}`}>{area}</label>
-                                </div>
-                            ))}
-
-                            <h3>Modelo de Trabalho</h3>
-                            {Object.keys(filtros.modelo).map(modelo => (
-                                <div key={modelo} className={style.checkboxGroup}>
-                                    <input 
-                                        type="checkbox" 
-                                        id={`modelo-${modelo}`}
-                                        checked={filtros.modelo[modelo as keyof FiltrosModelo]}
-                                        onChange={() => handleFiltroChange('modelo', modelo)}
-                                    />
-                                    <label htmlFor={`modelo-${modelo}`}>{modelo}</label>
-                                </div>
-                            ))}
-                            
-                            <button type="submit" className={style.botaoFiltrar}>
-                                Aplicar Filtros
-                            </button>
-                            <button type="button" className={style.botaoLimpar} onClick={limparFiltros}>
-                                Limpar Filtros
-                            </button>
-                        </form>
+                        <FiltrosComponent />
                     </div>
                 )}
 
                 <div className={style.areadevagas}>
+                    {/* Barra de Busca Móvel */}
+                    {isMobile && (
+                        <div className={style.barraBuscaMobile}>
+                            <div className={style.inputBuscaWrapper}>
+                                <input
+                                    type="text"
+                                    placeholder="Buscar vagas..."
+                                    value={termoBusca}
+                                    onChange={(e) => setTermoBusca(e.target.value)}
+                                    className={style.inputBusca}
+                                />
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Header de Resultados */}
                     <div className={style.infoResultados}>
                         <span>{vagasFiltradas.length} vaga(s) encontrada(s)</span>
                     </div>
 
+                    {/* Filtros Ativos (Tags) */}
+                    {filtrosAtivos.length > 0 && (
+                        <div className={style.filtrosAtivos}>
+                            {filtrosAtivos.map(filtro => (
+                                <div key={filtro} className={style.filtroAtivo}>
+                                    <span>{filtro}</span>
+                                    <button 
+                                        onClick={() => removerFiltro(filtro)}
+                                        className={style.botaoRemoverFiltro}
+                                    >
+                                        ×
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* Lista de Vagas */}
                     <div className={style.ondevaificarasvagas}>
                         {vagasFiltradas.length === 0 ? (
                             <div className={style.semResultados}>
                                 <h3>Nenhuma vaga encontrada</h3>
                                 <p>Tente ajustar os filtros ou os termos da busca.</p>
+                                <button 
+                                    className={style.botaoLimpar}
+                                    onClick={limparFiltros}
+                                    style={{ marginTop: '20px' }}
+                                >
+                                    Limpar todos os filtros
+                                </button>
                             </div>
                         ) : (
                             <div className={style.listaVagas}>
                                 {vagasFiltradas.map((vaga, index) => (
-                                    <div key={index} className={style.cardVaga}>
+                                    <div 
+                                        key={index} 
+                                        className={style.cardVaga}
+                                        style={{ '--item-index': index } as React.CSSProperties}
+                                    >
+                                        {/* Cabeçalho com título e badges */}
                                         <div className={style.cabecalhoVaga}>
                                             <h3 className={style.tituloVaga}>{vaga.Vaga}</h3>
-                                            <span className={style.faixaSalarial}>{vaga.faixaSalarial}</span>
+                                            <div className={style.badgesVaga}>
+                                                <span className={style.badgeSalario}>{vaga.faixaSalarial}</span>
+                                                {vaga.modelo === "Home office" && (
+                                                    <span className={style.badgeRemoto}>Remoto</span>
+                                                )}
+                                            </div>
                                         </div>
                                         
+                                        {/* Descrição */}
                                         <p className={style.descricaoVaga}>{vaga.Descrição}</p>
                                         
-                                        <div className={style.tagsVaga}>
-                                            <span className={style.tag}>{vaga.areaAtuacao}</span>
-                                            <span className={style.tag}>{vaga.tipoContrato}</span>
-                                            <span className={style.tag}>{vaga.modelo}</span>
-                                        </div>
-                                        
-                                        <div className={style.infoVaga}>
+                                        {/* Informações da Empresa e Local */}
+                                        <div className={style.infoEmpresa}>
                                             <span className={style.localVaga}>
-                                                📍 {vaga.Local}
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                                    <circle cx="12" cy="10" r="3" />
+                                                </svg>
+                                                {vaga.Local}
                                             </span>
+                                            <span className={style.tipoContrato}>{vaga.tipoContrato}</span>
                                         </div>
 
-                                        {vaga.beneficios && vaga.beneficios.length > 0 && (
-                                            <div className={style.beneficios}>
-                                                <strong>Benefícios:</strong>
-                                                <div className={style.listaBeneficios}>
-                                                    {vaga.beneficios.map((beneficio: string, idx: number) => (
-                                                        <span key={idx} className={style.beneficio}>
-                                                            {beneficio}
-                                                        </span>
-                                                    ))}
-                                                </div>
+                                        {/* Requisitos e Benefícios */}
+                                        {(vaga.requisitos || vaga.beneficios) && (
+                                            <div className={style.requisitosContainer}>
+                                                {vaga.requisitos && (
+                                                    <div className={style.requisitosBox}>
+                                                        <h4>Requisitos</h4>
+                                                        <div className={style.listaRequisitos}>
+                                                            {vaga.requisitos.slice(0, 3).map((req, idx) => (
+                                                                <div key={idx} className={style.itemRequisito}>
+                                                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                                        <path d="M20 6L9 17l-5-5" />
+                                                                    </svg>
+                                                                    {req}
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                )}
+                                                
+                                                {vaga.beneficios && (
+                                                    <div className={style.requisitosBox}>
+                                                        <h4>Benefícios</h4>
+                                                        <div className={style.beneficiosContainer}>
+                                                            {vaga.beneficios.slice(0, 4).map((beneficio, idx) => (
+                                                                <span key={idx} className={style.beneficioTag}>
+                                                                    {beneficio}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                )}
                                             </div>
                                         )}
                                         
-                                        {renderBotaoCandidatar(vaga)}
+                                        {/* Footer do Card */}
+                                        <div className={style.cardFooter}>
+                                            <span className={style.infoTempo}>
+                                                Publicada há 2 dias
+                                            </span>
+                                            
+                                            <div className={style.botoesAcao}>
+                                                <button className={style.botaoSalvar}>
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                        <path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z" />
+                                                    </svg>
+                                                    Salvar
+                                                </button>
+                                                {renderBotaoCandidatar(vaga)}
+                                            </div>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
                         )}
                     </div>
                 </div>
+
+                {/* Modal de Filtros Móvel */}
+                <div className={`${style.modalFiltros} ${modalFiltrosAberto ? style.active : ''}`}>
+                    <div className={style.conteudoModal}>
+                        <div className={style.cabecalhoModal}>
+                            <h2>Filtrar Vagas</h2>
+                            <button 
+                                className={style.botaoFecharModal}
+                                onClick={() => setModalFiltrosAberto(false)}
+                            >
+                                ×
+                            </button>
+                        </div>
+                        <FiltrosComponent />
+                    </div>
+                </div>
+
+                {/* Botão para Abrir Filtros Móvel */}
+                {isMobile && (
+                    <button 
+                        className={style.botaoFiltrosMobile}
+                        onClick={() => setModalFiltrosAberto(true)}
+                    >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z" />
+                        </svg>
+                        Filtrar
+                    </button>
+                )}
             </main>
-            <br/>
         </>
     );
 }
