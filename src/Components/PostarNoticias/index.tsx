@@ -1,5 +1,6 @@
 import ControleRotas from "../../Components/ControleComentarios";
 import { useState, useRef } from "react";
+import { useNavigate } from 'react-router-dom';
 import styles from "./CadastrarPostagem.module.css";
 
 interface PostagemFormData {
@@ -16,6 +17,7 @@ interface PostagemFormData {
 }
 
 export default function CadastrarPostagem() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<PostagemFormData>({
     titulo: "",
     descricao: "",
@@ -28,6 +30,12 @@ export default function CadastrarPostagem() {
     miniatura: "",
     fonte: ""
   });
+
+   const handleLogout = () => {
+    localStorage.removeItem('admin_token');
+    localStorage.removeItem('admin_user');
+    navigate('/Login');
+  };
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
@@ -113,6 +121,21 @@ export default function CadastrarPostagem() {
           <p className={styles.headerSubtitle}>
             Cadastre novas postagens para o seu portal de notícias
           </p>
+
+          <button 
+          onClick={handleLogout}
+          style={{
+            padding: '8px 16px',
+            background: '#ff4444',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          Sair
+        </button>
+          
         </div>
         
         <div className={styles.headerStats}>

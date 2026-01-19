@@ -9,41 +9,19 @@ import PostagemDetalhe from "./Components/PostagemDetalhe";
 import Newsletter from "./Components/Newsletter";
 import Forum from "./pages/Forum";
 import Login from "./pages/Login";
-import { isAuthenticated } from "./services/auth";
+import ControleComentarios from "./Components/ControleComentarios" 
 
-// Componente de Rota Protegida
-interface ProtectedRouteProps {
-  children: React.ReactNode;
-  requireAdmin?: boolean;
-}
-
-const ProtectedRoute = ({ children, requireAdmin = true }: ProtectedRouteProps) => {
-  const auth = isAuthenticated();
+// Componente SUPER SIMPLES de rota protegida
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  // Verifica se tem token no localStorage
+  const token = localStorage.getItem('admin_token');
   
-  if (!auth) {
-    // Redireciona para login se não estiver autenticado
+  // Se não tiver token, redireciona para login
+  if (!token) {
     return <Navigate to="/Login" replace />;
   }
   
-  // Se precisar de admin e o usuário não for admin (você pode implementar verificação de role)
-  if (requireAdmin) {
-    // Aqui você pode verificar se o usuário tem role de admin
-    // const userRole = getUserRole();
-    // if (userRole !== 'admin') return <Navigate to="/" replace />;
-  }
-  
-  return <>{children}</>;
-};
-
-// Componente para Rotas Públicas (apenas para não autenticados)
-const PublicRoute = ({ children }: { children: React.ReactNode }) => {
-  const auth = isAuthenticated();
-  
-  if (auth) {
-    // Se já estiver autenticado, redireciona para dashboard
-    return <Navigate to="/DhanteConfig" replace />;
-  }
-  
+  // Se tiver token, renderiza o conteúdo
   return <>{children}</>;
 };
 
@@ -51,7 +29,7 @@ function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Rotas Públicas */}
+        {/* ========== ROTAS PÚBLICAS ========== */}
         <Route path="/" element={<Home />} />
         <Route path="/contato" element={<Contato />} />
         <Route path="/Comentarios" element={<Chat />} />
@@ -61,41 +39,60 @@ function AppRouter() {
         <Route path="/Newsletter" element={<Newsletter />} />
         <Route path="/Forum" element={<Forum />} />
         
-        {/* Rota de Login (apenas para não autenticados) */}
-        <Route path="/Login" element={
-          <PublicRoute>
-            <Login />
-          </PublicRoute>
-        } />
+        {/* ========== LOGIN (pública) ========== */}
+        <Route path="/Login" element={<Login />} />
         
-        {/* Rotas Administrativas Protegidas */}
-        <Route path="/admin">
-          
-          {/* Configurações do Site */}
-          <Route path="configuracoes" element={
+        {/* ========== ROTAS ADMINISTRATIVAS PROTEGIDAS ========== */}
+        <Route 
+          path="/DhanteConfig" 
+          element={
             <ProtectedRoute>
               <DhanteConfig />
             </ProtectedRoute>
-          } />
-          
-          {/* Pode adicionar outras rotas admin aqui */}
-          <Route path="*" element={<Navigate to="/admin/dashboard" replace />} />
-        </Route>
+          } 
+        />
+        <Route 
+          path="/ControleComentarios" 
+          element={
+            <ProtectedRoute>
+              <ControleComentarios />
+            </ProtectedRoute>
+          } 
+        />
         
-        {/* Rota antiga para configurações (mantida para compatibilidade) */}
-        <Route path="/DhanteConfig" element={
-          <ProtectedRoute>
-            <DhanteConfig />
-          </ProtectedRoute>
-        } />
-        
-        {/* Rota 404 - Página não encontrada */}
-        <Route path="*" element={
-          <div style={{ padding: '20px', textAlign: 'center' }}>
-            <h1>404 - Página não encontrada</h1>
-            <p>A página que você está procurando não existe.</p>
-          </div>
-        } />
+        {/* ========== ROTA 404 ========== */}
+        <Route 
+          path="*" 
+          element={
+            <div style={{ 
+              padding: '40px', 
+              textAlign: 'center',
+              minHeight: '100vh',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
+              <h1 style={{ fontSize: '48px', marginBottom: '20px' }}>404</h1>
+              <p style={{ fontSize: '18px', color: '#666' }}>
+                Página não encontrada
+              </p>
+              <a 
+                href="/" 
+                style={{
+                  marginTop: '20px',
+                  padding: '10px 20px',
+                  background: '#007bff',
+                  color: 'white',
+                  textDecoration: 'none',
+                  borderRadius: '5px'
+                }}
+              >
+                Voltar para Home
+              </a>
+            </div>
+          } 
+        />
       </Routes>
     </BrowserRouter>
   );
