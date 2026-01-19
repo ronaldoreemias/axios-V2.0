@@ -57,7 +57,7 @@ function Navbar() {
                             <a href="/Vagas" onClick={closeMenu}>Vagas de emprego</a>
                         </li>
                         <li>
-                            <a className={style.cadastrese} href="/contato" onClick={closeMenu}>
+                            <a className={style.cadastrese} href="/Login" onClick={closeMenu}>
                                 Entrar
                             </a>
                         </li>
