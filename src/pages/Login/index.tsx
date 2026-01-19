@@ -17,7 +17,7 @@ function Login() {
     try {
       // Chama sua API diretamente
       const response = await fetch(
-        'https://backendpostagens.vercel.app/api/handler?type=login',
+        'https://backendpostagens.vercel.app/api/login?type=login',
         {
           method: 'POST',
           headers: {
