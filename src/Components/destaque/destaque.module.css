@@ -1,0 +1,205 @@
+.imagemFallback {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #7e050f;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorContainer, .emptyContainer {
+  text-align: center;
+  padding: 40px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.errorMessage, .emptyMessage {
+  color: #666;
+  font-size: 1rem;
+}
+
+.autorInfo, .autorInfoPequeno {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+.autorInfoPequeno {
+  font-size: 0.6rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.containerExterno {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.Destaque {
+  display: grid;
+  grid-template-areas:
+    "destaque1 destaque2"
+    "destaque1 destaque3"
+    "destaque1 destaque4";
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+  height: 400px;
+  margin-bottom: 40px;
+}
+
+/* Grid areas */
+.Destaque1 { 
+  grid-area: destaque1; 
+  position: relative;
+  min-height: 0;
+}
+
+.Destaque2 { 
+  grid-area: destaque2; 
+  position: relative;
+  min-height: 0;
+}
+
+.Destaque3 { 
+  grid-area: destaque3; 
+  position: relative;
+  min-height: 0;
+}
+
+.Destaque4 { 
+  grid-area: destaque4; 
+  position: relative;
+  min-height: 0;
+}
+
+/* Container de imagem */
+.imagemContainer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+  position: relative;
+}
+
+.imagemContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.imagemContainer:hover img {
+  transform: scale(1.05);
+}
+
+/* Overlays */
+.linkCobertura {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  position: relative;
+}
+
+.overlayPrincipal, .outros {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  color: white;
+  padding: 20px 12px 12px 12px;
+  z-index: 2;
+}
+
+.overlayPrincipal {
+  padding: 40px 20px 20px 20px;
+}
+
+.overlayPrincipal h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.outros h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  line-height: 1.2;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+@media(max-width: 700px){
+    .Destaque {
+      display: grid;
+      grid-template-areas:
+        "destaque1 destaque2"
+        "destaque1 destaque3"
+        "destaque1 destaque4";
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 8px;
+      width: 100%;
+      height: 200px;
+      margin-bottom: 40px;
+    }
+   .containerExterno {
+      width: 95%;
+      margin: 0 auto;
+    }
+    .overlayPrincipal h2 {
+      display: none;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.2;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    .outros h2 {
+      display: none;
+      font-size: 0.6rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      line-height: 1.2;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
+} 

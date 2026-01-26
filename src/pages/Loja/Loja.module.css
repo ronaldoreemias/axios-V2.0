@@ -1,0 +1,295 @@
+/* Loja.module.css - Estilo inspirado no Mercado Livre */
+
+/* RESET E ESTILOS BASE */
+.Bodyloja {
+    background-color: #ededed; /* Fundo cinza claro, típico do ML */
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    color: #333;
+    line-height: 1.4;
+}
+
+.Body {
+    padding-top: 0; /* O ML não tem padding top pois a navbar não é fixa no estilo deles */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* CABEÇALHO E BANNERS */
+.containerbaner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.menubaner {
+    order: -1; /* Move a coluna de imagens para cima, como um banner promocional */
+    display: flex;
+    gap: 10px;
+    overflow-x: auto; /* Permite rolagem horizontal em telas menores */
+    padding-bottom: 10px;
+}
+
+.menubaner img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    flex-shrink: 0; /* Impede que as imagens encolham */
+}
+
+.contentbaner {
+    /* O slider ocupará a largura total */
+    width: 100%;
+}
+
+/* FILTROS DE CATEGORIA (Barra de botões estilo ML) */
+.footerbaner {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin: 20px 0 30px 0;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footerbaner button {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 25px; /* Botões com bordas arredondadas estilo "pill" */
+    padding: 10px 18px;
+    color: #666;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 110px;
+    justify-content: center;
+}
+
+.footerbaner button:hover {
+    border-color: #3483fa; /* Azul característico do ML */
+    color: #3483fa;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+
+.footerbaner button img {
+    width: 22px;
+    height: 22px;
+    filter: none; /* Remove filtros anteriores, mantém ícone colorido */
+    opacity: 0.8;
+}
+
+.footerbaner button:hover img {
+    opacity: 1;
+}
+
+.footerbaner button .todos {
+    width: 20px;
+    height: 20px;
+}
+
+/* ESTILO PARA BOTÃO ATIVO/SELECIONADO */
+/* Adicione esta lógica no seu componente React para aplicar a classe 'active' */
+/* Exemplo: className={`${Style.footerbaner} ${filtro === categoria ? Style.active : ''}`} */
+
+.footerbaner button.active {
+    background-color: rgba(52, 131, 250, 0.1); /* Azul bem claro de fundo */
+    border-color: #3483fa;
+    color: #3483fa;
+    font-weight: 500;
+}
+
+/* ÁREA DE PRODUTOS */
+.containerprodutos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Grid mais compacto */
+    gap: 20px; /* Espaçamento menor */
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .containerprodutos {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+    }
+}
+
+/* CARD DE PRODUTO (Estilo ML) */
+.produtoCard {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,.1);
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+.produtoCard:hover {
+    box-shadow: 0 7px 16px 0 rgba(0,0,0,.2), 0 1px 3px 0 rgba(0,0,0,.1);
+}
+
+/* IMAGEM DO PRODUTO */
+.produtoImagemContainer {
+    position: relative;
+    padding: 15px;
+    text-align: center;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.produtoImagem {
+    max-width: 100%;
+    max-height: 150px;
+    object-fit: contain;
+}
+
+/* TAG DE DESCONTO */
+.descontoTag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #00a650; /* Verde do ML para ofertas/ok */
+    color: white;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 2;
+}
+
+/* INFORMAÇÕES DO PRODUTO */
+.produtoInfo {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.produtoTitulo {
+    font-size: 14px;
+    font-weight: 400; /* Mais leve, como no ML */
+    color: #333;
+    margin: 0;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 36px; /* Altura fixa para uniformidade */
+}
+
+.produtoDescricao {
+    font-size: 12px;
+    color: #999; /* Cinza mais claro para descrição */
+    line-height: 1.4;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+/* PREÇO */
+.produtoPreco {
+    margin: 8px 0;
+}
+
+.produtoPreco span {
+    font-size: 24px; /* Preço grande e destacado */
+    font-weight: 400;
+    color: #333;
+    display: block;
+}
+
+/* Você pode adicionar estilos para preço original riscado e preço com desconto assim:
+.produtoPreco .precoOriginal {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+    display: inline-block;
+    margin-right: 5px;
+}
+.produtoPreco .precoDesconto {
+    font-size: 24px;
+    color: #333;
+    font-weight: 400;
+}
+*/
+
+/* BOTÃO COMPRAR */
+.botaoComprar {
+    background: #3483fa; /* Azul principal do ML */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.botaoComprar:hover:not(:disabled) {
+    background-color: #2968c8; /* Azul mais escuro no hover */
+}
+
+.botaoComprar:disabled {
+    background-color: #ccc;
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* SEM PRODUTOS */
+.semProdutos {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 20px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px dashed #ccc;
+}
+
+.semProdutos p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+}
+
+/* FOOTER */
+.Footer {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
+/* BÔNUS: Adicione estes estilos para uma navbar mais parecida com o ML */
+/* No seu NavbarLoja.module.css, se quiser um visual mais próximo */
+/*
+.navbarML {
+    background-color: #fff159; /* Amarelo característico do ML
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding: 10px 0;
+}
+*/

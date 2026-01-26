@@ -1,0 +1,402 @@
+:root {
+    --vermelho-globo: #c4170c;
+    --azul-globo: #0066b3;
+    --preto-globo: #080808;
+    --cinza-claro: #4e4b4b;
+    --cinza-escuro: #333333;
+}
+
+
+.loginButton a{
+    color: white;
+    text-decoration: none;
+}
+
+/* Reset para garantir que o menu não aparece */
+.sideMenu {
+    position: fixed;
+    top: 0;
+    left: -320px; /* Garantir que fique FORA da tela inicialmente */
+    width: 320px;
+    height: 100vh;
+    background: white;
+    z-index: 1001;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    padding-top: 60px;
+    visibility: hidden; /* Adicionado para garantir que não seja clicável */
+}
+
+.sideMenu.active {
+    left: 0;
+    visibility: visible; /* Só aparece quando ativo */
+}
+
+/* Overlay também corrigido */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    pointer-events: none; /* Não clicável quando invisível */
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all; /* Clique ativado só quando visível */
+}
+
+
+.sideMenu.active .menuHeader {
+    left: 0;
+    visibility: visible;
+}
+
+/* Ajuste do ContainerNavbar para z-index correto */
+.ContainerNavbar {
+    display: flex;
+    align-items: center;
+    background: var(--preto-globo);
+    height: 60px;
+    padding: 0 20px;
+    border-bottom: 2px solid var(--vermelho-globo);
+}
+
+
+
+.logo {
+    height: 32px;
+    width: auto;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+/* Menu Hamburguer - Estilo O Globo */
+.Menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-right: 20px;
+    position: relative;
+}
+
+.Menu span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: white;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 1px;
+}
+
+.Menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.Menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.Menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Barra de pesquisa estilo O Globo */
+.searchContainer {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 30px;
+}
+
+.formpesquisa {
+    display: flex;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.formpesquisa input {
+    flex: 1;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    outline: none;
+    color: var(--preto-globo);
+}
+
+.formpesquisa button {
+    background: var(--vermelho-globo);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    min-width: 80px;
+}
+
+.formpesquisa button:hover {
+    background: #a6130a;
+}
+
+/* Menu lateral estilo O Globo - Visível em ambos */
+.sideMenu {
+    position: fixed;
+    top: 0;
+    left: -340px;
+    width: 340px;
+    height: 100vh;
+    background: white;
+    z-index: 1001;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    padding-top: 60px;
+}
+
+.sideMenu.active {
+    left: 0;
+}
+
+/* Overlay escuro */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Cabeçalho do menu lateral */
+.menuHeader {
+    background: var(--preto-globo);
+    color: white;
+    border-bottom: 3px solid var(--vermelho-globo);
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 320px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    z-index: 1002;
+    transition: left 0.3s;
+}
+
+.sideMenu.active .menuHeader {
+    left: 0;
+}
+
+.menuHeader h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 20px;
+}
+
+.closeButton {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Conteúdo do menu lateral */
+.menuContent {
+    width: auto;
+    padding: 20px;
+}
+
+.menuSection {
+    margin-bottom: 25px;
+}
+
+.menuSection h4 {
+    color: var(--vermelho-globo);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+    letter-spacing: 0.5px;
+}
+
+.menuSection ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menuSection li {
+    margin-bottom: 8px;
+}
+
+.menuSection a {
+    color: var(--preto-globo);
+    text-decoration: none;
+    font-size: 15px;
+    padding: 6px 0;
+    display: block;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.menuSection a:hover {
+    color: var(--vermelho-globo);
+    border-bottom-color: var(--vermelho-globo);
+}
+
+/* Menu de categorias estilo O Globo */
+.categoriesMenu {
+    display: flex;
+    flex: 1;
+    margin-left: 20px;
+}
+
+.categoriesMenu ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 25px;
+}
+
+.categoriesMenu li {
+    position: relative;
+}
+
+.categoriesMenu a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px 0;
+    transition: color 0.2s;
+}
+
+.categoriesMenu a:hover {
+    color: #ff9999;
+}
+
+.categoriesMenu a.active {
+    color: var(--vermelho-globo);
+    font-weight: 600;
+}
+
+/* Menu de usuário/assinante */
+.userMenu {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.userButton {
+    background: var(--azul-globo);
+    color: white;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.userButton:hover {
+    background: #005599;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .categoriesMenu {
+        display: none;
+    }
+    
+    .searchContainer {
+        max-width: 300px;
+        margin: 0 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ContainerNavbar {
+        padding: 0 15px;
+        justify-content: space-between;
+    }
+    
+    .loginButton{
+        display: none;
+    }
+
+    .searchContainer {
+        display: block;
+    }
+    
+    .userMenu .userButton {
+        display: block;
+    }
+    
+    .logoContainer {
+        margin-right: auto;
+    }
+    
+    .sideMenu {
+        width: 280px;
+        left: -280px;
+    }
+    
+    .menuHeader {
+        width: 280px;
+        left: -280px;
+    }
+}
+
+@media (min-width: 769px) {
+    .Menu {
+        display: none;
+    }
+    
+    .sideMenu {
+        width: 350px;
+        left: -350px;
+    }
+    
+    .menuHeader {
+        width: 350px;
+        left: -350px;
+    }
+}

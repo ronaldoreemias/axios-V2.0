@@ -1,0 +1,736 @@
+/* Reset e Estilos Gerais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.Vagasmain {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Container Principal */
+.Vagasmain {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  gap: 30px;
+}
+
+.ondevaificarasvagas{
+  height:100vh;
+  overflow-y:Scroll;
+  
+}
+
+/* Barra Lateral de Filtros (Estilo Gupy) */
+.barradefiltragemlateral {
+  width: 300px;
+  flex-shrink: 0;
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+.barradefiltragemlateral h3 {
+  color: #1e293b;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 24px 0 16px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.barradefiltragemlateral h3:first-child {
+  margin-top: 0;
+}
+
+/* Grupos de Filtro Estilo Gupy */
+.filtroGrupo {
+  margin-bottom: 8px;
+}
+
+.filtroItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+
+.filtroItem:hover {
+  background-color: #f1f5f9;
+}
+
+.filtroItem input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #cbd5e1;
+  border-radius: 4px;
+  margin-right: 12px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.filtroItem input[type="checkbox"]:checked {
+  background-color: #c4170c;
+  border-color: #c4170c;
+}
+
+.filtroItem input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 1px;
+}
+
+.filtroItem label {
+  color: #475569;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  flex: 1;
+}
+
+/* Contador de Filtros */
+.contadorFiltro {
+  background-color: #e2e8f0;
+  color: #64748b;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+}
+
+/* Botões de Filtro */
+.botoesFiltro {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.botaoFiltrar {
+  flex: 1;
+  padding: 12px;
+  background-color: #c4170c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.botaoFiltrar:hover {
+  background-color: #a3140a;
+  transform: translateY(-1px);
+}
+
+.botaoLimpar {
+  flex: 1;
+  padding: 12px;
+  background-color: white;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.botaoLimpar:hover {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+/* Área Principal de Vagas */
+.areadevagas {
+  flex: 1;
+  padding: 20px 0 60px 0;
+}
+
+/* Header de Resultados Estilo Gupy */
+.infoResultados {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.infoResultados span {
+  color: #1e293b;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Opções de Ordenação */
+.opcoesOrdenacao {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.ordenacaoSelect {
+  padding: 8px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: white;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Lista de Vagas - Estilo Gupy */
+.listaVagas {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Card de Vaga Estilo Gupy */
+.cardVaga {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+  position: relative;
+}
+
+.cardVaga:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: #c4170c;
+  transform: translateY(-2px);
+}
+
+/* Header do Card */
+.cabecalhoVaga {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.tituloVaga {
+  color: #1e293b;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+  flex: 1;
+}
+
+.tituloVaga:hover {
+  color: #c4170c;
+}
+
+/* Badges do Card */
+.badgesVaga {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badgeSalario {
+  background-color: #3b82f6;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badgeUrgente {
+  background-color: #ef4444;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.badgeRemoto {
+  background-color: #10b981;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Descrição da Vaga */
+.descricaoVaga {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Info da Empresa e Local */
+.infoEmpresa {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+}
+
+.localVaga {
+  color: #475569;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tipoContrato {
+  color: #64748b;
+  font-size: 14px;
+  background-color: #f1f5f9;
+  padding: 4px 12px;
+  border-radius: 6px;
+}
+
+/* Requisitos e Benefícios */
+.requisitosContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.requisitosBox {
+  background-color: #f8fafc;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.requisitosBox h4 {
+  color: #1e293b;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.listaRequisitos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.itemRequisito {
+  color: #475569;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.beneficiosContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.beneficioTag {
+  background-color: #f0f9ff;
+  color: #0369a1;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid #bae6fd;
+}
+
+/* Footer do Card */
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.infoTempo {
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Botões de Ação */
+.botoesAcao {
+  display: flex;
+  gap: 12px;
+}
+
+.botaoCandidatar {
+  padding: 12px 24px;
+  background-color: #c4170c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.botaoCandidatar:hover {
+  background-color: #a3140a;
+  transform: translateY(-1px);
+  color: white;
+}
+
+.botaoSalvar {
+  padding: 12px 16px;
+  background-color: white;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.botaoSalvar:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+/* Estado Sem Resultados */
+.semResultados {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.semResultados h3 {
+  color: #1e293b;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.semResultados p {
+  color: #64748b;
+  font-size: 15px;
+  max-width: 400px;
+  margin: 0 auto 24px auto;
+  line-height: 1.6;
+}
+
+/* Barra de Busca Móvel */
+.barraBuscaMobile {
+  display: none;
+  margin-bottom: 20px;
+}
+
+.inputBuscaWrapper {
+  position: relative;
+}
+
+.inputBusca {
+  width: 100%;
+  padding: 16px 20px 16px 48px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #1e293b;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+.inputBusca:focus {
+  outline: none;
+  border-color: #c4170c;
+  box-shadow: 0 0 0 3px rgba(196, 23, 12, 0.1);
+}
+
+.inputBuscaWrapper::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: contain;
+}
+
+/* Botão Filtros Móvel */
+.botaoFiltrosMobile {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 16px 24px;
+  background-color: #c4170c;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(196, 23, 12, 0.3);
+  transition: all 0.3s ease;
+}
+
+.botaoFiltrosMobile:hover {
+  background-color: #a3140a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(196, 23, 12, 0.4);
+}
+
+/* Modal de Filtros Móvel */
+.modalFiltros {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modalFiltros.active {
+  display: flex;
+}
+
+.conteudoModal {
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  border-radius: 16px;
+  padding: 24px;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.cabecalhoModal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.cabecalhoModal h2 {
+  color: #1e293b;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.botaoFecharModal {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #64748b;
+  cursor: pointer;
+  padding: 8px;
+}
+
+/* Tags de Filtro Ativos */
+.filtrosAtivos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.filtroAtivo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f1f5f9;
+  color: #475569;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.botaoRemoverFiltro {
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 2px;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+  .Vagasmain {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+  
+  .barradefiltragemlateral {
+    width: 280px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .requisitosContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .Vagasmain {
+    flex-direction: column;
+    padding: 0 12px;
+  }
+  
+  .barradefiltragemlateral {
+    display: none;
+  }
+  
+  .barraBuscaMobile {
+    display: block;
+  }
+  
+  .botaoFiltrosMobile {
+    display: block;
+  }
+  
+  .infoResultados {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .opcoesOrdenacao {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .cabecalhoVaga {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .badgesVaga {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .cardFooter {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .botoesAcao {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardVaga {
+    padding: 20px;
+  }
+  
+  .botaoCandidatar,
+  .botaoSalvar {
+    flex: 1;
+    justify-content: center;
+  }
+  
+  .conteudoModal {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .modalFiltros.active {
+    padding: 10px;
+  }
+}
+
+/* Animações */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cardVaga {
+  animation: slideIn 0.3s ease forwards;
+  animation-delay: calc(var(--item-index, 0) * 0.1s);
+  opacity: 0;
+}
+
+/* Scroll Personalizado */
+.conteudoModal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.conteudoModal::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.conteudoModal::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.conteudoModal::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

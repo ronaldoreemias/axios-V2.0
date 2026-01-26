@@ -1,0 +1,169 @@
+[
+{
+    "titulo": "Atualização : Aba Home",
+    "data": "03 de janeiro, 2026",
+    "resumo": "Foi tirado o formulário de contato e transferido para a aba contate-me, Tô pensando em mudar toda a aba home. Talvez possa ter alguns problemas de redirecionamento",
+    "imagemurl" : "../../../src/assets/bugimagem/contato.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Atualização : Aba Notícias",
+    "data": "31 de dezembro, 2025",
+    "resumo": "Agora a aba notícias está com uma cara nova, ainda estou trabalhando para melhorar a experiência de navegação",
+    "imagemurl" : "../../../src/assets/bugimagem/atualizacaoNoticias.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "bug : aba Fórum ",
+    "data": "29 de dezembro, 2025",
+    "resumo": "A aba Fórum está initava temporariamente por questões de infra, estou trabalhando para resolver",
+    "imagemurl" : "",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Pendente : aba Fórum ",
+    "data": "22 de dezembro, 2025",
+    "resumo": "A aba Fórum está em desenvolvimento, mas ela já está disponivel para visualizar. Caso queira ajudar no desenvolvimento, entre em contato comigo pelo email",
+    "imagemurl" : "",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Bug : aba vagas ",
+    "data": "20 de dezembro, 2025",
+    "resumo": "devido a aulguns problemas de compatibilidade com o json, algumas vagas podem não estar aparecendo. Estou trabalhando para resolver esse problema o mais rápido possível. Por enquanto, peço desculpas pelo inconveniente.",
+    "imagemurl" : "../../../src/assets/bugimagem/bugvagas.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Atualização: Aba Loja ",
+    "data": "16 de dezembro, 2025",
+    "resumo": "Agora a loja está funcionando 100% !!!!! depois de quebrar minha cabeça durante 1 semana , eu consegui terminar a nova versão da loja",
+    "imagemurl" : "../../../src/assets/bugimagem/Lojaatualiação.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Importante ( nem tanto ): Aba Loja ",
+    "data": "15 de dezembro, 2025",
+    "resumo": "A aba Loja infelizmente vai demorar um pouco para ter mais produtos, eu preciso pesquisar melhor cada produto e ver se realmente são confiaveis para o usuário da minha plataforma. Mas logo mais terá mais produtos e mais funcionalidades",
+    "imagemurl" : "../../../src/assets/bugimagem/loja.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Atualização : Mais vagas de emprego ",
+    "data": "13 de dezembro, 2025",
+    "resumo": "Coloquei mais 3 vagas.",
+    "imagemurl" : "",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Bug : Aba Home",
+    "data": "13 de dezembro, 2025",
+    "resumo": "Estou com preguiça de arrumar esse forme, então pode ser que fique para mais tarte resolver o bug e a estilização desse formulário. Infelizmente para você hacker, ele não liga com API própria minha.",
+    "imagemurl" : "../../../src/assets/bugimagem/bugForme.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+
+{
+    "titulo": "Atualização : na nav-bar ",
+    "data": "14 de dezembro, 2025",
+    "resumo": "Foi atualizado a loja do site , agora temos uma nova cara e novas funcionalidades. A página ainda está em desenvolvimento, mas agora está com uma cara melhor",
+    "imagemurl" : "",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Bug : Aba Home ( resolvido )",
+    "data": "13 de dezembro, 2025",
+    "resumo": "Foi resolvido o bug de filtragem da aba notícias , agora está mais robusto e com a filtragem mais inteligente comparado a antes. As mudançans foram feitas na função de filtragem por elemento, a antiga estava filtrando conteúdos distintos do pesquisado",
+    "imagemurl" : "../../../src/assets/bugimagem/filtragem.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Atualização : Destaque",
+    "data": "13 de dezembro, 2025",
+    "resumo": "A pedido de um dos usuário, pensei em melhora a experiência da plataforma em formato mobile. Uma das primeiras atualizações é a área destaque, assim você sabera qual notícia do dia é , também a mais relevante. Para fazer essa atualização eu só mudei a parte de filtragem do render tamplayt e display grid",
+    "imagemurl" : "../../../src/assets/bugimagem/destaque.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Atualização : Aba Notícias",
+    "data": "13 de dezembro, 2025",
+    "resumo": "Agora o formulário de email está funcional. Eu usei a biblioteca EmailJS para enviar os emails diretamente do frontend sem precisar de um backend, essa atualização melhora a experiência do lado cliente e servidor",
+    "imagemurl" : "../../../src/assets/bugimagem/formulario.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Atualização : Aba Notificações",
+    "data": "13 de dezembro, 2025",
+    "resumo": "Adicionei agora imagem para detalhar mais as atualizações, mostrando o código atualizado.",
+    "imagemurl" : "../../../src/assets/bugimagem/soluçãoNotficacao.JPG",
+    "assinatura": "Assinado : Axios_fetch"
+},
+
+     {
+    "titulo": "Bug : aba vagas ( resolvido ) ",
+    "data": "12 de dezembro, 2025",
+    "resumo": "o bug foi resolvido e agora você pode cópiar o Email das vagas.",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "atualizações : Aulas ",
+    "data": "12 de dezembro, 2025",
+    "resumo": "Agora temos a aba \"aulas\", feita para você ter um norte do que estudar ( com base nos meus estudos ).",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "atualização : aba vagas ",
+    "data": "12 de dezembro, 2025",
+    "resumo": "Foi adicionado mais 15 vagas de emprego.",
+    "assinatura": "Assinado : Axios_fetch"
+},
+    {
+    "titulo": "Bug : aba vagas ",
+    "data": "8 de dezembro, 2025",
+    "resumo": "tem algumas vagas que é por whatsapp mas vai mostrar likedin, se acessar é só clicar no número que vai ser redirecionado para o contato do RH correspondente.",
+    "assinatura": "Assinado : Axios_fetch"
+},
+    {
+    "titulo": "Atualização : vagas de emprego ",
+    "data": "8 de dezembro, 2025",
+    "resumo": "mais 15 vagas adicionadas na aba de vagas de emprego",
+    "assinatura": "Assinado : Axios_fetch"
+},
+    {
+    "titulo": "Atualização : na nav-bar ",
+    "data": "8 de dezembro, 2025",
+    "resumo": "agora tem links para o github , tiktok e a comunidade da axios no what",
+    "assinatura": "Assinado : Axios_fetch"
+},
+    {
+    "titulo": "Atualização : oportunidade para criação do fórum ",
+    "data": "30 de novembro, 2025",
+    "resumo": "Estamos a procuro de devs que sabem Java para",
+    "assinatura": "Assinado : Axios_fetch"
+},
+
+    {
+    "titulo": "Atualização : Mais vagas de emprego ",
+    "data": "30 de novembro, 2025",
+    "resumo": "A platafroma está com mais vagas de emprego",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Atualização : Primeiras vagas de emprego Publicadas ",
+    "data": "17 de novembro, 2025",
+    "resumo": "Agora está funcionando sem falhas a aba de vagas de emp",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Atualização : Aba de empregos ativa ",
+    "data": "15 de outubro, 2025",
+    "resumo": "A platafroma agora tem uma aba de vagas de emprego, mas como ainda está sendo desenvolvida pode ser que tenha alguns probl",
+    "assinatura": "Assinado : Axios_fetch"
+},
+{
+    "titulo": "Atualização : Aba de fórum",
+    "data": "11 de Novembro, 2025",
+    "resumo": "Agora estamos com a aba de Fóruns , como visto está inativa por problemas de versão do código fonte. para mais informações é só entrar em con",
+    "assinatura": "Assinado : Axios_fetch"
+}
+]

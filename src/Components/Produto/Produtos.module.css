@@ -1,0 +1,241 @@
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "content content";
+  grid-template-columns: 1fr 3fr;
+}
+
+.container div.header {
+  grid-area: header;
+  text-align: start;
+  display: flex;
+  margin-top: 5%;
+  flex-direction: column;
+  border-radius: 10px;
+  gap: 1px;
+}
+
+.cabecaheade{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cabecaheader{
+  color: #393e49; 
+  padding: 8px 12px;
+  border: solid 0.1rem rgba(73, 71, 71, 0.637);
+  width: 80%;
+  box-shadow: 8px 6px 4px 0px #555858;
+
+}
+
+
+.containercategoria {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  justify-content: space-evenly;
+  gap: 1px;
+}
+.containercategoria div {
+  background-color: white;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 10px;
+  max-width: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.containercategoria div p{
+  font-size: 0.8rem;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.containercategoria div img{
+    width: 100%;
+    height: auto;
+}
+
+
+.container div.content {
+  grid-area: content;
+  margin-top: 3%;
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+}
+
+
+.produtosderoupa{
+  display: grid;
+  width: 100%;
+  margin-top: 5%;
+  gap: 15px;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+
+.produtoCard {
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.produtoImagemContainer {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.produtoImagem {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.produtoImagem:hover{
+  opacity: 0.5;
+}
+
+.descontoTag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ff4444;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.produtoInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.produtoTitulo {
+  font-size: 14px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  margin: 5px 0;
+  height: 60px;
+  overflow: hidden;
+}
+
+.produtoDescricao {
+  display: none;
+  font-size: 12px;
+  color: #666;
+  margin: 5px 0;
+  height: 40px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.produtoPreco {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+  margin: 10px 0;
+}
+
+.botaoComprar {
+  background-color: #0891b2;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  margin-top: auto;
+}
+
+.botaoComprar:hover:not(:disabled) {
+  background-color: #067694;
+}
+
+.botaoComprar:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.semProdutos {
+  grid-column: 1 / -1;
+  background-color: #f1f1f1;
+  padding: 40px;
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
+
+/* Estilo para botão ativo */
+.footerbaner button.active {
+  background-color: #0891b2;
+  color: white;
+}
+
+/* Responsividade */
+@media(max-width: 700px){
+  .containerprodutos {
+    grid-template-columns: auto auto;
+  }
+  
+  .produtoImagemContainer {
+    height: 150px;
+  }
+  
+  .produtoTitulo {
+    font-size: 13px;
+    height: 35px;
+  }
+  
+  .produtoDescricao {
+    display: block;
+    font-size: 11px;
+    height: 35px;
+  }
+  
+  .produtoPreco {
+    font-size: 16px;
+  }
+
+  .produtosderoupa{
+  display: grid;
+  margin-top: 5%;
+  width: 100%;
+  grid-template-columns: auto auto;
+}
+
+.containercategoria{
+  justify-content: space-evenly;
+}
+
+.containercategoria div{
+  border: solid 0px;
+}
+
+.cabecaheader h3{
+  font-size: 0.9rem;
+  margin-left: 5%;
+}
+.containercategoria div p{
+  font-size: 0.6rem;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+}

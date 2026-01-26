@@ -1,0 +1,398 @@
+/* ControleRotas.module.css */
+.controleRotas {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+.controleRotas h1,
+.controleRotas h3,
+.controleRotas h4 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* ControleRotas.module.css - Adicione estas classes */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.tokenSection {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 16px;
+  border-left: 4px solid #4a90e2;
+  min-width: 300px;
+}
+
+.tokenStatus {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.tokenStatus strong {
+  margin-right: 5px;
+}
+
+.tokenValid {
+  color: #28a745;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.tokenInvalid {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.tokenButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.secondaryButton {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.secondaryButton:hover {
+  background: #5a6268;
+}
+
+.dangerButton {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dangerButton:hover {
+  background: #c82333;
+}
+
+.loginRequired {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: 100px auto;
+  border: 2px solid #dee2e6;
+}
+
+.loginRequired h2 {
+  color: #dc3545;
+  margin-bottom: 20px;
+}
+
+.loginRequired p {
+  color: #6c757d;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.loginButtons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.loginButton {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.loginButton:hover {
+  background: #0056b3;
+}
+
+.protectedButton {
+  position: relative;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.authBadge {
+  margin-left: 8px;
+  font-size: 12px;
+}
+
+.authRequired {
+  color: #dc3545;
+  font-size: 14px;
+  font-weight: normal;
+  margin-left: 10px;
+}
+
+.authMarker {
+  color: #dc3545;
+}
+
+.authNote {
+  margin-top: 15px;
+  padding: 12px;
+  background: #e8f4fd;
+  border-radius: 6px;
+  color: #31708f;
+  font-size: 14px;
+  border-left: 4px solid #4a90e2;
+}
+.configSection {
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.controlsRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #555;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.formGroup textarea {
+  resize: vertical;
+}
+
+.apiUrlInput {
+  font-family: monospace;
+  background: #fff;
+}
+
+.requestForm {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.formButtons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.controleRotas button {
+  padding: 10px 20px;
+  background: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.controleRotas button:hover:not(:disabled) {
+  background: #0051cc;
+}
+
+.controleRotas button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.danger {
+  background: #dc2626 !important;
+}
+
+.danger:hover {
+  background: #b91c1c !important;
+}
+
+.warning {
+  background: #d97706 !important;
+}
+
+.warning:hover {
+  background: #b45309 !important;
+}
+
+.specialActions {
+  background: #fff3cd;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ffeaa7;
+  margin-bottom: 20px;
+}
+
+.actionButtons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.loading {
+  text-align: center;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #0070f3;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorMessage {
+  background: #fee;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #fcc;
+  margin: 20px 0;
+}
+
+.errorMessage pre {
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
+  overflow: auto;
+}
+
+.responseSection {
+  background: #e7f7ff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #b3e0ff;
+  margin: 20px 0;
+}
+
+.statusInfo {
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-family: monospace;
+}
+
+.responseData pre {
+  background: white;
+  padding: 15px;
+  border-radius: 4px;
+  overflow: auto;
+  max-height: 400px;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+.apiDocs {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+.endpointsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.endpoint {
+  background: white;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.endpoint h4 {
+  color: #0070f3;
+  margin-top: 0;
+  border-bottom: 2px solid #0070f3;
+  padding-bottom: 5px;
+}
+
+.endpoint ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.endpoint li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 13px;
+}
+
+.endpoint li:last-child {
+  border-bottom: none;
+}
+
+.endpoint code {
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  color: #d63384;
+}
+
+@media (max-width: 768px) {
+  .controlsRow,
+  .actionButtons,
+  .endpointsList {
+    grid-template-columns: 1fr;
+  }
+  
+  .formButtons {
+    flex-direction: column;
+  }
+}

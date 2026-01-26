@@ -1,0 +1,435 @@
+/* Formulário de Contato - Layout Desktop Grid */
+
+:root {
+    --vermelho-jornal: #c4170c;
+    --preto-jornal: #1a1a1a;
+    --cinza-escuro: #333;
+    --cinza-claro: #f5f5f5;
+    --borda-cinza: #e0e0e0;
+    --grid-gap: 30px;
+}
+
+/* Container principal com grid */
+.contactContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.contactForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    gap: var(--grid-gap);
+    width: 100%;
+    margin-top: 60px ;
+    padding: 50px;
+    border: 1px solid var(--borda-cinza);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    font-family: Georgia, 'Times New Roman', serif;
+    position: relative;
+}
+
+/* Cabeçalho ocupa duas colunas */
+.contactHeader {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--grid-gap);
+    margin-bottom: 10px;
+}
+
+.headerMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.headerSidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 3px solid var(--vermelho-jornal);
+    padding-left: 25px;
+    background: rgba(196, 23, 12, 0.03);
+}
+
+.contactForm h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--preto-jornal);
+    margin: 0 0 15px 0;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+}
+
+.subtitulo {
+    font-size: 1.3rem;
+    color: var(--cinza-escuro);
+    margin: 0;
+    line-height: 1.5;
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* Informações da edição - layout grid */
+.editionInfo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.infoItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.infoLabel {
+    font-size: 0.85rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin-bottom: 5px;
+}
+
+.infoValue {
+    font-size: 1.1rem;
+    color: var(--preto-jornal);
+    font-weight: 600;
+}
+
+.infoValue.red {
+    color: var(--vermelho-jornal);
+}
+
+/* Linha divisória */
+.linha {
+    grid-column: 1 / -1;
+    height: 3px;
+    background: var(--vermelho-jornal);
+    margin: 10px 0 40px 0;
+    position: relative;
+}
+
+.linha::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100px;
+    height: 2px;
+    background: var(--vermelho-jornal);
+    opacity: 0.5;
+}
+
+/* Campos do formulário - grid organizado */
+.formFields {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.formGroup {
+    margin-bottom: 0;
+}
+
+.formGroup.fullWidth {
+    grid-column: 1 / -1;
+}
+
+.formGroup.halfWidth {
+    /* Ocupa metade por padrão */
+}
+
+.formGroup label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--preto-jornal);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formGroup label .required {
+    color: var(--vermelho-jornal);
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+/* Inputs e textareas */
+.formInput, .formTextarea {
+    width: 100%;
+    padding: 18px 22px;
+    font-size: 1.15rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--preto-jornal);
+    background: white;
+    border: 1px solid var(--borda-cinza);
+    border-radius: 0;
+    transition: all 0.3s ease;
+    line-height: 1.6;
+}
+
+.formInput:focus, .formTextarea:focus {
+    outline: none;
+    border-color: var(--vermelho-jornal);
+    box-shadow: 0 0 0 2px rgba(196, 23, 12, 0.15);
+    background: rgba(196, 23, 12, 0.02);
+}
+
+.formInput::placeholder, .formTextarea::placeholder {
+    color: #999;
+    font-style: italic;
+    font-weight: 300;
+}
+
+/* Textarea específica */
+.formTextarea {
+    resize: vertical;
+    min-height: 180px;
+    line-height: 1.7;
+}
+
+/* Contador de caracteres */
+.charCount {
+    text-align: right;
+    font-size: 0.85rem;
+    color: #999;
+    margin-top: 8px;
+    font-style: italic;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Botão de envio - ocupa largura total */
+.formActions {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 25px;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 30px;
+    border-top: 1px solid var(--borda-cinza);
+}
+
+.submitButton {
+    background: var(--vermelho-jornal);
+    color: white;
+    border: none;
+    padding: 20px 45px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+    justify-self: start;
+    min-width: 300px;
+}
+
+.submitButton:hover:not(:disabled) {
+    background: #a3140a;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(196, 23, 12, 0.25);
+}
+
+.submitButton:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.submitButton::after {
+    content: '→';
+    position: absolute;
+    right: 35px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    font-size: 1.3rem;
+    font-weight: 300;
+}
+
+.submitButton:hover:not(:disabled)::after {
+    opacity: 1;
+    right: 30px;
+}
+
+/* Informações de privacidade */
+.privacyInfo {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    max-width: 400px;
+}
+
+.privacyInfo strong {
+    color: var(--vermelho-jornal);
+}
+
+/* Mensagens de resultado */
+.resultMessage {
+    grid-column: 1 / -1;
+    margin-top: 25px;
+    padding: 20px 25px;
+    border-radius: 0;
+    font-weight: 500;
+    text-align: center;
+    font-size: 1.1rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    animation: fadeIn 0.5s ease;
+}
+
+.resultMessage.success {
+    background: rgba(0, 150, 0, 0.08);
+    color: #006600;
+    border-left: 4px solid #006600;
+    border-right: 4px solid #006600;
+}
+
+.resultMessage.error {
+    background: rgba(196, 23, 12, 0.08);
+    color: var(--vermelho-jornal);
+    border-left: 4px solid var(--vermelho-jornal);
+    border-right: 4px solid var(--vermelho-jornal);
+}
+
+/* Rodapé */
+.contactFooter {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid var(--borda-cinza);
+    text-align: center;
+}
+
+.footerItem {
+    padding: 15px;
+}
+
+.footerItem strong {
+    display: block;
+    color: var(--vermelho-jornal);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.footerItem small {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Decoração de jornal */
+.newspaperDecoration {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--vermelho-jornal);
+    color: white;
+    padding: 12px 40px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    white-space: nowrap;
+}
+
+/* Loading indicator */
+.loadingIndicator {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 12px;
+    vertical-align: middle;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Estilo para inputs inválidos */
+.formInput:invalid, .formTextarea:invalid {
+    border-color: #ffcccc;
+    background: rgba(255, 0, 0, 0.02);
+}
+
+.formInput:valid, .formTextarea:valid {
+    border-color: #e0e0e0;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .contactForm {
+        width: 95%;
+        padding: 40px;
+    }
+}
+
+@media (max-width: 992px) {
+    .contactForm {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .contactHeader {
+        grid-template-columns: 1fr;
+    }
+    
+    .formFields {
+        grid-template-columns: 1fr;
+    }
+    
+    .formActions {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .submitButton {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .contactFooter {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contactForm {
+        padding: 30px;
+        margin: 100px auto 40px;
+    }
+    
+    .contactForm h1 {
+        font-size: 2.5rem;
+    }
+}

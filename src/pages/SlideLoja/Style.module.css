@@ -1,0 +1,205 @@
+.sliderContainer {
+    position: relative;
+    width: 90%;
+    height: 300px;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Container das imagens com transição suave */
+.slidesContainer {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+/* Cada slide individual */
+.slide {
+    flex: 0 0 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Imagem do slide */
+.imagem {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cobre todo o espaço mantendo proporção */
+    object-position: center;
+}
+
+/* Overlay escuro para melhor legibilidade de textos (se adicionar depois) */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    pointer-events: none;
+}
+
+/* Botões de navegação (anterior/próximo) */
+.navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #333;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 10;
+    opacity: 0.8;
+}
+
+.navButton:hover {
+    background: white;
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.prevButton {
+    left: 20px;
+}
+
+.nextButton {
+    right: 20px;
+}
+
+/* Indicadores de slide (bolinhas na parte inferior) */
+.indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Contador de slides (ex: 1/3) */
+.slideCounter {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 10;
+}
+
+/* Efeito de brilho ao passar o mouse */
+.sliderContainer:hover .imagem {
+    filter: brightness(1.05);
+}
+
+/* Animações de entrada para as imagens */
+@keyframes fadeIn {
+    from {
+        opacity: 0.7;
+        transform: scale(1.02);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.imagem {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Efeito de zoom sutil no hover */
+.slide:hover .imagem {
+    transform: scale(1.03);
+    transition: transform 8s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .sliderContainer {
+        width: 100%;
+        height: 100px;
+        border-radius: 8px;
+    }
+    
+    .navButton {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .prevButton {
+        left: 10px;
+    }
+    
+    .nextButton {
+        right: 10px;
+    }
+    
+    .indicators {
+        bottom: 15px;
+        gap: 8px;
+    }
+    
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .slideCounter {
+        bottom: 15px;
+        right: 15px;
+        padding: 4px 10px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sliderContainer {
+        height: 250px;
+    }
+    
+    .navButton {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+        opacity: 0.9; /* Mais visível em mobile */
+    }
+}

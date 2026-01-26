@@ -1,0 +1,80 @@
+.FooterContainer {
+    width: 90%;
+    color: #000000;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+    padding: 30px 20px;
+}
+
+.FooterContainer img{
+    height: 40px;
+}
+
+.FooterHeader {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.FooterHeader a{
+    color: white;
+    text-decoration: none;
+}
+
+.Whatsapp, .Instagram {
+    background: #222;
+    color:white;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+.FooterContent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.FooterContent .Sobre{
+    text-align: start;
+}
+
+.FooterContent div {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.FooterContent h3 {
+    margin-bottom: 10px;
+}
+
+.FooterBottom {
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.Contato{
+    display:flex;
+    flex-direction : column;
+}
+
+@media (max-width: 768px) {
+    .FooterHeader {
+        grid-template-columns: 1fr;
+    }
+
+    .FooterContent {
+        grid-template-columns: 1fr;
+    }
+}
